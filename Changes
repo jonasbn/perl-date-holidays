@@ -1,3 +1,18 @@
 Changes file for Date-Holidays
 
-$Id: Changes 1326 2004-05-22 17:33:00Z jonasbn $
+$Id: Changes 1367 2004-05-31 07:37:36Z jonasbn $
+
+0.02 Released 31st. of May 2004
+
+- Indented code in POD after tip from RJBS
+
+- 'jp' left out of the test suite for now
+
+- Date::Holidays::NO added to test suite, courtesy of MRAMBERG
+
+- Added experimental subs using DateTime objects as suggested by BORUP
+  (SEE: TODO)
+
+0.01 Released 22nd. of May 2004
+
+- Intial release 

@@ -1,6 +1,6 @@
 package Date::Holidays;
 
-# $Id: Holidays.pm 1337 2004-05-23 15:19:48Z jonasbn $
+# $Id: Holidays.pm 1367 2004-05-31 07:37:36Z jonasbn $
 
 use strict;
 require Exporter;
@@ -8,8 +8,9 @@ use vars qw($VERSION);
 use Locale::Country;
 use UNIVERSAL qw(can);
 use Carp;
+use DateTime;
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 sub new {
 	my ($class, %params) = @_;
@@ -56,6 +57,26 @@ sub holidays {
 	}
 }
 
+sub holidays_dt {
+	my ($self, %params) = @_;
+
+	my $hashref = $self->holidays(year => $params{'year'});
+	my %dts;
+	
+	foreach my $h (keys %{$hashref}) {
+		my ($month, $day) = $h =~ m/^(\d{2})(\d{2})$/;
+		my $dt = DateTime->new(
+			year  => $params{'year'},
+			month => $month,
+			day   => $day,
+		);		
+		$dts{$hashref->{$h}} = $dt;
+	}
+
+	return \%dts;
+
+}
+
 sub is_holiday {
 	my ($self, %params) = @_;
 
@@ -80,6 +101,16 @@ sub is_holiday {
 			return undef;
 		}
 	}
+}
+
+sub is_holiday_dt {
+	my ($self, $dt) = @_;
+
+	return $self->is_holiday(
+		year  => $dt->year,
+		month => $dt->month,
+		day   => $dt->day,
+	);
 }
 
 sub _loader {
@@ -116,26 +147,25 @@ __END__
 
 =head1 NAME
 
-Date::Holidays - a holidays OOP aggregator and wrapper
+Date::Holidays - a Date::Holidays::* OOP wrapper
 
 =head1 SYNOPSIS
 
-use Date::Holidays;
+	use Date::Holidays;
 
-my $dh = Date::Holidays->new(
-	countrycode => 'dk'
-);
+	my $dh = Date::Holidays->new(
+		countrycode => 'dk'
+	);
 
-$dh->is_holiday(
-	year  => 2004,
-	month => 12,
-	day   => 25
-);
+	$dh->is_holiday(
+		year  => 2004,
+		month => 12,
+		day   => 25
+	);
 
-$dh->holidays(
-	year => 2004
-);
-
+	$dh->holidays(
+		year => 2004
+	);
 
 =head1 DESCRIPTION
 
@@ -156,9 +186,8 @@ This is the constructor. It takes the following parameters:
 
 =over
 
-=item countrycode, two letter unique code representing a country name
-
-Please refer to ISO3166 (or Locale::Country)
+=item countrycode, two letter unique code representing a country name.  Please 
+refer to ISO3166 (or Locale::Country)
 
 =back
 
@@ -170,13 +199,20 @@ country code.
 This is a wrapper around the loaded module's B<holidays> method if this is
 implemented. If this method is not implemented it trues <countrycode>_holidays.
 
-Takes one argument:
+Takes one named argument:
 
 =over
 
 =item year, four digit parameter representing year
 
 =back
+
+=head2 holidays_dt *EXPERIMENTAL*
+
+This method is similar to holidays. It takes one named argument b<year>.
+
+The result is a hashref just as for B<holidays>, but instead the names
+of the holidays are used as keys and the values are DateTime objects.
 
 =head2 is_holiday
 
@@ -196,6 +232,13 @@ Takes 3 arguments:
 
 =back
 
+=head2 is_holiday_dt *EXPERIMENTAL*
+
+This method is similar to is_holiday, but instead of 3 separate
+arguments is only takes a single argument, a DateTime object.
+
+Return 1 for true if the object is a holiday and 0 for false if not.
+
 =head1 SEE ALSO
 
 =over
@@ -206,13 +249,19 @@ Takes 3 arguments:
 
 =item Date::Holidays::FR
 
-=item Date::Holidays::UK
+=item Date::Holidays::NO
 
 =item Date::Holiday::PT
+
+=item Date::Holidays::UK
 
 =item Date::Japanese::Holiday
 
 =item Date::Holidays::Abstract
+
+=item Date::Holidays::Super
+
+=item DateTime
 
 =back
 

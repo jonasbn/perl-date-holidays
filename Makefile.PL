@@ -1,6 +1,6 @@
 # Makefile.PL for Date-Holidays
 
-# $Id: Makefile.PL 1338 2004-05-23 15:25:09Z jonasbn $
+# $Id: Makefile.PL 1345 2004-05-25 13:41:39Z jonasbn $
 
 use ExtUtils::MakeMaker;
 
@@ -19,5 +19,6 @@ WriteMakefile(
 		'UNIVERSAL'           => 0,      #use for can
 		'Exporter'            => 0,      #used for exporting
 		'Date::Holidays::DK'  => '0.02', #used for test
+		'DateTime'            => 0,      #new experimental subs
 	}
 );

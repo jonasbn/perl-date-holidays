@@ -6,7 +6,7 @@ use Test::More tests => 18;
 
 my $verbose = 1;
 my $t = 1;
-my @countrycodes = qw(dk uk fr pt de jp);
+my @countrycodes = qw(dk no uk fr pt de); #jp left out
 
 foreach my $cc (@countrycodes) {
 

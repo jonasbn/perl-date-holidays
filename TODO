@@ -1,6 +1,6 @@
 TODO file for Date-Holidays
 
-$Id: TODO 1337 2004-05-23 15:19:48Z jonasbn $
+$Id: TODO 1352 2004-05-29 07:45:16Z jonasbn $
 
 From processing of test results from bin/test_date-holidays_modules.t
 
@@ -21,3 +21,8 @@ From processing of test results from bin/test_date-holidays_modules.t
 - Should the holidays and is_holiday methods return return values others than
   undef in order for Date::Holidays to act as real super class or should I
   implement Date::Holidays::Super as an alternative to Date::Holidays::Abstract.
+
+- BORUP suggests letting is_holiday and holidays take DateTime objects as 
+  parameters and also returning results of these types or DateTime::Spans.
+
+  DONE, added as an experiment to 0.02
