@@ -1,0 +1,23 @@
+TODO file for Date-Holidays
+
+$Id: TODO 1337 2004-05-23 15:19:48Z jonasbn $
+
+From processing of test results from bin/test_date-holidays_modules.t
+
+- Date::Holidays::UK misses holidays or similar method
+
+- Date::Holidays::FR misses holidays or similar method
+
+- Date::Holiday::PT misses holidays or similar method
+
+- Date::Holidays::DE misses is_holiday or similar method
+
+- Date::Japanese::Holiday cannot be called in the expected way, since it is
+  OOP and requires the class name (I consider leaving this module out all 
+  together) 
+
+--
+
+- Should the holidays and is_holiday methods return return values others than
+  undef in order for Date::Holidays to act as real super class or should I
+  implement Date::Holidays::Super as an alternative to Date::Holidays::Abstract.
