@@ -1,17 +1,52 @@
 Changes file for Date-Holidays
 
-$Id: Changes 1367 2004-05-31 07:37:36Z jonasbn $
+$Id: Changes 1594 2005-10-13 10:07:51Z jonasbn $
+
+0.03 (Released 13. October 2005)
+
+- Small refactoring added new sub _check_countries
+
+- Moved portuguese exception, Date::Holiday::PT has changed name to 
+  Date::Holidays::PT, but it has turned OOP.
+
+- Implemented new parameter in is_holiday (countries). This method  returns a 
+  list of country codes having the holiday specified as a holiday for the 
+  respective country (suggested by cog).
+  
+  So it has to be used in conjunction with the data parameters: year, month and 
+  day
+  
+  if given a subset of countries only these countries are tested and a hashref 
+  is returned pointing where the countries codes are the keys and the values 
+  indicate true or false for the date specified.
+  
+  The values are:
+  
+  	- undef if the country has no module or the data could not be obtained
+  	- a name of the holiday if a holiday is present
+  	- an empty string if the a module was located but the day is not a holiday
+
+- Updated INSTALL
+
+- Removed Exporter from prerequisites
+
+- Replaced use of ExtUtils::Makemake with Module::Build
+
+- Added realnames to Changes file (this file)
+
+- Added suggestion on improvements from cog (Jose Castro) to TODO
+
 
 0.02 Released 31st. of May 2004
 
-- Indented code in POD after tip from RJBS
+- Indented code in POD after tip from RJBS (Ricardo Signes)
 
 - 'jp' left out of the test suite for now
 
-- Date::Holidays::NO added to test suite, courtesy of MRAMBERG
+- Date::Holidays::NO added to test suite, courtesy of MRAMBERG (Marcus Ramberg)
 
-- Added experimental subs using DateTime objects as suggested by BORUP
-  (SEE: TODO)
+- Added experimental subs using DateTime objects as suggested by BORUP 
+  (Christian Borup) (SEE: TODO)
 
 0.01 Released 22nd. of May 2004
 

@@ -1,24 +1,33 @@
-# Makefile.PL for Date-Holidays
 
-# $Id: Makefile.PL 1345 2004-05-25 13:41:39Z jonasbn $
+# $Id: Makefile.PL 1589 2005-10-10 10:13:21Z jonasbn $
+# Ref: http://www.perl.com/pub/a/2003/02/12/module1.html?page=1
 
-use ExtUtils::MakeMaker;
+use Cwd;
+use File::Spec;
 
-WriteMakefile(
-	'AUTHOR'        => 'Jonas B. Nielsen, (jonasbn) jonasbn@cpan.org',
-    'NAME'	        => 'Date::Holidays',
-    'VERSION_FROM'  => 'lib/Date/Holidays.pm', # finds $VERSION
-	'PREREQ_PM' => {
-		'Test::More'          => 0,      #used for unit-tests
-		'Test::Pod'           => '0.95', #used for pod test
-		'Test::Pod::Coverage' => '0.08', #used for pod test also
-		'File::Find'          => 0,      #as above
-		'File::Spec'          => 0,      #as above
-		'Locale::Country'     => 0,      #use for country code validation
-		'Carp'                => 0,      #Nicer than die :)
-		'UNIVERSAL'           => 0,      #use for can
-		'Exporter'            => 0,      #used for exporting
-		'Date::Holidays::DK'  => '0.02', #used for test
-		'DateTime'            => 0,      #new experimental subs
-	}
-);
+my $rv = eval "use Module::Build::Compat 0.03; 1";
+warn $@ if $@;
+
+unless ($rv) {
+  require ExtUtils::MakeMaker;
+  print "This module require Module::Build to install itself.\n";
+  my $yn =
+	  ExtUtils::MakeMaker::prompt
+		  ( '  Install Module::Build from CPAN', 'y' );
+  if ($yn =~ /^y(es)?/i) {
+	  # save this cause CPAN will chdir all over the place.
+	  my $cwd = cwd();
+	  my $makefile = File::Spec->rel2abs($0);
+	  require CPAN;
+	  CPAN->install('Module::Build');
+	  chdir $cwd
+		  or die "Cannot chdir to $cwd: $!";
+	  exec( $^X, $makefile, @ARGV )
+  } else {
+	  warn "Cannot install this module " .
+		   "without Module::Build.  Exiting ...\n";
+	  exit 0;
+  }
+}
+Module::Build::Compat->run_build_pl( args => \@ARGV );
+Module::Build::Compat->write_makefile;

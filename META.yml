@@ -1,20 +1,23 @@
-#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
-name:         Date-Holidays
-version:      0.02
-version_from: lib/Date/Holidays.pm
-installdirs:  site
+--- #YAML:1.0
+name: Date-Holidays
+version: 0.03
+author:
+  - Jonas B. Nielsen, (jonasbn) jonasbn@cpan.org
+abstract: a Date::Holidays::* OOP wrapper
+license: perl
 requires:
-    Carp:                          0
-    Test::Pod::Coverage:           0.08
-    Test::More:                    0
-    Locale::Country:               0
-    File::Spec:                    0
-    Test::Pod:                     0.95
-    DateTime:                      0
-    Exporter:                      0
-    UNIVERSAL:                     0
-    File::Find:                    0
-    Date::Holidays::DK:            0.02
-
-distribution_type: module
-generated_by: ExtUtils::MakeMaker version 6.12
+  Carp: 0
+  Date::Holidays::DK: 0.02
+  DateTime: 0
+  File::Find: 0
+  File::Spec: 0
+  Locale::Country: 0
+  Test::More: 0
+  Test::Pod: 0.95
+  Test::Pod::Coverage: 0.08
+  UNIVERSAL: 0
+provides:
+  Date::Holidays:
+    file: lib/Date/Holidays.pm
+    version: 0.03
+generated_by: Module::Build version 0.2611

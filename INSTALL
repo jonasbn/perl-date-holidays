@@ -1,17 +1,17 @@
 INSTALL file for Date-Holidays
 
-$Id: INSTALL 1326 2004-05-22 17:33:00Z jonasbn $
+$Id: INSTALL 1589 2005-10-10 10:13:21Z jonasbn $
 
-1. tar -xvzf Date-Holidays-0.01.tar.gz 
+1. tar -xvzf Date-Holidays-<version>.tar.gz 
 
 2. cd Date-Holidays
 
-3. perl Makefile.PL
+3. perl Build.PL
 
-4. make
+4. ./Build
 
-5. make test
+5. ./Build test
 
-6. make install (requires privileged access)
+6. ./Build install (might require privileged access)
 
-7. make clean  
+7. ./Build realclean 

@@ -1,27 +1,30 @@
 package Date::Holidays;
 
-# $Id: Holidays.pm 1367 2004-05-31 07:37:36Z jonasbn $
+# $Id: Holidays.pm 1593 2005-10-13 08:54:20Z jonasbn $
 
 use strict;
-require Exporter;
 use vars qw($VERSION);
-use Locale::Country;
+use Locale::Country qw(all_country_codes code2country);
 use UNIVERSAL qw(can);
 use Carp;
 use DateTime;
 
-$VERSION = '0.02';
+$VERSION = '0.03';
 
 sub new {
 	my ($class, %params) = @_;
 
 	my $self = bless {
 		_inner_object => undef,
-		_countrycode  => lc($params{'countrycode'}),
+		_countrycode  => undef,
 	}, ref $class || $class;
 
-	$self->{'_inner_object'} =
-		$self->_loader($self->{'_countrycode'});
+
+	if ($params{'countrycode'}) {
+		$self->{'_countrycode'} = lc($params{'countrycode'});
+		$self->{'_inner_object'} =
+			$self->_loader($self->{'_countrycode'});
+	}
 
 	return $self;
 }
@@ -30,9 +33,17 @@ sub holidays {
 	my ($self, %params) = @_;
 
 	if (my $sub = $self->{'_inner_object'}->can("holidays")) {
-		return &{$sub}(
-			$params{'year'}, 
-		);
+				
+		if ($self->{'_countrycode'} eq 'pt') {
+
+			return $self->{'_inner_object'}->holidays($params{'year'});
+
+		} else {
+		
+			return &{$sub}(
+				$params{'year'}, 
+			);
+		}
 
 	} else {
 	
@@ -80,27 +91,105 @@ sub holidays_dt {
 sub is_holiday {
 	my ($self, %params) = @_;
 
-	if (my $sub = $self->{'_inner_object'}->can("is_holiday")) {
-		return &{$sub}(
-			$params{'year'}, 
-			$params{'month'}, 
-			$params{'day'}
-		);
+	if ($params{'countries'} || not $self->{'_countrycode'}) {
+
+		if (not $params{'countries'}) {
+			my @countries = all_country_codes;
+			$params{'countries'} = \@countries;
+		}
+		return $self->_check_countries(%params);
 
 	} else {
-		my $method = "is_".$self->{'_countrycode'}."_holiday";
-		my $sub = $self->{'_inner_object'}->can($method);
 
-		if ($sub) {
-			return &{$sub}(
-				$params{'year'}, 
-				$params{'month'}, 
-				$params{'day'}
-			);
+		#We are are initialized with a national calendar
+		if ($self->{'_inner_object'}) {
+
+			#We can is_holiday
+			if (my $sub = $self->{'_inner_object'}->can("is_holiday")) {
+
+				#A Portuguese exception
+				if ($self->{'_countrycode'} eq 'pt') {
+					return $self->{'_inner_object'}->is_holiday(
+						$params{'year'}, 
+						$params{'month'}, 
+						$params{'day'}
+					);
+
+				#We have a sub and an other country
+				} else {
+					return &{$sub}(
+						$params{'year'}, 
+						$params{'month'}, 
+						$params{'day'}
+					);
+				}
+
+			#We try national calendar specific sub
+			} else {
+				my $method = "is_".$self->{'_countrycode'}."_holiday";
+				my $sub = $self->{'_inner_object'}->can($method);
+
+				#Portuguese exception
+				if ($self->{'_countrycode'} eq 'pt') {
+					return $self->{'_inner_object'}->$method(
+						$params{'year'}, 
+						$params{'month'}, 
+						$params{'day'}
+					);
+
+				#Other countries
+				} else {
+
+					#Do we have a sub
+					if ($sub) {
+						return &{$sub}(
+							$params{'year'}, 
+							$params{'month'}, 
+							$params{'day'}
+						);
+
+					#No sub returning undef
+					} else {
+						carp "Unable to call national calendar module for: ".$self->{'_countrycode'};
+						return undef;
+					}
+				}
+			}
 		} else {
+			#TODO: should we call new?
+			carp("No national calendar initialized");
 			return undef;
 		}
 	}
+}
+
+sub _check_countries {
+	my ($self, %params) = @_;
+
+	my %result = ();
+
+	foreach my $country (@{$params{'countries'}}) {
+
+		my $dh = __PACKAGE__->new(countrycode => $country);
+		
+		if ($dh->{'_inner_object'}) {
+			my $r = $dh->is_holiday(
+				year  => $params{'year'}, 
+				month => $params{'month'}, 
+				day   => $params{'day'}
+			);
+
+			if ($r) {
+				$result{$country} = $r;
+			} else {
+				$result{$country} = '';
+			}
+		} else {
+			$result{$country} = undef;
+		}
+	}
+
+	return \%result;
 }
 
 sub is_holiday_dt {
@@ -117,26 +206,32 @@ sub _loader {
 	my ($self, $countrycode) = @_;
 
 	unless ($countrycode) {
-		croak "No country code specified";
+		carp "No country code specified";
+		return undef;
 	}
 
 	$countrycode = 'gb' if ($countrycode eq 'uk');
 
 	unless (code2country($countrycode)) {
-		croak "$countrycode is not a valid country code";
+		carp "$countrycode is not a valid country code";
+		return undef;
 	}
 	my $module;
 	if ($countrycode eq 'jp') {
-		$module = "Date::Japanese::Holiday";
-	} elsif ($countrycode eq 'pt') {
-		$module = "Date::Holiday::PT";
+		return undef;
+		#$module = "Date::Japanese::Holiday";
 	} elsif ($countrycode eq 'gb') {
 		$module = "Date::Holidays::UK";
 	} else {
 		$module = "Date::Holidays::".uc($countrycode);
 	}
 	
-	eval "require $module" || croak "Unable to load module: $module - $!";
+	eval "require $module";
+	
+	if ($@) {
+		carp "Unable to locate module: $module\n";
+		return undef;
+	}
 
 	return $module;
 }
@@ -157,15 +252,37 @@ Date::Holidays - a Date::Holidays::* OOP wrapper
 		countrycode => 'dk'
 	);
 
-	$dh->is_holiday(
+	$holidayname = $dh->is_holiday(
 		year  => 2004,
 		month => 12,
 		day   => 25
 	);
 
-	$dh->holidays(
+	$hashref = $dh->holidays(
 		year => 2004
 	);
+
+	
+	$holidays_hashref = $dh->is_holiday(
+		year      => 2004,
+		month     => 12,
+		day       => 25,
+		countries => ['se', 'dk', 'no'],
+	);
+
+	foreach my $country (keys %{$holidays_hashref}) {
+		print $holidays_hashref->{$country}."\n";
+	}
+
+
+	$holidays_hashref = $dh->is_holiday(
+		year      => 2004,
+		month     => 12,
+		day       => 25,
+	);
+	
+	
+	
 
 =head1 DESCRIPTION
 
@@ -182,12 +299,12 @@ and Date::Holidays::Abstract - or write me.
 
 =head2 new
 
-This is the constructor. It takes the following parameters:
+This is the constructor. It takes the following parameter:
 
 =over
 
-=item countrycode, two letter unique code representing a country name.  Please 
-refer to ISO3166 (or Locale::Country)
+=item countrycode (OPTIONAL, see below), two letter unique code representing a 
+country name.  Please refer to ISO3166 (or L<Locale::Country>)
 
 =back
 
@@ -197,7 +314,7 @@ country code.
 =head2 holidays
 
 This is a wrapper around the loaded module's B<holidays> method if this is
-implemented. If this method is not implemented it trues <countrycode>_holidays.
+implemented. If this method is not implemented it tries <countrycode>_holidays.
 
 Takes one named argument:
 
@@ -230,6 +347,28 @@ Takes 3 arguments:
 
 =item day, 1-31, representing day
 
+=item countries (OPTIONAL), a list of ISO3166 country codes
+
+=back
+
+is_holiday returns the name of a holiday is present in the country specified by 
+the country code provided to the Date::Holidays constructor.
+
+If however the Date::Holidays object was not provided with a country code, all
+known countries are tested for a holiday on the specified date, unless the 
+countries parameter specified a subset of countries to test.
+
+In the case where a set of countries are tested the return value from the method
+is a hashref with the country codes as keys and the values as the result.
+
+=over
+
+=item undef if the country has no module or the data could not be obtained
+
+=item a name of the holiday if a holiday is present
+
+=item an empty string if the a module was located but the day is not a holiday
+
 =back
 
 =head2 is_holiday_dt *EXPERIMENTAL*
@@ -243,25 +382,25 @@ Return 1 for true if the object is a holiday and 0 for false if not.
 
 =over
 
-=item Date::Holidays::DE
+=item L<Date::Holidays::DE>
 
-=item Date::Holidays::DK
+=item L<Date::Holidays::DK>
 
-=item Date::Holidays::FR
+=item L<Date::Holidays::FR>
 
-=item Date::Holidays::NO
+=item L<Date::Holidays::NO>
 
-=item Date::Holiday::PT
+=item L<Date::Holiday::PT>
 
-=item Date::Holidays::UK
+=item L<Date::Holidays::UK>
 
-=item Date::Japanese::Holiday
+=item L<Date::Japanese::Holiday>
 
-=item Date::Holidays::Abstract
+=item L<Date::Holidays::Abstract>
 
-=item Date::Holidays::Super
+=item L<Date::Holidays::Super>
 
-=item DateTime
+=item L<DateTime>
 
 =back
 
@@ -275,13 +414,27 @@ or by sending mail to
 
   bug-Date-Holidays@rt.cpan.org
 
+=head1 ACKNOWLEDGEMENTS
+
+=over
+
+=item * COG (Jose Castro)
+
+=item * RJBS (Ricardo Signes)
+
+=item * MRAMBERG (Marcus Ramberg)
+
+=item * BORUP (Christian Borup)
+
+=back
+
 =head1 AUTHOR
 
 Jonas B. Nielsen, (jonasbn) - E<lt>jonasbn@cpan.orgE<gt>
 
 =head1 COPYRIGHT
 
-Date-Holidays is (C) by Jonas B. Nielsen, (jonasbn) 2004
+Date-Holidays is (C) by Jonas B. Nielsen, (jonasbn) 2004-2005
 
 Date-Holidays is released under the artistic license
 

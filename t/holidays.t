@@ -1,7 +1,7 @@
-# $Id: holidays.t 1333 2004-05-23 10:15:43Z jonasbn $
+# $Id: holidays.t 1591 2005-10-11 14:33:05Z jonasbn $
 
 use strict;
-use Test::More tests => 3;
+use Test::More tests => 4;
 
 my $debug = 0;
 
@@ -11,11 +11,20 @@ my $dh = Date::Holidays->new(
 	countrycode => 'dk'
 );
 
-use Data::Dumper;
-print STDERR Dumper $dh if $debug;
-
 ok(ref $dh);
 
 ok($dh->holidays(
 	year => 2004
+));
+
+$dh = Date::Holidays->new(
+	countrycode => 'pt'
+);
+
+my $data = $dh->holidays(
+	year => 2005
+);
+
+ok($dh->holidays(
+	year => 2005
 ));

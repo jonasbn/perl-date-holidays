@@ -1,7 +1,7 @@
 TODO file for Date-Holidays
 
-$Id: TODO 1352 2004-05-29 07:45:16Z jonasbn $
-
+$Id: TODO 1588 2005-10-10 10:11:59Z jonasbn $
+  
 From processing of test results from bin/test_date-holidays_modules.t
 
 - Date::Holidays::UK misses holidays or similar method
