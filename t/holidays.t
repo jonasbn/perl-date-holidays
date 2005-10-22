@@ -1,10 +1,9 @@
-# $Id: holidays.t 1591 2005-10-11 14:33:05Z jonasbn $
+# $Id: holidays.t 1598 2005-10-22 05:51:03Z jonasbn $
 
 use strict;
-use Test::More tests => 4;
+use Test::More tests => 6;
 
 my $debug = 0;
-
 use_ok('Date::Holidays');
 
 my $dh = Date::Holidays->new(
@@ -17,14 +16,21 @@ ok($dh->holidays(
 	year => 2004
 ));
 
-$dh = Date::Holidays->new(
-	countrycode => 'pt'
-);
+SKIP: {
+	eval { require Date::Holidays::PT };	
+    skip "Date::Holidays::PT not installed", 3 if $@;
 
-my $data = $dh->holidays(
-	year => 2005
-);
+	unless ($@) {
+		ok($dh = Date::Holidays->new(
+			countrycode => 'pt'
+		));
 
-ok($dh->holidays(
-	year => 2005
-));
+		ok(my $data = $dh->holidays(
+			year => 2005
+		));    
+	
+		ok($dh->holidays(
+			year => 2005
+		));
+	}
+}

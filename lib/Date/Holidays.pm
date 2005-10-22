@@ -1,6 +1,6 @@
 package Date::Holidays;
 
-# $Id: Holidays.pm 1593 2005-10-13 08:54:20Z jonasbn $
+# $Id: Holidays.pm 1597 2005-10-22 05:45:49Z jonasbn $
 
 use strict;
 use vars qw($VERSION);
@@ -9,7 +9,7 @@ use UNIVERSAL qw(can);
 use Carp;
 use DateTime;
 
-$VERSION = '0.03';
+$VERSION = '0.04';
 
 sub new {
 	my ($class, %params) = @_;
@@ -425,6 +425,8 @@ or by sending mail to
 =item * MRAMBERG (Marcus Ramberg)
 
 =item * BORUP (Christian Borup)
+
+=item * shild on use.perl.org
 
 =back
 

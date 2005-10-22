@@ -1,7 +1,7 @@
-# $Id: is_holiday.t 1592 2005-10-13 06:36:33Z jonasbn $
+# $Id: is_holiday.t 1597 2005-10-22 05:45:49Z jonasbn $
 
 use strict;
-use Test::More tests => 12;
+use Test::More tests => 11;
 use Data::Dumper;
 
 my $debug = 0;
@@ -32,11 +32,11 @@ ok($holidays_hashref = $dh->is_holiday(
 	year      => 2004,
 	month     => 12,
 	day       => 25,
-	countries => ['se', 'dk', 'no'],
+	countries => ['se', 'dk'],
 ));
 
 #test 5
-is(keys %{$holidays_hashref}, 3);
+is(keys %{$holidays_hashref}, 2);
 
 #test 6-8
 foreach my $country (keys %{$holidays_hashref}) {
@@ -73,4 +73,10 @@ if ($debug) {
 #test 12
 print STDERR Dumper $holidays_hashref if $debug;
 
-ok($holidays_hashref->{'pt'});
+SKIP: {
+	eval { require Date::Holidays::PT };
+    skip "Date::Holidays::PT not installed", 1 if $@;
+    
+	ok($holidays_hashref->{'pt'});
+}
+

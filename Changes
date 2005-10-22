@@ -1,6 +1,15 @@
 Changes file for Date-Holidays
 
-$Id: Changes 1594 2005-10-13 10:07:51Z jonasbn $
+$Id: Changes 1597 2005-10-22 05:45:49Z jonasbn $
+
+0.04 (HEAD)
+
+- Changes to unit-tests, it was assumed that some of the Date::Holidays
+  modules where installed, this is not always the case
+  
+  This was pointed out to me by shild on use.perl.org:
+  http://use.perl.org/comments.pl?sid=28993&cid=43889
+
 
 0.03 (Released 13. October 2005)
 
