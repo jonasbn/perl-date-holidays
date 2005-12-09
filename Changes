@@ -1,8 +1,21 @@
 Changes file for Date-Holidays
 
-$Id: Changes 1597 2005-10-22 05:45:49Z jonasbn $
+$Id: Changes 1604 2005-12-09 22:00:06Z jonasbn $
 
-0.04 (HEAD)
+0.05 (Released Fri Dec 9 2005)
+
+- Addressing failing test
+	http://www.nntp.perl.org/group/perl.cpan.testers/262252
+
+	So we have added yet another exception, this time for Date::Holidays::AU.
+
+	The problem is that its method is_holiday, needs an additional parameter
+	indicating the state, the holidays method in the same module defaults
+	to VIC, so for know we are using this as our default state, this will need
+	readdressing.
+
+
+0.04 (Released 22. October 2005)
 
 - Changes to unit-tests, it was assumed that some of the Date::Holidays
   modules where installed, this is not always the case
@@ -56,6 +69,7 @@ $Id: Changes 1597 2005-10-22 05:45:49Z jonasbn $
 
 - Added experimental subs using DateTime objects as suggested by BORUP 
   (Christian Borup) (SEE: TODO)
+
 
 0.01 Released 22nd. of May 2004
 

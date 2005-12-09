@@ -1,6 +1,6 @@
 package Date::Holidays;
 
-# $Id: Holidays.pm 1597 2005-10-22 05:45:49Z jonasbn $
+# $Id: Holidays.pm 1604 2005-12-09 22:00:06Z jonasbn $
 
 use strict;
 use vars qw($VERSION);
@@ -9,7 +9,7 @@ use UNIVERSAL qw(can);
 use Carp;
 use DateTime;
 
-$VERSION = '0.04';
+$VERSION = '0.05';
 
 sub new {
 	my ($class, %params) = @_;
@@ -113,6 +113,15 @@ sub is_holiday {
 						$params{'year'}, 
 						$params{'month'}, 
 						$params{'day'}
+					);
+
+				#An Australian exception
+				} elsif ($self->{'_countrycode'} eq 'au') {
+					return &{$sub}(
+						$params{'year'}, 
+						$params{'month'}, 
+						$params{'day'},
+						'VIC',
 					);
 
 				#We have a sub and an other country
@@ -394,6 +403,8 @@ Return 1 for true if the object is a holiday and 0 for false if not.
 
 =item L<Date::Holidays::UK>
 
+=item L<Date::Holidays::AU>
+
 =item L<Date::Japanese::Holiday>
 
 =item L<Date::Holidays::Abstract>
@@ -403,6 +414,12 @@ Return 1 for true if the object is a holiday and 0 for false if not.
 =item L<DateTime>
 
 =back
+
+=head1 CAVEATS
+
+Currently we have an exception for the L<Date::Holidays::AU> module, so the 
+additional parameter of state is defaulting to 'VIC', please refer to the POD
+for Date::Holidays::AU for documentation on this.
 
 =head1 BUGS
 

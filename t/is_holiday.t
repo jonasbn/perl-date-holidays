@@ -1,4 +1,4 @@
-# $Id: is_holiday.t 1597 2005-10-22 05:45:49Z jonasbn $
+# $Id: is_holiday.t 1604 2005-12-09 22:00:06Z jonasbn $
 
 use strict;
 use Test::More tests => 11;
@@ -38,7 +38,7 @@ ok($holidays_hashref = $dh->is_holiday(
 #test 5
 is(keys %{$holidays_hashref}, 2);
 
-#test 6-8
+#test 6-7
 foreach my $country (keys %{$holidays_hashref}) {
 	if ($holidays_hashref->{$country}) {
 		print STDERR "$country = ".$holidays_hashref->{$country}."\n" if $debug;
@@ -46,17 +46,22 @@ foreach my $country (keys %{$holidays_hashref}) {
 	ok($country);
 }
 
-#test 9
+#test 8
 ok($holidays_hashref->{'dk'});
 
-#test 10
-is($holidays_hashref->{'se'}, undef);
+#test 9
+SKIP: {
+	eval { require Date::Holidays::SE };
+    skip "Date::Holidays::SE installed", 1 unless ($@);
+    
+	is($holidays_hashref->{'se'}, undef);
+}
 
 print STDERR Dumper $holidays_hashref if $debug;
 
 $dh = Date::Holidays->new();
 
-#test 11
+#test 10
 ok($holidays_hashref = $dh->is_holiday(
 	year      => 2004,
 	month     => 12,
@@ -70,7 +75,7 @@ if ($debug) {
 		}
 	}
 }
-#test 12
+#test 11
 print STDERR Dumper $holidays_hashref if $debug;
 
 SKIP: {
