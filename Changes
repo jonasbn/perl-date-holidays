@@ -1,6 +1,33 @@
 Changes file for Date-Holidays
 
-$Id: Changes 1604 2005-12-09 22:00:06Z jonasbn $
+$Id: Changes 1616 2005-12-18 15:20:06Z jonasbn $
+
+0.06 (Released Sun Dec 17 2005)
+
+- Moved build requirements to special section in Build.PL
+
+- Added AU and NZ to bin/test_date-holidays.t
+
+- Updated MANIFEST.SKIP with:
+    - Komodo project file
+    - Module::Build parameters mentioned in Module::Signature
+
+- Signed module using Module::Signature, added:
+    - t/0-signature.t
+    - SIGNATURE
+
+- Parameter 'state' also added for holidays method, have sent patch to David 
+  Dick author of Date::Holidays::AU requesting a more flexible API.
+
+- Added some more POD on developing in the Date::Holidays::* namespace
+  
+- Date::Holidays::AU have been updated to 0.03, meaning that the exception
+  implemented in 0.05 could be removed, it was however changed to accomodate
+  the state parameter implemented in Date::Holidays::AU.
+
+- Exchanged manually built Makefile.PL for a Makefile.PL maintained by
+  Module::Build
+
 
 0.05 (Released Fri Dec 9 2005)
 

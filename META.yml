@@ -1,23 +1,24 @@
 --- #YAML:1.0
 name: Date-Holidays
-version: 0.05
+version: 0.06
 author:
   - Jonas B. Nielsen, (jonasbn) jonasbn@cpan.org
 abstract: a Date::Holidays::* OOP wrapper
 license: perl
 requires:
   Carp: 0
-  Date::Holidays::DK: 0.02
   DateTime: 0
+  Locale::Country: 0
+  UNIVERSAL: 0
+build_requires:
+  Date::Holidays::DK: 0.02
   File::Find: 0
   File::Spec: 0
-  Locale::Country: 0
   Test::More: 0
   Test::Pod: 0.95
   Test::Pod::Coverage: 0.08
-  UNIVERSAL: 0
 provides:
   Date::Holidays:
     file: lib/Date/Holidays.pm
-    version: 0.05
+    version: 0.06
 generated_by: Module::Build version 0.2611

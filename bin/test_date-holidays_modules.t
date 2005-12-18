@@ -2,11 +2,15 @@
 
 use strict;
 use Date::Holidays;
-use Test::More tests => 18;
+use Test::More tests => 24;
 
 my $verbose = 1;
 my $t = 1;
-my @countrycodes = qw(dk no uk fr pt de); #jp left out
+
+#Adding a country adds 3 tests
+my @countrycodes = qw(dk no uk fr pt nz au de); #jp left out
+
+
 
 foreach my $cc (@countrycodes) {
 

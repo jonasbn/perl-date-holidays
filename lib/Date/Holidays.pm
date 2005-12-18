@@ -1,6 +1,6 @@
 package Date::Holidays;
 
-# $Id: Holidays.pm 1604 2005-12-09 22:00:06Z jonasbn $
+# $Id: Holidays.pm 1612 2005-12-18 10:43:25Z jonasbn $
 
 use strict;
 use vars qw($VERSION);
@@ -9,7 +9,7 @@ use UNIVERSAL qw(can);
 use Carp;
 use DateTime;
 
-$VERSION = '0.05';
+$VERSION = '0.06';
 
 sub new {
 	my ($class, %params) = @_;
@@ -37,7 +37,25 @@ sub holidays {
 		if ($self->{'_countrycode'} eq 'pt') {
 
 			return $self->{'_inner_object'}->holidays($params{'year'});
+		
+		} elsif ($self->{'_countrycode'} eq 'au') {
 
+			my $state = $params{'state'}?$params{'state'}:undef;
+
+			if ($state) {
+				return &{$sub}(
+					year  => $params{'year'},
+					state => $state,
+				);
+				
+			} else {
+				
+				return &{$sub}(
+					year  => $params{'year'},
+				);
+				
+			}
+		
 		} else {
 		
 			return &{$sub}(
@@ -117,11 +135,13 @@ sub is_holiday {
 
 				#An Australian exception
 				} elsif ($self->{'_countrycode'} eq 'au') {
+					my $state = $params{'state'}?$params{'state'}:undef;
+
 					return &{$sub}(
 						$params{'year'}, 
 						$params{'month'}, 
 						$params{'day'},
-						'VIC',
+						$state,
 					);
 
 				#We have a sub and an other country
@@ -291,8 +311,24 @@ Date::Holidays - a Date::Holidays::* OOP wrapper
 	);
 	
 	
-	
+	#Example of a module with additional parameters
+	my $dh = Date::Holidays->new(
+		countrycode => 'au'
+	);
 
+	$holidayname = $dh->is_holiday(
+		year  => 2004,
+		month => 12,
+		day   => 25,
+		state => 'TAS',
+	);	
+
+	$hashref = $dh->holidays(
+		year => 2004
+		state => 'TAS',
+	);
+	
+	
 =head1 DESCRIPTION
 
 These are the methods implemented in this class. They act as wrappers
@@ -300,11 +336,11 @@ around the different modules implementing different national holidays,
 and at the same time they provide an OOP interface.
 
 As described below is requires that a certain API is implemented (SEE:
-holidays and is_holiday below).
+B<holidays> and B<is_holiday> below).
 
 If you are an author who wants to comply to this suggestion, either
 look at some of the other modules in the Date::Holidays::* namespace
-and Date::Holidays::Abstract - or write me.
+and L<Date::Holidays::Abstract> or L<Date::Holidays::Super> - or write me.
 
 =head2 new
 
@@ -387,9 +423,121 @@ arguments is only takes a single argument, a DateTime object.
 
 Return 1 for true if the object is a holiday and 0 for false if not.
 
+=head1 DEVELOPING A DATE::HOLIDAYS::* MODULE
+
+There is no control of the Date::Holidays::* namespace at all, so I am by no
+means an authority, but this is recommendations on order to make the modules
+in the Date::Holidays more uniform and thereby more usable.
+
+If you want to participate in the effort to make the Date::Holidays::* namespace
+even more usable, feel free to do so, your feedback and suggestions will be
+more than welcome.
+
+If you want to add your country to the Date::Holidays::* namespace, please feel
+free to do so. If a module for you country is already present, I am sure the
+author would not mind patches, suggestion or even help.
+
+If however you country does not seem to be represented in the namespace, you
+are more than welcome to become the author of the module in question.
+
+Please note that the country code is expected to be a two letter code based on
+ISO3166 (or L<Locale::Country>).
+
+As an experiment I have added two modules to the namespace,
+L<Date::Holidays::Abstract> and L<Date::Holidays::Super>, abstract is attempt
+to make sure that the module implements the expected methods.
+
+So by using abstract your module will not work until it follows the the abstract
+layed out for a Date::Holidays::* module. Unfortunately the module will only
+check for the presence of the methods not their prototypes.
+
+L<Date::Holidays::Super> is for the lazy programmer, it implements the necessary
+methods as stubs and there for do not have to implement anything, but your
+module will not return anything of value. So the methods need to be overwritten
+in order to comply with the expected output of a Date::Holidays::* method.
+
+The methods which are currently interesting in a Date::Holidays::* module are:
+
+=over
+
+=item is_holiday
+
+Takes 3 arguments: year, month, day and returns the name of the holiday as a
+scalar in the national language of the module context in question. Returns
+undef if the requested day is not a holiday.
+
+	Modified example taken from: L<Date::Holidays::DK>
+	
+	use Date::Holidays::DK;
+    my ($year, $month, $day) = (localtime)[ 5, 4, 3 ];
+    
+	$year  += 1900;
+    $month += 1;
+    print "Woohoo" if is_holiday( $year, $month, $day );
+
+	#The actual method might not be implemented at this time in the
+	#example module.
+
+=item is_<countrycode>_holiday
+
+Same as above.
+
+This method however should be a wrapper of the above method (or the other way
+around).
+
+=item holidays
+
+Takes 1 argument: year and returns a hashref containing all of the holidays in
+specied for the country, in the national language of the module context in
+question.
+
+The keys are the dates, month + day in two digits each contatenated.
+
+	Modified example taken from: L<Date::Holidays::PT>
+
+	my $h = holidays($year);
+	printf "Jan. 1st is named '%s'\n", $h->{'0101'};
+
+	#The actual method might not be implemented at this time in the
+	#example module.
+		
+=item <countrycode>_holidays
+
+This method however should be a wrapper of the above method (or the other way
+around).
+
+=back
+
+B<Only> B<is_holiday> and B<holidays> are implemented in
+L<Date::Holidays::Super> and are required by L<Date::Holidays::Abstract>.
+
+=head2 ADDITIONAL PARAMETERS
+
+Some countries are divided into regions or similar and might require additional
+parameters in order to give more exact holiday data.
+
+This is handled by adding additional parameters to B<is_holiday> and 
+B<holidays>.
+
+These parameters are left to the module authors descretion and the actual
+Date::Holidays::* module should be consulted.
+
+	Example Date::Holidays::AU
+	
+    use Date::Holidays::AU qw( is_holiday );
+    
+	my ($year, $month, $day) = (localtime)[ 5, 4, 3 ];
+    $year  += 1900;
+    $month += 1;
+    
+	my ($state) = 'VIC';
+    print "Excellent\n" if is_holiday( $year, $month, $day, $state );	
+
 =head1 SEE ALSO
 
 =over
+
+=item L<Date::Holidays::AU>
 
 =item L<Date::Holidays::DE>
 
@@ -399,11 +547,11 @@ Return 1 for true if the object is a holiday and 0 for false if not.
 
 =item L<Date::Holidays::NO>
 
-=item L<Date::Holiday::PT>
+=item L<Date::Holidays::NZ>
+
+=item L<Date::Holidays::PT>
 
 =item L<Date::Holidays::UK>
-
-=item L<Date::Holidays::AU>
 
 =item L<Date::Japanese::Holiday>
 
