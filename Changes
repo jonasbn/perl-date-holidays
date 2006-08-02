@@ -1,6 +1,36 @@
 Changes file for Date-Holidays
 
-$Id: Changes 1616 2005-12-18 15:20:06Z jonasbn $
+$Id: Changes 1628 2006-08-02 20:21:56Z jonasbn $
+
+0.07 (Released Wed Aug  2 22:14:45 CEST 2006)
+
+- Removed bin/ directory from distribution (it is development purpose only 
+  anyway)
+
+- Removed t/pod.t (and prerequisites in Build.PL) this test can be 
+  performed by Module::Build
+
+- Removed t/pod-coverage.t (and prerequisites in Build.PL) this test can be 
+  performed by Module::Build
+
+- Updated TODO with new point
+
+- Changed way Makefile.PL is generated from 'passthrough' to 'traditional', I 
+  kind of like the way it is done in Workflow, so I adapted this
+
+- FIxed a bug in program flow concerning Date::Holidays::DE
+
+- Fixed a test holding a wrong number of tests to be skipped
+
+- Updated POD, added Date::Holidays::CN to SEE ALSO section (no work done to 
+  implement this at this time
+
+- Updated POD with TEST COVERAGE section, planning next release to be a 
+  maintenance release focused on test coverage
+  
+  Also in an attempt to address:
+  http://www.nntp.perl.org/group/perl.cpan.testers/276637
+
 
 0.06 (Released Sun Dec 17 2005)
 

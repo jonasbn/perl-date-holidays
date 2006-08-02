@@ -1,7 +1,7 @@
-# $Id: is_holiday.t 1604 2005-12-09 22:00:06Z jonasbn $
+# $Id: is_holiday.t 1622 2006-08-02 19:51:45Z jonasbn $
 
 use strict;
-use Test::More tests => 11;
+use Test::More tests => 12;
 use Data::Dumper;
 
 my $debug = 0;
@@ -85,3 +85,9 @@ SKIP: {
 	ok($holidays_hashref->{'pt'});
 }
 
+SKIP: {
+	eval { require Date::Holidays::AU };
+    skip "Date::Holidays::AU not installed", 1 if $@;
+    
+	ok($holidays_hashref->{'au'});
+}

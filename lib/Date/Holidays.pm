@@ -1,6 +1,6 @@
 package Date::Holidays;
 
-# $Id: Holidays.pm 1612 2005-12-18 10:43:25Z jonasbn $
+# $Id: Holidays.pm 1627 2006-08-02 20:15:59Z jonasbn $
 
 use strict;
 use vars qw($VERSION);
@@ -9,7 +9,7 @@ use UNIVERSAL qw(can);
 use Carp;
 use DateTime;
 
-$VERSION = '0.06';
+$VERSION = '0.07';
 
 sub new {
 	my ($class, %params) = @_;
@@ -33,7 +33,7 @@ sub holidays {
 	my ($self, %params) = @_;
 
 	if (my $sub = $self->{'_inner_object'}->can("holidays")) {
-				
+						
 		if ($self->{'_countrycode'} eq 'pt') {
 
 			return $self->{'_inner_object'}->holidays($params{'year'});
@@ -53,32 +53,34 @@ sub holidays {
 				return &{$sub}(
 					year  => $params{'year'},
 				);
-				
 			}
+
+		} elsif ($self->{'_countrycode'} eq 'de') {
 		
+			if ($params{'year'}) {
+				return Date::Holidays::DE::holidays(
+					YEAR => $params{'year'},
+				);
+			} else {
+				return Date::Holidays::DE::holidays();				
+			}
+
 		} else {
 		
 			return &{$sub}(
 				$params{'year'}, 
 			);
 		}
-
+	
 	} else {
 	
 		my $method = $self->{'_countrycode'}."_holidays";
 		my $sub = $self->{'_inner_object'}->can($method);
 
 		if ($sub) {
-
-			if ($self->{'_countrycode' eq 'de'}) {
-				return &{$sub}(
-					YEAR => $params{'year'},
-				);
-			} else {
-				return &{$sub}(
-					$params{'year'}, 
-				);
-			}
+			return &{$sub}(
+				$params{'year'}, 
+			);
 
 		} else {
 			return undef;
@@ -533,6 +535,19 @@ Date::Holidays::* module should be consulted.
 	my ($state) = 'VIC';
     print "Excellent\n" if is_holiday( $year, $month, $day, $state );	
 
+=head1 TEST COVERAGE
+
+Test coverage in version 0.06
+
+---------------------------- ------ ------ ------ ------ ------ ------ ------
+File                           stmt   bran   cond    sub    pod   time  total
+---------------------------- ------ ------ ------ ------ ------ ------ ------
+blib/lib/Date/Holidays.pm      82.1   68.0   66.7  100.0  100.0  100.0   79.6
+Total                          82.1   68.0   66.7  100.0  100.0  100.0   79.6
+---------------------------- ------ ------ ------ ------ ------ ------ ------
+
+I am working on a better coverage for the next release... 
+
 =head1 SEE ALSO
 
 =over
@@ -542,6 +557,8 @@ Date::Holidays::* module should be consulted.
 =item L<Date::Holidays::DE>
 
 =item L<Date::Holidays::DK>
+
+=item L<Date::Holidays::CN>
 
 =item L<Date::Holidays::FR>
 
@@ -601,7 +618,7 @@ Jonas B. Nielsen, (jonasbn) - E<lt>jonasbn@cpan.orgE<gt>
 
 =head1 COPYRIGHT
 
-Date-Holidays is (C) by Jonas B. Nielsen, (jonasbn) 2004-2005
+Date-Holidays is (C) by Jonas B. Nielsen, (jonasbn) 2004, 2005, 2006
 
 Date-Holidays is released under the artistic license
 

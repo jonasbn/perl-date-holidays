@@ -1,6 +1,8 @@
 TODO file for Date-Holidays
 
-$Id: TODO 1608 2005-12-13 09:52:19Z jonasbn $
+$Id: TODO 1625 2006-08-02 20:11:55Z jonasbn $
+
+- Test Date::Holidays with Date::Holidays:CN (China)
 
 - Add ICal export features
     http://www.faqs.org/rfcs/rfc2445.html, undecided on which CPAN
