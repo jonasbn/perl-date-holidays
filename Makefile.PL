@@ -5,12 +5,7 @@ WriteMakefile
           'PL_FILES' => {},
           'INSTALLDIRS' => 'site',
           'NAME' => 'Date::Holidays',
-          'EXE_FILES' => [
-                           '/Users/jonasbn/develop/cph.pm-SVN/trunk/modules/Date-Holidays/bin/report_date-holidays_modules.t',
-                           '/Users/jonasbn/develop/cph.pm-SVN/trunk/modules/Date-Holidays/bin/test_countries.t',
-                           '/Users/jonasbn/develop/cph.pm-SVN/trunk/modules/Date-Holidays/bin/test_date-holidays_modules.pl',
-                           '/Users/jonasbn/develop/cph.pm-SVN/trunk/modules/Date-Holidays/bin/test_date-holidays_modules.t'
-                         ],
+          'EXE_FILES' => [],
           'VERSION_FROM' => 'lib/Date/Holidays.pm',
           'PREREQ_PM' => {
                            'Test::More' => 0,

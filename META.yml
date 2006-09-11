@@ -1,10 +1,10 @@
 ---
 name: Date-Holidays
 version: !!perl/hash:Module::Build::Version
-  original: 0.07
+  original: 0.08
   version:
     - 0
-    - 70
+    - 80
 author:
   - 'Jonas B. Nielsen, (jonasbn) jonasbn@cpan.org'
 abstract: a Date::Holidays::* OOP wrapper
@@ -24,7 +24,7 @@ build_requires:
 provides:
   Date::Holidays:
     file: lib/Date/Holidays.pm
-    version: 0.07
+    version: 0.08
 generated_by: Module::Build version 0.2804
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html

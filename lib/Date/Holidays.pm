@@ -1,6 +1,6 @@
 package Date::Holidays;
 
-# $Id: Holidays.pm 1627 2006-08-02 20:15:59Z jonasbn $
+# $Id: Holidays.pm 1635 2006-09-07 09:21:14Z jonasbn $
 
 use strict;
 use vars qw($VERSION);
@@ -9,7 +9,7 @@ use UNIVERSAL qw(can);
 use Carp;
 use DateTime;
 
-$VERSION = '0.07';
+$VERSION = '0.08';
 
 sub new {
 	my ($class, %params) = @_;
