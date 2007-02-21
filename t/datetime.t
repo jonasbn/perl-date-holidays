@@ -1,18 +1,24 @@
 # $Id$
 
 use strict;
-use Test::More tests => 18;
-use Date::Holidays;
+use Test::More tests => 19;
 use DateTime;
+
+#test 1
+BEGIN {
+	use lib qw(lib ../lib);
+	use_ok( 'Date::Holidays' );
+};
 
 my $dh = Date::Holidays->new(countrycode => 'dk');
 
 my $dt = DateTime->new(
 	year  => 2004,
 	month => 12,
-	day   => 25,
+	day   => 24,
 );
 
+#test 2
 ok($dh->is_holiday_dt($dt));
 
 $dt = DateTime->new(

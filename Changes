@@ -1,6 +1,110 @@
 Changes file for Date-Holidays
 
-$Id: Changes 1635 2006-09-07 09:21:14Z jonasbn $
+$Id: Changes 1739 2007-02-21 22:26:04Z jonasbn $
+
+0.09 (Wed Feb 21 23:22:04 CET 2007)
+
+- Added no_indexing of t/ directory to Build.PL
+
+- Updated README with pod2text appending of Date::Holidays POD
+
+- Code cleaned a bit, much work still to be done
+
+- Wrote some better DIAGNOSTICS and added 3 more Exceptions
+    lib/Date/Holidays/Exception/InvalidCountryCodep.pm
+    lib/Date/Holidays/Exception/NoCountrySpecified.pm
+    lib/Date/Holidays/Exception/UnsupportedMethod.pm   
+
+- Added a few tests adapters for some of the tests dating before the 
+  refactoring (all tests now pass)
+  
+  t/lib/Date/Holidays/Adapter/NOPOLY.t
+  t/lib/Date/Holidays/Adapter/OOP.t
+  
+- Renamed _loader in Date::Holidays to _fetch and _load, see also the similar
+  methods in Date::Holidays::Adapter
+  
+  _loader.t obsolete and removed
+
+- Introduced use of Error (Exceptions) for better diagnostics:
+    Date/Holidays/Exception/AdapterInitialization.pm
+    Date/Holidays/Exception/AdapterLoad.pm
+    Date/Holidays/Exception/SuperAdapterLoad.pm
+
+- Refactored the whole thing to a variation of an object adapter pattern,
+  introduced:
+  
+    lib/Date/Holidays/Adapter.pm
+    lib/Date/Holidays/Adapter/
+    lib/Date/Holidays/Adapter/AU.pm
+    lib/Date/Holidays/Adapter/DE.pm
+    lib/Date/Holidays/Adapter/DK.pm
+    lib/Date/Holidays/Adapter/FR.pm
+    lib/Date/Holidays/Adapter/GB.pm
+    lib/Date/Holidays/Adapter/JP.pm
+    lib/Date/Holidays/Adapter/NO.pm
+    lib/Date/Holidays/Adapter/PT.pm
+    
+  tests are located in t/Adapter:
+    _fetch.t
+    _load.t
+    new.t
+  
+- Set severity to 3 for Test::Perl::Critic test
+  ran code through perltidy to remove hard tabs
+  
+- Set severity to 4 for Test::Perl::Critic test
+  added use warnings statement
+
+- Changed the constructor to no longer be able to initialize a shallow object.
+  If you want to make use of Date::Holidays ability to check all countries for
+  a given holiday please, use it using full namespace. POD updated
+  correspondingly.
+
+- Addressed issue with method calling problems, OOP vs. Procedural vs. the weird
+  mix I personally had boiled up, thanks to Florian Merges for reporting this.
+
+  This has resulted in a minor cleanup and again I can see that the current
+  architecture is not optimal, I am planning a major rewrite, to eliminate
+  the problems of handling new classes introduced in the Date::Holidays::*
+  namespace.
+  
+  I am not an authority of any kind, I just attempt to get things to play
+  along nicely.
+  
+  New files introduced:
+    t/NOPOLY.t
+    t/OOP.t
+    t/SUPERED.t
+    t/ABSTRACTED.t
+    t/PRODUCERAL.t
+    t/new.t
+
+  and the test classes (in t/lib/Date/Holidays):
+    ABSTRACTED.pm
+    NOPOLY.pm
+    OOP.pm
+    PROCUDERAL.pm
+    SUPERED.pm    
+    
+- Updated MANIFEST.SKIP with more contemporary version
+
+- Added t/critic.t, Test::Perl::Critic test, currently at severity 5.
+  In addition to this I changed the 'return undef's scattered all over the code
+  to simple return statements.
+
+- Added t/kwalitee.t, Test::Kwalitee test, diabled check for symlinks since
+  it reacted on symlinked .releaserc in directory, which however is NOT in the
+  distribution even though it thinks so
+
+  Added the following as a result of the Kwalitee test:
+    t/pod.t
+    t/pod-coverage.t
+
+- Added use of Module::Load to Build.PL and to own _loader routine in
+  Date::Holidays. I also added:
+    t/_loader.t to isolate the actual test
+
 
 0.08 (Wed Sep  6 16:55:04 CEST 2006)
 

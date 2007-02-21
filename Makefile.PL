@@ -2,20 +2,21 @@
 use ExtUtils::MakeMaker;
 WriteMakefile
 (
-          'PL_FILES' => {},
-          'INSTALLDIRS' => 'site',
           'NAME' => 'Date::Holidays',
-          'EXE_FILES' => [],
           'VERSION_FROM' => 'lib/Date/Holidays.pm',
           'PREREQ_PM' => {
-                           'Test::More' => 0,
-                           'DateTime' => 0,
-                           'UNIVERSAL' => 0,
-                           'File::Find' => 0,
-                           'File::Spec' => 0,
-                           'Date::Holidays::DK' => '0.02',
-                           'Locale::Country' => 0,
-                           'Carp' => 0
-                         }
+                           'Carp' => '0',
+                           'DateTime' => '0',
+                           'Error' => '0',
+                           'File::Find' => '0',
+                           'File::Spec' => '0',
+                           'Locale::Country' => '0',
+                           'Module::Load' => '0',
+                           'Test::More' => '0',
+                           'UNIVERSAL' => '0'
+                         },
+          'INSTALLDIRS' => 'site',
+          'EXE_FILES' => [],
+          'PL_FILES' => {}
         )
 ;

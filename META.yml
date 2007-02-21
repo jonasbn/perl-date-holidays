@@ -1,10 +1,6 @@
 ---
 name: Date-Holidays
-version: !!perl/hash:Module::Build::Version
-  original: 0.08
-  version:
-    - 0
-    - 80
+version: 0.09
 author:
   - 'Jonas B. Nielsen, (jonasbn) jonasbn@cpan.org'
 abstract: a Date::Holidays::* OOP wrapper
@@ -14,18 +10,61 @@ resources:
 requires:
   Carp: 0
   DateTime: 0
+  Error: 0
   Locale::Country: 0
+  Module::Load: 0
   UNIVERSAL: 0
 build_requires:
-  Date::Holidays::DK: 0.02
   File::Find: 0
   File::Spec: 0
   Test::More: 0
 provides:
   Date::Holidays:
     file: lib/Date/Holidays.pm
-    version: 0.08
-generated_by: Module::Build version 0.2804
+    version: 0.09
+  Date::Holidays::Adapter:
+    file: lib/Date/Holidays/Adapter.pm
+    version: 0.01
+  Date::Holidays::Adapter::AU:
+    file: lib/Date/Holidays/Adapter/AU.pm
+    version: 0.01
+  Date::Holidays::Adapter::DE:
+    file: lib/Date/Holidays/Adapter/DE.pm
+    version: 0.01
+  Date::Holidays::Adapter::DK:
+    file: lib/Date/Holidays/Adapter/DK.pm
+    version: 0.01
+  Date::Holidays::Adapter::FR:
+    file: lib/Date/Holidays/Adapter/FR.pm
+    version: 0.01
+  Date::Holidays::Adapter::GB:
+    file: lib/Date/Holidays/Adapter/GB.pm
+    version: 0.01
+  Date::Holidays::Adapter::JP:
+    file: lib/Date/Holidays/Adapter/JP.pm
+    version: 0.01
+  Date::Holidays::Adapter::NO:
+    file: lib/Date/Holidays/Adapter/NO.pm
+    version: 0.01
+  Date::Holidays::Adapter::PT:
+    file: lib/Date/Holidays/Adapter/PT.pm
+    version: 0.01
+  Date::Holidays::Exception::AdapterInitialization:
+    file: lib/Date/Holidays/Exception/AdapterInitialization.pm
+  Date::Holidays::Exception::AdapterLoad:
+    file: lib/Date/Holidays/Exception/AdapterLoad.pm
+  Date::Holidays::Exception::InvalidCountryCode:
+    file: lib/Date/Holidays/Exception/InvalidCountryCode.pm
+  Date::Holidays::Exception::NoCountrySpecified:
+    file: lib/Date/Holidays/Exception/NoCountrySpecified.pm
+  Date::Holidays::Exception::SuperAdapterLoad:
+    file: lib/Date/Holidays/Exception/SuperAdapterLoad.pm
+  Date::Holidays::Exception::UnsupportedMethod:
+    file: lib/Date/Holidays/Exception/UnsupportedMethod.pm
+no_index:
+  directory:
+    - t
+generated_by: Module::Build version 0.2806
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
   version: 1.2
