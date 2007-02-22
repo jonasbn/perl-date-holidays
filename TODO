@@ -1,6 +1,11 @@
 TODO file for Date-Holidays
 
-$Id: TODO 1734 2007-02-21 20:21:54Z jonasbn $
+$Id: TODO 1742 2007-02-22 19:47:55Z jonasbn $
+
+- Investigate whether we need an adapter at all
+
+- Look into implementing a Class Adapter pattern for exposure of adaptee's
+  extended APIs
 
 - Test Date::Holidays with Date::Holidays:CN (China)
 

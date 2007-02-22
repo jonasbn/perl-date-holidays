@@ -1,9 +1,9 @@
 ---
 name: Date-Holidays
-version: 0.09
+version: 0.10
 author:
   - 'Jonas B. Nielsen, (jonasbn) jonasbn@cpan.org'
-abstract: a Date::Holidays::* OOP wrapper
+abstract: a Date::Holidays::* OOP Adapter aggregator
 license: perl
 resources:
   license: http://dev.perl.org/licenses/
@@ -21,10 +21,10 @@ build_requires:
 provides:
   Date::Holidays:
     file: lib/Date/Holidays.pm
-    version: 0.09
+    version: 0.10
   Date::Holidays::Adapter:
     file: lib/Date/Holidays/Adapter.pm
-    version: 0.01
+    version: 0.02
   Date::Holidays::Adapter::AU:
     file: lib/Date/Holidays/Adapter/AU.pm
     version: 0.01
@@ -33,6 +33,9 @@ provides:
     version: 0.01
   Date::Holidays::Adapter::DK:
     file: lib/Date/Holidays/Adapter/DK.pm
+    version: 0.01
+  Date::Holidays::Adapter::ES:
+    file: lib/Date/Holidays/Adapter/ES.pm
     version: 0.01
   Date::Holidays::Adapter::FR:
     file: lib/Date/Holidays/Adapter/FR.pm
@@ -51,16 +54,22 @@ provides:
     version: 0.01
   Date::Holidays::Exception::AdapterInitialization:
     file: lib/Date/Holidays/Exception/AdapterInitialization.pm
+    version: 0.01
   Date::Holidays::Exception::AdapterLoad:
     file: lib/Date/Holidays/Exception/AdapterLoad.pm
+    version: 0.01
   Date::Holidays::Exception::InvalidCountryCode:
     file: lib/Date/Holidays/Exception/InvalidCountryCode.pm
+    version: 0.01
   Date::Holidays::Exception::NoCountrySpecified:
     file: lib/Date/Holidays/Exception/NoCountrySpecified.pm
+    version: 0.01
   Date::Holidays::Exception::SuperAdapterLoad:
     file: lib/Date/Holidays/Exception/SuperAdapterLoad.pm
+    version: 0.01
   Date::Holidays::Exception::UnsupportedMethod:
     file: lib/Date/Holidays/Exception/UnsupportedMethod.pm
+    version: 0.01
 no_index:
   directory:
     - t

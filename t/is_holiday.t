@@ -1,4 +1,4 @@
-# $Id: is_holiday.t 1734 2007-02-21 20:21:54Z jonasbn $
+# $Id: is_holiday.t 1742 2007-02-22 19:47:55Z jonasbn $
 
 use strict;
 use Test::More tests => 17;
@@ -96,7 +96,7 @@ SKIP: {
 	eval { require Date::Holidays::ES };
     skip "Date::Holidays::ES not installed", 1 if $@;
     
-	ok(! $holidays_hashref->{'es'}, 'Checking for Spanish christmas');
+	ok($holidays_hashref->{'es'}, 'Checking for Spanish christmas');
 }
 
 #test 15

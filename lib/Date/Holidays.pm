@@ -1,6 +1,6 @@
 package Date::Holidays;
 
-# $Id: Holidays.pm 1736 2007-02-21 22:18:18Z jonasbn $
+# $Id: Holidays.pm 1742 2007-02-22 19:47:55Z jonasbn $
 
 use strict;
 use warnings;
@@ -20,7 +20,7 @@ use Date::Holidays::Exception::UnsupportedMethod;
 
 use base 'Date::Holidays::Adapter';
 
-$VERSION = '0.09';
+$VERSION = '0.10';
 
 sub new {
     my ( $class, %params ) = @_;
@@ -254,7 +254,7 @@ __END__
 
 =head1 NAME
 
-Date::Holidays - a Date::Holidays::* OOP wrapper
+Date::Holidays - a Date::Holidays::* OOP Adapter aggregator
 
 =head1 SYNOPSIS
 
@@ -313,20 +313,29 @@ Date::Holidays - a Date::Holidays::* OOP wrapper
 
 =head1 VERSION
 
-This POD describes version 0.09 of Date::Holidays
+This POD describes version 0.10 of Date::Holidays
 
 =head1 DESCRIPTION
 
-These are the methods implemented in this class. They act as wrappers
-around the different modules implementing different national holidays, 
-and at the same time they provide an OOP interface.
+Date::Holidays is an aggregator of adapters exposing a uniform API to a set of
+modules either in the Date::Holidays::* namespace of elsewhere. All of these
+modules deliver methods and information on national calendars.
 
-As described below is requires that a certain API is implemented (SEE:
-B<holidays> and B<is_holiday> below).
+The module seem to more or less follow a defacto standard (see: also the generic
+adapter L<Date::Holidays::Adapter>), but the adapters are implemented to uniform
+this and Date::Holidays exposes a more readable API and at the same time it
+provides an OOP interface, to these modules, which primarily holds a procuderal
+API.
 
-If you are an author who wants to comply to this suggestion, either
-look at some of the other modules in the Date::Holidays::* namespace
-and L<Date::Holidays::Abstract> or L<Date::Holidays::Super> - or write me.
+As described below it is recommended that a certain API is implemented (SEE:
+B<holidays> and B<is_holiday> below), but taking the adapter strategy into
+consideration this does not matter, or we attempt to do what we can with what is
+provided.
+
+If you are an author who wants to comply to the suggested, either
+look at some of the other modules in the Date::Holidays::* namespace to get an
+idea of the de facto standard or have a look at L<Date::Holidays::Abstract> and
+L<Date::Holidays::Super> - or write me.
 
 =head1 SUBROUTINES/METHODS
 
@@ -384,7 +393,7 @@ This is yet another wrapper around the loaded module's B<is_holiday>
 method if this is implemented. Also if this method is not implemented
 it tries is_<countrycode>_holiday.
 
-Takes 3 arguments:
+Takes 3 named arguments:
 
 =over
 
@@ -497,7 +506,7 @@ Takes 1 argument: year and returns a hashref containing all of the holidays in
 specied for the country, in the national language of the module context in
 question.
 
-The keys are the dates, month + day in two digits each contatenated.
+The keys are the dates, month + day in two digits each concatenated.
 
 	Modified example taken from: L<Date::Holidays::PT>
 
@@ -539,60 +548,16 @@ Date::Holidays::* module should be consulted.
 	my ($state) = 'VIC';
     print "Excellent\n" if is_holiday( $year, $month, $day, $state );	
 
-=head1 TEST COVERAGE
+=head1 DEVELOPING A DATE::HOLIDAYS::ADAPTER CLASS
 
-Test coverage in version 0.06
-
----------------------------- ------ ------ ------ ------ ------ ------ ------
-File                           stmt   bran   cond    sub    pod   time  total
----------------------------- ------ ------ ------ ------ ------ ------ ------
-blib/lib/Date/Holidays.pm      82.1   68.0   66.7  100.0  100.0  100.0   79.6
-Total                          82.1   68.0   66.7  100.0  100.0  100.0   79.6
----------------------------- ------ ------ ------ ------ ------ ------ ------
-
-I am working on a better coverage for the next release... 
-
-=head1 SEE ALSO
-
-=over
-
-=item L<Date::Holidays::AU>
-
-=item L<Date::Holidays::DE>
-
-=item L<Date::Holidays::DK>
-
-=item L<Date::Holidays::CN>
-
-=item L<Date::Holidays::FR>
-
-=item L<Date::Holidays::NO>
-
-=item L<Date::Holidays::NZ>
-
-=item L<Date::Holidays::PT>
-
-=item L<Date::Holidays::UK>
-
-=item L<Date::Holidays::AT>
-
-=item L<Date::Holidays::ES>
-
-=item L<Date::Japanese::Holiday>
-
-=item L<Date::Holidays::Abstract>
-
-=item L<Date::Holidays::Super>
-
-=item L<DateTime>
-
-=back
+If you want to contribute with an adapter, please refer to the documentation in
+L<Date::Holidays::Adapter>.
 
 =head1 DIAGNOSTICS
 
 =over
 
-=item L<Date::Holidays::Exception::AdapterLoad>
+=item * L<Date::Holidays::Exception::AdapterLoad>
 
 This exception is thrown when L<Date::Holidays::Adapter> attempts to load an
 actual adapter implementation. This exception is recoverable to the extend
@@ -602,56 +567,59 @@ When caught the SUPER adapter is attempted loaded, L<Date::Holidays::Adapter>
 if this however fails L<Date::Holidays::Exception::SuperAdapterLoad> it thrown
 see below.
 
-=item L<Date::Holidays::Exception::SuperAdapterLoad>
+=item * L<Date::Holidays::Exception::SuperAdapterLoad>
 
 This exception is thrown when L<Date::Holidays> attempts to load the
 SUPER adapter L<Date::Holidays::Adapter>, if this fail, we are out of luck and
 we throw the L<Date::Holidays::Exception::AdapterInitialization> exception.
 
-=item L<Date::Holidays::Exception::AdapterInitialization>
+=item * L<Date::Holidays::Exception::AdapterInitialization>
 
 This exception is thrown when in was not possible to load either a
 implementation of a given adapter, or the SUPER adapter
-L<Date::Holidays::Adapater>.
+L<Date::Holidays::Adapter>.
 
-=item L<Date::Holidays::Exception::NoCountrySpecified>
+=item * L<Date::Holidays::Exception::NoCountrySpecified>
 
 The exception is thrown if a country code is provided, which is not listed
 in L<Locale::Country>, which lists ISO 3166 codes, which is the unique 2
-character strings assigned to each country in the world.
+letter strings assigned to each country in the world.
 
-=item 'Unable to locate module for <country>' this method is thrown from
+=item * 'Unable to locate module for <country>' this method is thrown from
 the B<_check_countries> method, it bails out if it cannot find and load the
 actual implementation of a module with the name Date::Holidays::<country> for
-the specified country.
+the specified country. This however is a mere warning.
 
 =back
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
-No special configuration or environment is required 
+No special configuration or environment is required.
 
 =head1 DEPENDENCIES
 
 =over
 
-=item L<Carp>
+=item * L<Carp>
 
-=item L<DateTime>
+=item * L<DateTime>
 
-=item L<Locale::Country>
+=item * L<Locale::Country>
 
-=item L<Module::Load>
+=item * L<Module::Load>
 
-=item L<Error>
+=item * L<Error>
 
-=item L<UNIVERSAL>
+=item * L<UNIVERSAL>
+
+=item * L<Date::Holidays::Adapter>
 
 =back
 
 =head1 INCOMPATIBILITIES
 
-None known at the moment, please refer to BUGS AND LIMITATIONS
+None known at the moment, please refer to BUGS AND LIMITATIONS and or the
+specific adapter classes or their respective adaptees.
 
 =head1 BUGS AND LIMITATIONS
 
@@ -664,7 +632,11 @@ B<holidays> methods
 
 The actual code for United Kingdom in ISO 3166 is 'GB' (SEE L<Locale::Country>),
 but the module is called L<Date::Holidays::UK> and so it the adapter class
-L<Date::Holidays::Adapter::UK> in this distribution to avoid confusion.
+L<Date::Holidays::Adapter::GB> in this distribution to avoid confusion or?
+
+The adaptee module for L<Date::Holidays::Adapter> is named:
+L<Date::Japanese::Holiday>, but the adapter class is following the general
+adapter naming of Date::Holidays::Adapter::<countrycode>.
 
 The adapter for L<Date::Holidays::PT>, L<Date::Holidays::Adapter::PT> does not
 implement the B<is_pt_holiday> method. The pattern used is an object adapter
@@ -681,21 +653,98 @@ or by sending mail to
 
   bug-Date-Holidays@rt.cpan.org
 
+=head1 TEST COVERAGE
+
+Test coverage in version 0.06
+
+    ---------------------------- ------ ------ ------ ------ ------ ------ ------
+    File                           stmt   bran   cond    sub    pod   time  total
+    ---------------------------- ------ ------ ------ ------ ------ ------ ------
+    blib/lib/Date/Holidays.pm      82.1   68.0   66.7  100.0  100.0  100.0   79.6
+    Total                          82.1   68.0   66.7  100.0  100.0  100.0   79.6
+    ---------------------------- ------ ------ ------ ------ ------ ------ ------
+
+I am working on a better coverage in future releases
+
+=head1 SEE ALSO
+
+=over
+
+=item * L<Date::Holidays::AU>
+
+=item * L<Date::Holidays::Adapter::AU>
+
+=item * L<Date::Holidays::DE>
+
+=item * L<Date::Holidays::Adapter::DE>
+
+=item * L<Date::Holidays::DK>
+
+=item * L<Date::Holidays::Adapter::DK>
+
+=item * L<Date::Holidays::CN>
+
+=item * L<Date::Holidays::Adapter::CN>
+
+=item * L<Date::Holidays::FR>
+
+=item * L<Date::Holidays::Adapter::FR>
+
+=item * L<Date::Holidays::NO>
+
+=item * L<Date::Holidays::Adapter::NO>
+
+=item * L<Date::Holidays::NZ>
+
+=item * L<Date::Holidays::Adapter::NZ>
+
+=item * L<Date::Holidays::PT>
+
+=item * L<Date::Holidays::Adapter::PT>
+
+=item * L<Date::Holidays::UK>
+
+=item * L<Date::Holidays::Adapter::GB>
+
+=item * L<Date::Holidays::ES>
+
+=item * L<Date::Holidays::Adapter::ES>
+
+=item * L<Date::Japanese::Holiday>
+
+=item * L<Date::Holidays::Adapter::JP>
+
+=item * L<Date::Holidays::Adapter>
+
+=item * L<Date::Holidays::Abstract>
+
+=item * L<Date::Holidays::Super>
+
+=item * L<Date::Holidays::AT>
+
+=item * L<Date::Holidays::CN>
+
+=back
+
 =head1 ACKNOWLEDGEMENTS
 
 =over
 
-=item * Florian Merges for feedback and pointing out a bug
+=item * Florian Merges for feedback and pointing out a bug in Date::Holidays,
+author of Date::Holidays::ES
 
 =item * COG (Jose Castro), Date::Holidays::PT author
 
-=item * RJBS (Ricardo Signes)
+=item * RJBS (Ricardo Signes), POD formatting
 
 =item * MRAMBERG (Marcus Ramberg), Date::Holidays::NO author
 
 =item * BORUP (Christian Borup), DateTime suggestions
 
-=item * shild on use.perl.org
+=item * LTHEGLER (Lars Thegler), Date::Holidays::DK author
+
+=item * shild on use.perl.org, CPAN tester
+http://use.perl.org/comments.pl?sid=28993&cid=43889
 
 =item * All of the authors/contributors of Date::Holidays::* modules
 

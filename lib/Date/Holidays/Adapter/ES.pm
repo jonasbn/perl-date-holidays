@@ -1,9 +1,10 @@
-package Date::Holidays::Adapter::NO;
+package Date::Holidays::Adapter::ES;
 
-# $Id: NO.pm 1742 2007-02-22 19:47:55Z jonasbn $
+# $Id: ES.pm 1742 2007-02-22 19:47:55Z jonasbn $
 
 use strict;
 use warnings;
+
 use base 'Date::Holidays::Adapter';
 
 use vars qw($VERSION);
@@ -13,10 +14,10 @@ $VERSION = '0.01';
 sub holidays {
     my ($self, %params) = @_;
 
-    my $sub = $self->{_adaptee}->can('holidays');    
+    my $dh = $self->{_adaptee}->new();
 
-    if ($sub) {
-        return &{$sub}($params{'year'});
+    if ($dh) {
+        return $dh->holidays(year => $params{'year'});
     } else {
         return;    
     }
@@ -24,14 +25,14 @@ sub holidays {
 
 sub is_holiday {
     my ($self, %params) = @_;
-    
-    my $sub = $self->{_adaptee}->can('is_holiday');
 
-    if ($sub) {
-        return &{$sub}($params{'year'}, $params{'month'}, $params{'day'});
+    my $dh = $self->{_adaptee}->new();
+
+    if ($dh) {
+        return $dh->is_holiday(year => $params{'year'}, month => $params{'month'}, day => $params{'day'});
     } else {
-        return;    
-    } 
+        return;
+    }
 }
 
 1;
@@ -40,17 +41,22 @@ __END__
 
 =head1 NAME
 
-Date::Holidays::Adapter::NO - an adapter class for Date::Holidays::NO
+Date::Holidays::Adapter::ES - an adapter class for Date::Holidays::ES
 
 =head1 VERSION
 
-This POD describes version 0.01 of Date::Holidays::Adapter::NO
+This POD describes version 0.01 of Date::Holidays::Adapter::ES
+
+=head1 DESCRIPTION
+
+The is the SUPER adapter class. All of the adapters in the distribution of
+Date::Holidays are subclasses of this particular class. L<Date::Holidays>
 
 =head1 SUBROUTINES/METHODS
 
 =head2 new
 
-The constructor, takes a single named argument, B<countrycode>
+The constructor is inherited from L<Date::Holidays::Adapter>
 
 =head2 is_holiday
 
@@ -106,7 +112,7 @@ support the called method. (SEE: METHODS/SUBROUTINES).
 
 =over
 
-=item * L<Date::Holidays::NO>
+=item * L<Date::Holidays::ES>
 
 =item * L<Date::Holidays::Adapter>
 

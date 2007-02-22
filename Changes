@@ -1,6 +1,46 @@
 Changes file for Date-Holidays
 
-$Id: Changes 1739 2007-02-21 22:26:04Z jonasbn $
+$Id: Changes 1742 2007-02-22 19:47:55Z jonasbn $
+
+0.10 (Thu Feb 22 20:42:01 CET 2007) 
+
+- Updated and corrected POD in Date::Holidays
+
+- Updated and corrected POD in Date::Holidays::Adapter
+
+- Added $VERSION to all exception classes (Date::Holidays::Exception::*), I and
+  who just file an RT ticket on the same issue for another distribution
+  oh the sweet nemesis :)
+
+- Updated POD in all exception classes (Date::Holidays::Exception::*)
+
+- Updated POD in Date::Holidays::Adapter::AU
+
+- Updated POD in Date::Holidays::Adapter::GB
+
+- Updated POD in Date::Holidays::Adapter::PT
+
+- Updated POD in Date::Holidays::Adapter::NO
+
+- Updated POD in Date::Holidays::Adapter::DK
+
+- Updated POD in Date::Holidays::Adapter::FR
+
+- Updated POD in Date::Holidays::Adapter::DE
+
+- Updated POD in Date::Holidays::Adapter::JP
+
+- Added new adapter for Date::Holidays::Adapter::ES
+    lib/Date/Holidays/Adapter/ES.pm
+
+- Added use of exceptions instead of carp in Date::Holidays::Adapter, this
+  however produces issues with adhering to Perl::Critics recommendation on
+  explicit returns. Be aware that return with in Error's try-catch block returns
+  from a sub, so you have to have a return outside the block - and Perl::Critic
+  is happy and I am happy
+  
+  Updated version to 0.02 for Date::Holidays::Adapter 
+
 
 0.09 (Wed Feb 21 23:22:04 CET 2007)
 
@@ -16,10 +56,9 @@ $Id: Changes 1739 2007-02-21 22:26:04Z jonasbn $
     lib/Date/Holidays/Exception/UnsupportedMethod.pm   
 
 - Added a few tests adapters for some of the tests dating before the 
-  refactoring (all tests now pass)
-  
-  t/lib/Date/Holidays/Adapter/NOPOLY.t
-  t/lib/Date/Holidays/Adapter/OOP.t
+  refactoring (all tests now pass):
+    t/lib/Date/Holidays/Adapter/NOPOLY.t
+    t/lib/Date/Holidays/Adapter/OOP.t
   
 - Renamed _loader in Date::Holidays to _fetch and _load, see also the similar
   methods in Date::Holidays::Adapter
@@ -130,7 +169,7 @@ $Id: Changes 1739 2007-02-21 22:26:04Z jonasbn $
 - Changed way Makefile.PL is generated from 'passthrough' to 'traditional', I 
   kind of like the way it is done in Workflow, so I adapted this
 
-- FIxed a bug in program flow concerning Date::Holidays::DE
+- Fixed a bug in program flow concerning Date::Holidays::DE
 
 - Fixed a test holding a wrong number of tests to be skipped
 
