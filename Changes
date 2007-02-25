@@ -1,6 +1,29 @@
 Changes file for Date-Holidays
 
-$Id: Changes 1742 2007-02-22 19:47:55Z jonasbn $
+$Id: Changes 1760 2007-02-25 13:13:22Z jonasbn $
+
+0.11 (Sun Feb 25 12:35:34 CET 2007)
+
+- Added missing requirement to Build.PL Readonly
+  Based on tests reports from CPAN testers
+  
+  Thanks david at cantrell.org.uk
+
+  I thought Readonly was core, but according to Module::CoreList this is not the
+  case, so this has been corrected now
+  
+
+- Updated to more contemporary versions of:
+    t/pod-coverage.t
+    t/pod.t
+
+  These should be there for the quality, but will not be run as a part of the
+  normal test run, unless the TEST_POD environment variable is set.
+  
+  This seem to be the defacto way of doing things. So they have been removed
+  from MANIFEST.SKIP so they are now a part of the distribution. At the same
+  time I removed some lines from another distribution
+
 
 0.10 (Thu Feb 22 20:42:01 CET 2007) 
 

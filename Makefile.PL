@@ -12,6 +12,7 @@ WriteMakefile
                            'File::Spec' => '0',
                            'Locale::Country' => '0',
                            'Module::Load' => '0',
+                           'Readonly' => '0',
                            'Test::More' => '0',
                            'UNIVERSAL' => '0'
                          },

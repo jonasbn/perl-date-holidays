@@ -1,6 +1,6 @@
 ---
 name: Date-Holidays
-version: 0.10
+version: 0.11
 author:
   - 'Jonas B. Nielsen, (jonasbn) jonasbn@cpan.org'
 abstract: a Date::Holidays::* OOP Adapter aggregator
@@ -13,6 +13,7 @@ requires:
   Error: 0
   Locale::Country: 0
   Module::Load: 0
+  Readonly: 0
   UNIVERSAL: 0
 build_requires:
   File::Find: 0
@@ -21,7 +22,7 @@ build_requires:
 provides:
   Date::Holidays:
     file: lib/Date/Holidays.pm
-    version: 0.10
+    version: 0.11
   Date::Holidays::Adapter:
     file: lib/Date/Holidays/Adapter.pm
     version: 0.02

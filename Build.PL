@@ -20,6 +20,7 @@ Module::Build->new(
 		'DateTime'            => 0,      #new experimental subs
         'Module::Load'        => 0,      #Instead of own stuff
         'Error'               => 0,      #Better diagnostics
+        'Readonly'            => 0,      #Instead of constant
 	},
     no_index => {
         directory => [ 't' ],

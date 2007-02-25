@@ -1,6 +1,6 @@
 package Date::Holidays;
 
-# $Id: Holidays.pm 1742 2007-02-22 19:47:55Z jonasbn $
+# $Id: Holidays.pm 1760 2007-02-25 13:13:22Z jonasbn $
 
 use strict;
 use warnings;
@@ -20,7 +20,7 @@ use Date::Holidays::Exception::UnsupportedMethod;
 
 use base 'Date::Holidays::Adapter';
 
-$VERSION = '0.10';
+$VERSION = '0.11';
 
 sub new {
     my ( $class, %params ) = @_;
@@ -745,6 +745,8 @@ author of Date::Holidays::ES
 
 =item * shild on use.perl.org, CPAN tester
 http://use.perl.org/comments.pl?sid=28993&cid=43889
+
+=item * CPAN testers in general, their work is invaluable
 
 =item * All of the authors/contributors of Date::Holidays::* modules
 
