@@ -1,23 +1,22 @@
 package Date::Holidays::Adapter::AU;
 
-# $Id: AU.pm 1760 2007-02-25 13:13:22Z jonasbn $
+# $Id: AU.pm 1779 2007-03-05 19:56:05Z jonasbn $
 
 use strict;
 use warnings;
 use vars qw($VERSION);
-use Readonly;
 
 use base 'Date::Holidays::Adapter';
 
 $VERSION = '0.01';
 
-Readonly my $default_state => 'VIC';
+use constant DEFAULT_STATE => 'VIC';
 
 sub holidays {
     my ($self, %params) = @_;
 
     my $sub = $self->{_adaptee}->can('holidays');    
-    my $state = $params{'state'} ? $params{'state'} : $default_state;
+    my $state = $params{'state'} ? $params{'state'} : DEFAULT_STATE;
 
     if ($sub) {
         return &{$sub}(year => $params{'year'}, state => $state, %params);
@@ -30,7 +29,7 @@ sub is_holiday {
     my ($self, %params) = @_;
     
     my $sub = $self->{_adaptee}->can('is_holiday');
-    my $state = $params{'state'} ? $params{'state'} : $default_state;
+    my $state = $params{'state'} ? $params{'state'} : DEFAULT_STATE;
 
     if ($sub) {
         return &{$sub}($params{'year'}, $params{'month'}, $params{'day'},  $state, \%params);

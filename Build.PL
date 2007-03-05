@@ -9,9 +9,7 @@ Module::Build->new(
 	dist_version_from => 'lib/Date/Holidays.pm',
     create_makefile_pl => 'traditional',
 	build_requires => {
-		'Test::More'          => 0,      #used for unit-tests
-		'File::Find'          => 0,      #as above
-		'File::Spec'          => 0,      #as above
+		'Test::More' => 0,      #used for unit-tests
     },
     requires => { 
 		'Locale::Country'     => 0,      #used for country code validation
@@ -20,7 +18,6 @@ Module::Build->new(
 		'DateTime'            => 0,      #new experimental subs
         'Module::Load'        => 0,      #Instead of own stuff
         'Error'               => 0,      #Better diagnostics
-        'Readonly'            => 0,      #Instead of constant
 	},
     no_index => {
         directory => [ 't' ],

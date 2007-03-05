@@ -8,11 +8,8 @@ WriteMakefile
                            'Carp' => '0',
                            'DateTime' => '0',
                            'Error' => '0',
-                           'File::Find' => '0',
-                           'File::Spec' => '0',
                            'Locale::Country' => '0',
                            'Module::Load' => '0',
-                           'Readonly' => '0',
                            'Test::More' => '0',
                            'UNIVERSAL' => '0'
                          },
