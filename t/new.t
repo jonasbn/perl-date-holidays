@@ -11,7 +11,7 @@ BEGIN {
 
 SKIP: {
 	eval { require Date::Holidays::DK };
-    skip "Date::Holidays::DK not installed", 1 if $@;
+    skip "Date::Holidays::DK not installed", 5 if $@;
     
     ok(my $dh = Date::Holidays->new(countrycode => 'DK', nocheck => 1));
 

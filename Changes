@@ -1,6 +1,13 @@
 Changes file for Date-Holidays
 
-$Id: Changes 1780 2007-03-05 19:56:47Z jonasbn $
+$Id: Changes 1791 2007-03-07 07:50:57Z jonasbn $
+
+0.13 (Wed Mar  7 08:49:37 CET 2007)
+
+- Fixed b0rken tests
+    t/new.t did not have a SKIP section
+    t/datetime.t did not have a SKIP section
+
 
 0.12 (Mon Mar  5 20:52:05 CET 2007)
 
@@ -8,7 +15,7 @@ $Id: Changes 1780 2007-03-05 19:56:47Z jonasbn $
 
 - Increased the Perl::Critic severity to 5
 
-- Exchanged Readonly for good old constants, one less dependecy, should make
+- Exchanged Readonly for good old constants, one less dependency, should make
   the failing tests go away
 
 
