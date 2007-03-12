@@ -1,6 +1,17 @@
 Changes file for Date-Holidays
 
-$Id: Changes 1791 2007-03-07 07:50:57Z jonasbn $
+$Id: Changes 1808 2007-03-12 19:13:04Z jonasbn $
+
+0.14 (Mon Mar 12 20:11:23 CET 2007)
+
+  Added the following (again) to MANIFEST as a result of the Kwalitee test:
+    t/pod.t
+    t/pod-coverage.t
+    
+  These had been removed from the distribution, but the kwalitee metrics likes
+  them so, they are however not run as part of the normal test suite unless
+  $TEST_POD is set in your environment.
+
 
 0.13 (Wed Mar  7 08:49:37 CET 2007)
 

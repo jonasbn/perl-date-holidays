@@ -1,6 +1,6 @@
 package Date::Holidays;
 
-# $Id: Holidays.pm 1791 2007-03-07 07:50:57Z jonasbn $
+# $Id: Holidays.pm 1810 2007-03-12 19:14:58Z jonasbn $
 
 use strict;
 use warnings;
@@ -20,7 +20,7 @@ use Date::Holidays::Exception::UnsupportedMethod;
 
 use base 'Date::Holidays::Adapter';
 
-$VERSION = '0.13';
+$VERSION = '0.14';
 
 sub new {
     my ( $class, %params ) = @_;
@@ -29,15 +29,14 @@ sub new {
         _inner_object => undef,
         _inner_class  => undef,
         _countrycode  => undef,
-      },
-      ref $class || $class;
+        },
+        ref $class || $class;
 
     if ( $params{'countrycode'} ) {
         $self->{'_countrycode'} = lc( $params{'countrycode'} );
         try {
-            $self->{'_inner_class'} = $self->_fetch({
-                nocheck => $params{'nocheck'},
-            });
+            $self->{'_inner_class'}
+                = $self->_fetch( { nocheck => $params{'nocheck'}, } );
         }
         catch Date::Holidays::Exception::AdapterLoad with {
             $self = undef;
@@ -46,16 +45,20 @@ sub new {
             $self = undef;
         };
     } else {
-        throw Date::Holidays::Exception::NoCountrySpecified("No country code specified");
+        throw Date::Holidays::Exception::NoCountrySpecified(
+            "No country code specified");
     }
 
-    if ( $self && $self->{'_inner_class'} && $self->{'_inner_class'}->can('new') ) {
+    if (   $self
+        && $self->{'_inner_class'}
+        && $self->{'_inner_class'}->can('new') )
+    {
         try {
             my $adapter = $self->{'_inner_class'}->new(
                 countrycode => $self->{'_countrycode'},
-                nocheck => $params{'nocheck'},
+                nocheck     => $params{'nocheck'},
             );
-        
+
             if ($adapter) {
                 $self->{'_inner_object'} = $adapter;
             } else {
@@ -63,30 +66,29 @@ sub new {
             }
         }
         catch Date::Holidays::Exception::AdapterLoad with {
-            $self = undef; 
+            $self = undef;
         }
         catch Date::Holidays::Exception::AdapterInitialization with {
-            $self = undef; 
+            $self = undef;
         };
-    }
-    elsif ( !$self->{'_inner_class'} ) {
+    } elsif ( !$self->{'_inner_class'} ) {
         $self = undef;
     }
-    
+
     return $self;
 }
 
 sub holidays {
     my ( $self, %params ) = @_;
-    
+
     my $r;
     if ( $self->{'_inner_object'}->can('holidays') ) {
         $r = $self->{'_inner_object'}->holidays( year => $params{'year'} );
+    } else {
+        throw Date::Holidays::Adapter::CannotHolidays(
+            "Unable to call 'holidays' for: $self->{'_countrycode'}");
     }
-    else {
-        throw Date::Holidays::Adapter::CannotHolidays("Unable to call 'holidays' for: $self->{'_countrycode'}");
-    }
-    
+
     return $r;
 }
 
@@ -124,24 +126,25 @@ sub is_holiday {
         }
         $r = __PACKAGE__->_check_countries(%params);
 
-    }
-    elsif ( $self->{'_countrycode'} ) {
+    } elsif ( $self->{'_countrycode'} ) {
 
-        if ( $self->{'_inner_object'} and $self->{'_inner_object'}->can('is_holiday') ) {
+        if (    $self->{'_inner_object'}
+            and $self->{'_inner_object'}->can('is_holiday') )
+        {
             $r = $self->{'_inner_object'}->is_holiday(
                 year  => $params{'year'},
                 month => $params{'month'},
                 day   => $params{'day'}
             );
-        }        
-        else {
-            throw Date::Holidays::Adapter::CannotIsHoliday("Unable to call 'is_holiday' for: $self->{'_countrycode'}");
+        } else {
+            throw Date::Holidays::Adapter::CannotIsHoliday(
+                "Unable to call 'is_holiday' for: $self->{'_countrycode'}");
         }
+    } else {
+        throw Date::Holidays::Adapter::NoCalender(
+            "No national calendar initialized");
     }
-    else {
-        throw Date::Holidays::Adapter::NoCalender("No national calendar initialized");
-    }
-    
+
     return $r;
 }
 
@@ -155,10 +158,10 @@ sub _check_countries {
         try {
             my $dh = __PACKAGE__->new( countrycode => $country );
 
-            if (!$dh) {
+            if ( !$dh ) {
                 print STDERR ("Unable to locate module for $country\n");
-                return; #we return instead of using next since we are in
-                        #the context of a sub (try)
+                return;    #we return instead of using next since we are in
+                           #the context of a sub (try)
             }
 
             my $r = $dh->is_holiday(
@@ -169,8 +172,7 @@ sub _check_countries {
 
             if ($r) {
                 $result{$country} = $r;
-            }
-            else {
+            } else {
                 $result{$country} = '';
             }
         }
@@ -190,7 +192,7 @@ sub _check_countries {
             $result{country} = undef;
         }
     }
-    
+
     return \%result;
 }
 
@@ -205,14 +207,15 @@ sub is_holiday_dt {
 }
 
 sub _load {
-    my ($self, $module) = @_;
-    
-    eval { load $module; }; #From Module::Load    
+    my ( $self, $module ) = @_;
+
+    eval { load $module; };    #From Module::Load
 
     if ($@) {
-        throw Date::Holidays::Exception::SuperAdapterLoad("Unable to load: $module");    
+        throw Date::Holidays::Exception::SuperAdapterLoad(
+            "Unable to load: $module");
     }
-    
+
     return $module;
 }
 
@@ -220,12 +223,14 @@ sub _fetch {
     my ( $self, $params ) = @_;
 
     if ( !$self->{_countrycode} ) {
-        throw Date::Holidays::Exception::NoCountrySpecified("No country code specified");
+        throw Date::Holidays::Exception::NoCountrySpecified(
+            "No country code specified");
     }
 
     if ( !$params->{nocheck} ) {
-        if ( !code2country($self->{_countrycode}) ) { #from Locale::Country
-            throw Date::Holidays::Exception::InvalidCountryCode("$self->{_countrycode} is not a valid country code"); 
+        if ( !code2country( $self->{_countrycode} ) ) {  #from Locale::Country
+            throw Date::Holidays::Exception::InvalidCountryCode(
+                "$self->{_countrycode} is not a valid country code");
         }
     }
 
@@ -244,7 +249,7 @@ sub _fetch {
             $E->throw;
         };
     };
-    
+
     return $module;
 }
 
