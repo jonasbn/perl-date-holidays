@@ -1,6 +1,13 @@
 Changes file for Date-Holidays
 
-$Id: Changes 1808 2007-03-12 19:13:04Z jonasbn $
+$Id: Changes 1820 2007-03-13 20:03:02Z jonasbn $
+
+0.15 Tue Mar 2007 update not necessary
+
+- Added t/perlcriticrc
+
+- Updated t/critic.t to more contemporary version
+
 
 0.14 (Mon Mar 12 20:11:23 CET 2007)
 

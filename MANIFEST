@@ -43,6 +43,7 @@ t/lib/Date/Holidays/SUPERED.pm
 t/new.t
 t/NOPOLY.t
 t/OOP.t
+t/perlcriticrc
 t/pod-coverage.t
 t/pod.t
 t/PRODUCERAL.t

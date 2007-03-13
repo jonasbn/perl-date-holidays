@@ -1,6 +1,6 @@
 package Date::Holidays;
 
-# $Id: Holidays.pm 1810 2007-03-12 19:14:58Z jonasbn $
+# $Id: Holidays.pm 1820 2007-03-13 20:03:02Z jonasbn $
 
 use strict;
 use warnings;
@@ -20,7 +20,7 @@ use Date::Holidays::Exception::UnsupportedMethod;
 
 use base 'Date::Holidays::Adapter';
 
-$VERSION = '0.14';
+$VERSION = '0.15';
 
 sub new {
     my ( $class, %params ) = @_;
@@ -318,7 +318,7 @@ Date::Holidays - a Date::Holidays::* OOP Adapter aggregator
 
 =head1 VERSION
 
-This POD describes version 0.13 of Date::Holidays
+This POD describes version 0.15 of Date::Holidays
 
 =head1 DESCRIPTION
 
