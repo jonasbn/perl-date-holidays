@@ -6,6 +6,7 @@ use strict;
 use warnings;
 use vars qw($VERSION);
 use Locale::Country qw(all_country_codes code2country);
+use Module::Load qw(load);
 use UNIVERSAL qw(can);
 use Carp;
 use DateTime;
@@ -44,6 +45,7 @@ sub new {
         catch Date::Holidays::Exception::SuperAdapterLoad with {
             $self = undef;
         };
+        
     } else {
         throw Date::Holidays::Exception::NoCountrySpecified(
             "No country code specified");
@@ -71,6 +73,7 @@ sub new {
         catch Date::Holidays::Exception::AdapterInitialization with {
             $self = undef;
         };
+        
     } elsif ( !$self->{'_inner_class'} ) {
         $self = undef;
     }
@@ -122,6 +125,9 @@ sub is_holiday {
 
         if ( not $params{'countries'} ) {
             my @countries = all_country_codes();    #from Locale::Country
+            
+            @countries = sort @countries;
+            
             $params{'countries'} = \@countries;
         }
         $r = __PACKAGE__->_check_countries(%params);
@@ -190,7 +196,7 @@ sub _check_countries {
             my $E = shift;
             print STDERR "$E->{-text}";
             $result{country} = undef;
-        }
+        };
     }
 
     return \%result;

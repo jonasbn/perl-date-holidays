@@ -6,7 +6,7 @@ use strict;
 use warnings;
 use Carp;
 use Error qw(:try);
-use Module::Load;
+use Module::Load qw(load);
 use Locale::Country;
 
 use Date::Holidays::Exception::AdapterLoad;

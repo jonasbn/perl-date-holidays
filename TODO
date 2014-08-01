@@ -29,6 +29,8 @@ From processing of test results from bin/test_date-holidays_modules.t
 
 - Date::Holidays::DE misses is_holiday or similar method
 
+- Check out how to do integration with Data::ICal
+
 --
 
 - Should the holidays and is_holiday methods return return values others than

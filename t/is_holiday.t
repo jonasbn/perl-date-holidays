@@ -1,6 +1,7 @@
 # $Id: is_holiday.t 1742 2007-02-22 19:47:55Z jonasbn $
 
 use strict;
+use Module::Load qw(load);
 use Test::More tests => 17;
 
 my $verbose = 0;
@@ -11,10 +12,10 @@ use lib qw(lib ../lib);
 use_ok('Date::Holidays');
 
 SKIP: {
-	eval { require Date::Holidays::DK };
+	eval { load Date::Holidays::DK };
     skip "Date::Holidays::DK not installed", 7 if ($@);
 
-	eval { require Date::Holidays::SE };
+	eval { load Date::Holidays::SE };
     skip "Date::Holidays::SE not installed", 7 if ($@);
 
 	$dh = Date::Holidays->new(
@@ -69,7 +70,7 @@ ok($holidays_hashref = Date::Holidays->is_holiday(
 
 #test 10
 SKIP: {
-	eval { require Date::Holidays::PT };
+	eval { load Date::Holidays::PT };
     skip "Date::Holidays::PT not installed", 1 if $@;
     
 	ok($holidays_hashref->{'pt'}, 'Checking for Portuguese first day of year');
@@ -77,7 +78,7 @@ SKIP: {
 
 #test 11
 SKIP: {
-	eval { require Date::Holidays::AU };
+	eval { load Date::Holidays::AU };
     skip "Date::Holidays::AU not installed", 1 if $@;
     
 	ok(! $holidays_hashref->{'au'}, 'Checking for Australian first day of year');
@@ -85,7 +86,7 @@ SKIP: {
 
 #test 13
 SKIP: {
-	eval { require Date::Holidays::AT };
+	eval { load Date::Holidays::AT };
     skip "Date::Holidays::AT not installed", 1 if $@;
     
 	ok(! $holidays_hashref->{'at'}, 'Checking for Austrian first day of year');
@@ -93,7 +94,7 @@ SKIP: {
 
 #test 14
 SKIP: {
-	eval { require Date::Holidays::ES };
+	eval { load Date::Holidays::ES };
     skip "Date::Holidays::ES not installed", 1 if $@;
     
 	ok($holidays_hashref->{'es'}, 'Checking for Spanish christmas');
@@ -101,7 +102,7 @@ SKIP: {
 
 #test 15
 SKIP: {
-	eval { require Date::Holidays::NZ };
+	eval { load Date::Holidays::NZ };
     skip "Date::Holidays::NZ not installed", 1 if $@;
     
 	ok(! $holidays_hashref->{'nz'}, 'Checking for New Zealandian christmas');
@@ -109,7 +110,7 @@ SKIP: {
 
 #test 16
 SKIP: {
-	eval { require Date::Holidays::NO };
+	eval { load Date::Holidays::NO };
     skip "Date::Holidays::NO not installed", 1 if $@;
     
 	ok($holidays_hashref->{'no'}, 'Checking for Norwegian christmas');
@@ -117,7 +118,7 @@ SKIP: {
 
 #test 17
 SKIP: {
-	eval { require Date::Holidays::FR };
+	eval { load Date::Holidays::FR };
     skip "Date::Holidays::FR not installed", 1 if $@;
     
 	ok($holidays_hashref->{'fr'}, 'Checking for French christmas');
@@ -125,7 +126,7 @@ SKIP: {
 
 #test 18
 SKIP: {
-	eval { require Date::Holidays::CN };
+	eval { load Date::Holidays::CN };
     skip "Date::Holidays::CN not installed", 1 if $@;
     
 	ok(! $holidays_hashref->{'cn'}, 'Checking for Chinese first day of year');
