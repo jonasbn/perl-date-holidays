@@ -2,6 +2,8 @@ Changes file for Date-Holidays
 
 0.16 2014.08.18 maintenance release, update not required
 
+- Fixed POD error
+
 - Aligned all version numbers
 
 - Added t/kwalitee.t Test::Kwalitee test
