@@ -4,6 +4,8 @@
 ,v$
 \B\.svn\b
 \B\.cvsignore$
+svn-commit\.tmp
+\.git
 
 # Avoid Makemaker generated and utility files.
 \bMakefile$
@@ -49,4 +51,9 @@ t/critic.t
 ^Date-Holidays.kpf$
 ^protos
 ^bin
-^scripts
+^scripts^MYMETA\.yml$
+^MYMETA\.json$
+^MYMETA\.yml$
+
+# Travis CI configuration file
+\.travis\.yml
