@@ -2,6 +2,10 @@ Changes file for Date-Holidays
 
 0.16 2014.08.18 maintenance release, update not required
 
+- Aligned all version numbers
+
+- Added t/kwalitee.t Test::Kwalitee test
+
 - Added t/changes.t Test::CPAN::Changes test
 
 

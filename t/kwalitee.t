@@ -1,12 +1,12 @@
-#Courtese of chromatic
-#http://search.cpan.org/~chromatic/Test-Kwalitee/lib/Test/Kwalitee.pm
 
-# in a separate test file
-use Test::More;
+use strict;
+use warnings;
 
-eval
-{
-    require Test::Kwalitee;
-        Test::Kwalitee->import( tests => [ qw(-no_symlinks) ]
-    );
-};
+BEGIN {
+    unless ( $ENV{RELEASE_TESTING} ) {
+        use Test::More;
+        plan( skip_all => 'these tests are for release candidate testing' );
+    }
+}
+
+use Test::Kwalitee;
