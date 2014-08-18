@@ -225,7 +225,7 @@ You can also inherit the one implemented and offered by this class
 B<NB>If inheritance is used, please remember to overwrite the two following
 methods, if applicable.
 
-=item * holidays
+=item holidays
 
 This has to follow the API outlined in SUBROUTINES/METHODS.
 
@@ -235,7 +235,7 @@ Please refer to the DEVELOPER section in L<Date::Holidays> about contributing to
 the Date::Holidays::* namespace or attempting for adaptability with
 L<Date::Holidays>.
 
-=item * is_holiday
+=item is_holiday
 
 This has to follow the API outlined in SUBROUTINES/METHODS.
 
