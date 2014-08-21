@@ -1,5 +1,10 @@
 Changes file for Date-Holidays
 
+HEAD
+
+- Migrated from Module::Build to Dist::Zilla
+
+
 0.16 2014.08.18 maintenance release, update not required
 
 - Fixed POD error
