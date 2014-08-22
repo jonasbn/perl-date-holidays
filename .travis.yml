@@ -21,6 +21,10 @@ install:
 
    - cpanm --quiet --notest --skip-satisfied Dist::Zilla
 
+   # Hack to getting the latest Test::Kwalitee
+
+   - cpanm --quiet --notest --skip-satisfied Test::Kwalitee
+
    - dzil authordeps | grep -vP '[^\w:]' | xargs -n 5 -P 10 cpanm --quiet --notest --skip-satisfied
 
    - dzil listdeps --author | cpanm --quiet --notest --skip-satisfied
