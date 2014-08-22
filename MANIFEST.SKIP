@@ -57,3 +57,7 @@ t/critic.t
 
 # Travis CI configuration file
 \.travis\.yml
+
+# SublimeText project files
+\.sublime-project
+\.sublime-workspace
