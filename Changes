@@ -1,8 +1,11 @@
 Changes file for Date-Holidays
 
-HEAD
+0.17 2014.08.22 maintenance release, update not required
 
 - Migrated from Module::Build to Dist::Zilla
+
+- Fixed issue in some test, which would break if Date::Holidays::DK 
+  was not installed
 
 
 0.16 2014.08.18 maintenance release, update not required
