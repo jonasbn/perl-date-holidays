@@ -3,14 +3,19 @@
 use strict;
 use Test::More tests => 6;
 
-BEGIN { use_ok('Date::Holidays::Adapter'); };
+use_ok('Date::Holidays::Adapter');
 
-ok(my $adapter = Date::Holidays::Adapter->new(countrycode => 'DK'));
+SKIP: {
+    eval { require Date::Holidays::DK };
+    skip "Date::Holidays::DK not installed", 5 if $@;
 
-isa_ok($adapter, 'Date::Holidays::Adapter');
+    ok(my $adapter = Date::Holidays::Adapter->new(countrycode => 'DK'));
 
-ok($adapter->_fetch({no_check => 1}));
+    isa_ok($adapter, 'Date::Holidays::Adapter');
 
-is($adapter->{_countrycode}, 'dk');
+    ok($adapter->_fetch({no_check => 1}));
 
-is($adapter->{_adaptee}, 'Date::Holidays::DK');
+    is($adapter->{_countrycode}, 'dk');
+
+    is($adapter->{_adaptee}, 'Date::Holidays::DK');
+}
