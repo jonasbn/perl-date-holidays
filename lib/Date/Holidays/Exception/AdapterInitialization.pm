@@ -9,7 +9,7 @@ use vars qw($VERSION);
 use base 'Date::Holidays::Exception::AdapterLoad';
 use overload ('""' => 'stringify');
 
-$VERSION = '0.16';
+$VERSION = '0.17';
 
 1;
 

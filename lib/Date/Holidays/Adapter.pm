@@ -15,7 +15,7 @@ use Date::Holidays::Exception::UnsupportedMethod;
 
 use vars qw($VERSION);
 
-$VERSION = '0.16';
+$VERSION = '0.17';
 
 sub new {
     my ($class, %params) = @_;

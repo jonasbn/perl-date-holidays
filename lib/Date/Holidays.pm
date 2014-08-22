@@ -21,7 +21,7 @@ use Date::Holidays::Exception::UnsupportedMethod;
 
 use base 'Date::Holidays::Adapter';
 
-$VERSION = '0.16';
+$VERSION = '0.17';
 
 sub new {
     my ( $class, %params ) = @_;
