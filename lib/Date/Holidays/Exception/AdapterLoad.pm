@@ -9,7 +9,7 @@ use vars qw($VERSION);
 use base 'Error';
 use overload ('""' => 'stringify');
 
-$VERSION = '0.17';
+$VERSION = '0.18';
 
 sub new
 {

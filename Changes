@@ -1,5 +1,10 @@
 Changes file for Date-Holidays
 
+0.18 2014.08.24 feature release, update not required
+
+- Added adapter class for Date::Holidays::BR [RT:63437]
+
+
 0.17 2014.08.22 maintenance release, update not required
 
 - Migrated from Module::Build to Dist::Zilla
