@@ -293,8 +293,6 @@ support the called method. (SEE: METHODS/SUBROUTINES).
 
 =item * L<Module::Load>
 
-=item * L<UNIVERSAL>
-
 =back
 
 =head1 INCOMPATIBILITIES

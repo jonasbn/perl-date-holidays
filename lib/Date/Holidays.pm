@@ -618,8 +618,6 @@ No special configuration or environment is required.
 
 =item * L<Error>
 
-=item * L<UNIVERSAL>
-
 =item * L<Date::Holidays::Adapter>
 
 =back
