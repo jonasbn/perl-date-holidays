@@ -1,13 +1,10 @@
 package Date::Holidays;
 
-# $Id: Holidays.pm 1820 2007-03-13 20:03:02Z jonasbn $
-
 use strict;
 use warnings;
 use vars qw($VERSION);
 use Locale::Country qw(all_country_codes code2country);
 use Module::Load qw(load);
-use UNIVERSAL qw(can);
 use Carp;
 use DateTime;
 use Error qw(:try);

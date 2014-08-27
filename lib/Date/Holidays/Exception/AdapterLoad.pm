@@ -1,7 +1,5 @@
 package Date::Holidays::Exception::AdapterLoad;
 
-# $Id: AdapterLoad.pm 1742 2007-02-22 19:47:55Z jonasbn $
-
 use strict;
 use warnings;
 use vars qw($VERSION);

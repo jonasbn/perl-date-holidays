@@ -1,7 +1,5 @@
 package Date::Holidays::Adapter::DE;
 
-# $Id: DE.pm 1742 2007-02-22 19:47:55Z jonasbn $
-
 use strict;
 use warnings;
 use Error qw(:try);

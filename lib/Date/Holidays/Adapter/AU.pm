@@ -1,7 +1,5 @@
 package Date::Holidays::Adapter::AU;
 
-# $Id: AU.pm 1779 2007-03-05 19:56:05Z jonasbn $
-
 use strict;
 use warnings;
 use vars qw($VERSION);
