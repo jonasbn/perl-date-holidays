@@ -1,9 +1,6 @@
 
-# $Id$
-
 use strict;
 use Test::More tests => 6;
-
 
 use lib qw(lib ../lib);
 use Date::Holidays;

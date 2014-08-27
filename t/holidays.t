@@ -1,4 +1,3 @@
-# $Id: holidays.t 1731 2007-02-21 09:54:04Z jonasbn $
 
 use strict;
 use Test::More tests => 11;

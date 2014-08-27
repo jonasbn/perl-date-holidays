@@ -1,4 +1,3 @@
-# $Id: is_holiday.t 1742 2007-02-22 19:47:55Z jonasbn $
 
 use strict;
 use Module::Load qw(load);
