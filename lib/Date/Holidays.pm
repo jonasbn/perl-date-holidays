@@ -18,7 +18,7 @@ use Date::Holidays::Exception::UnsupportedMethod;
 
 use base 'Date::Holidays::Adapter';
 
-$VERSION = '0.18';
+$VERSION = '0.19';
 
 sub new {
     my ( $class, %params ) = @_;
@@ -260,9 +260,23 @@ sub _fetch {
 
 __END__
 
+=pod
+
+=begin markdown
+
+[![CPAN version](https://badge.fury.io/pl/Date-Holidays.svg)](http://badge.fury.io/pl/Date-Holidays)
+[![Build Status](https://travis-ci.org/jonasbn/Date-Holidays.svg?branch=master)](https://travis-ci.org/jonasbn/Date-Holidays)
+[![Coverage Status](https://coveralls.io/repos/jonasbn/Date-Holidays/badge.png?branch=master)](https://coveralls.io/r/jonasbn/Date-Holidays?branch=master)
+
+=end markdown
+
 =head1 NAME
 
 Date::Holidays - a Date::Holidays::* OOP Adapter aggregator
+
+=head1 VERSION
+
+This POD describes version 0.19 of Date::Holidays
 
 =head1 SYNOPSIS
 
@@ -318,10 +332,6 @@ Date::Holidays - a Date::Holidays::* OOP Adapter aggregator
 		year => 2004
 		state => 'TAS',
 	);
-
-=head1 VERSION
-
-This POD describes version 0.15 of Date::Holidays
 
 =head1 DESCRIPTION
 
@@ -765,7 +775,7 @@ Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 =head1 LICENSE AND COPYRIGHT
 
 Date-Holidays and related modules are (C) by Jonas B. Nielsen, (jonasbn)
-2004-2007
+2004-2014
 
 Date-Holidays and related modules are released under the artistic license
 

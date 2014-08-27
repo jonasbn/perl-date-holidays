@@ -44,7 +44,7 @@ Date::Holidays::Adapter::BR - an adapter class for Date::Holidays::BR
 
 =head1 VERSION
 
-This POD describes version 0.01 of Date::Holidays::Adapter::BR
+This POD describes version 0.19 of Date::Holidays::Adapter::BR
 
 =head1 DESCRIPTION
 

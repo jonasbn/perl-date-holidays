@@ -70,7 +70,7 @@ Date::Holidays::Adapter::GB - an adapter class for Date::Holidays::* modules
 
 =head1 VERSION
 
-This POD describes version 0.01 of Date::Holidays::Adapter::GB
+This POD describes version 0.19 of Date::Holidays::Adapter::GB
 
 =head1 DESCRIPTION
 
@@ -182,7 +182,7 @@ Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 =head1 LICENSE AND COPYRIGHT
 
 L<Date::Holidays> and related modules are (C) by Jonas B. Nielsen, (jonasbn)
-2004-2007
+2004-2014
 
 L<Date::Holidays> and related modules are released under the artistic license
 
