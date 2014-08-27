@@ -11,7 +11,7 @@ use Date::Holidays::Exception::UnsupportedMethod;
 use Date::Holidays::Exception::InvalidCountryCode;
 use Date::Holidays::Exception::NoCountrySpecified;
 
-$VERSION = '0.18';
+$VERSION = '0.19';
 
 sub holidays {
     throw Date::Holidays::Exception::UnsupportedMethod('is_holiday');
