@@ -24,22 +24,22 @@ This POD describes version 0.01 of Date::Holidays::Exception::InvalidCountryCode
 =head1 SYNOPSIS
 
     use Date::Holidays::Exception::AdapterInitialization;
-    
+
     try {
         #Load adapter
-        
+
         throw Date::Holidays::Exception::AdapterInitialization('Unable to initialize adapter'):
     } ...
-    
-    
+
+
     ...
-    
+
     catch Date::Holidays::Exception::AdapterInitialization with {
         my $E = shift;
-        
+
         print STDERR $E->{-text}; #Unable to initialize adapter
     } ...
-    
+
 
 =head1 DESCRIPTION
 

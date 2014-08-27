@@ -42,7 +42,7 @@ sub new {
         catch Date::Holidays::Exception::SuperAdapterLoad with {
             $self = undef;
         };
-        
+
     } else {
         throw Date::Holidays::Exception::NoCountrySpecified(
             "No country code specified");
@@ -70,7 +70,7 @@ sub new {
         catch Date::Holidays::Exception::AdapterInitialization with {
             $self = undef;
         };
-        
+
     } elsif ( !$self->{'_inner_class'} ) {
         $self = undef;
     }
@@ -122,9 +122,9 @@ sub is_holiday {
 
         if ( not $params{'countries'} ) {
             my @countries = all_country_codes();    #from Locale::Country
-            
+
             @countries = sort @countries;
-            
+
             $params{'countries'} = \@countries;
         }
         $r = __PACKAGE__->_check_countries(%params);
@@ -282,7 +282,7 @@ Date::Holidays - a Date::Holidays::* OOP Adapter aggregator
 		year => 2004
 	);
 
-	
+
 	$holidays_hashref = Date::Holidays->is_holiday(
 		year      => 2004,
 		month     => 12,
@@ -300,8 +300,8 @@ Date::Holidays - a Date::Holidays::* OOP Adapter aggregator
 		month     => 12,
 		day       => 25,
 	);
-	
-	
+
+
 	#Example of a module with additional parameters
 	my $dh = Date::Holidays->new(
 		countrycode => 'au'
@@ -312,7 +312,7 @@ Date::Holidays - a Date::Holidays::* OOP Adapter aggregator
 		month => 12,
 		day   => 25,
 		state => 'TAS',
-	);	
+	);
 
 	$hashref = $dh->holidays(
 		year => 2004
@@ -353,7 +353,7 @@ This is the constructor. It takes the following parameters:
 
 =over
 
-=item countrycode (MANDATORY, see below), two letter unique code representing a 
+=item countrycode (MANDATORY, see below), two letter unique code representing a
 country name.  Please refer to ISO3166 (or L<Locale::Country>)
 
 =item nocheck (optional), if set to true the countrycode specified will not be
@@ -362,7 +362,7 @@ fake countries, I currently use this for test.
 
 =back
 
-The constructor loads the module from Date::Holidays::*, which matches the 
+The constructor loads the module from Date::Holidays::*, which matches the
 country code and returns a Date::Holidays module with the specified module
 loaded and ready to answer to any of the following methods described below, if
 these are implemented - of course.
@@ -415,7 +415,7 @@ Takes 3 named arguments:
 
 =back
 
-is_holiday returns the name of a holiday is present in the country specified by 
+is_holiday returns the name of a holiday is present in the country specified by
 the country code provided to the Date::Holidays constructor.
 
 	$name = $dh->is_holiday(year => 2007, day => 24, month => 12);
@@ -490,10 +490,10 @@ scalar in the national language of the module context in question. Returns
 undef if the requested day is not a holiday.
 
 	Modified example taken from: L<Date::Holidays::DK>
-	
+
 	use Date::Holidays::DK;
     my ($year, $month, $day) = (localtime)[ 5, 4, 3 ];
-    
+
 	$year  += 1900;
     $month += 1;
     print "Woohoo" if is_holiday( $year, $month, $day );
@@ -523,7 +523,7 @@ The keys are the dates, month + day in two digits each concatenated.
 
 	#The actual method might not be implemented at this time in the
 	#example module.
-		
+
 =item <countrycode>_holidays
 
 This method however should be a wrapper of the above method (or the other way
@@ -539,22 +539,22 @@ L<Date::Holidays::Super> and are required by L<Date::Holidays::Abstract>.
 Some countries are divided into regions or similar and might require additional
 parameters in order to give more exact holiday data.
 
-This is handled by adding additional parameters to B<is_holiday> and 
+This is handled by adding additional parameters to B<is_holiday> and
 B<holidays>.
 
 These parameters are left to the module authors descretion and the actual
 Date::Holidays::* module should be consulted.
 
 	Example Date::Holidays::AU
-	
+
     use Date::Holidays::AU qw( is_holiday );
-    
+
 	my ($year, $month, $day) = (localtime)[ 5, 4, 3 ];
     $year  += 1900;
     $month += 1;
-    
+
 	my ($state) = 'VIC';
-    print "Excellent\n" if is_holiday( $year, $month, $day, $state );	
+    print "Excellent\n" if is_holiday( $year, $month, $day, $state );
 
 =head1 DEVELOPING A DATE::HOLIDAYS::ADAPTER CLASS
 
@@ -631,7 +631,7 @@ specific adapter classes or their respective adaptees.
 
 =head1 BUGS AND LIMITATIONS
 
-Currently we have an exception for the L<Date::Holidays::AU> module, so the 
+Currently we have an exception for the L<Date::Holidays::AU> module, so the
 additional parameter of state is defaulting to 'VIC', please refer to the POD
 for L<Date::Holidays::AU> for documentation on this.
 

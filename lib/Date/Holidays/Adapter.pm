@@ -17,7 +17,7 @@ $VERSION = '0.18';
 
 sub new {
     my ($class, %params) = @_;
-    
+
     my $self = bless {
         _countrycode => lc $params{countrycode},
         _adaptee     => undef,
@@ -25,7 +25,7 @@ sub new {
 
     try {
         my $adaptee = $self->_fetch(\%params);
-        
+
         if ($adaptee) {
             $self->{_adaptee} = $adaptee;
         } else {
@@ -49,13 +49,13 @@ sub holidays {
 
     my $r;
     try {
-        my $method = 'holidays';    
+        my $method = 'holidays';
         my $sub = $self->{_adaptee}->can('holidays');
-    
+
         if (! $sub) {
             $method = "$self->{_countrycode}_holidays";
             $sub = $self->{_adaptee}->can($method);
-        } 
+        }
 
         if ($sub) {
             $r = &{$sub}($params{'year'});
@@ -65,7 +65,7 @@ sub holidays {
         my $E = shift;
         $E->throw();
     };
-    
+
     return $r;
 }
 
@@ -74,14 +74,14 @@ sub is_holiday {
 
     my $r;
     try {
-        my $method = 'is_holiday';    
+        my $method = 'is_holiday';
         my $sub = $self->{_adaptee}->can('is_holiday');
-        
+
         if (! $sub) {
             $method = "is_$self->{_countrycode}_holiday";
             $sub = $self->{_adaptee}->can($method);
-        } 
-    
+        }
+
         if ($sub) {
             $r = &{$sub}($params{'year'}, $params{'month'}, $params{'day'});
         }
@@ -90,19 +90,19 @@ sub is_holiday {
         my $E = shift;
         $E->throw();
     };
-    
+
     return $r;
 }
 
 sub _load {
     my ($self, $module) = @_;
-    
+
     eval { load $module; }; #From Module::Load
-    
+
     if ($@) {
-        throw Date::Holidays::Exception::AdapterLoad("Unable to load: $module");    
+        throw Date::Holidays::Exception::AdapterLoad("Unable to load: $module");
     }
-    
+
     return $module;
 }
 
@@ -127,7 +127,7 @@ sub _fetch {
     }
     catch Date::Holidays::Exception::AdapterLoad with {
         my $E = shift;
-        $E->throw;    
+        $E->throw;
     }
     otherwise {
         my $E = shift;
@@ -148,11 +148,11 @@ Date::Holidays::Adapter - an adapter class for Date::Holidays::* modules
 =head1 SYNOPSIS
 
     my $adapter = Date::Holidays::Adapter->new(countrycode => 'NO');
-    
+
     my ($year, $month, $day) = (localtime)[ 5, 4, 3 ];
     $year  += 1900;
     $month += 1;
-  
+
     print "Woohoo" if $adapter->is_holiday( year => $year, month => $month, day => $day );
 
     my $hashref = $adapter->holidays(year => $year);

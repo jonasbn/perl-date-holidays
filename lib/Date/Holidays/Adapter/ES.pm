@@ -17,7 +17,7 @@ sub holidays {
     if ($dh) {
         return $dh->holidays(year => $params{'year'});
     } else {
-        return;    
+        return;
     }
 }
 

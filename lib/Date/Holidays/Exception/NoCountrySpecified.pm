@@ -24,22 +24,22 @@ This POD describes version 0.01 of Date::Holidays::Exception::NoCountrySpecified
 =head1 SYNOPSIS
 
     use Date::Holidays::Exception::NoCountrySpecified;
-    
+
     try {
         #Load adapter
-        
+
         throw Date::Holidays::Exception::NoCountrySpecified('No country specified');
     } ...
-    
-    
+
+
     ...
-    
+
     catch Date::Holidays::Exception::NoCountrySpecified with {
         my $E = shift;
-        
+
         print STDERR $E->{-text}; #No country specified
     } ...
-    
+
 
 =head1 DESCRIPTION
 

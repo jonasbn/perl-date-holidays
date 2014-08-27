@@ -24,22 +24,22 @@ This POD describes version 0.01 of Date::Holidays::Exception::SuperAdapterLoad
 =head1 SYNOPSIS
 
     use Date::Holidays::Exception::SuperAdapterLoad;
-    
+
     try {
         #Load adapter
-        
+
         throw Date::Holidays::Exception::SuperAdapterLoad('Unable to load adapter');
     } ...
-    
-    
+
+
     ...
-    
+
     catch Date::Holidays::Exception::SuperAdapterLoad with {
         my $E = shift;
-        
+
         print STDERR $E->{-text}; #Unable to load adapter
     } ...
-    
+
 
 =head1 DESCRIPTION
 

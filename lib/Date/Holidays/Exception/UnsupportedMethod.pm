@@ -22,24 +22,24 @@ This POD describes version 0.01 of Date::Holidays::Exception::UnsupportedMethod
 =head1 SYNOPSIS
 
     use Date::Holidays::Exception::UnsupportedMethod;
-    
+
     try {
         #Call method
-        
+
         my $method = ...
-        
+
         throw Date::Holidays::Exception::UnsupportedMethod('Unable to call method: $method");
     } ...
-    
-    
+
+
     ...
-    
+
     catch Date::Holidays::Exception::UnsupportedMethod with {
         my $E = shift;
-        
+
         print STDERR $E->{-text}; #Unable to call method
     } ...
-    
+
 
 =head1 DESCRIPTION
 

@@ -13,26 +13,26 @@ use constant DEFAULT_STATE => 'VIC';
 sub holidays {
     my ($self, %params) = @_;
 
-    my $sub = $self->{_adaptee}->can('holidays');    
+    my $sub = $self->{_adaptee}->can('holidays');
     my $state = $params{'state'} ? $params{'state'} : DEFAULT_STATE;
 
     if ($sub) {
         return &{$sub}(year => $params{'year'}, state => $state, %params);
     } else {
-        return;    
+        return;
     }
 }
 
 sub is_holiday {
     my ($self, %params) = @_;
-    
+
     my $sub = $self->{_adaptee}->can('is_holiday');
     my $state = $params{'state'} ? $params{'state'} : DEFAULT_STATE;
 
     if ($sub) {
         return &{$sub}($params{'year'}, $params{'month'}, $params{'day'},  $state, \%params);
     } else {
-        return;    
+        return;
     }
 }
 
@@ -137,7 +137,7 @@ Please refer to INCOMPATIBILITIES in L<Date::Holidays>
 
 =head1 BUGS AND LIMITATIONS
 
-Currently we have an exception for the L<Date::Holidays::AU> module, so the 
+Currently we have an exception for the L<Date::Holidays::AU> module, so the
 additional parameter of state is defaulting to 'VIC', please refer to the POD
 for L<Date::Holidays::AU> for documentation on this.
 

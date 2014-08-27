@@ -18,7 +18,7 @@ sub new
     local $Error::Depth = $Error::Depth + 1;
 
     $self = $self->SUPER::new(-text => $text, @args);
-    
+
     return $self;
 }
 
@@ -37,22 +37,22 @@ This POD describes version 0.01 of Date::Holidays::Exception::AdapterLoad
 =head1 SYNOPSIS
 
     use Date::Holidays::Exception::AdapterLoad;
-    
+
     try {
         #Load adapter
-        
+
         throw Date::Holidays::Exception::AdapterLoad('Unable to load adapter'):
     } ...
-    
-    
+
+
     ...
-    
+
     catch Date::Holidays::Exception::AdapterLoad with {
         my $E = shift;
-        
+
         print STDERR $E->{-text}; #Unable to load adapter
     } ...
-    
+
 
 =head1 DESCRIPTION
 

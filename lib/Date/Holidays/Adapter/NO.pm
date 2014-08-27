@@ -11,25 +11,25 @@ $VERSION = '0.18';
 sub holidays {
     my ($self, %params) = @_;
 
-    my $sub = $self->{_adaptee}->can('holidays');    
+    my $sub = $self->{_adaptee}->can('holidays');
 
     if ($sub) {
         return &{$sub}($params{'year'});
     } else {
-        return;    
+        return;
     }
 }
 
 sub is_holiday {
     my ($self, %params) = @_;
-    
+
     my $sub = $self->{_adaptee}->can('is_holiday');
 
     if ($sub) {
         return &{$sub}($params{'year'}, $params{'month'}, $params{'day'});
     } else {
-        return;    
-    } 
+        return;
+    }
 }
 
 1;

@@ -21,7 +21,7 @@ sub holidays {
 
 sub is_holiday {
     my ($self, %params) = @_;
-    
+
     my $sub = $self->{_adaptee}->can('is_japanese_holiday');
 
     return &{$sub}($params{'year'}, $params{'month'}, $params{'day'});
@@ -38,7 +38,7 @@ sub _fetch {
 
     if ( !$params->{nocheck} ) {
         if ( !code2country($self->{_countrycode}) ) { #from Locale::Country
-            throw Date::Holidays::Exception::InvalidCountryCode("$self->{_countrycode} is not a valid country code"); 
+            throw Date::Holidays::Exception::InvalidCountryCode("$self->{_countrycode} is not a valid country code");
         }
     }
 
@@ -47,7 +47,7 @@ sub _fetch {
     }
     catch Date::Holidays::Exception::AdapterLoad with {
         my $E = shift;
-        $E->throw;    
+        $E->throw;
     };
 
     return $module;
