@@ -1,5 +1,12 @@
 Changes file for Date-Holidays
 
+0.19 2014.08.27 bug fix release, update not required (see below)
+
+- This release addressed reports on failing tests for perl 5.21
+  The use in this distribution of UNIVERSAL is now deprecated,
+  see: Github issue [#3] and [RT:98337]
+
+
 0.18 2014.08.24 feature release, update not required
 
 - Added adapter class for Date::Holidays::BR [RT:63437]
