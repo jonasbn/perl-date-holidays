@@ -24,26 +24,26 @@ This POD describes version 0.01 of Date::Holidays::Exception::AdapterInitializat
 =head1 SYNOPSIS
 
     use Date::Holidays::Exception::AdapterInitialization;
-    
+
     try {
         #Initialize adapter
-        
+
         throw Date::Holidays::Exception::AdapterInitialization('Unable to initialize adapter');
     }
     catch Date::Holidays::Exception::AdapterLoad with {
         my $E = shift;
-        
-        throw Date::Holidays::Exception::AdapterInitialization($E->{-text}); 
-    } ...    
-    
+
+        throw Date::Holidays::Exception::AdapterInitialization($E->{-text});
+    } ...
+
     ...
-    
+
     catch Date::Holidays::Exception::AdapterInitialization with {
         my $E = shift;
-        
+
         print STDERR $E->{-text}; #Unable to initialize adapter
     } ...
-    
+
 
 =head1 DESCRIPTION
 
