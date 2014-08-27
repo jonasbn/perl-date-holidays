@@ -122,8 +122,6 @@ support the called method. (SEE: METHODS/SUBROUTINES).
 
 =item * L<Error>
 
-=item * L<UNIVERSAL>
-
 =back
 
 =head1 INCOMPATIBILITIES
