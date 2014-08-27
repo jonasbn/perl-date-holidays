@@ -21,7 +21,7 @@ SKIP: {
     can_ok($dh, qw(new holidays is_holiday));
 
     ok(my $href = $dh->holidays(year => 2007), 'Testing holidays method');
-    
+
     is(ref $href, 'HASH', 'Testing type of result from holidays method');
 
     ok($dh->is_holiday(year => 2007, month => 12, day => 24), 'Testing is_holiday method');
