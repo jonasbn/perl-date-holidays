@@ -135,10 +135,6 @@ sub is_holiday {
             and $self->{'_inner_object'}->can('is_holiday'))
         {
 
-            print STDERR "################## WTF!\n";
-            use Data::Dumper;
-            print STDERR Dumper $self;
-
             $r = $self->{'_inner_object'}->is_holiday(
                 year  => $params{'year'},
                 month => $params{'month'},
