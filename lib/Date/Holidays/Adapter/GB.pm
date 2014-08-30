@@ -6,7 +6,6 @@ use vars qw($VERSION);
 use Error qw(:try);
 
 use base 'Date::Holidays::Adapter';
-use Date::Holidays::Exception::UnsupportedMethod;
 
 $VERSION = '0.20';
 
@@ -16,7 +15,7 @@ sub holidays {
     my $sub = $self->{_adaptee}->can('holidays');
 
     if ($sub) {
-        return &{$sub}(year => $params{'year'});
+        return &{$sub}(year => $params{'year'}, region => $params{'region');
     } else {
         return;
     }
@@ -28,7 +27,7 @@ sub is_holiday {
     my $sub = $self->{_adaptee}->can('is_holiday');
 
     if ($sub) {
-        return &{$sub}(year => $params{'year'}, month => $params{'month'}, day => $params{'day'});
+        return &{$sub}(year => $params{'year'}, month => $params{'month'}, day => $params{'day'}, region => $params{'region'});
     } else {
         return;
     }
