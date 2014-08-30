@@ -21,5 +21,5 @@ SKIP: {
 
     ok($dh->holidays(), 'Testing holidays');
 
-    ok($dh->is_holiday(year => 2007, month => 12, day => 24), 'Testing christmas');
+    is($dh->is_holiday(year => 2007, month => 12, day => 24), 'christmas','Testing christmas');
 };

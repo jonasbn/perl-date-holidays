@@ -1,8 +1,10 @@
 
 use strict;
-use Test::More tests => 11;
+use warnings;
+use Test::More;
+use Data::Dumper;
+use Env qw($TEST_VERBOSE);
 
-my $debug = 0;
 my $dh;
 
 BEGIN {
@@ -64,3 +66,5 @@ SKIP: {
     ok( $dh->holidays( year => 2006 ),
         'Testing holidays with argument for Date::Holidays::DE' );
 }
+
+done_testing();
