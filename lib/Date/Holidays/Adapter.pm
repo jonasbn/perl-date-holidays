@@ -6,6 +6,7 @@ use Carp;
 use Error qw(:try);
 use Module::Load qw(load);
 use Locale::Country;
+use Scalar::Util qw(blessed);
 
 use Date::Holidays::Exception::AdapterLoad;
 use Date::Holidays::Exception::AdapterInitialization;
@@ -74,16 +75,30 @@ sub is_holiday {
 
     my $r;
     try {
-        my $method = 'is_holiday';
-        my $sub = $self->{_adaptee}->can('is_holiday');
 
-        if (! $sub) {
-            $method = "is_$self->{_countrycode}_holiday";
+        if (    $self->{_adaptee}->can('new')
+            and $self->isa('Date::Holidays::Adapter')) {
+
+            my $object = $self->{_adaptee}->new();
+
+            $r = $object->is_holiday($params{'year'}, $params{'month'}, $params{'day'});
+
+        } else {
+
+            my $method = "is_$self->{_countrycode}_holiday";
+            my $sub = $self->{_adaptee}->can($method);
+
+            if ($sub) {
+                $r = &{$sub}($params{'year'}, $params{'month'}, $params{'day'});
+            }
+
+            $method = "is_holiday";
             $sub = $self->{_adaptee}->can($method);
-        }
 
-        if ($sub) {
-            $r = &{$sub}($params{'year'}, $params{'month'}, $params{'day'});
+            if ($sub) {
+                $r = &{$sub}($params{'year'}, $params{'month'}, $params{'day'});
+            }
+
         }
     }
     catch Date::Holidays::Exception::UnsupportedMethod with {
@@ -97,30 +112,41 @@ sub is_holiday {
 sub _load {
     my ($self, $module) = @_;
 
+    # Trying to load module
     eval { load $module; }; #From Module::Load
 
+    # Asserting success of load
     if ($@) {
         throw Date::Holidays::Exception::AdapterLoad("Unable to load: $module");
     }
 
+    # Returning name of loaded module upon success
     return $module;
 }
 
 sub _fetch {
     my ( $self, $params ) = @_;
 
+    # Do we have a country code?
     if ( !$self->{_countrycode} ) {
         croak "No country code specified";
     }
 
+    # Do we do country code assertion?
     if ( !$params->{nocheck} ) {
+
+        # Is our country code valid?
         if ( !code2country($self->{_countrycode}) ) { #from Locale::Country
+
+            #TODO: should this throw an exception like i Date::Holidays::_fetch
             carp "$self->{_countrycode} is not a valid country code";
             return;
         }
     }
 
     my $module;
+
+    # Trying to load module for country code
     try {
         $module = 'Date::Holidays::' . uc $self->{_countrycode};
         $self->_load($module);
@@ -134,6 +160,7 @@ sub _fetch {
         $E->throw;
     };
 
+    # Returning name of loaded module upon success
     return $module;
 }
 

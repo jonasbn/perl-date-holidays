@@ -132,13 +132,19 @@ sub is_holiday {
     } elsif ( $self->{'_countrycode'} ) {
 
         if (    $self->{'_inner_object'}
-            and $self->{'_inner_object'}->can('is_holiday') )
+            and $self->{'_inner_object'}->can('is_holiday'))
         {
+
+            print STDERR "################## WTF!\n";
+            use Data::Dumper;
+            print STDERR Dumper $self;
+
             $r = $self->{'_inner_object'}->is_holiday(
                 year  => $params{'year'},
                 month => $params{'month'},
                 day   => $params{'day'}
             );
+
         } else {
             throw Date::Holidays::Adapter::CannotIsHoliday(
                 "Unable to call 'is_holiday' for: $self->{'_countrycode'}");
@@ -166,6 +172,11 @@ sub _check_countries {
                 return;    #we return instead of using next since we are in
                            #the context of a sub (try)
             }
+
+            #use Data::Dumper;
+
+            #print STDERR "We have some sort of country???\n";
+            #print STDERR Dumper $dh;
 
             my $r = $dh->is_holiday(
                 year  => $params{'year'},
@@ -212,25 +223,32 @@ sub is_holiday_dt {
 sub _load {
     my ( $self, $module ) = @_;
 
+    # Trying to load module
     eval { load $module; };    #From Module::Load
 
+    # Asserting success of load
     if ($@) {
         throw Date::Holidays::Exception::SuperAdapterLoad(
             "Unable to load: $module");
     }
 
+    # Returning name of loaded module upon success
     return $module;
 }
 
 sub _fetch {
     my ( $self, $params ) = @_;
 
+    # Do we have a country code?
     if ( !$self->{_countrycode} ) {
         throw Date::Holidays::Exception::NoCountrySpecified(
             "No country code specified");
     }
 
+    # Do we do country code assertion?
     if ( !$params->{nocheck} ) {
+
+        # Is our country code valid?
         if ( !code2country( $self->{_countrycode} ) ) {  #from Locale::Country
             throw Date::Holidays::Exception::InvalidCountryCode(
                 "$self->{_countrycode} is not a valid country code");
@@ -238,11 +256,15 @@ sub _fetch {
     }
 
     my $module;
+
+    # Trying to load adapter module for country code
     try {
         $module = 'Date::Holidays::Adapter::' . uc $self->{_countrycode};
         $self->SUPER::_load($module);
     }
     catch Date::Holidays::Exception::AdapterLoad with {
+
+        # Falling over to SUPER adapter class
         try {
             $module = 'Date::Holidays::Adapter';
             $self->_load($module);
@@ -253,6 +275,7 @@ sub _fetch {
         };
     };
 
+    # Returning name of loaded module upon success
     return $module;
 }
 

@@ -36,9 +36,9 @@ SKIP: {
             year      => 2004,
             month     => 12,
             day       => 25,
-            countries => [ 'se', 'dk' ],
+            countries => [ 'no', 'dk' ],
         ),
-        'Testing whether 1. christmas day is a holiday in SE and DK'
+        'Testing whether 1. christmas day is a holiday in NO and DK'
     );
 
     #test 5
@@ -137,6 +137,6 @@ SKIP: {
     eval { load Date::Holidays::CN };
     skip "Date::Holidays::CN not installed", 1 if $@;
 
-    ok( !$holidays_hashref->{'cn'},
+    ok( $holidays_hashref->{'cn'},
         'Checking for Chinese first day of year' );
 }
