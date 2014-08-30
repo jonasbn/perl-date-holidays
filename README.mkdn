@@ -8,7 +8,7 @@ Date::Holidays - a Date::Holidays::\* OOP Adapter aggregator
 
 # VERSION
 
-This POD describes version 0.19 of Date::Holidays
+This POD describes version 0.20 of Date::Holidays
 
 # SYNOPSIS
 
@@ -78,7 +78,7 @@ provides an OOP interface, to these modules, which primarily holds a procuderal
 API.
 
 As described below it is recommended that a certain API is implemented (SEE:
-**holidays** and **is\_holiday** below), but taking the adapter strategy into
+__holidays__ and __is\_holiday__ below), but taking the adapter strategy into
 consideration this does not matter, or we attempt to do what we can with what is
 provided.
 
@@ -112,7 +112,7 @@ is returned.
 
 ## holidays
 
-This is a wrapper around the loaded module's **holidays** method if this is
+This is a wrapper around the loaded module's __holidays__ method if this is
 implemented. If this method is not implemented it tries <countrycode>\_holidays.
 
 Takes one named argument:
@@ -125,12 +125,12 @@ Takes one named argument:
 
 This method is similar to holidays. It takes one named argument b<year>.
 
-The result is a hashref just as for **holidays**, but instead the names
+The result is a hashref just as for __holidays__, but instead the names
 of the holidays are used as keys and the values are DateTime objects.
 
 ## is\_holiday
 
-This is yet another wrapper around the loaded module's **is\_holiday**
+This is yet another wrapper around the loaded module's __is\_holiday__
 method if this is implemented. Also if this method is not implemented
 it tries is\_<countrycode>\_holiday.
 
@@ -146,7 +146,7 @@ the country code provided to the Date::Holidays constructor.
 
         $name = $dh->is_holiday(year => 2007, day => 24, month => 12);
 
-If this method is called using the class name **Date::Holidays**, all known
+If this method is called using the class name __Date::Holidays__, all known
 countries are tested for a holiday on the specified date, unless the countries
 parameter specifies a subset of countries to test.
 
@@ -247,7 +247,7 @@ The methods which are currently interesting in a Date::Holidays::\* module are:
     This method however should be a wrapper of the above method (or the other way
     around).
 
-**Only** **is\_holiday** and **holidays** are implemented in
+__Only__ __is\_holiday__ and __holidays__ are implemented in
 [Date::Holidays::Super](https://metacpan.org/pod/Date::Holidays::Super) and are required by [Date::Holidays::Abstract](https://metacpan.org/pod/Date::Holidays::Abstract).
 
 ## ADDITIONAL PARAMETERS
@@ -255,8 +255,8 @@ The methods which are currently interesting in a Date::Holidays::\* module are:
 Some countries are divided into regions or similar and might require additional
 parameters in order to give more exact holiday data.
 
-This is handled by adding additional parameters to **is\_holiday** and
-**holidays**.
+This is handled by adding additional parameters to __is\_holiday__ and
+__holidays__.
 
 These parameters are left to the module authors descretion and the actual
 Date::Holidays::\* module should be consulted.
@@ -308,7 +308,7 @@ If you want to contribute with an adapter, please refer to the documentation in
     letter strings assigned to each country in the world.
 
 - 'Unable to locate module for <country>' this method is thrown from
-the **\_check\_countries** method, it bails out if it cannot find and load the
+the __\_check\_countries__ method, it bails out if it cannot find and load the
 actual implementation of a module with the name Date::Holidays::<country> for
 the specified country. This however is a mere warning.
 
@@ -337,7 +337,7 @@ additional parameter of state is defaulting to 'VIC', please refer to the POD
 for [Date::Holidays::AU](https://metacpan.org/pod/Date::Holidays::AU) for documentation on this.
 
 [Date::Holidays::DE](https://metacpan.org/pod/Date::Holidays::DE) and [Date::Holidays::UK](https://metacpan.org/pod/Date::Holidays::UK) does not implement the
-**holidays** methods
+__holidays__ methods
 
 The actual code for United Kingdom in ISO 3166 is 'GB' (SEE [Locale::Country](https://metacpan.org/pod/Locale::Country)),
 but the module is called [Date::Holidays::UK](https://metacpan.org/pod/Date::Holidays::UK) and so it the adapter class
@@ -348,7 +348,7 @@ The adaptee module for [Date::Holidays::Adapter](https://metacpan.org/pod/Date::
 adapter naming of Date::Holidays::Adapter::<countrycode>.
 
 The adapter for [Date::Holidays::PT](https://metacpan.org/pod/Date::Holidays::PT), [Date::Holidays::Adapter::PT](https://metacpan.org/pod/Date::Holidays::Adapter::PT) does not
-implement the **is\_pt\_holiday** method. The pattern used is an object adapter
+implement the __is\_pt\_holiday__ method. The pattern used is an object adapter
 pattern and inheritance is therefor not used, it is my hope that I can
 make this work with some Perl magic.
 

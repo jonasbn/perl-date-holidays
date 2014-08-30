@@ -1,5 +1,7 @@
 Changes file for Date-Holidays
 
+0.20 2014.08.30 bug fix/feature release, update recommended
+
 - Fixed bug in Date::Holidays::Adapter::FR, which wrongfully reported
   lack of implementation of is_holidays method when it was the holidays
   method - error being thrown upon call to holidays method
@@ -8,6 +10,12 @@ Changes file for Date-Holidays
     Date::Holidays::CN
     Date::Holidays::KR
     Date::Holidays::PL
+
+- First shot at improvement of Date::Holidays::Adapter code, this needs
+  more work
+
+- Improvements to the test suite, this also needs additional work
+
 
 0.19 2014.08.27 bug fix release, update not required (see below)
 

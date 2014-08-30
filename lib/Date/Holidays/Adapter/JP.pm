@@ -11,7 +11,7 @@ use Date::Holidays::Exception::UnsupportedMethod;
 use Date::Holidays::Exception::InvalidCountryCode;
 use Date::Holidays::Exception::NoCountrySpecified;
 
-$VERSION = '0.19';
+$VERSION = '0.20';
 
 sub holidays {
     throw Date::Holidays::Exception::UnsupportedMethod('is_holiday');
@@ -62,7 +62,7 @@ Date::Holidays::Adapter::JP - an adapter class for Date::Japanese::Holiday
 
 =head1 VERSION
 
-This POD describes version 0.19 of Date::Holidays::Adapter::JP
+This POD describes version 0.20 of Date::Holidays::Adapter::JP
 
 =head1 DESCRIPTION
 
