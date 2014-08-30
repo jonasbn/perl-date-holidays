@@ -174,11 +174,6 @@ sub _check_countries {
                            #the context of a sub (try)
             }
 
-            #use Data::Dumper;
-
-            #print STDERR "We have some sort of country???\n";
-            #print STDERR Dumper $dh;
-
             my $r = $dh->is_holiday(
                 year  => $params{'year'},
                 month => $params{'month'},
@@ -207,9 +202,6 @@ sub _check_countries {
             $result{country} = undef;
         };
     }
-
-    use Data::Dumper;
-    print STDERR Dumper \%result;
 
     return \%result;
 }

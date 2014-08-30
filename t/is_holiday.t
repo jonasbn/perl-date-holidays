@@ -37,9 +37,6 @@ SKIP: {
         'Testing whether 1. christmas day is a holiday in NO and DK'
     );
 
-    use Data::Dumper;
-    print STDERR Dumper $holidays_hashref;
-
     is( keys %{$holidays_hashref},
         2, 'Testing to see if we got two definitions' );
 
@@ -145,11 +142,17 @@ SKIP: {
 
 SKIP: {
     eval { load Date::Holidays::GB };
-    skip "Date::Holidays::GB not installed", 3 if $@;
+    skip "Date::Holidays::GB not installed", 5 if $@;
 
     is( $holidays_hashref->{'gb'}, '', 'Checking for English holiday' );
 
     can_ok('Date::Holidays::GB', qw(holidays is_holiday));
+
+    ok( my $holidays_hashref_sct = Date::Holidays::GB::holidays(year => 2014, regions => ['SCT']));
+
+    ok( my $holidays_hashref_eaw = Date::Holidays::GB::holidays(year => 2014, regions => ['EAW']));
+
+    ok( keys %{$holidays_hashref_eaw} != keys %{$holidays_hashref_sct});
 }
 
 done_testing();

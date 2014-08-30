@@ -2,7 +2,6 @@
 use strict;
 use warnings;
 use Test::More;
-use Data::Dumper;
 use Env qw($TEST_VERBOSE);
 
 my $dh;
