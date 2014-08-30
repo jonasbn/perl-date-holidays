@@ -25,9 +25,6 @@ ok(my $dh = Date::Holidays->new(nocheck => 1, countrycode => 'PRODUCERAL'));
 
 isa_ok($dh, 'Date::Holidays', 'checking wrapper object');
 
-use Data::Dumper;
-print STDERR Dumper $dh;
-
 is($dh->is_holiday(year => 2007, month => 12, day => 24), 'christmas');
 
 ok($dh->holidays());
