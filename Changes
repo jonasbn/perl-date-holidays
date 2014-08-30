@@ -1,6 +1,6 @@
 Changes file for Date-Holidays
 
-HEAD
+0.21 2014.08.30 bug fix/feature release, update recommended
 
 - Added adapter for:
     Date::Holidays::GB addressing Github issue #4

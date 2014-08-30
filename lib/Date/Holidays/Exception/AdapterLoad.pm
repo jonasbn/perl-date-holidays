@@ -7,7 +7,7 @@ use vars qw($VERSION);
 use base 'Error';
 use overload ('""' => 'stringify');
 
-$VERSION = '0.20';
+$VERSION = '0.21';
 
 sub new
 {
@@ -32,7 +32,7 @@ Date::Holidays::Exception::AdapterLoad - an adapter exception class
 
 =head1 VERSION
 
-This POD describes version 0.20 of Date::Holidays::Exception::AdapterLoad
+This POD describes version 0.21 of Date::Holidays::Exception::AdapterLoad
 
 =head1 SYNOPSIS
 

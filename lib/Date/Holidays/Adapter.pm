@@ -14,7 +14,7 @@ use Date::Holidays::Exception::UnsupportedMethod;
 
 use vars qw($VERSION);
 
-$VERSION = '0.20';
+$VERSION = '0.21';
 
 sub new {
     my ($class, %params) = @_;
@@ -174,7 +174,7 @@ Date::Holidays::Adapter - an adapter class for Date::Holidays::* modules
 
 =head1 VERSION
 
-This POD describes version 0.20 of Date::Holidays::Adapter
+This POD describes version 0.21 of Date::Holidays::Adapter
 
 =head1 SYNOPSIS
 

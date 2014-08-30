@@ -7,7 +7,7 @@ use vars qw($VERSION);
 use base 'Date::Holidays::Exception::AdapterLoad';
 use overload ('""' => 'stringify');
 
-$VERSION = '0.20';
+$VERSION = '0.21';
 
 1;
 
@@ -19,7 +19,7 @@ Date::Holidays::Exception::NoCountrySpecified - a Date::Holidays exception class
 
 =head1 VERSION
 
-This POD describes version 0.20 of Date::Holidays::Exception::NoCountrySpecified
+This POD describes version 0.21 of Date::Holidays::Exception::NoCountrySpecified
 
 =head1 SYNOPSIS
 
