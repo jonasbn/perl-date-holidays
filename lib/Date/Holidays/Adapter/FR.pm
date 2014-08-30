@@ -11,7 +11,7 @@ use Date::Holidays::Exception::UnsupportedMethod;
 $VERSION = '0.19';
 
 sub holidays {
-    throw Date::Holidays::Exception::UnsupportedMethod('is_holiday');
+    throw Date::Holidays::Exception::UnsupportedMethod('holidays');
     return;
 }
 
