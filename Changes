@@ -43,7 +43,7 @@ Changes file for Date-Holidays
 
 - Migrated from Module::Build to Dist::Zilla
 
-- Fixed issue in some test, which would break if Date::Holidays::DK 
+- Fixed issue in some test, which would break if Date::Holidays::DK
   was not installed
 
 
