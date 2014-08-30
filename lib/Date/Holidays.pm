@@ -129,6 +129,9 @@ sub is_holiday {
         }
         $r = __PACKAGE__->_check_countries(%params);
 
+    } elsif ( $params{'countries'} ) {
+        $r = __PACKAGE__->_check_countries(%params);
+
     } elsif ( $self->{'_countrycode'} ) {
 
         if (    $self->{'_inner_object'}
@@ -204,6 +207,9 @@ sub _check_countries {
             $result{country} = undef;
         };
     }
+
+    use Data::Dumper;
+    print STDERR Dumper \%result;
 
     return \%result;
 }

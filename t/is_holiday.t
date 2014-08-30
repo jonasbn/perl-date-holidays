@@ -11,14 +11,14 @@ use_ok('Date::Holidays');
 
 SKIP: {
     eval { load Date::Holidays::DK };
-    skip "Date::Holidays::DK not installed", 7 if ($@);
+    skip "Date::Holidays::DK not installed", 8 if ($@);
 
-    eval { load Date::Holidays::SE };
-    skip "Date::Holidays::SE not installed", 7 if ($@);
+    eval { load Date::Holidays::NO };
+    skip "Date::Holidays::NO not installed", 8 if ($@);
 
     $dh = Date::Holidays->new( countrycode => 'dk' );
 
-    isa_ok( $dh, 'Testing Date::Holidays object' );
+    isa_ok( $dh, 'Date::Holidays', 'Testing Date::Holidays object' );
 
     ok( $dh->is_holiday(
             year  => 2004,
@@ -37,6 +37,9 @@ SKIP: {
         'Testing whether 1. christmas day is a holiday in NO and DK'
     );
 
+    use Data::Dumper;
+    print STDERR Dumper $holidays_hashref;
+
     is( keys %{$holidays_hashref},
         2, 'Testing to see if we got two definitions' );
 
@@ -48,7 +51,8 @@ SKIP: {
         ok( $country . 'Testing our specified countries' );
     }
 
-    is( $holidays_hashref->{'dk'}, undef, 'Testing whether DK is set' );
+    ok( $holidays_hashref->{'dk'}, 'Testing whether DK is set' );
+    ok( $holidays_hashref->{'no'}, 'Testing whether NO is set' );
 }
 
 ok( $holidays_hashref = Date::Holidays->is_holiday(
@@ -61,69 +65,91 @@ ok( $holidays_hashref = Date::Holidays->is_holiday(
 
 SKIP: {
     eval { load Date::Holidays::PT };
-    skip "Date::Holidays::PT not installed", 1 if $@;
+    skip "Date::Holidays::PT not installed", 3 if $@;
 
     ok( $holidays_hashref->{'pt'},
         'Checking for Portuguese first day of year' );
+
+    can_ok('Date::Holidays::PT', qw(holidays is_holiday));
 }
 
 SKIP: {
     eval { load Date::Holidays::AU };
-    skip "Date::Holidays::AU not installed", 1 if $@;
+    skip "Date::Holidays::AU not installed", 3 if $@;
 
     ok( !$holidays_hashref->{'au'},
         'Checking for Australian first day of year' );
+
+    can_ok('Date::Holidays::AU', qw(holidays is_holiday));
 }
 
 SKIP: {
     eval { load Date::Holidays::AT };
-    skip "Date::Holidays::AT not installed", 1 if $@;
+    skip "Date::Holidays::AT not installed", 3 if $@;
 
     ok( !$holidays_hashref->{'at'},
         'Checking for Austrian first day of year' );
+
+    ok(! Date::Holidays::AT->can('is_holiday'));
+    can_ok('Date::Holidays::ES', qw(holidays));
 }
 
 SKIP: {
     eval { load Date::Holidays::ES };
-    skip "Date::Holidays::ES not installed", 1 if $@;
+    skip "Date::Holidays::ES not installed", 3 if $@;
 
     ok( $holidays_hashref->{'es'}, 'Checking for Spanish christmas' );
+
+    can_ok('Date::Holidays::ES', qw(holidays is_holiday));
 }
 
 SKIP: {
     eval { load Date::Holidays::NZ };
-    skip "Date::Holidays::NZ not installed", 1 if $@;
+    skip "Date::Holidays::NZ not installed", 3 if $@;
 
     ok( !$holidays_hashref->{'nz'}, 'Checking for New Zealandian christmas' );
+
+    ok(! Date::Holidays::NZ->can('holidays'));
+    ok(! Date::Holidays::NZ->can('is_holiday'));
 }
 
 SKIP: {
     eval { load Date::Holidays::NO };
-    skip "Date::Holidays::NO not installed", 1 if $@;
+    skip "Date::Holidays::NO not installed", 3 if $@;
 
     ok( $holidays_hashref->{'no'}, 'Checking for Norwegian christmas' );
+
+    can_ok('Date::Holidays::NO', qw(holidays is_holiday));
 }
 
 SKIP: {
     eval { load Date::Holidays::FR };
-    skip "Date::Holidays::FR not installed", 1 if $@;
+    skip "Date::Holidays::FR not installed", 3 if $@;
 
     ok( $holidays_hashref->{'fr'}, 'Checking for French christmas' );
+
+    ok(! Date::Holidays::FR->can('holidays'));
+    ok(! Date::Holidays::FR->can('is_holiday'));
 }
 
 SKIP: {
     eval { load Date::Holidays::CN };
-    skip "Date::Holidays::CN not installed", 1 if $@;
+    skip "Date::Holidays::CN not installed", 3 if $@;
 
     ok( $holidays_hashref->{'cn'},
         'Checking for Chinese first day of year' );
+
+    ok(! Date::Holidays::CN->can('holidays'));
+    ok(! Date::Holidays::CN->can('is_holiday'));
 }
 
 SKIP: {
     eval { load Date::Holidays::GB };
-    skip "Date::Holidays::GB not installed", 1 if $@;
+    skip "Date::Holidays::GB not installed", 3 if $@;
 
     is( $holidays_hashref->{'gb'}, '', 'Checking for English holiday' );
+
+    can_ok('Date::Holidays::GB', qw(holidays is_holiday));
 }
 
 done_testing();
