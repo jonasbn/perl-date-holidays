@@ -12,10 +12,10 @@ $VERSION = '0.20';
 sub holidays {
     my ($self, %params) = @_;
 
-    my $dh = $self->{_adaptee}->new();
+    my $sub = $self->{_adaptee}->can('cn_holidays');
 
-    if ($dh) {
-        return $dh->cn_holidays($params{'year'});
+    if ($sub) {
+        return &{$sub}($params{'year'});
     } else {
         return;
     }
@@ -24,10 +24,10 @@ sub holidays {
 sub is_holiday {
     my ($self, %params) = @_;
 
-    my $dh = $self->{_adaptee}->new();
+    my $sub = $self->{_adaptee}->can('is_cn_holiday');
 
-    if ($dh) {
-        return $dh->cn_holidays($params{'year'}, $params{'month'}, $params{'day'});
+    if ($sub) {
+        return &{$sub}($params{'year'}, $params{'month'}, $params{'day'});
     } else {
         return;
     }
