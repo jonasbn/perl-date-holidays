@@ -24,10 +24,13 @@ sub holidays {
 sub is_holiday {
     my ($self, %params) = @_;
 
-    use Data::Dumper;
-    print STDERR Dumper $self;
+    my $dh = $self->{_adaptee}->new();
 
-    return $self->{_adaptee}::is_cn_holiday($params{'year'}, $params{'month'}, $params{'day'});
+    if ($dh) {
+        return $dh->cn_holidays($params{'year'}, $params{'month'}, $params{'day'});
+    } else {
+        return;
+    }
 }
 
 1;
