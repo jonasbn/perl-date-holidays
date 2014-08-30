@@ -5,6 +5,9 @@ HEAD
 - Added adapter for:
     Date::Holidays::GB addressing Github issue #4
 
+    Date::Holidays::GB exposes new parameter: regions, for local countries under GB.
+    See: Date::Holidays::GB
+
 
 0.20 2014.08.30 bug fix/feature release, update recommended
 

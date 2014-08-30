@@ -15,7 +15,7 @@ sub holidays {
     my $sub = $self->{_adaptee}->can('holidays');
 
     if ($sub) {
-        return &{$sub}(year => $params{'year'}, region => $params{'region');
+        return &{$sub}(year => $params{'year'}, regions => $params{'regions');
     } else {
         return;
     }
@@ -27,7 +27,7 @@ sub is_holiday {
     my $sub = $self->{_adaptee}->can('is_holiday');
 
     if ($sub) {
-        return &{$sub}(year => $params{'year'}, month => $params{'month'}, day => $params{'day'}, region => $params{'region'});
+        return &{$sub}(year => $params{'year'}, month => $params{'month'}, day => $params{'day'}, regions => $params{'regions'});
     } else {
         return;
     }

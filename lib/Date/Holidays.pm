@@ -83,7 +83,7 @@ sub holidays {
 
     my $r;
     if ( $self->{'_inner_object'}->can('holidays') ) {
-        $r = $self->{'_inner_object'}->holidays( year => $params{'year'} );
+        $r = $self->{'_inner_object'}->holidays( year => $params{'year'}, state => $params{'state'}, regions => $params{'regions'} );
     } else {
         throw Date::Holidays::Adapter::CannotHolidays(
             "Unable to call 'holidays' for: $self->{'_countrycode'}");
@@ -132,13 +132,15 @@ sub is_holiday {
     } elsif ( $self->{'_countrycode'} ) {
 
         if (    $self->{'_inner_object'}
-            and $self->{'_inner_object'}->can('is_holiday'))
+            and $self->{'_inner_object'}->can('is_holiday') )
         {
 
             $r = $self->{'_inner_object'}->is_holiday(
                 year  => $params{'year'},
                 month => $params{'month'},
-                day   => $params{'day'}
+                day   => $params{'day'},
+                state => $params{'state'},
+                regions => $params{'regions'},
             );
 
         } else {
@@ -299,58 +301,75 @@ This POD describes version 0.20 of Date::Holidays
 
 =head1 SYNOPSIS
 
-	use Date::Holidays;
+    use Date::Holidays;
 
-	my $dh = Date::Holidays->new(
-		countrycode => 'dk'
-	);
+    my $dh = Date::Holidays->new(
+        countrycode => 'dk'
+    );
 
-	$holidayname = $dh->is_holiday(
-		year  => 2004,
-		month => 12,
-		day   => 25
-	);
+    $holidayname = $dh->is_holiday(
+        year  => 2004,
+        month => 12,
+        day   => 25
+    );
 
-	$hashref = $dh->holidays(
-		year => 2004
-	);
-
-
-	$holidays_hashref = Date::Holidays->is_holiday(
-		year      => 2004,
-		month     => 12,
-		day       => 25,
-		countries => ['se', 'dk', 'no'],
-	);
-
-	foreach my $country (keys %{$holidays_hashref}) {
-		print $holidays_hashref->{$country}."\n";
-	}
+    $hashref = $dh->holidays(
+        year => 2004
+    );
 
 
-	$holidays_hashref = Date::Holidays->is_holiday(
-		year      => 2004,
-		month     => 12,
-		day       => 25,
-	);
+    $holidays_hashref = Date::Holidays->is_holiday(
+        year      => 2004,
+        month     => 12,
+        day       => 25,
+        countries => ['se', 'dk', 'no'],
+    );
+
+    foreach my $country (keys %{$holidays_hashref}) {
+        print $holidays_hashref->{$country}."\n";
+    }
 
 
-	#Example of a module with additional parameters
-	my $dh = Date::Holidays->new(
-		countrycode => 'au'
-	);
+    $holidays_hashref = Date::Holidays->is_holiday(
+        year      => 2004,
+        month     => 12,
+        day       => 25,
+    );
 
-	$holidayname = $dh->is_holiday(
-		year  => 2004,
-		month => 12,
-		day   => 25,
-		state => 'TAS',
-	);
 
-	$hashref = $dh->holidays(
-		year => 2004
-		state => 'TAS',
-	);
+    #Example of a module with additional parameters
+    my $dh = Date::Holidays->new(
+        countrycode => 'au'
+    );
+
+    $holidayname = $dh->is_holiday(
+        year  => 2004,
+        month => 12,
+        day   => 25,
+        state => 'TAS',
+    );
+
+    $hashref = $dh->holidays(
+        year => 2004
+        state => 'TAS',
+    );
+
+    #Another example of a module with additional parameters
+    my $dh = Date::Holidays->new(
+        countrycode => 'gb'
+    );
+
+    $holidayname = $dh->is_holiday(
+        year    => 2014,
+        month   => 12,
+        day     => 25,
+        regions => ['EAW'],
+    );
+
+    $hashref = $dh->holidays(
+        year    => 2014
+        regions => ['EAW'],
+    );
 
 =head1 DESCRIPTION
 
@@ -399,23 +418,31 @@ these are implemented - of course.
 If no countrycode is provided or the class is not able to load a module, nothing
 is returned.
 
-	my $dh = Date::Holidays->new(countrycode => 'dk')
-		or die "No holidays this year, get back to work!\n";
+    my $dh = Date::Holidays->new(countrycode => 'dk')
+        or die "No holidays this year, get back to work!\n";
 
 =head2 holidays
 
 This is a wrapper around the loaded module's B<holidays> method if this is
 implemented. If this method is not implemented it tries <countrycode>_holidays.
 
-Takes one named argument:
+Takes 3 optional named arguments:
 
 =over
 
-=item year, four digit parameter representing year
+=item * year, four digit parameter representing year
+
+=item * state, ISO-3166-2 code for a state
+
+Not all countries support this parameter
+
+=item * regions, pointing to a reference to an array of ISO-3166-2 code for regions
+
+Not all countries support this parameter
 
 =back
 
-	$hashref = $dh->holidays(year => 2007);
+    $hashref = $dh->holidays(year => 2007);
 
 =head2 holidays_dt
 
@@ -430,30 +457,34 @@ This is yet another wrapper around the loaded module's B<is_holiday>
 method if this is implemented. Also if this method is not implemented
 it tries is_<countrycode>_holiday.
 
-Takes 3 named arguments:
+Takes 6 optional named arguments:
 
 =over
 
-=item year, four digit parameter representing year
+=item * year, four digit parameter representing year
 
-=item month, 1-12, representing month
+=item * month, 1-12, representing month
 
-=item day, 1-31, representing day
+=item * day, 1-31, representing day
 
-=item countries (OPTIONAL), a list of ISO3166 country codes
+=item * countries (OPTIONAL), a list of ISO3166 country codes
+
+=item * state, ISO-3166-2 code for a state. Not all countries support this parameter
+
+=item * regions, pointing to a reference to an array of ISO-3166-2 code for regions. Not all countries support this parameter
 
 =back
 
 is_holiday returns the name of a holiday is present in the country specified by
 the country code provided to the Date::Holidays constructor.
 
-	$name = $dh->is_holiday(year => 2007, day => 24, month => 12);
+    $name = $dh->is_holiday(year => 2007, day => 24, month => 12);
 
 If this method is called using the class name B<Date::Holidays>, all known
 countries are tested for a holiday on the specified date, unless the countries
 parameter specifies a subset of countries to test.
 
-	$hashref = Date::Holidays->is_holiday(year => 2007, day => 24, month => 12);
+    $hashref = Date::Holidays->is_holiday(year => 2007, day => 24, month => 12);
 
 In the case where a set of countries are tested the return value from the method
 is a hashref with the country codes as keys and the values as the result.
@@ -518,17 +549,17 @@ Takes 3 arguments: year, month, day and returns the name of the holiday as a
 scalar in the national language of the module context in question. Returns
 undef if the requested day is not a holiday.
 
-	Modified example taken from: L<Date::Holidays::DK>
+    Modified example taken from: L<Date::Holidays::DK>
 
-	use Date::Holidays::DK;
+    use Date::Holidays::DK;
     my ($year, $month, $day) = (localtime)[ 5, 4, 3 ];
 
-	$year  += 1900;
+    $year  += 1900;
     $month += 1;
     print "Woohoo" if is_holiday( $year, $month, $day );
 
-	#The actual method might not be implemented at this time in the
-	#example module.
+    #The actual method might not be implemented at this time in the
+    #example module.
 
 =item is_<countrycode>_holiday
 
@@ -545,13 +576,13 @@ question.
 
 The keys are the dates, month + day in two digits each concatenated.
 
-	Modified example taken from: L<Date::Holidays::PT>
+    Modified example taken from: L<Date::Holidays::PT>
 
-	my $h = holidays($year);
-	printf "Jan. 1st is named '%s'\n", $h->{'0101'};
+    my $h = holidays($year);
+    printf "Jan. 1st is named '%s'\n", $h->{'0101'};
 
-	#The actual method might not be implemented at this time in the
-	#example module.
+    #The actual method might not be implemented at this time in the
+    #example module.
 
 =item <countrycode>_holidays
 
@@ -574,15 +605,15 @@ B<holidays>.
 These parameters are left to the module authors descretion and the actual
 Date::Holidays::* module should be consulted.
 
-	Example Date::Holidays::AU
+    Example Date::Holidays::AU
 
     use Date::Holidays::AU qw( is_holiday );
 
-	my ($year, $month, $day) = (localtime)[ 5, 4, 3 ];
+    my ($year, $month, $day) = (localtime)[ 5, 4, 3 ];
     $year  += 1900;
     $month += 1;
 
-	my ($state) = 'VIC';
+    my ($state) = 'VIC';
     print "Excellent\n" if is_holiday( $year, $month, $day, $state );
 
 =head1 DEVELOPING A DATE::HOLIDAYS::ADAPTER CLASS
