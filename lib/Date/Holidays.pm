@@ -291,7 +291,7 @@ __END__
 
 =head1 NAME
 
-Date::Holidays - a Date::Holidays::* OOP Adapter aggregator
+Date::Holidays - Date::Holidays::* adapter for all your holiday needs
 
 =head1 VERSION
 
