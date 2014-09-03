@@ -112,6 +112,8 @@ sub is_holiday {
 sub _load {
     my ($self, $module) = @_;
 
+    print STDERR "Attempting to load module: $module\n";
+
     # Trying to load module
     eval { load $module; }; #From Module::Load
 

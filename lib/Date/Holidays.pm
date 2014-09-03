@@ -37,9 +37,11 @@ sub new {
                 = $self->_fetch( { nocheck => $params{'nocheck'}, } );
         }
         catch Date::Holidays::Exception::AdapterLoad with {
+            carp "Unable to load adapter";
             $self = undef;
         }
         catch Date::Holidays::Exception::SuperAdapterLoad with {
+            carp "Unable to load Super adapter";
             $self = undef;
         };
 
@@ -219,13 +221,14 @@ sub is_holiday_dt {
 sub _load {
     my ( $self, $module ) = @_;
 
+    print STDERR "Attempting to load module: $module\n";
+
     # Trying to load module
     eval { load $module; };    #From Module::Load
 
     # Asserting success of load
     if ($@) {
-        throw Date::Holidays::Exception::SuperAdapterLoad(
-            "Unable to load: $module");
+        croak "Unable to load: $module - $!";
     }
 
     # Returning name of loaded module upon success
@@ -235,28 +238,35 @@ sub _load {
 sub _fetch {
     my ( $self, $params ) = @_;
 
+    print STDERR "Attempting to fetch...\n";
+
     # Do we have a country code?
     if ( !$self->{_countrycode} ) {
-        throw Date::Holidays::Exception::NoCountrySpecified(
-            "No country code specified");
+        croak "No country code specified";
     }
 
     # Do we do country code assertion?
     if ( !$params->{nocheck} ) {
 
-        # Is our country code valid?
-        if ( !code2country( $self->{_countrycode} ) ) {  #from Locale::Country
-            throw Date::Holidays::Exception::InvalidCountryCode(
-                "$self->{_countrycode} is not a valid country code");
+        # Is our country code valid or local?
+        if ( $self->{_countrycode} ne 'local') { #or !code2country( $self->{_countrycode} ) ) {  #from Locale::Country
+            croak "$self->{_countrycode} is not a valid country code";
         }
     }
 
     my $module;
 
+    print STDERR "Attempting to resolve...\n";
+
     # Trying to load adapter module for country code
     try {
-        $module = 'Date::Holidays::Adapter::' . uc $self->{_countrycode};
-        $self->SUPER::_load($module);
+        if ($self->{_countrycode} eq 'local') {
+            $module = 'Date::Holidays::' . ucfirst $self->{_countrycode};
+            $self->_load($module);
+        } else {
+            $module = 'Date::Holidays::Adapter::' . uc $self->{_countrycode};
+            $self->SUPER::_load($module);
+        }
     }
     catch Date::Holidays::Exception::AdapterLoad with {
 
