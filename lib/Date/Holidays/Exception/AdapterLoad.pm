@@ -5,7 +5,6 @@ use warnings;
 use vars qw($VERSION);
 
 use base 'Error';
-use overload ('""' => 'stringify');
 
 $VERSION = '0.21';
 

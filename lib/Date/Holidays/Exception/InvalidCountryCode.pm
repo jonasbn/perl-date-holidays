@@ -5,7 +5,6 @@ use warnings;
 use vars qw($VERSION);
 
 use base 'Date::Holidays::Exception::AdapterLoad';
-use overload ('""' => 'stringify');
 
 $VERSION = '0.21';
 
