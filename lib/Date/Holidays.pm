@@ -249,7 +249,7 @@ sub _fetch {
     if ( !$params->{nocheck} ) {
 
         # Is our country code valid or local?
-        if ( $self->{_countrycode} ne 'local') { #or !code2country( $self->{_countrycode} ) ) {  #from Locale::Country
+        if ( $self->{_countrycode} ne 'local' and !code2country( $self->{_countrycode} ) ) {  #from Locale::Country
             croak "$self->{_countrycode} is not a valid country code";
         }
     }
