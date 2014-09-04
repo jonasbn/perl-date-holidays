@@ -2,7 +2,7 @@ package Date::Holidays::Local;
 
 use strict;
 use warnings;
-use File::Slurp; #slurp
+use File::Slurp qw(slurp);
 use JSON; #from_json
 use Env qw($HOLIDAYS_FILE);
 
@@ -25,6 +25,9 @@ sub holidays {
         my $json = slurp($holiday_file);
         $holidays = from_json($json);
     }
+
+    use Data::Dumper;
+    print STDERR Dumper $holidays;
 
     if ($params{year}) {
         my $tmp_holidays;

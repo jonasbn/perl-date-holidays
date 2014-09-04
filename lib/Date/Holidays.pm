@@ -164,14 +164,22 @@ sub _check_countries {
     my ( $self, %params ) = @_;
 
     my %result = ();
+    my $precedent_calendar = '';
 
     foreach my $country ( @{ $params{'countries'} } ) {
+
+        #The list of countries is ordered
+        if ($country =~ m/^\+(\w+)/) {
+            $country = $1;
+            $precedent_calendar = $country;
+
+            print STDERR "$country has precedence\n";
+        }
 
         try {
             my $dh = __PACKAGE__->new( countrycode => $country );
 
             if ( !$dh ) {
-                print STDERR ("Unable to locate module for $country\n");
                 return;    #we return instead of using next since we are in
                            #the context of a sub (try)
             }
@@ -182,10 +190,25 @@ sub _check_countries {
                 day   => $params{'day'}
             );
 
+            print STDERR "Examining $country\n";
+
+            if ($precedent_calendar and
+                $precedent_calendar ne $country) {
+
+                print STDERR "We have a precedent calendar: $precedent_calendar\n";
+
+                #foreach my $holiday (keys %{$r}) {
+                if ($result{$precedent_calendar} eq '') {
+                    $r = undef;
+                    print STDERR "Our precedent calendar dictates deletion\n";
+                } elsif (defined $result{$precedent_calendar}) {
+                    $r = $result{$precedent_calendar};
+                    print STDERR "Our precedent calendar dictates overwrite\n";
+                }
+            }
+
             if ($r) {
                 $result{$country} = $r;
-            } else {
-                $result{$country} = '';
             }
         }
         catch Date::Holidays::Exception::InvalidCountryCode with {
