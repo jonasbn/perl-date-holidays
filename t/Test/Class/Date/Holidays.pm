@@ -8,21 +8,14 @@ use Test::More;
 #run prior and once per suite
 sub startup : Test(startup => 1) {
 
+	# Testing compilation of component
     use_ok('Date::Holidays');
-
-    return 1;
-}
-
-#run after and once per suite
-sub shutdown : Test(shutdown) {
-    # body...
-
-    return 1;
 }
 
 sub constructor : Test(5) {
-    my ($self) = @_;
 
+	# Constructor requires country code so this test relies on
+	# Date::Holidays::DK
     SKIP: {
     	eval { require Date::Holidays::DK };
     	skip "Date::Holidays::DK not installed", 5 if $@;
@@ -39,18 +32,24 @@ sub constructor : Test(5) {
 	}
 }
 
-#run prior and once per test method
-sub setup : Test(setup) {
-    # body...
+sub _fetch : Test(2) {
 
-    return 1;
+	# Constructor requires country code so this test relies on
+	# Date::Holidays::DK
+	SKIP: {
+	    eval { require Date::Holidays::DK };
+	    skip "Date::Holidays::DK not installed", 2 if $@;
+
+	    ok( my $dh = Date::Holidays->new( countrycode => 'DK' ) );
+
+	    can_ok( $dh, '_fetch' );
+	}
 }
 
-#run after and once per test method
-sub teardown : Test(teardown) {
-    # body...
+sub _load : Test(1) {
 
-    return 1;
+	#Testing load with something from own distribution
+	ok(my $mod = Date::Holidays->_load('Date::Holidays::Adapter'));
 }
 
 1;
