@@ -1,15 +1,9 @@
-package Date::Holidays::Adapter::OOP;
-
-# $Id: OOP.pm 1732 2007-02-21 19:09:59Z jonasbn $
+package Date::Holidays::Adapter::Polymorphic;
 
 use strict;
 use warnings;
 
 use base 'Date::Holidays::Adapter';
-
-use vars qw($VERSION);
-
-$VERSION = '0.01';
 
 sub holidays {
     my ($self, %params) = @_;
@@ -34,3 +28,5 @@ sub is_holiday {
         return;    
     }
 }
+
+1;

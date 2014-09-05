@@ -1,4 +1,7 @@
-package Date::Holidays::OOP;
+package Date::Holidays::Polymorphic;
+
+use strict;
+use warnings;
 
 sub new {
     my $class = shift;    
@@ -20,7 +23,7 @@ sub is_holiday {
     my ($self, %params) = @_;
     
     my $key;
-    if ($params{month} && $params{day}) {
+    if ($params{month} and $params{day}) {
         $key  = $params{month}.$params{day};
     }
 

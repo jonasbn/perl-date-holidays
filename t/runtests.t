@@ -13,5 +13,6 @@ use Test::Class::Date::Holidays;
 use Test::Class::Date::Holidays::Produceral;
 use Test::Class::Date::Holidays::Supered;
 use Test::Class::Date::Holidays::Abstracted;
+use Test::Class::Date::Holidays::Polymorphic;
 
 Test::Class->runtests();
