@@ -1,4 +1,4 @@
-package Date::Holidays::NOPOLY;
+package Date::Holidays::Nonpolymorphic;
 
 sub new {
     my $class = shift;    
@@ -10,13 +10,13 @@ sub new {
     return $self;
 }
 
-sub nopoly_holidays {
+sub nonpolymorphic_holidays {
     my $self = shift;
     
     return $self->{calendar};        
 }
 
-sub is_nopoly_holiday {
+sub is_nonpolymorphic_holiday {
     my ($self, %params) = @_;
     
     my $key = $params{month}.$params{day};
