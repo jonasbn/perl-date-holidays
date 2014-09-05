@@ -3,18 +3,18 @@ use strict;
 use Module::Load qw(load);
 use Test::More;
 
-my $verbose = 0;
 my ( $dh, $holidays_hashref );
 
 use lib qw(lib ../lib);
+
 use_ok('Date::Holidays');
 
 SKIP: {
     eval { load Date::Holidays::DK };
-    skip "Date::Holidays::DK not installed", 8 if ($@);
+    skip "Date::Holidays::DK not installed", 6 if ($@);
 
     eval { load Date::Holidays::NO };
-    skip "Date::Holidays::NO not installed", 8 if ($@);
+    skip "Date::Holidays::NO not installed", 6 if ($@);
 
     $dh = Date::Holidays->new( countrycode => 'dk' );
 
@@ -40,14 +40,6 @@ SKIP: {
     is( keys %{$holidays_hashref},
         2, 'Testing to see if we got two definitions' );
 
-    foreach my $country ( keys %{$holidays_hashref} ) {
-        if ( $holidays_hashref->{$country} ) {
-            print STDERR "$country = " . $holidays_hashref->{$country} . "\n"
-                if $verbose;
-        }
-        ok( $country . 'Testing our specified countries' );
-    }
-
     ok( $holidays_hashref->{'dk'}, 'Testing whether DK is set' );
     ok( $holidays_hashref->{'no'}, 'Testing whether NO is set' );
 }
@@ -59,6 +51,9 @@ ok( $holidays_hashref = Date::Holidays->is_holiday(
     ),
     'Testing is_holiday called without an object'
 );
+
+use Data::Dumper;
+print STDERR Dumper $holidays_hashref;
 
 SKIP: {
     eval { load Date::Holidays::PT };

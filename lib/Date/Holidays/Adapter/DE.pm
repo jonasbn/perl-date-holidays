@@ -2,7 +2,8 @@ package Date::Holidays::Adapter::DE;
 
 use strict;
 use warnings;
-use Error qw(:try);
+use Carp;
+
 use base 'Date::Holidays::Adapter';
 
 use vars qw($VERSION);
@@ -21,8 +22,7 @@ sub holidays {
 }
 
 sub is_holiday {
-    throw Date::Holidays::Exception::UnsupportedMethod('is_holiday');
-    return;
+    croak "is_holiday is unimplemented for ".__PACKAGE__;
 }
 
 1;

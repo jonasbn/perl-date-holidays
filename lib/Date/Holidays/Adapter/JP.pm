@@ -4,18 +4,14 @@ use strict;
 use warnings;
 use vars qw($VERSION);
 use Locale::Country;
-use Error qw(:try);
+use Carp;
 
 use base 'Date::Holidays::Adapter';
-use Date::Holidays::Exception::UnsupportedMethod;
-use Date::Holidays::Exception::InvalidCountryCode;
-use Date::Holidays::Exception::NoCountrySpecified;
 
 $VERSION = '0.21';
 
 sub holidays {
-    throw Date::Holidays::Exception::UnsupportedMethod('is_holiday');
-    return;
+    croak "holidays is unimplemented for ".__PACKAGE__;
 }
 
 sub is_holiday {
@@ -30,24 +26,20 @@ sub _fetch {
     my ( $self, $params ) = @_;
 
     if ( !$self->{_countrycode} ) {
-        throw Date::Holidays::Exception::NoCountrySpecified("No country code specified");
+        croak "No country code specified";
     }
 
     my $module = 'Date::Japanese::Holiday';
 
     if ( !$params->{nocheck} ) {
         if ( !code2country($self->{_countrycode}) ) { #from Locale::Country
-            throw Date::Holidays::Exception::InvalidCountryCode("$self->{_countrycode} is not a valid country code");
+            croak "$self->{_countrycode} is not a valid country code";
         }
     }
 
     try {
         $self->_load($module);
     }
-    catch Date::Holidays::Exception::AdapterLoad with {
-        my $E = shift;
-        $E->throw;
-    };
 
     return $module;
 }

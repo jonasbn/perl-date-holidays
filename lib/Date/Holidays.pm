@@ -7,14 +7,7 @@ use Locale::Country qw(all_country_codes code2country);
 use Module::Load qw(load);
 use Carp;
 use DateTime;
-use Error qw(:try);
-
-use Date::Holidays::Exception::AdapterLoad;
-use Date::Holidays::Exception::SuperAdapterLoad;
-use Date::Holidays::Exception::AdapterInitialization;
-use Date::Holidays::Exception::InvalidCountryCode;
-use Date::Holidays::Exception::NoCountrySpecified;
-use Date::Holidays::Exception::UnsupportedMethod;
+use TryCatch;
 
 use base 'Date::Holidays::Adapter';
 
@@ -36,18 +29,13 @@ sub new {
             $self->{'_inner_class'}
                 = $self->_fetch( { nocheck => $params{'nocheck'}, } );
         }
-        catch Date::Holidays::Exception::AdapterLoad with {
-            carp "Unable to load adapter";
-            $self = undef;
-        }
-        catch Date::Holidays::Exception::SuperAdapterLoad with {
-            carp "Unable to load Super adapter";
-            $self = undef;
-        };
+        #catch ($error) {
+        #    carp "fetch class: $error";
+        #    $self = undef;
+        #}
 
     } else {
-        throw Date::Holidays::Exception::NoCountrySpecified(
-            "No country code specified");
+        die "No country code specified";
     }
 
     if (   $self
@@ -65,13 +53,9 @@ sub new {
             } else {
                 $self = undef;
             }
-        }
-        catch Date::Holidays::Exception::AdapterLoad with {
+        } catch ($error) {
             $self = undef;
         }
-        catch Date::Holidays::Exception::AdapterInitialization with {
-            $self = undef;
-        };
 
     } elsif ( !$self->{'_inner_class'} ) {
         $self = undef;
@@ -85,10 +69,14 @@ sub holidays {
 
     my $r;
     if ( $self->{'_inner_object'}->can('holidays') ) {
-        $r = $self->{'_inner_object'}->holidays( year => $params{'year'}, state => $params{'state'}, regions => $params{'regions'} );
+        $r = $self->{'_inner_object'}->holidays( 
+            year => $params{'year'}, 
+            state => $params{'state'}, 
+            regions => $params{'regions'} 
+        );
+
     } else {
-        throw Date::Holidays::Adapter::CannotHolidays(
-            "Unable to call 'holidays' for: $self->{'_countrycode'}");
+        die "Unable to call 'holidays' for: $self->{'_countrycode'}";
     }
 
     return $r;
@@ -149,12 +137,10 @@ sub is_holiday {
             );
 
         } else {
-            throw Date::Holidays::Adapter::CannotIsHoliday(
-                "Unable to call 'is_holiday' for: $self->{'_countrycode'}");
+            die "Unable to call 'is_holiday' for: $self->{'_countrycode'}";
         }
     } else {
-        throw Date::Holidays::Adapter::NoCalender(
-            "No national calendar initialized");
+        die "No national calendar initialized";
     }
 
     return $r;
@@ -172,16 +158,13 @@ sub _check_countries {
         if ($country =~ m/^\+(\w+)/) {
             $country = $1;
             $precedent_calendar = $country;
-
-            print STDERR "$country has precedence\n";
         }
 
         try {
             my $dh = __PACKAGE__->new( countrycode => $country );
 
             if ( !$dh ) {
-                return;    #we return instead of using next since we are in
-                           #the context of a sub (try)
+                die "Unable to initialize Date::Holidays for country: $country\n";
             }
 
             my $r = $dh->is_holiday(
@@ -190,42 +173,29 @@ sub _check_countries {
                 day   => $params{'day'}
             );
 
-            print STDERR "Examining $country\n";
-
+            # handling precedent calendar
             if ($precedent_calendar and
                 $precedent_calendar ne $country) {
 
-                print STDERR "We have a precedent calendar: $precedent_calendar\n";
-
-                #foreach my $holiday (keys %{$r}) {
+                # our precedent calendar dictates nullification
                 if ($result{$precedent_calendar} eq '') {
-                    $r = undef;
-                    print STDERR "Our precedent calendar dictates deletion\n";
+                    $r = '';
+
+                # our precedent calendar dictates overwrite
                 } elsif (defined $result{$precedent_calendar}) {
                     $r = $result{$precedent_calendar};
-                    print STDERR "Our precedent calendar dictates overwrite\n";
                 }
             }
 
-            if ($r) {
+            if (not defined $r) {
+                $result{$country} = '';
+            } else {
                 $result{$country} = $r;
             }
         }
-        catch Date::Holidays::Exception::InvalidCountryCode with {
-            my $E = shift;
-            print STDERR "$E->{-text}";
-            $result{country} = undef;
+        catch ($error) {
+            warn $error;
         }
-        catch Date::Holidays::Exception::NoCountrySpecified with {
-            my $E = shift;
-            print STDERR "$E->{-text}";
-            $result{country} = undef;
-        }
-        catch Date::Holidays::Exception::UnsupportedMethod with {
-            my $E = shift;
-            print STDERR "$E->{-text}";
-            $result{country} = undef;
-        };
     }
 
     return \%result;
@@ -244,14 +214,12 @@ sub is_holiday_dt {
 sub _load {
     my ( $self, $module ) = @_;
 
-    print STDERR "Attempting to load module: $module\n";
-
     # Trying to load module
     eval { load $module; };    #From Module::Load
 
     # Asserting success of load
     if ($@) {
-        croak "Unable to load: $module - $!";
+        die "Unable to load: $module - $!\n";
     }
 
     # Returning name of loaded module upon success
@@ -261,11 +229,9 @@ sub _load {
 sub _fetch {
     my ( $self, $params ) = @_;
 
-    print STDERR "Attempting to fetch...\n";
-
     # Do we have a country code?
     if ( !$self->{_countrycode} ) {
-        croak "No country code specified";
+        die "No country code specified";
     }
 
     # Do we do country code assertion?
@@ -273,13 +239,11 @@ sub _fetch {
 
         # Is our country code valid or local?
         if ( $self->{_countrycode} ne 'local' and !code2country( $self->{_countrycode} ) ) {  #from Locale::Country
-            croak "$self->{_countrycode} is not a valid country code";
+            die "$self->{_countrycode} is not a valid country code";
         }
     }
 
     my $module;
-
-    print STDERR "Attempting to resolve...\n";
 
     # Trying to load adapter module for country code
     try {
@@ -291,18 +255,12 @@ sub _fetch {
             $self->SUPER::_load($module);
         }
     }
-    catch Date::Holidays::Exception::AdapterLoad with {
+    catch ($error) {
 
         # Falling over to SUPER adapter class
-        try {
-            $module = 'Date::Holidays::Adapter';
-            $self->_load($module);
-        }
-        catch Date::Holidays::Exception::SuperAdapterLoad with {
-            my $E = shift;
-            $E->throw;
-        };
-    };
+        $module = 'Date::Holidays::Adapter';
+        $self->_load($module);
+    }
 
     # Returning name of loaded module upon success
     return $module;

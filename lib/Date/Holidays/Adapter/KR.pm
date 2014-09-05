@@ -3,16 +3,14 @@ package Date::Holidays::Adapter::KR;
 use strict;
 use warnings;
 use vars qw($VERSION);
-use Error qw(:try);
+use Carp;
 
 use base 'Date::Holidays::Adapter';
-use Date::Holidays::Exception::UnsupportedMethod;
 
 $VERSION = '0.21';
 
 sub holidays {
-    throw Date::Holidays::Exception::UnsupportedMethod('holidays');
-    return;
+    croak "holidays is unimplemented for ".__PACKAGE__;
 }
 
 sub is_holiday {

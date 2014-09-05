@@ -17,6 +17,22 @@ sub startup : Test(startup => 1) {
     return 1;
 }
 
+#run prior and once per test method
+sub setup : Test(setup => 2) {
+    my $self = shift;
+
+    diag("setting up...");
+
+    ok(my $dh = Date::Holidays->new(countrycode => 'local'));
+
+    isa_ok($dh, 'Date::Holidays');
+
+    #storing our object for additonal tests
+    $self->{dh} = $dh;
+
+    return 1;
+}
+
 sub declaring_my_birthday_a_national_holiday : Test(2) {
     my ($self) = @_;
 
@@ -41,9 +57,6 @@ sub cancelling_christmas : Test(1) {
         countries => ['+local','DK'],
     ));
 
-    use Data::Dumper;
-    print STDERR Dumper $holiday;
-
     return 1;
 }
 
@@ -56,21 +69,6 @@ sub shutdown : Test(shutdown) {
     return 1;
 }
 
-#run prior and once per test method
-sub setup : Test(setup => 2) {
-    my $self = shift;
-
-    diag("setting up...");
-
-    ok(my $dh = Date::Holidays->new(countrycode => 'local'));
-
-    isa_ok($dh, 'Date::Holidays');
-
-    #storing our object for additonal tests
-    $self->{dh} = $dh;
-
-    return 1;
-}
 
 #run after and once per test method
 sub teardown : Test(teardown) {

@@ -26,9 +26,6 @@ sub holidays {
         $holidays = from_json($json);
     }
 
-    use Data::Dumper;
-    print STDERR Dumper $holidays;
-
     if ($params{year}) {
         my $tmp_holidays;
 
