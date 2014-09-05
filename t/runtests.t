@@ -12,5 +12,6 @@ use Test::Class::Date::Holidays;
 
 use Test::Class::Date::Holidays::Produceral;
 use Test::Class::Date::Holidays::Supered;
+use Test::Class::Date::Holidays::Abstracted;
 
 Test::Class->runtests();
