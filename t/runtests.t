@@ -7,5 +7,7 @@ use FindBin qw($Bin);
 use lib "$Bin/../lib", "$Bin/../t";
 
 use Test::Class::Date::Holidays::Local;
+use Test::Class::Date::Holidays::Adapter;
+use Test::Class::Date::Holidays;
 
 Test::Class->runtests();
