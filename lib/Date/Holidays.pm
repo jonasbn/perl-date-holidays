@@ -8,6 +8,7 @@ use Module::Load qw(load);
 use Carp;
 use DateTime;
 use TryCatch;
+use Scalar::Util qw(blessed);
 
 use base 'Date::Holidays::Adapter';
 
@@ -29,10 +30,6 @@ sub new {
             $self->{'_inner_class'}
                 = $self->_fetch( { nocheck => $params{'nocheck'}, } );
         }
-        #catch ($error) {
-        #    carp "fetch class: $error";
-        #    $self = undef;
-        #}
 
     } else {
         die "No country code specified";
@@ -68,11 +65,27 @@ sub holidays {
     my ( $self, %params ) = @_;
 
     my $r;
-    if ( $self->{'_inner_object'}->can('holidays') ) {
+    if (            $self->{'_inner_object'}
+        and         $self->{'_inner_object'}->can('holidays') 
+        and blessed $self->{'_inner_object'} ) {
+
         $r = $self->{'_inner_object'}->holidays( 
             year => $params{'year'}, 
             state => $params{'state'}, 
             regions => $params{'regions'} 
+        );
+
+    } elsif (    $self->{'_inner_class'}
+             and $self->{'_inner_class'}->can('holidays')) {
+
+        my $sub = $self->{'_inner_class'}->can('holidays');
+
+        $r = &{$sub}(
+            year  => $params{'year'},
+            month => $params{'month'},
+            day   => $params{'day'},
+            state => $params{'state'},
+            regions => $params{'regions'},
         );
 
     } else {
@@ -125,10 +138,23 @@ sub is_holiday {
     } elsif ( $self->{'_countrycode'} ) {
 
         if (    $self->{'_inner_object'}
-            and $self->{'_inner_object'}->can('is_holiday') )
+            and $self->{'_inner_object'}->can('is_holiday')
+            and blessed $self->{'_inner_object'} )
         {
 
             $r = $self->{'_inner_object'}->is_holiday(
+                year  => $params{'year'},
+                month => $params{'month'},
+                day   => $params{'day'},
+                state => $params{'state'},
+                regions => $params{'regions'},
+            );
+        } elsif (    $self->{'_inner_class'}
+                 and $self->{'_inner_class'}->can('is_holiday')) {
+
+            my $sub = $self->{'_inner_class'}->can('is_holiday');
+
+            $r = &{$sub}(
                 year  => $params{'year'},
                 month => $params{'month'},
                 day   => $params{'day'},
@@ -251,7 +277,11 @@ sub _fetch {
             $module = 'Date::Holidays::' . ucfirst $self->{_countrycode};
             $self->_load($module);
         } else {
-            $module = 'Date::Holidays::Adapter::' . uc $self->{_countrycode};
+            if ($params->{nocheck}) {
+                $module = 'Date::Holidays::' . ucfirst $self->{_countrycode};    
+            } else {
+                $module = 'Date::Holidays::Adapter::' . uc $self->{_countrycode};
+            }
             $self->SUPER::_load($module);
         }
     }

@@ -10,4 +10,7 @@ use Test::Class::Date::Holidays::Local;
 use Test::Class::Date::Holidays::Adapter;
 use Test::Class::Date::Holidays;
 
+use Test::Class::Date::Holidays::Produceral;
+use Test::Class::Date::Holidays::Supered;
+
 Test::Class->runtests();

@@ -1,4 +1,7 @@
-package Date::Holidays::SUPERED;
+package Date::Holidays::Supered;
+
+use strict;
+use warnings;
 
 use base 'Date::Holidays::Super';
 
@@ -13,13 +16,13 @@ sub holidays {
 }
 
 sub is_holiday {
-    my ($class, $year, $month, $day) = @_;
+    my ($self, %params) = @_;
     
     my $key;
-    my $calendar = { 1224 => 'christmas' };
+    my $calendar = $self->holidays();
 
-    if ($month && $day) {
-        $key  = $month.$day;
+    if ($params{month} and $params{day}) {
+        $key  = $params{month}.$params{day};
     }
 
     if ($key && $calendar->{$key}) {
