@@ -1,4 +1,4 @@
-package Date::Holidays::Adapter::Nonpolymorphic;
+package Date::Holidays::Adapter::NONPOLYMORPHIC;
 
 use strict;
 use warnings;
@@ -13,7 +13,7 @@ sub holidays {
     if ($dh) {
         return $dh->nonpolymorphic_holidays(year => $params{'year'});
     } else {
-        return;    
+        return;
     }
 }
 
@@ -25,6 +25,6 @@ sub is_holiday {
     if ($dh) {
         return $dh->is_nonpolymorphic_holiday(year => $params{'year'}, month => $params{'month'}, day => $params{'day'});
     } else {
-        return;    
+        return;
     }
 }

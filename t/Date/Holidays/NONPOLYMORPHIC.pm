@@ -1,4 +1,4 @@
-package Date::Holidays::Nonpolymorphic;
+package Date::Holidays::NONPOLYMORPHIC;
 
 sub new {
     my $class = shift;    
@@ -12,14 +12,17 @@ sub new {
 
 sub nonpolymorphic_holidays {
     my $self = shift;
+
+    print STDERR "nonpolymorphic_holidays";
     
     return $self->{calendar};        
 }
 
 sub is_nonpolymorphic_holiday {
-    my ($self, %params) = @_;
+    my ($self, $year, $month, $day) = @_;
     
-    my $key = $params{month}.$params{day};
+    my $key = $month.$day;
+
     if (exists $self->{calendar}->{$key}) {
         return $self->{calendar}->{$key};
     }

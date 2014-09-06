@@ -1,4 +1,4 @@
-package Date::Holidays::Abstracted;
+package Date::Holidays::ABSTRACTED;
 
 use strict;
 use warnings;
@@ -16,17 +16,19 @@ sub holidays {
 }
 
 sub is_holiday {
-    my ($self, %params) = @_;
+    my ($self, $year, $month, $day) = @_;
 
-    my $calendar = $self->holidays(year => $params{year});
+    my $calendar = $self->holidays($year);
     
     my $key;
-    if ($params{month} and $params{day}) {
-        $key  = $params{month}.$params{day};
+    if ($month and $day) {
+        $key  = $month.$day;
     }
 
     if ($key and $calendar->{$key}) {
         return $calendar->{$key};
+    } else {
+        return '';
     }
 }
 

@@ -7,6 +7,7 @@ use TryCatch;
 use Module::Load qw(load);
 use Locale::Country;
 use Scalar::Util qw(blessed);
+use Data::Dumper;
 
 use vars qw($VERSION);
 
@@ -20,7 +21,7 @@ sub new {
         _adaptee     => undef,
     }, $class || ref $class;
 
-    try {
+    #try {
         my $adaptee = $self->_fetch(\%params);
 
         if ($adaptee) {
@@ -28,9 +29,9 @@ sub new {
         } else {
             die 'Unable to initialize adaptee class';
         }
-    } catch ($error) {
-        die $error;
-    }
+    #} catch ($error) {
+    #    die $error;
+    #}
 
     return $self;
 }
@@ -39,53 +40,132 @@ sub holidays {
     my ($self, %params) = @_;
 
     my $r;
-    try {
-        my $method = 'holidays';
-        my $sub = $self->{_adaptee}->can('holidays');
+    my $adaptee;
 
+    # Adaptee has a constructor
+    if (    $self->{_adaptee}->can('new')
+        and $self->isa('Date::Holidays::Adapter')) {
+
+        $adaptee = $self->{_adaptee}->new();
+
+    # Adaptee has no constructor
+    } else {
+        $adaptee = $self->{_adaptee};
+    }
+
+    if (blessed $adaptee) {
+
+        # Adapting non-polymorphic interface
+        my $method = "$self->{_countrycode}_holidays";
+        my $sub = $adaptee->can($method);
+
+        # Adapting polymorphic interface
         if (! $sub) {
-            $method = "$self->{_countrycode}_holidays";
-            $sub = $self->{_adaptee}->can($method);
+            $method = 'holidays';
+            $sub = $adaptee->can($method);
+        }
+
+        if ($sub) {
+            $r = $adaptee->$method($params{'year'});
+        }
+
+        return $r;
+
+    } else {
+
+        # Adapting non-polymorphic interface
+        my $method = "$self->{_countrycode}_holidays";
+        my $sub = $adaptee->can($method);
+
+        # Adapting polymorphic interface
+        if (! $sub) {
+            $sub = $adaptee->can('holidays');
         }
 
         if ($sub) {
             $r = &{$sub}($params{'year'});
         }
-    }
 
-    return $r;
+        return $r;
+
+    }
 }
 
 sub is_holiday {
     my ($self, %params) = @_;
 
     my $r;
-    try {
+    my $adaptee;
+    
+    if (    $self->{_adaptee}->can('new')
+        and $self->isa('Date::Holidays::Adapter')) {
 
-        if (    $self->{_adaptee}->can('new')
-            and $self->isa('Date::Holidays::Adapter')) {
+        $adaptee = $self->{_adaptee}->new();
+    
+    } else {
+        $adaptee = $self->{_adaptee};
+    }
 
-            my $object = $self->{_adaptee}->new();
+    if (blessed $adaptee) {
 
-            $r = $object->is_holiday($params{'year'}, $params{'month'}, $params{'day'});
+        # Adapting non-polymorphic interface
+        my $method = "is_$self->{_countrycode}_holiday";
 
+        if ($adaptee->can($method)) {
+
+            print STDERR "WTF WE CAN HAZ!?";
+
+            $r = $adaptee->$method(
+                $params{'year'}, 
+                $params{'month'}, 
+                $params{'day'}
+            );
+
+            return $r;
+
+        # Adapting polymorphic interface
         } else {
 
-            my $method = "is_$self->{_countrycode}_holiday";
-            my $sub = $self->{_adaptee}->can($method);
-
-            if ($sub) {
-                $r = &{$sub}($params{'year'}, $params{'month'}, $params{'day'});
+            if ($adaptee->can('is_holiday')) {
+                $r = $adaptee->is_holiday(
+                    $params{'year'}, 
+                    $params{'month'}, 
+                    $params{'day'}
+                );
             }
 
-            $method = "is_holiday";
-            $sub = $self->{_adaptee}->can($method);
-
-            if ($sub) {
-                $r = &{$sub}($params{'year'}, $params{'month'}, $params{'day'});
-            }
-
+            return $r;
         }
+
+    } else {
+        # Adapting non-polymorphic interface
+        my $method = "is_$self->{_countrycode}_holiday";
+        my $sub = $adaptee->can($method);
+
+        # We have an interface
+        if ($sub) {
+
+            $r = &{$sub}(
+                $params{'year'}, 
+                $params{'month'}, 
+                $params{'day'}
+            );
+
+            return $r;
+        }
+
+        # Adapting polymorphic interface
+        $sub = $adaptee->can('is_holiday');
+
+        if ($sub) {
+            $r = &{$sub}(
+                $params{'year'}, 
+                $params{'month'}, 
+                $params{'day'}
+            );
+
+            return $r;
+        }        
     }
 
     return $r;

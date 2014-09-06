@@ -1,4 +1,4 @@
-package Date::Holidays::Produceral;
+package Date::Holidays::PRODUCERAL;
 
 use strict;
 use warnings;
@@ -8,11 +8,11 @@ sub holidays {
 }
 
 sub is_holiday {
-    my %params = @_;
+    my ($year, $month, $day) = @_;
 
     my $key;
-    if ($params{month} and $params{day}) {
-        $key  = $params{month}.$params{day};
+    if ($month and $day) {
+        $key  = $month.$day;
     }
 
     my $holidays = holidays();

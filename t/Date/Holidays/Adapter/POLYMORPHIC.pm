@@ -1,4 +1,4 @@
-package Date::Holidays::Adapter::Polymorphic;
+package Date::Holidays::Adapter::POLYMORPHIC;
 
 use strict;
 use warnings;

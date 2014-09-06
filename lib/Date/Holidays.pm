@@ -66,13 +66,13 @@ sub holidays {
 
     my $r;
     if (            $self->{'_inner_object'}
-        and         $self->{'_inner_object'}->can('holidays') 
+        and         $self->{'_inner_object'}->can('holidays')
         and blessed $self->{'_inner_object'} ) {
 
-        $r = $self->{'_inner_object'}->holidays( 
-            year => $params{'year'}, 
-            state => $params{'state'}, 
-            regions => $params{'regions'} 
+        $r = $self->{'_inner_object'}->holidays(
+            year    => $params{'year'},
+            state   => $params{'state'},
+            regions => $params{'regions'}
         );
 
     } elsif (    $self->{'_inner_class'}
@@ -81,10 +81,10 @@ sub holidays {
         my $sub = $self->{'_inner_class'}->can('holidays');
 
         $r = &{$sub}(
-            year  => $params{'year'},
-            month => $params{'month'},
-            day   => $params{'day'},
-            state => $params{'state'},
+            year    => $params{'year'},
+            month   => $params{'month'},
+            day     => $params{'day'},
+            state   => $params{'state'},
             regions => $params{'regions'},
         );
 
@@ -143,10 +143,10 @@ sub is_holiday {
         {
 
             $r = $self->{'_inner_object'}->is_holiday(
-                year  => $params{'year'},
-                month => $params{'month'},
-                day   => $params{'day'},
-                state => $params{'state'},
+                year    => $params{'year'},
+                month   => $params{'month'},
+                day     => $params{'day'},
+                state   => $params{'state'},
                 regions => $params{'regions'},
             );
         } elsif (    $self->{'_inner_class'}
@@ -155,10 +155,10 @@ sub is_holiday {
             my $sub = $self->{'_inner_class'}->can('is_holiday');
 
             $r = &{$sub}(
-                year  => $params{'year'},
-                month => $params{'month'},
-                day   => $params{'day'},
-                state => $params{'state'},
+                year    => $params{'year'},
+                month   => $params{'month'},
+                day     => $params{'day'},
+                state   => $params{'state'},
                 regions => $params{'regions'},
             );
 
@@ -273,17 +273,15 @@ sub _fetch {
 
     # Trying to load adapter module for country code
     try {
+        # We have the special local calendar
         if ($self->{_countrycode} eq 'local') {
             $module = 'Date::Holidays::' . ucfirst $self->{_countrycode};
-            $self->_load($module);
+
         } else {
-            if ($params->{nocheck}) {
-                $module = 'Date::Holidays::' . ucfirst $self->{_countrycode};    
-            } else {
-                $module = 'Date::Holidays::Adapter::' . uc $self->{_countrycode};
-            }
-            $self->SUPER::_load($module);
+            $module = 'Date::Holidays::Adapter::' . uc $self->{_countrycode};
         }
+        $self->_load($module);
+
     }
     catch ($error) {
 

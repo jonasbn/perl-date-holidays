@@ -15,18 +15,18 @@ sub startup : Test(startup => 2) {
 	diag("starting up...");
 	
 	use_ok('Date::Holidays');
-	use_ok('Date::Holidays::Produceral');
+	use_ok('Date::Holidays::PRODUCERAL');
 }
 
 sub test_produceral_interface : Test(11) {
 
 	# bare
 
-	can_ok('Date::Holidays::Produceral', qw(holidays is_holiday));
+	can_ok('Date::Holidays::PRODUCERAL', qw(holidays is_holiday));
 
-	ok(Date::Holidays::Produceral::holidays(year => $year), 'calling holidays directly');
+	ok(Date::Holidays::PRODUCERAL::holidays($year), 'calling holidays directly');
 
-	is(Date::Holidays::Produceral::is_holiday(year => $year, month => $month, day => $day), 'christmas', 'calling is_holiday directly');
+	is(Date::Holidays::PRODUCERAL::is_holiday($year, $month, $day), 'christmas', 'calling is_holiday directly');
 
 	# wrapper
 
@@ -45,7 +45,7 @@ sub test_produceral_interface : Test(11) {
 	#inner
 
 	can_ok($dh->{_inner_class}, qw(holidays is_holiday));
-	is($dh->{_inner_object}, undef, 'we have no notion of inner object');
+	isa_ok($dh->{_inner_object}, 'Date::Holidays::Adapter', 'we have no notion of inner object');
 }
 
 1;

@@ -52,9 +52,6 @@ ok( $holidays_hashref = Date::Holidays->is_holiday(
     'Testing is_holiday called without an object'
 );
 
-use Data::Dumper;
-print STDERR Dumper $holidays_hashref;
-
 SKIP: {
     eval { load Date::Holidays::PT };
     skip "Date::Holidays::PT not installed", 3 if $@;
