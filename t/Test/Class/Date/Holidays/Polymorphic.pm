@@ -43,9 +43,6 @@ sub test_polymorhic : Test(15) {
 
 	#inner
 
-	use Data::Dumper;
-	print STDERR Dumper $dh;
-
 	isa_ok($dh->{_inner_object}, 'Date::Holidays::Adapter::POLYMORPHIC', 'checking _inner_object');
 
 	can_ok($dh->{_inner_object}, qw(new));

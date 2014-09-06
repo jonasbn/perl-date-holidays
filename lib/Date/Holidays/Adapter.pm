@@ -113,8 +113,6 @@ sub is_holiday {
 
         if ($adaptee->can($method)) {
 
-            print STDERR "WTF WE CAN HAZ!?";
-
             $r = $adaptee->$method(
                 $params{'year'}, 
                 $params{'month'}, 

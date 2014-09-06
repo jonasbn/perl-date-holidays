@@ -12,8 +12,6 @@ sub new {
 
 sub nonpolymorphic_holidays {
     my $self = shift;
-
-    print STDERR "nonpolymorphic_holidays";
     
     return $self->{calendar};        
 }
