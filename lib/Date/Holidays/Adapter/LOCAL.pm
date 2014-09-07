@@ -78,3 +78,118 @@ sub _resolve_holiday_file {
 }
 
 1;
+
+__END__
+
+=head1 NAME
+
+Date::Holidays::Adapter::LOCAL - a specialized adapter for local calendars
+
+=head1 VERSION
+
+This POD describes version 0.21 of Date::Holidays::Adapter::LOCAL
+
+=head1 SYNOPSIS
+
+    my $calendar = Date::Holidays->new(countrycode => 'local');
+
+    my ($year, $month, $day) = (localtime)[ 5, 4, 3 ];
+    $year  += 1900;
+    $month += 1;
+
+    print "Woohoo" if $calendar->is_holiday( 
+        year  => $year, 
+        month => $month, 
+        day   => $day
+    );
+
+    my $holidays = $adapter->holidays(year => $year);
+
+    printf "Jan. 15th is named '%s'\n", $holidays->{'0115'}; #my birthday I hope
+
+=head1 DESCRIPTION
+
+The is the SUPER adapter class. All of the adapters in the distribution of
+Date::Holidays are subclasses of this class. (SEE also L<Date::Holidays>).
+
+The SUPER adapter class is at the same time a generic adapter. It attempts to
+adapt to the most used API for modules in the Date::Holidays::* namespace. So
+it should only be necessary to implement adapters to the exceptions to modules
+not following the the defacto standard or suffering from other local
+implementations.
+
+=head1 SUBROUTINES/METHODS
+
+The public methods in this class are all expected from the adapter, so it
+actually corresponds with the abstract is outlined in L<Date::Holidays::Abstract>.
+
+Not all methods/subroutines may be implemented in the adaptee classes, the
+adapters attempt to make the adaptee APIs adaptable where possible. This is
+afterall the whole idea of the Adapter Pattern, but apart from making the
+single Date::Holidays::* modules uniform towards the clients and
+L<Date::Holidays> it is attempted to make the multitude of modules uniform in
+the extent possible.
+
+=head2 new
+
+The constructor, takes a single named argument, B<countrycode>
+
+=head2 is_holiday
+
+The B<holidays> method, takes 3 named arguments, B<year>, B<month> and B<day>
+
+returns an indication of whether the day is a holiday in the calendar of the
+country referenced by B<countrycode> in the call to the constructor B<new>.
+
+=head2 holidays
+
+The B<holidays> method, takes a single named argument, B<year>
+
+returns a reference to a hash holding the calendar of the country referenced by
+B<countrycode> in the call to the constructor B<new>.
+
+The calendar will spand for a year and the keys consist of B<month> and B<day>
+concatenated.
+
+=head1 DEFINING A LOCAL CALENDAR
+
+Please refer to the DEVELOPER section in L<Date::Holidays> about contributing to
+the Date::Holidays::* namespace or attempting for adaptability with
+L<Date::Holidays>.
+
+=head1 DIAGNOSTICS
+
+=head1 DEPENDENCIES
+
+=over
+
+=item * L<Carp>
+
+=item * L<Module::Load>
+
+=back
+
+=head1 INCOMPATIBILITIES
+
+Please refer to INCOMPATIBILITIES in L<Date::Holidays>
+
+=head1 BUGS AND LIMITATIONS
+
+Please refer to BUGS AND LIMITATIONS in L<Date::Holidays>
+
+=head1 BUG REPORTING
+
+Please refer to BUG REPORTING in L<Date::Holidays>
+
+=head1 AUTHOR
+
+Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
+
+=head1 LICENSE AND COPYRIGHT
+
+L<Date::Holidays> and related modules are (C) by Jonas B. Nielsen, (jonasbn)
+2004-2014
+
+L<Date::Holidays> and related modules are released under the Artistic License 2.0
+
+=cut
