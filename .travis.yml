@@ -18,6 +18,10 @@ install:
 
    - cpanm --quiet --notest --skip-satisfied Dist::Zilla
 
+   # Hack to getting the latest Module::Build
+
+   - cpanm --quiet --notest Module::Build
+
    # Hack to getting the latest Test::Kwalitee
 
    - cpanm --quiet --notest Test::Kwalitee
