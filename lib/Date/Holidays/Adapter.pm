@@ -7,7 +7,6 @@ use TryCatch;
 use Module::Load qw(load);
 use Locale::Country;
 use Scalar::Util qw(blessed);
-use Data::Dumper;
 
 use vars qw($VERSION);
 
@@ -21,17 +20,13 @@ sub new {
         _adaptee     => undef,
     }, $class || ref $class;
 
-    #try {
-        my $adaptee = $self->_fetch(\%params);
+    my $adaptee = $self->_fetch(\%params);
 
-        if ($adaptee) {
-            $self->{_adaptee} = $adaptee;
-        } else {
-            die 'Unable to initialize adaptee class';
-        }
-    #} catch ($error) {
-    #    die $error;
-    #}
+    if ($adaptee) {
+        $self->{_adaptee} = $adaptee;
+    } else {
+        die 'Unable to initialize adaptee class';
+    }
 
     return $self;
 }
@@ -50,13 +45,13 @@ sub holidays {
 
     # Adaptee has no constructor
     } else {
-        $adaptee = $self->{_adaptee};
+        $adaptee = $self->{'_adaptee'};
     }
 
     if (blessed $adaptee) {
 
         # Adapting non-polymorphic interface
-        my $method = "$self->{_countrycode}_holidays";
+        my $method = "$self->{'_countrycode'}_holidays";
         my $sub = $adaptee->can($method);
 
         # Adapting polymorphic interface
@@ -74,7 +69,7 @@ sub holidays {
     } else {
 
         # Adapting non-polymorphic interface
-        my $method = "$self->{_countrycode}_holidays";
+        my $method = "$self->{'_countrycode'}_holidays";
         my $sub = $adaptee->can($method);
 
         # Adapting polymorphic interface
@@ -87,7 +82,6 @@ sub holidays {
         }
 
         return $r;
-
     }
 }
 
@@ -97,19 +91,19 @@ sub is_holiday {
     my $r;
     my $adaptee;
     
-    if (    $self->{_adaptee}->can('new')
+    if (    $self->{'_adaptee'}->can('new')
         and $self->isa('Date::Holidays::Adapter')) {
 
-        $adaptee = $self->{_adaptee}->new();
+        $adaptee = $self->{'_adaptee'}->new();
     
     } else {
-        $adaptee = $self->{_adaptee};
+        $adaptee = $self->{'_adaptee'};
     }
 
     if (blessed $adaptee) {
 
         # Adapting non-polymorphic interface
-        my $method = "is_$self->{_countrycode}_holiday";
+        my $method = "is_$self->{'_countrycode'}_holiday";
 
         if ($adaptee->can($method)) {
 
@@ -173,7 +167,7 @@ sub _load {
     my ( $self, $module ) = @_;
 
     # Trying to load module
-    eval { load $module; };    #From Module::Load
+    eval { load $module; }; # From Module::Load
 
     # Asserting success of load
     if ($@) {
@@ -188,7 +182,7 @@ sub _fetch {
     my ( $self, $params ) = @_;
 
     # Do we have a country code?
-    if ( !$self->{_countrycode} ) {
+    if ( !$self->{'_countrycode'} ) {
         die "No country code specified";
     }
 
@@ -196,15 +190,13 @@ sub _fetch {
     if ( !$params->{nocheck} ) {
 
         # Is our country code valid?
-        if ( !code2country($self->{_countrycode}) ) { #from Locale::Country
-
+        if ( !code2country($self->{'_countrycode'}) ) { # From Locale::Country
             die "$self->{_countrycode} is not a valid country code";
-            #return;
         }
     }
 
     # Trying to load module for country code
-    my $module = 'Date::Holidays::' . uc $self->{_countrycode};
+    my $module = 'Date::Holidays::' . uc $self->{'_countrycode'};
     $self->_load($module);
 
     # Returning name of loaded module upon success

@@ -4,6 +4,8 @@ use strict;
 use warnings;
 
 sub holidays {
+    my ($year) = @_;
+
     return { 1224 => 'christmas' };    
 }
 

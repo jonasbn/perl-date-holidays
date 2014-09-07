@@ -38,7 +38,7 @@ sub declaring_my_birthday_a_national_holiday : Test(2) {
     is($holidays->{'1501'}, q[jonasbn's birthday]);
 }
 
-sub cancelling_christmas : Test(1) {
+sub cancelling_christmas : Test(3) {
     my $self = shift;
 
     $HOLIDAYS_FILE = 't/cancelling_christmas.json';
@@ -47,8 +47,11 @@ sub cancelling_christmas : Test(1) {
         year      => 2014,
         month     => 12,
         day       => 24,
-        countries => ['+local','DK'],
+        countries => ['+local','dk'],
     ));
+
+    is($holiday->{'dk'}, '');
+    is($holiday->{'local'}, '');
 }
 
 1;

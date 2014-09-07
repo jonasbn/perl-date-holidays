@@ -64,30 +64,45 @@ sub new {
 sub holidays {
     my ( $self, %params ) = @_;
 
+    # Our result
     my $r;
-    if (            $self->{'_inner_object'}
-        and         $self->{'_inner_object'}->can('holidays')
-        and blessed $self->{'_inner_object'} ) {
 
-        $r = $self->{'_inner_object'}->holidays(
-            year    => $params{'year'},
-            state   => $params{'state'},
-            regions => $params{'regions'}
-        );
+    if ( not $params{'countries'} ) {
+        my @countries = all_country_codes(); # From Locale::Country
+        @countries = sort @countries;
+        $params{'countries'} = \@countries;
+    }
 
-    } elsif (    $self->{'_inner_class'}
-             and $self->{'_inner_class'}->can('holidays')) {
+    $r = $self->{'_inner_object'}->holidays(%params);
 
-        my $sub = $self->{'_inner_class'}->can('holidays');
+    return $r;
+}
 
-        $r = &{$sub}(
-            year    => $params{'year'},
-            state   => $params{'state'},
-            regions => $params{'regions'},
-        );
+sub is_holiday {
+    my ( $self, %params ) = @_;
+
+    # Our result
+    my $r;
+
+    if ( not $params{'countries'} ) {
+        if (blessed $self) {
+            $r = $self->{'_inner_object'}->is_holiday(%params);
+
+        } else {
+            my @countries = all_country_codes(); # From Locale::Country
+            @countries = sort @countries;
+            $params{'countries'} = \@countries;
+
+            $r = __PACKAGE__->_check_countries(%params);
+        }
 
     } else {
-        die "Unable to call 'holidays' for: $self->{'_countrycode'}";
+        if (blessed $self) {
+            $r = $self->_check_countries(%params);
+
+        } else {
+            $r = __PACKAGE__->_check_countries(%params);
+        }
     }
 
     return $r;
@@ -115,65 +130,10 @@ sub holidays_dt {
     return \%dts;
 }
 
-sub is_holiday {
-    my ( $self, %params ) = @_;
-
-    my $r;
-    if ( !ref $self ) {
-
-        if ( not $params{'countries'} ) {
-            my @countries = all_country_codes();    #from Locale::Country
-
-            @countries = sort @countries;
-
-            $params{'countries'} = \@countries;
-        }
-        $r = __PACKAGE__->_check_countries(%params);
-
-    } elsif ( $params{'countries'} ) {
-        $r = __PACKAGE__->_check_countries(%params);
-
-    } elsif ( $self->{'_countrycode'} ) {
-
-        if (    $self->{'_inner_object'}
-            and $self->{'_inner_object'}->can('is_holiday')
-            and blessed $self->{'_inner_object'} )
-        {
-
-            $r = $self->{'_inner_object'}->is_holiday(
-                year    => $params{'year'},
-                month   => $params{'month'},
-                day     => $params{'day'},
-                state   => $params{'state'},
-                regions => $params{'regions'},
-            );
-        } elsif (    $self->{'_inner_class'}
-                 and $self->{'_inner_class'}->can('is_holiday')) {
-
-            my $sub = $self->{'_inner_class'}->can('is_holiday');
-
-            $r = &{$sub}(
-                year    => $params{'year'},
-                month   => $params{'month'},
-                day     => $params{'day'},
-                state   => $params{'state'},
-                regions => $params{'regions'},
-            );
-
-        } else {
-            die "Unable to call 'is_holiday' for: $self->{'_countrycode'}";
-        }
-    } else {
-        die "No national calendar initialized";
-    }
-
-    return $r;
-}
-
 sub _check_countries {
     my ( $self, %params ) = @_;
 
-    my %result = ();
+    my $result = {};
     my $precedent_calendar = '';
 
     foreach my $country ( @{ $params{'countries'} } ) {
@@ -185,16 +145,19 @@ sub _check_countries {
         }
 
         try {
-            my $dh = __PACKAGE__->new( countrycode => $country );
+            my $dh = $self->new( countrycode => $country );
 
             if ( !$dh ) {
                 die "Unable to initialize Date::Holidays for country: $country\n";
             }
 
-            my $r = $dh->is_holiday(
+            my $r;
+
+            #TODO add handling of state and region
+            $r = $dh->is_holiday(
                 year  => $params{'year'},
                 month => $params{'month'},
-                day   => $params{'day'}
+                day   => $params{'day'},
             );
 
             # handling precedent calendar
@@ -202,19 +165,22 @@ sub _check_countries {
                 $precedent_calendar ne $country) {
 
                 # our precedent calendar dictates nullification
-                if ($result{$precedent_calendar} eq '') {
+                if ($result->{$precedent_calendar} eq '') {
                     $r = '';
 
                 # our precedent calendar dictates overwrite
-                } elsif (defined $result{$precedent_calendar}) {
-                    $r = $result{$precedent_calendar};
+                } elsif (defined $result->{$precedent_calendar}) {
+                    $r = $result->{$precedent_calendar};
                 }
             }
 
+            # Not a holiday
             if (not defined $r) {
-                $result{$country} = '';
+                $result->{$country} = '';
+
+            # Some definition exist
             } else {
-                $result{$country} = $r;
+                $result->{$country} = $r;
             }
         }
         catch ($error) {
@@ -222,7 +188,7 @@ sub _check_countries {
         }
     }
 
-    return \%result;
+    return $result;
 }
 
 sub is_holiday_dt {
@@ -239,15 +205,15 @@ sub _fetch {
     my ( $self, $params ) = @_;
 
     # Do we have a country code?
-    if ( !$self->{_countrycode} ) {
+    if ( !$self->{'_countrycode'} ) {
         die "No country code specified";
     }
 
     # Do we do country code assertion?
-    if ( !$params->{nocheck} ) {
+    if ( !$params->{'nocheck'} ) {
 
         # Is our country code valid or local?
-        if ( $self->{_countrycode} ne 'local' and !code2country( $self->{_countrycode} ) ) {  #from Locale::Country
+        if ( $self->{'_countrycode'} ne 'local' and !code2country( $self->{'_countrycode'} ) ) {  #from Locale::Country
             die "$self->{_countrycode} is not a valid country code";
         }
     }
@@ -256,13 +222,9 @@ sub _fetch {
 
     # Trying to load adapter module for country code
     try {
-        # We have the special local calendar
-        if ($self->{_countrycode} eq 'local') {
-            $module = 'Date::Holidays::' . ucfirst $self->{_countrycode};
+        # We load an adapter implementation
+        $module = 'Date::Holidays::Adapter::' . uc $self->{'_countrycode'};
 
-        } else {
-            $module = 'Date::Holidays::Adapter::' . uc $self->{_countrycode};
-        }
         $self->_load($module);
 
     }

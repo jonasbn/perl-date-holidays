@@ -19,7 +19,11 @@ sub is_holiday {
 
     my $sub = $self->{_adaptee}->can('is_japanese_holiday');
 
-    return &{$sub}($params{'year'}, $params{'month'}, $params{'day'});
+    if ($sub) {
+        return &{$sub}($params{'year'}, $params{'month'}, $params{'day'});
+    } else {
+        return;
+    }
 }
 
 sub _fetch {

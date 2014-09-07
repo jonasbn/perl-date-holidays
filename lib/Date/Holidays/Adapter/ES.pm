@@ -29,7 +29,7 @@ sub is_holiday {
     if ($dh) {
         return $dh->is_holiday(year => $params{'year'}, month => $params{'month'}, day => $params{'day'});
     } else {
-        return;
+        return '';
     }
 }
 

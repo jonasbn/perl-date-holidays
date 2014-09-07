@@ -5,6 +5,10 @@ use warnings;
 use base qw(Test::Class);
 use Test::More;
 
+my $year = 2007;
+my $month = 12;
+my $day = 24;
+
 #run prior and once per suite
 sub startup : Test(startup => 1) {
 	diag("starting up...");
@@ -12,26 +16,28 @@ sub startup : Test(startup => 1) {
 	use_ok('Date::Holidays');
 }
 
-sub test_supered : Test(7) {
+sub test_supered_implementation : Test(12) {
 
 	SKIP: {
 	    eval { require Date::Holidays::Super };
+	    skip "Date::Holidays::Super not installed", 12 if $@;
 
-	    skip "Date::Holidays::Super not installed", 7 if $@;
+	    use_ok('Date::Holidays::SUPERED');
 
-	    use_ok('Date::Holidays::Supered');
+	    ok(my $supered = Date::Holidays::SUPERED->new());
+	    isa_ok($supered, 'Date::Holidays::SUPERED');
+	    can_ok($supered, qw(new holidays is_holiday));
+
+	    ok($supered->holidays($year), 'Testing holidays');
+	    is($supered->is_holiday($year, $month, $day), 'christmas','Testing christmas');
 
 	    ok(my $dh = Date::Holidays->new(nocheck => 1, countrycode => 'Supered'), 'Testing adaptability via Date::Holidays');
-
 	    isa_ok($dh, 'Date::Holidays');
-
 	    can_ok($dh, qw(new holidays is_holiday));
 
-	    ok(my $href = $dh->holidays(year => 2007), 'Testing holidays method');
-
+	    ok(my $href = $dh->holidays(year => $year), 'Testing holidays method');
 	    is(ref $href, 'HASH', 'Testing type of result from holidays method');
-
-	    ok($dh->is_holiday(year => 2007, month => 12, day => 24), 'Testing is_holiday method');
+	    is($dh->is_holiday(year => $year, month => $month, day => $day), 'christmas', 'Testing is_holiday method');
 	};
 }
 

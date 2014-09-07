@@ -29,6 +29,8 @@ sub is_holiday {
 
     if ($key && $self->{calendar}->{$key}) {
         return $self->{calendar}->{$key};
+    } else {
+        return '';
     }
 }
 
