@@ -237,21 +237,6 @@ sub is_holiday_dt {
     );
 }
 
-sub _load {
-    my ( $self, $module ) = @_;
-
-    # Trying to load module
-    eval { load $module; };    #From Module::Load
-
-    # Asserting success of load
-    if ($@) {
-        die "Unable to load: $module - $!\n";
-    }
-
-    # Returning name of loaded module upon success
-    return $module;
-}
-
 sub _fetch {
     my ( $self, $params ) = @_;
 

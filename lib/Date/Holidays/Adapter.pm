@@ -170,14 +170,14 @@ sub is_holiday {
 }
 
 sub _load {
-    my ($self, $module) = @_;
+    my ( $self, $module ) = @_;
 
     # Trying to load module
-    eval { load $module; }; #From Module::Load
+    eval { load $module; };    #From Module::Load
 
     # Asserting success of load
     if ($@) {
-        die "Unable to load: $module\n";
+        die "Unable to load: $module - $!\n";
     }
 
     # Returning name of loaded module upon success
