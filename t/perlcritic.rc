@@ -1,13 +1,8 @@
 
 severity = 5
+verbose = 8
 
 #------------------------------------------------------------------------------
 
-[-CodeLayout::RequireTidyCode]
+[-Subroutines::ProhibitExplicitReturnUndef]
 
-[Documentation::RequirePodSections]
-lib_sections    = NAME|DESCRIPTION|SYNOPSIS|AUTHOR|COPYRIGHT
-script_sections = NAME|DESCRIPTION|SYNOPSIS|AUTHOR|COPYRIGHT
-
-[CodeLayout::ProhibitHardTabs]
-allow_leading_tabs = 0
