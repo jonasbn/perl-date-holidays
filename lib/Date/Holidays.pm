@@ -82,8 +82,6 @@ sub holidays {
 
         $r = &{$sub}(
             year    => $params{'year'},
-            month   => $params{'month'},
-            day     => $params{'day'},
             state   => $params{'state'},
             regions => $params{'regions'},
         );
