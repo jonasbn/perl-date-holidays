@@ -17,6 +17,9 @@ sub new {
 sub holidays {
     my ($self, %params) = @_;
 
+    use Data::Dumper;
+    print STDERR Dumper \@_;
+
     my $holiday_file = $self->_resolve_holiday_file();
 
     my $holidays = {};
@@ -46,7 +49,7 @@ sub holidays {
 sub is_holiday {
     my ($self, %params) = @_;
 
-    my $holidays = $self->holidays(year => $params{year});
+    my $holidays = $self->holidays(%params);
 
     my $key;
     if ($params{year}) {
