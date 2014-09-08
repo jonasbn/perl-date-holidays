@@ -29,12 +29,11 @@ sub holidays {
     if ($params{year}) {
         my $tmp_holidays;
 
-        foreach my $key (%{$holidays}) {
-            if ($key =~ m/(\d{4})\d{2}\d{2}/
-                    and $1 != $params{year}) {
-                next;
+        foreach my $key (keys %{$holidays}) {
 
-            } else {
+            if ($key =~ m/(\d{4})\d{2}\d{2}/
+                    and $1 == $params{year}) {
+
                 $tmp_holidays->{$key} = $holidays->{$key};
             }
         }
