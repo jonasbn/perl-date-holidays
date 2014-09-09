@@ -165,23 +165,18 @@ sub _check_countries {
                 $precedent_calendar ne $country) {
 
                 # our precedent calendar dictates nullification
-                if ($result->{$precedent_calendar} eq '') {
+                if (defined $result->{$precedent_calendar} 
+                    and $result->{$precedent_calendar} eq '') {
                     $r = '';
 
                 # our precedent calendar dictates overwrite
                 } elsif (defined $result->{$precedent_calendar}) {
+                
                     $r = $result->{$precedent_calendar};
                 }
             }
 
-            # Not a holiday
-            if (not defined $r) {
-                $result->{$country} = '';
-
-            # Some definition exist
-            } else {
-                $result->{$country} = $r;
-            }
+            $result->{$country} = $r;
         }
         catch ($error) {
             warn $error;

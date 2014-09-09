@@ -17,33 +17,37 @@ sub new {
 sub holidays {
     my ($self, %params) = @_;
 
-    use Data::Dumper;
-    print STDERR Dumper \@_;
+    my $local_holiday_file = $self->_resolve_holiday_file();
 
-    my $holiday_file = $self->_resolve_holiday_file();
+    my $local_holidays;
+    if (-r $local_holiday_file) {
 
-    my $holidays = {};
-    if (-r $holiday_file) {
-
-        my $json = slurp($holiday_file);
-        $holidays = from_json($json);
+        my $json = slurp($local_holiday_file);
+        $local_holidays = from_json($json);
     }
 
-    if ($params{year}) {
-        my $tmp_holidays;
+    my $tmp_holidays;
 
-        foreach my $key (keys %{$holidays}) {
+    foreach my $key (keys %{$local_holidays}) {
 
-            if ($key =~ m/(\d{4})\d{2}\d{2}/
-                    and $1 == $params{year}) {
+        if ($key =~ m/^(\d{4})(\d{2})(\d{2})$/
+                and $1 == $params{year}
+                and $2 == $params{month}
+                and $3 == $params{day}) {
 
-                $tmp_holidays->{$key} = $holidays->{$key};
-            }
+            warn "We have a year only calendar\n";
+            $tmp_holidays->{$key} = $local_holidays->{$key};
+
+        } elsif ($key =~ m/^(\d{2})(\d{2})$/
+                and $1 == $params{month}
+                and $2 == $params{day}) {
+
+            warn "We have a every year calendar\n";
+            $tmp_holidays->{$key} = $local_holidays->{$key};
         }
-        $holidays = $tmp_holidays;
     }
 
-    return $holidays;
+    return $tmp_holidays;
 }
 
 sub is_holiday {
@@ -55,16 +59,19 @@ sub is_holiday {
     if ($params{year}) {
         $key = $params{year}.$params{month}.$params{day};
 
-        if ($holidays->{$key}) {
+        if (defined $holidays->{$key}) {
+            return $holidays->{$key};
+        }
+    } else {
+
+        $key = $params{month}.$params{day};
+
+        if (defined $holidays->{$key}) {
             return $holidays->{$key};
         }
     }
 
-    $key = $params{month}.$params{day};
-
-    if (exists $holidays->{$key}) {
-        return $holidays->{$key};
-    }
+    #REVIEW should this not be an empty string?
 
     return undef;
 }
