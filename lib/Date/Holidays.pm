@@ -177,7 +177,7 @@ sub _check_countries {
                     month => $params{'month'},
                     day   => $params{'day'},
                 );
-                
+
                 # our precedent calendar dictates overwrite or nullification                
                 if (defined $holiday) {
                     $r = $holiday;

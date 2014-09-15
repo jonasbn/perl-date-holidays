@@ -59,24 +59,19 @@ sub is_holiday {
 
     my $holidays = $self->holidays(%params);
 
-    my $key;
-
     # First we check if a year is specified
-    if ($params{year}) {
-        $key = $params{year}.$params{month}.$params{day};
+    my $key = $params{year}.$params{month}.$params{day};
 
-        if (defined $holidays->{$key}) {
-            return $holidays->{$key};
-        }
+    if (defined $holidays->{$key}) {
+        return $holidays->{$key};
+    }
 
     # Then we check if just month and day is specified
-    } else {
 
-        $key = $params{month}.$params{day};
+    $key = $params{month}.$params{day};
 
-        if (defined $holidays->{$key}) {
-            return $holidays->{$key};
-        }
+    if (defined $holidays->{$key}) {
+        return $holidays->{$key};
     }
 
     # no holiday defined

@@ -45,7 +45,7 @@ SKIP: {
 }
 
 ok( $holidays_hashref = Date::Holidays->is_holiday(
-        year  => 2004,
+        year  => 2014,
         month => 12,
         day   => 25,
     ),
@@ -54,7 +54,7 @@ ok( $holidays_hashref = Date::Holidays->is_holiday(
 
 SKIP: {
     eval { load Date::Holidays::PT };
-    skip "Date::Holidays::PT not installed", 3 if $@;
+    skip "Date::Holidays::PT not installed", 2 if $@;
 
     ok( $holidays_hashref->{'pt'},
         'Checking for Portuguese first day of year' );
@@ -64,7 +64,7 @@ SKIP: {
 
 SKIP: {
     eval { load Date::Holidays::AU };
-    skip "Date::Holidays::AU not installed", 3 if $@;
+    skip "Date::Holidays::AU not installed", 2 if $@;
 
     ok( !$holidays_hashref->{'au'},
         'Checking for Australian first day of year' );
@@ -85,7 +85,7 @@ SKIP: {
 
 SKIP: {
     eval { load Date::Holidays::ES };
-    skip "Date::Holidays::ES not installed", 3 if $@;
+    skip "Date::Holidays::ES not installed", 2 if $@;
 
     ok( $holidays_hashref->{'es'}, 'Checking for Spanish christmas' );
 
@@ -96,7 +96,7 @@ SKIP: {
     eval { load Date::Holidays::NZ };
     skip "Date::Holidays::NZ not installed", 3 if $@;
 
-    ok( !$holidays_hashref->{'nz'}, 'Checking for New Zealandian christmas' );
+    ok( $holidays_hashref->{'nz'}, 'Checking for New Zealandian christmas' );
 
     ok(! Date::Holidays::NZ->can('holidays'));
     ok(! Date::Holidays::NZ->can('is_holiday'));
@@ -104,7 +104,7 @@ SKIP: {
 
 SKIP: {
     eval { load Date::Holidays::NO };
-    skip "Date::Holidays::NO not installed", 3 if $@;
+    skip "Date::Holidays::NO not installed", 2 if $@;
 
     ok( $holidays_hashref->{'no'}, 'Checking for Norwegian christmas' );
 
@@ -136,8 +136,8 @@ SKIP: {
     eval { load Date::Holidays::GB };
     skip "Date::Holidays::GB not installed", 5 if $@;
 
-    is( $holidays_hashref->{'gb'}, '', 'Checking for English holiday' );
-
+    ok( $holidays_hashref->{'gb'}, 'Checking for English holiday' );
+    
     can_ok('Date::Holidays::GB', qw(holidays is_holiday));
 
     ok( my $holidays_hashref_sct = Date::Holidays::GB::holidays(year => 2014, regions => ['SCT']));
