@@ -33,12 +33,12 @@ sub declaring_my_birthday_a_national_holiday : Test(2) {
 
     $HOLIDAYS_FILE = 't/declaring_my_birthday_a_national_holiday.json';
 
-    ok(my $holidays = $self->{dh}->holidays);
+    ok(my $holidays = $self->{dh}->holidays());
 
     is($holidays->{'1501'}, q[jonasbn's birthday]);
 }
 
-sub cancelling_christmas : Test(3) {
+sub cancelling_christmas : Test(5) {
     my $self = shift;
 
     $HOLIDAYS_FILE = 't/cancelling_christmas.json';
@@ -46,15 +46,24 @@ sub cancelling_christmas : Test(3) {
     ok(my $holiday = $self->{dh}->is_holiday(
         year      => 2014,
         month     => 12,
-        day       => 24,
-        countries => ['+local','dk'],
-    ));
+        day       => 25,
+        countries => ['dk'],
+    ), 'Initializing Christmas day in Denmark');
 
-    is($holiday->{'dk'}, '');
-    is($holiday->{'local'}, '');
+    is($holiday->{'dk'}, 'Juledag', 'Oh yes - Christmas in Denmark');
+
+    ok($holiday = $self->{dh}->is_holiday(
+        year      => 2014,
+        month     => 12,
+        day       => 25,
+        countries => ['+local','dk'],
+    ), 'Cancelling christmas');
+
+    is($holiday->{'dk'}, '', 'No Christmas in Denmark');
+    is($holiday->{'local'}, '', 'No local Christmas');
 }
 
-sub cancelling_christmas_for_all : Test(6) {
+sub cancelling_christmas_for_all : Test(8) {
     my $self = shift;
 
     $HOLIDAYS_FILE = 't/cancelling_christmas.json';
@@ -62,27 +71,31 @@ sub cancelling_christmas_for_all : Test(6) {
     ok(my $holiday = $self->{dh}->is_holiday(
         year      => 2014,
         month     => 12,
-        day       => 24,
+        day       => 25,
         countries => ['dk'],
-    ));
+    ), 'Initializing Christmas for Denmark');
 
+    is($holiday->{'dk'}, 'Juledag', 'Yes it is Christmas in Denmark');
+    
     ok($holiday = $self->{dh}->is_holiday(
         year      => 2015,
         month     => 12,
-        day       => 24,
+        day       => 25,
         countries => ['no'],
-    ));
+    ), 'Initializing Christmas for Norway');
 
+    is($holiday->{'no'}, 'juledag', 'Yes it is Christmas in Norway');
+    
     ok($holiday = $self->{dh}->is_holiday(
-        year      => 2014,
+        year      => 2015,
         month     => 12,
-        day       => 24,
+        day       => 25,
         countries => ['+local','dk', 'no'],
-    ));
+    ), 'Merging calendars local, dk and no');
 
-    is($holiday->{'dk'}, 'Yes it is Christmas in Denmark');
-    is($holiday->{'no'}, '', 'Yes it is Christmas in Norway');
-    is($holiday->{'local'}, undef, 'We have not local definition');
+    is($holiday->{'dk'}, '', 'Nullified Christmas in Denmark');   
+    is($holiday->{'no'}, '', 'Nullified Christmas in Norway');
+    is($holiday->{'local'}, '', 'We have no local holiday (our nullifier)');
 }
 
 sub cancelling_christmas_next_year : Test(8) {
@@ -106,8 +119,8 @@ sub cancelling_christmas_next_year : Test(8) {
         countries => ['+local','dk'],
     ), 'testing local calendar nullifies Christmas');
 
-    is($holiday->{'dk'}, '', 'No Christmas in Denmark');
     is($holiday->{'local'}, '', 'No Christmas in local calendar');
+    is($holiday->{'dk'}, '', 'No Christmas in Denmark');
 
     ok($holiday = $self->{dh}->is_holiday(
         year      => 2014,
@@ -115,7 +128,7 @@ sub cancelling_christmas_next_year : Test(8) {
         day       => 24,
         countries => ['+local','dk'],
     ), 'testing local calendar does not nullify Christmas in DK for 2014');
-
+    
     is($holiday->{'dk'}, 'Juleaftensdag', 'asserting christmas');
     is($holiday->{'local'}, undef, 'asserting local calendar');
 }

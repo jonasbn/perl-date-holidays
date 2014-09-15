@@ -67,9 +67,14 @@ sub holidays {
     # Our result
     my $r;
 
+    # Did we get a country list
     if ( not $params{'countries'} ) {
+
+        #No countries - so we create a list
         my @countries = all_country_codes(); # From Locale::Country
         @countries = sort @countries;
+
+        # We stick the complete list of countries to the parameters
         $params{'countries'} = \@countries;
     }
 
@@ -151,32 +156,37 @@ sub _check_countries {
                 die "Unable to initialize Date::Holidays for country: $country\n";
             }
 
-            my $r;
-
             #TODO add handling of state and region
-            $r = $dh->is_holiday(
+            my $r = $dh->is_holiday(
                 year  => $params{'year'},
                 month => $params{'month'},
                 day   => $params{'day'},
             );
 
+            if ($precedent_calendar eq $country) {
+                $self->{precedent_calendar} = $dh;
+            }
+
             # handling precedent calendar
             if ($precedent_calendar and
                 $precedent_calendar ne $country) {
 
-                # our precedent calendar dictates nullification
-                if (defined $result->{$precedent_calendar} 
-                    and $result->{$precedent_calendar} eq '') {
-                    $r = '';
-
-                # our precedent calendar dictates overwrite
-                } elsif (defined $result->{$precedent_calendar}) {
+                #TODO add handling of state and region
+                my $holiday = $self->{precedent_calendar}->is_holiday(
+                    year  => $params{'year'},
+                    month => $params{'month'},
+                    day   => $params{'day'},
+                );
                 
-                    $r = $result->{$precedent_calendar};
+                # our precedent calendar dictates overwrite or nullification                
+                if (defined $holiday) {
+                    $r = $holiday;
                 }
             }
 
-            $result->{$country} = $r;
+            if (defined $r) {
+                $result->{$country} = $r;
+            }
         }
         catch ($error) {
             warn $error;

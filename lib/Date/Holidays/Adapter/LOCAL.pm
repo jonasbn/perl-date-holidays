@@ -26,28 +26,32 @@ sub holidays {
         $local_holidays = from_json($json);
     }
 
-    my $tmp_holidays;
+    my $filtered_holidays = {};
 
-    foreach my $key (keys %{$local_holidays}) {
+    if ($params{date} and $params{month} and $params{year}) {
 
-        if ($key =~ m/^(\d{4})(\d{2})(\d{2})$/
-                and $1 == $params{year}
-                and $2 == $params{month}
-                and $3 == $params{day}) {
+        foreach my $key (keys %{$local_holidays}) {
 
-            warn "We have a year only calendar\n";
-            $tmp_holidays->{$key} = $local_holidays->{$key};
+            if ($key =~ m/^(\d{4})(\d{2})(\d{2})$/
+                    and $1 == $params{year}
+                    and $2 == $params{month}
+                    and $3 == $params{day}) {
 
-        } elsif ($key =~ m/^(\d{2})(\d{2})$/
-                and $1 == $params{month}
-                and $2 == $params{day}) {
+                $filtered_holidays->{$key} = $local_holidays->{$key};
 
-            warn "We have a every year calendar\n";
-            $tmp_holidays->{$key} = $local_holidays->{$key};
+            } elsif ($key =~ m/^(\d{2})(\d{2})$/
+                    and $1 == $params{month}
+                    and $2 == $params{day}) {
+
+                $filtered_holidays->{$key} = $local_holidays->{$key};
+            }
         }
-    }
 
-    return $tmp_holidays;
+        return $filtered_holidays;
+
+    } else {
+        return $local_holidays;
+    }
 }
 
 sub is_holiday {
@@ -56,12 +60,16 @@ sub is_holiday {
     my $holidays = $self->holidays(%params);
 
     my $key;
+
+    # First we check if a year is specified
     if ($params{year}) {
         $key = $params{year}.$params{month}.$params{day};
 
         if (defined $holidays->{$key}) {
             return $holidays->{$key};
         }
+
+    # Then we check if just month and day is specified
     } else {
 
         $key = $params{month}.$params{day};
@@ -71,8 +79,7 @@ sub is_holiday {
         }
     }
 
-    #REVIEW should this not be an empty string?
-
+    # no holiday defined
     return undef;
 }
 
