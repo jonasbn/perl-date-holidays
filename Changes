@@ -1,5 +1,15 @@
 Changes file for Date-Holidays
 
+0.22 2014-09-15 bug fix release update not required
+
+- Adressing issue #7
+
+  https://github.com/jonasbn/Date-Holidays/issues/7
+
+  This is bug in the tests suite generating reports on failures from
+  CPAN testsers.
+
+
 0.21 2014.08.30 bug fix/feature release, update recommended
 
 - Added adapter for:

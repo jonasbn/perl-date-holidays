@@ -88,7 +88,7 @@ SKIP: {
         'Checking for Austrian first day of year' );
 
     ok(! Date::Holidays::AT->can('is_holiday'));
-    can_ok('Date::Holidays::ES', qw(holidays));
+    can_ok('Date::Holidays::AT', qw(holidays));
 }
 
 SKIP: {
