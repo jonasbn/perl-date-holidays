@@ -1,8 +1,0 @@
-
-severity = 5
-verbose = 8
-
-#------------------------------------------------------------------------------
-
-[-Subroutines::ProhibitExplicitReturnUndef]
-
