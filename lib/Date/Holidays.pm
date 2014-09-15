@@ -12,7 +12,7 @@ use Scalar::Util qw(blessed);
 
 use base 'Date::Holidays::Adapter';
 
-$VERSION = '0.21';
+$VERSION = '1.00';
 
 sub new {
     my ( $class, %params ) = @_;
@@ -264,7 +264,7 @@ Date::Holidays - Date::Holidays::* adapter for all your holiday needs
 
 =head1 VERSION
 
-This POD describes version 0.21 of Date::Holidays
+This POD describes version 1.00 of Date::Holidays
 
 =head1 SYNOPSIS
 
