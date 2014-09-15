@@ -13,11 +13,7 @@ sub holidays {
     my ($self, %params) = @_;
     
     my $sub = $self->{_adaptee}->can('holidays');
-    
-    if (not $params{'regions'}) {
-        $params{'regions'} = [qw(EAW SCT NIR)];
-    }
-    
+        
     if ($sub) {
         return &{$sub}(year => $params{'year'}, regions => $params{'regions'});
     } else {
@@ -27,15 +23,8 @@ sub holidays {
 
 sub is_holiday {
     my ($self, %params) = @_;
-
-    use Data::Dumper;
-    print STDERR Dumper \%params;
     
     my $sub = $self->{_adaptee}->can('is_holiday');
-
-    if (not $params{'regions'}) {
-        $params{'regions'} = [qw(EAW SCT NIR)];
-    }
     
     my $holiday;
     
