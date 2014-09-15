@@ -18,7 +18,7 @@ use Date::Holidays::Exception::UnsupportedMethod;
 
 use base 'Date::Holidays::Adapter';
 
-$VERSION = '0.21';
+$VERSION = '0.22';
 
 sub new {
     my ( $class, %params ) = @_;
@@ -295,7 +295,7 @@ Date::Holidays - a Date::Holidays::* OOP Adapter aggregator
 
 =head1 VERSION
 
-This POD describes version 0.21 of Date::Holidays
+This POD describes version 0.22 of Date::Holidays
 
 =head1 SYNOPSIS
 

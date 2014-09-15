@@ -8,7 +8,7 @@ use Error qw(:try);
 use base 'Date::Holidays::Adapter';
 use Date::Holidays::Exception::UnsupportedMethod;
 
-$VERSION = '0.21';
+$VERSION = '0.22';
 
 sub holidays {
     throw Date::Holidays::Exception::UnsupportedMethod('holidays');
