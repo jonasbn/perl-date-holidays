@@ -55,7 +55,7 @@ sub _load : Test(1) {
 sub is_holiday_dt : Test(3) {
 	SKIP: {
 	    eval { require Date::Holidays::DK };
-	    skip "Date::Holidays::DK not installed", 19 if $@;
+	    skip "Date::Holidays::DK not installed", 3 if $@;
 
 	    ok( my $dh = Date::Holidays->new( countrycode => 'dk' ) );
 
@@ -78,10 +78,10 @@ sub is_holiday_dt : Test(3) {
 	}
 }
 
-sub holidays_dt : Test(17) {
+sub holidays_dt : Test(5) {
 	SKIP: {
 	    eval { require Date::Holidays::DK };
-	    skip "Date::Holidays::DK not installed", 19 if $@;
+	    skip "Date::Holidays::DK not installed", 5 if $@;
 
 	    ok( my $dh = Date::Holidays->new( countrycode => 'dk' ) );
 
