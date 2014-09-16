@@ -1,8 +1,24 @@
 Changes file for Date-Holidays
 
+1.00 2014-09-21 Major release, update recommended
+
+- You can now overwrite calendars with a local file, see issue
+  #6 
+ 
+  https://github.com/jonasbn/Date-Holidays/issues/6
+
+- Use of Error has been removed
+
+- Use of UNIVERSAL's can had been changed to more contemporary 
+  pattern
+
+- Adapter strategy has also been changed so adapters have precedence
+  over adapted implementations
+
+
 0.22 2014-09-15 bug fix release update not required
  
-- Adressing issue #7
+- Addressing issue #7
  
   https://github.com/jonasbn/Date-Holidays/issues/7
  
