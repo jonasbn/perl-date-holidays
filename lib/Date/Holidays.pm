@@ -266,25 +266,43 @@ Date::Holidays - Date::Holidays::* adapter for all your holiday needs
 
 This POD describes version 1.00 of Date::Holidays
 
+=head1 FEATURES
+
+=over
+
+=item * Exposes a uniform interface towards local holidays modules in the Date::Holidays::* namespace
+
+=item * Inquire whether a certain date is a holiday in a specific country or a set of countries
+
+=item * Inquire for a holidays for a given year for a specific country or a set of countries
+
+=item * Overwrite national holidays with your own settings 
+
+=back
+
 =head1 SYNOPSIS
 
     use Date::Holidays;
 
+    # Initialize a national holidays using the ISO 3361 country code
     my $dh = Date::Holidays->new(
         countrycode => 'dk'
     );
 
-    $holidayname = $dh->is_holiday(
+    # Inquire and get a local name for a holiday if it is a national holiday
+    my $holidayname = $dh->is_holiday(
         year  => 2004,
         month => 12,
         day   => 25
     );
 
-    $hashref = $dh->holidays(
+    # Inquire and get a set of local namenames for national holiday in a given country
+    my $hashref = $dh->holidays(
         year => 2004
     );
 
-
+    # Inquire and get local names for a set of countries, where the specific date is a
+    # national holiday
     $holidays_hashref = Date::Holidays->is_holiday(
         year      => 2004,
         month     => 12,
@@ -296,15 +314,9 @@ This POD describes version 1.00 of Date::Holidays
         print $holidays_hashref->{$country}."\n";
     }
 
-
-    $holidays_hashref = Date::Holidays->is_holiday(
-        year      => 2004,
-        month     => 12,
-        day       => 25,
-    );
-
-
-    #Example of a module with additional parameters
+    # Example of a module with additional parameters
+    # Australia is divided into states with local holidays
+    # using ISO-3166-2 codes
     my $dh = Date::Holidays->new(
         countrycode => 'au'
     );
@@ -321,7 +333,9 @@ This POD describes version 1.00 of Date::Holidays
         state => 'TAS',
     );
 
-    #Another example of a module with additional parameters
+    # Another example of a module with additional parameters
+    # Great Britain is divided into regions with local holidays
+    # using ISO-3166-2 codes
     my $dh = Date::Holidays->new(
         countrycode => 'gb'
     );
@@ -347,7 +361,7 @@ modules deliver methods and information on national calendars.
 The module seem to more or less follow a defacto standard (see: also the generic
 adapter L<Date::Holidays::Adapter>), but the adapters are implemented to uniform
 this and Date::Holidays exposes a more readable API and at the same time it
-provides an OOP interface, to these modules, which primarily holds a procuderal
+provides an OOP interface, to these modules, which primarily holds a produceral
 API.
 
 As described below it is recommended that a certain API is implemented (SEE:
@@ -359,6 +373,22 @@ If you are an author who wants to comply to the suggested, either
 look at some of the other modules in the Date::Holidays::* namespace to get an
 idea of the de facto standard or have a look at L<Date::Holidays::Abstract> and
 L<Date::Holidays::Super> - or write me.
+
+=head2 DEFINING YOUR OWN CALENDAR
+
+As mentioned in the FEATURES section it is possible to create your own local calendar.
+
+This can be done using a L<JSON> file with you local definitions, like so:
+
+    {
+        "1501" : "jonasbn's birthday"
+    }
+
+This also mean you can overwrite your national calendar:
+
+    {
+        "1225" : ""
+    }
 
 =head1 SUBROUTINES/METHODS
 
