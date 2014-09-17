@@ -45,8 +45,6 @@ Date-Holidays-[\d\.\_]+.tar.gz
 # Avoid some of the project files
 \.releaserc
 drafts
-t/kwalitee.t
-t/critic.t
 ^docs
 ^Date-Holidays.kpf$
 ^protos
