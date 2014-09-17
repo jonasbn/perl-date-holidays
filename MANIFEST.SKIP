@@ -49,7 +49,7 @@ drafts
 ^Date-Holidays.kpf$
 ^protos
 ^bin
-^scripts^MYMETA\.yml$
+^scripts
 ^MYMETA\.json$
 ^MYMETA\.yml$
 
