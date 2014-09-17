@@ -276,7 +276,7 @@ This POD describes version 1.00 of Date::Holidays
 
 =item * Inquire for a holidays for a given year for a specific country or a set of countries
 
-=item * Overwrite national holidays with your own settings 
+=item * Overwrite/rename/suppress national holidays with your own calendar 
 
 =back
 
@@ -378,7 +378,7 @@ L<Date::Holidays::Super> - or write me.
 
 As mentioned in the FEATURES section it is possible to create your own local calendar.
 
-This can be done using a L<JSON> file with you local definitions, like so:
+This can be done using a L<JSON> file with your local definitions:
 
     {
         "1501" : "jonasbn's birthday"
@@ -389,6 +389,20 @@ This also mean you can overwrite your national calendar:
     {
         "1225" : ""
     }
+
+
+You can specify either month plus day for a recurring holiday. If you you want to define
+a holiday for a specific year, simply extend the date with year:
+
+    {
+        "20141225" : ""
+    }
+
+In order for the calendar to be picked up by Date::Holidays, set the environment variable:
+
+    $HOLIDAYS_FILE
+
+This should point to the JSON file.
 
 =head1 SUBROUTINES/METHODS
 
@@ -673,9 +687,11 @@ No special configuration or environment is required.
 
 =item * L<Module::Load>
 
-=item * L<Error>
-
 =item * L<Date::Holidays::Adapter>
+
+=item * L<TryCatch>
+
+=item * L<Scalar::Util>
 
 =back
 
@@ -824,10 +840,6 @@ Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 Date-Holidays and related modules are (C) by Jonas B. Nielsen, (jonasbn)
 2004-2014
 
-Date-Holidays and related modules are released under the artistic license
-
-The distribution is licensed under the Artistic License, as specified
-by the Artistic file in the standard perl distribution
-(http://www.perl.com/language/misc/Artistic.html).
+Date-Holidays and related modules are released under the Artistic License 2.0
 
 =cut

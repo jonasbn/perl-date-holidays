@@ -2,6 +2,8 @@ Changes file for Date-Holidays
 
 1.00 2014-09-21 Major release, update recommended
 
+- License upgraded from Artistic License 1.0 to Artistic License 2.0
+
 - You can now overwrite calendars with a local file, see issue
   #6 
  
