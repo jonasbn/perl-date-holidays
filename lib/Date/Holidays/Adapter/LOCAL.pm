@@ -170,6 +170,8 @@ L<Date::Holidays>.
 
 =head1 DIAGNOSTICS
 
+Please refer to DIAGNOSTICS in L<Date::Holidays>
+
 =head1 DEPENDENCIES
 
 =over

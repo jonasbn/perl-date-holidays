@@ -357,6 +357,12 @@ support the called method. (SEE: METHODS/SUBROUTINES).
 
 =item * L<Module::Load>
 
+=item * L<TryCatch>
+
+=item * L<Locale::Country>
+
+=item * L<Scalar::Util>
+
 =back
 
 =head1 INCOMPATIBILITIES

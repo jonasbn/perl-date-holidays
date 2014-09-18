@@ -260,7 +260,7 @@ __END__
 
 =head1 NAME
 
-Date::Holidays - Date::Holidays::* adapter for all your holiday needs
+Date::Holidays - Date::Holidays::* adapter and aggregator for all your holiday needs
 
 =head1 VERSION
 
@@ -270,7 +270,7 @@ This POD describes version 1.00 of Date::Holidays
 
 =over
 
-=item * Exposes a uniform interface towards local holidays modules in the Date::Holidays::* namespace
+=item * Exposes a uniform interface towards modules in the Date::Holidays::* namespace
 
 =item * Inquire whether a certain date is a holiday in a specific country or a set of countries
 
@@ -354,25 +354,28 @@ This POD describes version 1.00 of Date::Holidays
 
 =head1 DESCRIPTION
 
-Date::Holidays is an aggregator of adapters exposing a uniform API to a set of
-modules either in the Date::Holidays::* namespace of elsewhere. All of these
-modules deliver methods and information on national calendars.
+Date::Holidays is an adapters exposing a uniform API to a set of dsitributions 
+in the Date::Holidays::* namespace. All of these modules deliver methods and 
+information on national calendars, but no standardized API exist.
 
-The module seem to more or less follow a defacto standard (see: also the generic
+The distributions more or less follow a I<de> I<facto> standard (see: also the generic
 adapter L<Date::Holidays::Adapter>), but the adapters are implemented to uniform
 this and Date::Holidays exposes a more readable API and at the same time it
-provides an OOP interface, to these modules, which primarily holds a produceral
-API.
+provides an OO interface, to these diverse implementations, which primarily 
+holds a are produceral.
 
 As described below it is recommended that a certain API is implemented (SEE:
 B<holidays> and B<is_holiday> below), but taking the adapter strategy into
 consideration this does not matter, or we attempt to do what we can with what is
-provided.
+available on CPAN.
 
-If you are an author who wants to comply to the suggested, either
-look at some of the other modules in the Date::Holidays::* namespace to get an
-idea of the de facto standard or have a look at L<Date::Holidays::Abstract> and
+If you are an module author/CPAN contributor who wants to comply to the suggested, 
+either look at some of the other modules in the Date::Holidays::* namespace to get an
+idea of the I<de> I<facto> standard or have a look at L<Date::Holidays::Abstract> and
 L<Date::Holidays::Super> - or write me.
+
+In addition to the adapter feature, Date::Holidays also do aggregation, so you 
+can combine calendars and you can overwrite and redefined existing calendars.
 
 =head2 DEFINING YOUR OWN CALENDAR
 
@@ -412,12 +415,13 @@ This is the constructor. It takes the following parameters:
 
 =over
 
-=item countrycode (MANDATORY, see below), two letter unique code representing a
+=item countrycode (MANDATORY, see below), unique two letter code representing a
 country name.  Please refer to ISO3166 (or L<Locale::Country>)
 
 =item nocheck (optional), if set to true the countrycode specified will not be
-validated against ISO 3166, for existance, so you can build fake holidays for
-fake countries, I currently use this for test.
+validated against a list of known country codes for existance, so you can build 
+fake holidays for fake countries, I currently use this for test. This parameter
+might disappear in the future.
 
 =back
 
@@ -502,7 +506,7 @@ is a hashref with the country codes as keys and the values as the result.
 
 =over
 
-=item undef if the country has no module or the data could not be obtained
+=item C<undef> if the country has no module or the data could not be obtained
 
 =item a name of the holiday if a holiday is present
 
@@ -636,44 +640,25 @@ L<Date::Holidays::Adapter>.
 
 =over
 
-=item * L<Date::Holidays::Exception::AdapterLoad>
+=item * No country code specified
 
-This exception is thrown when L<Date::Holidays::Adapter> attempts to load an
-actual adapter implementation. This exception is recoverable to the extend
-that is caught and handled internally.
+No country code has been specified.
 
-When caught the SUPER adapter is attempted loaded, L<Date::Holidays::Adapter>
-if this however fails L<Date::Holidays::Exception::SuperAdapterLoad> it thrown
-see below.
+=item * Unable to initialize Date::Holidays for country: <countrycode>
 
-=item * L<Date::Holidays::Exception::SuperAdapterLoad>
-
-This exception is thrown when L<Date::Holidays> attempts to load the
-SUPER adapter L<Date::Holidays::Adapter>, if this fail, we are out of luck and
-we throw the L<Date::Holidays::Exception::AdapterInitialization> exception.
-
-=item * L<Date::Holidays::Exception::AdapterInitialization>
-
-This exception is thrown when in was not possible to load either a
-implementation of a given adapter, or the SUPER adapter
-L<Date::Holidays::Adapter>.
-
-=item * L<Date::Holidays::Exception::NoCountrySpecified>
-
-The exception is thrown if a country code is provided, which is not listed
-in L<Locale::Country>, which lists ISO 3166 codes, which is the unique 2
-letter strings assigned to each country in the world.
-
-=item * 'Unable to locate module for <country>' this method is thrown from
-the B<_check_countries> method, it bails out if it cannot find and load the
-actual implementation of a module with the name Date::Holidays::<country> for
-the specified country. This however is a mere warning.
+This message is emitted if a given country code cannot be loaded.
 
 =back
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
-No special configuration or environment is required.
+As mentioned in the section on defining your own calendar. You have to 
+set the environment variable:
+
+    $HOLIDAYS_FILE
+
+This environment variable should point to a JSON file containing holiday definitions
+to be used by L<Date::Holidays::Adapter::Local>.
 
 =head1 DEPENDENCIES
 
@@ -709,10 +694,6 @@ for L<Date::Holidays::AU> for documentation on this.
 L<Date::Holidays::DE> and L<Date::Holidays::UK> does not implement the
 B<holidays> methods
 
-The actual code for United Kingdom in ISO 3166 is 'GB' (SEE L<Locale::Country>),
-but the module is called L<Date::Holidays::UK> and so it the adapter class
-L<Date::Holidays::Adapter::GB> in this distribution to avoid confusion or?
-
 The adaptee module for L<Date::Holidays::Adapter> is named:
 L<Date::Japanese::Holiday>, but the adapter class is following the general
 adapter naming of Date::Holidays::Adapter::<countrycode>.
@@ -734,16 +715,29 @@ or by sending mail to
 
 =head1 TEST COVERAGE
 
-Test coverage in version 0.06
+Test coverage in version 1.00
 
     ---------------------------- ------ ------ ------ ------ ------ ------ ------
     File                           stmt   bran   cond    sub    pod   time  total
     ---------------------------- ------ ------ ------ ------ ------ ------ ------
-    blib/lib/Date/Holidays.pm      82.1   68.0   66.7  100.0  100.0  100.0   79.6
-    Total                          82.1   68.0   66.7  100.0  100.0  100.0   79.6
+    lib/Date/Holidays.pm           95.9   77.5   60.0  100.0  100.0   87.0   90.9
+    lib/Date/Holidays/Adapter.pm   84.2   64.7   44.4  100.0  100.0   12.0   79.2
+    ...te/Holidays/Adapter/AU.pm   93.1   62.5    n/a  100.0  100.0    0.0   89.1
+    ...te/Holidays/Adapter/BR.pm   72.7   25.0    n/a   83.3  100.0    0.0   70.5
+    ...te/Holidays/Adapter/CN.pm   70.8   25.0    n/a   83.3  100.0    0.0   69.4
+    ...te/Holidays/Adapter/DE.pm  100.0  100.0    n/a  100.0  100.0    0.0  100.0
+    ...te/Holidays/Adapter/DK.pm   91.6   50.0    n/a  100.0  100.0    0.0   88.8
+    ...te/Holidays/Adapter/ES.pm   72.7   25.0    n/a   83.3  100.0    0.0   70.5
+    ...te/Holidays/Adapter/FR.pm   90.9   50.0    n/a   85.7  100.0    0.0   87.8
+    ...te/Holidays/Adapter/GB.pm   92.3   50.0    n/a  100.0  100.0    0.0   89.4
+    ...te/Holidays/Adapter/JP.pm   73.5   37.5    n/a   77.7  100.0    0.0   69.8
+    ...te/Holidays/Adapter/KR.pm   86.3   50.0    n/a   85.7  100.0    0.0   84.8
+    ...Holidays/Adapter/LOCAL.pm   86.9   50.0   12.5  100.0  100.0    0.3   64.5
+    ...te/Holidays/Adapter/NO.pm   70.8   25.0    n/a   83.3  100.0    0.0   69.4
+    ...te/Holidays/Adapter/PL.pm   90.9   50.0    n/a   85.7  100.0    0.0   87.8
+    ...te/Holidays/Adapter/PT.pm   90.9   50.0    n/a  100.0  100.0    0.0   88.2
+    Total                          87.2   59.2   33.3   93.1  100.0  100.0   81.7
     ---------------------------- ------ ------ ------ ------ ------ ------ ------
-
-I am working on a better coverage in future releases
 
 =head1 SEE ALSO
 
