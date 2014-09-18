@@ -77,8 +77,6 @@ concatenated.
 
 Please refer to DIAGNOSTICS in L<Date::Holidays>
 
-=back
-
 =head1 DEPENDENCIES
 
 =over
