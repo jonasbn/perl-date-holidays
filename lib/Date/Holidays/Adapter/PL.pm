@@ -84,9 +84,7 @@ Please refer to INCOMPATIBILITIES in L<Date::Holidays>
 
 =head1 BUGS AND LIMITATIONS
 
-The adapter does not implement the B<is_pt_holiday> method. The pattern used is
-an object adapter pattern and inheritance is therefor not used, it is my hope
-that I can make this work with some Perl magic.
+The adapter does not implement the B<is_holiday> or B<holidays> methods.
 
 =head1 BUG REPORTING
 
