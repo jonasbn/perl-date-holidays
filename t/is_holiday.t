@@ -63,6 +63,16 @@ SKIP: {
 }
 
 SKIP: {
+    eval { load Date::Holidays::BR };
+    skip "Date::Holidays::BR not installed", 2 if $@;
+
+    ok( $holidays_hashref->{'br'},
+        'Checking for Brazillian first day of year' );
+
+    can_ok('Date::Holidays::BR', qw(holidays is_holiday));
+}
+
+SKIP: {
     eval { load Date::Holidays::AU };
     skip "Date::Holidays::AU not installed", 2 if $@;
 
@@ -81,6 +91,17 @@ SKIP: {
 
     ok(! Date::Holidays::AT->can('is_holiday'));
     can_ok('Date::Holidays::AT', qw(holidays));
+}
+
+SKIP: {
+    eval { load Date::Holidays::PL };
+    skip "Date::Holidays::PL not installed", 3 if $@;
+
+    ok( $holidays_hashref->{'pl'},
+        'Checking for Polish first day of year' );
+
+    ok(Date::Holidays::PL->can('is_holiday'));
+    ok(Date::Holidays::PL->can('holidays'));
 }
 
 SKIP: {
@@ -119,6 +140,16 @@ SKIP: {
 
     ok(! Date::Holidays::FR->can('holidays'));
     ok(! Date::Holidays::FR->can('is_holiday'));
+}
+
+SKIP: {
+    eval { load Date::Holidays::KR };
+    skip "Date::Holidays::KR not installed", 3 if $@;
+
+    ok(! $holidays_hashref->{'kr'}, 'Checking for Korean holiday' );
+
+    ok(Date::Holidays::KR->can('holidays'));
+    ok(Date::Holidays::KR->can('is_holiday'));
 }
 
 SKIP: {
