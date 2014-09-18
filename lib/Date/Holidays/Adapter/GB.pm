@@ -3,7 +3,6 @@ package Date::Holidays::Adapter::GB;
 use strict;
 use warnings;
 use vars qw($VERSION);
-use Error qw(:try);
 
 use base 'Date::Holidays::Adapter';
 

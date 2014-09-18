@@ -355,8 +355,6 @@ support the called method. (SEE: METHODS/SUBROUTINES).
 
 =item * L<Carp>
 
-=item * L<Error>
-
 =item * L<Module::Load>
 
 =back

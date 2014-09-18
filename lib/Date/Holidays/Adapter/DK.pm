@@ -112,16 +112,6 @@ support the called method. (SEE: METHODS/SUBROUTINES).
 
 =item * L<Date::Holidays::Adapter>
 
-=item * L<Date::Holidays::Exception::UnsupportedMethod>
-
-=item * L<Date::Holidays::Exception::InvalidCountryCode>
-
-=item * L<Date::Holidays::Exception::NoCountrySpecified>
-
-=item * L<Date::Holidays::Exception::UnsupportedMethod>
-
-=item * L<Error>
-
 =back
 
 =head1 INCOMPATIBILITIES
