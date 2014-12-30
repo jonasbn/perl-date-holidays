@@ -461,6 +461,7 @@ Test coverage in version 1.00
 - [Date::Holidays::Super](https://metacpan.org/pod/Date::Holidays::Super)
 - [Date::Holidays::AT](https://metacpan.org/pod/Date::Holidays::AT)
 - [Date::Holidays::CN](https://metacpan.org/pod/Date::Holidays::CN)
+- [Date::Holidays::RU](https://metacpan.org/pod/Date::Holidays::RU)
 
 # ACKNOWLEDGEMENTS
 

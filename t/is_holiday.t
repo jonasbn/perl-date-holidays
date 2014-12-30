@@ -178,4 +178,22 @@ SKIP: {
     ok( keys %{$holidays_hashref_eaw} != keys %{$holidays_hashref_sct});
 }
 
+
+SKIP: {
+    eval { load Date::Holidays::RU };
+    skip "Date::Holidays::RU not installed", 3 if $@;
+
+    my $holidays_hashref = Date::Holidays->is_holiday(
+        year  => 2015,
+        month => 1,
+        day   => 7,
+        countries => [ 'ru' ],
+    );
+
+    ok( $holidays_hashref->{ru}, 'Checking for Russian christmas' );
+
+    ok( Date::Holidays::RU->can('holidays') );
+    ok( Date::Holidays::RU->can('is_holiday') );
+}
+
 done_testing();

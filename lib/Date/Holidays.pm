@@ -92,7 +92,6 @@ sub is_holiday {
     if ( not $params{'countries'} ) {
         if (blessed $self) {
             $r = $self->{'_inner_object'}->is_holiday(%params);
-
         } else {
             my @countries = all_country_codes(); # From Locale::Country
             @countries = sort @countries;
@@ -796,6 +795,8 @@ Test coverage in version 1.00
 =item * L<Date::Holidays::AT>
 
 =item * L<Date::Holidays::CN>
+
+=item * L<Date::Holidays::RU>
 
 =back
 
