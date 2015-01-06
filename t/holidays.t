@@ -80,4 +80,15 @@ SKIP: {
         'Testing holidays with argument for Date::Holidays::GB' );
 }
 
+SKIP: {
+    eval { require Date::Holidays::RU };
+    skip "Date::Holidays::RU not installed", 2 if $@;
+
+    ok( $dh = Date::Holidays->new( countrycode => 'ru' ),
+        'Testing Date::Holidays::RU' );
+
+    ok( $dh->holidays( year => 2014 ),
+        'Testing holidays with argument for Date::Holidays::RU' );
+}
+
 done_testing();
