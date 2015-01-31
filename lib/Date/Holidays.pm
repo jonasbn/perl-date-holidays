@@ -12,7 +12,7 @@ use Scalar::Util qw(blessed);
 
 use base 'Date::Holidays::Adapter';
 
-$VERSION = '1.00';
+$VERSION = '1.01';
 
 sub new {
     my ( $class, %params ) = @_;
@@ -804,6 +804,10 @@ Test coverage in version 1.00
 
 =over
 
+=item * Alexander Nalobin, patch for using of Date::Holidays::RU, 1.01
+
+=item * Gabor Szabo, patch assisting META data generation
+
 =item * Florian Merges for feedback and pointing out a bug in Date::Holidays,
 author of Date::Holidays::ES
 
@@ -833,7 +837,7 @@ Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 =head1 LICENSE AND COPYRIGHT
 
 Date-Holidays and related modules are (C) by Jonas B. Nielsen, (jonasbn)
-2004-2014
+2004-2015
 
 Date-Holidays and related modules are released under the Artistic License 2.0
 

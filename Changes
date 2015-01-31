@@ -1,5 +1,11 @@
 Changes file for Date-Holidays
 
+1.01 2015-01-31 Feature release, update not required
+
+- Added adapter for:
+    Date::Holidays::RU via patch from Alexander Nalobin
+
+
 1.00 2014-09-18 Major release, update recommended
 
 - License upgraded from Artistic License 1.0 to Artistic License 2.0
