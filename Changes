@@ -1,8 +1,13 @@
 Changes file for Date-Holidays
 
-1.02 2015-01-31 Maintenance release, update not required
+1.02 2015-08-03 Maintenance release, update not required
 
 - Aligned version numbers in Perl components in lib/
+
+- Added MetaProvides to Dist::Zilla build, this should assist in addressing 
+  the issue listed on CPANTS
+
+  Ref: http://cpants.cpanauthors.org/dist/Date-Holidays-1.01
 
 
 1.01 2015-01-31 Feature release, update not required
