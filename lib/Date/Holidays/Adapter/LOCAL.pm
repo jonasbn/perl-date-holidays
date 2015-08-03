@@ -5,6 +5,9 @@ use warnings;
 use File::Slurp qw(slurp);
 use JSON; #from_json
 use Env qw($HOLIDAYS_FILE);
+use vars qw($VERSION);
+
+$VERSION = '1.02';
 
 sub new {
     my $class = shift;
