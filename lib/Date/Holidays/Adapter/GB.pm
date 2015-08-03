@@ -6,7 +6,7 @@ use vars qw($VERSION);
 
 use base 'Date::Holidays::Adapter';
 
-$VERSION = '1.00';
+$VERSION = '1.02';
 
 sub holidays {
     my ($self, %params) = @_;
@@ -46,7 +46,7 @@ Date::Holidays::Adapter::GB - an adapter class for Date::Holidays::GB
 
 =head1 VERSION
 
-This POD describes version 1.00 of Date::Holidays::Adapter::GB
+This POD describes version 1.02 of Date::Holidays::Adapter::GB
 
 =head1 DESCRIPTION
 

@@ -1,5 +1,10 @@
 Changes file for Date-Holidays
 
+1.02 2015-01-31 Maintenance release, update not required
+
+- Aligned version numbers in Perl components in lib/
+
+
 1.01 2015-01-31 Feature release, update not required
 
 - Added adapter for:

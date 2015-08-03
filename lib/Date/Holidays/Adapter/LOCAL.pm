@@ -98,7 +98,7 @@ Date::Holidays::Adapter::LOCAL - a specialized adapter for local calendars
 
 =head1 VERSION
 
-This POD describes version 1.00 of Date::Holidays::Adapter::LOCAL
+This POD describes version 1.02 of Date::Holidays::Adapter::LOCAL
 
 =head1 SYNOPSIS
 

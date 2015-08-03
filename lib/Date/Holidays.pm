@@ -12,7 +12,7 @@ use Scalar::Util qw(blessed);
 
 use base 'Date::Holidays::Adapter';
 
-$VERSION = '1.01';
+$VERSION = '1.02';
 
 sub new {
     my ( $class, %params ) = @_;
@@ -263,7 +263,7 @@ Date::Holidays - Date::Holidays::* adapter and aggregator for all your holiday n
 
 =head1 VERSION
 
-This POD describes version 1.00 of Date::Holidays
+This POD describes version 1.02 of Date::Holidays
 
 =head1 FEATURES
 
@@ -714,7 +714,7 @@ or by sending mail to
 
 =head1 TEST COVERAGE
 
-Test coverage in version 1.00
+Test coverage in version 1.02
 
     ---------------------------- ------ ------ ------ ------ ------ ------ ------
     File                           stmt   bran   cond    sub    pod   time  total
@@ -804,7 +804,7 @@ Test coverage in version 1.00
 
 =over
 
-=item * Alexander Nalobin, patch for using of Date::Holidays::RU, 1.01
+=item * Alexander Nalobin, patch for using of Date::Holidays::RU, 1.02
 
 =item * Gabor Szabo, patch assisting META data generation
 
