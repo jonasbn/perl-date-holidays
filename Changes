@@ -4,6 +4,8 @@ Changes file for Date-Holidays
 
 - Aligned version numbers in Perl components in lib/
 
+- Added missing version in Date::Holidays::Adapter::LOCAL
+
 - Added MetaProvides to Dist::Zilla build, this should assist in addressing 
   the issue listed on CPANTS
 
