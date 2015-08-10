@@ -181,22 +181,6 @@ sub _check_countries {
             if ($precedent_calendar and
                 $precedent_calendar ne $country) {
 
-                my %prepared_parameters = (
-                    year  => $params{'year'},
-                    month => $params{'month'},
-                    day   => $params{'day'},                
-                );
-
-                # did we receive additional regions parameter?
-                if ($params{regions}) {
-                    $prepared_parameters{regions} = $params{regions};
-                }
-
-                # did we receive special state parameter?
-                if ($params{state}) {
-                    $prepared_parameters{state} = $params{state};
-                }
-
                 my $holiday = $self->{precedent_calendar}->is_holiday(
                     \%prepared_parameters
                 );
