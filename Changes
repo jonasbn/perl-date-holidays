@@ -35,7 +35,7 @@ Changes file for Date-Holidays
   over adapted implementations
 
 
-0.22 2014-09-15 bug fix release update not required
+0.22 2014-09-15 bug fix release, update not required
  
 - Addressing issue #7
  
@@ -76,7 +76,7 @@ Changes file for Date-Holidays
 - Introducing use of Scalar::Util
 
 
-0.19 2014.08.27 bug fix release, update not required (see below)
+0.19 2014.08.27 bug fix release, update not required
 
 - This release addressed reports on failing tests for perl 5.21
   The use in this distribution of UNIVERSAL is now deprecated,
