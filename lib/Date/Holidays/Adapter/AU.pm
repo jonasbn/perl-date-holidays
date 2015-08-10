@@ -17,7 +17,7 @@ sub holidays {
     my $state = $params{'state'} ? $params{'state'} : DEFAULT_STATE;
 
     if ($sub) {
-        return &{$sub}(year => $params{'year'}, state => $state, %params);
+        return &{$sub}(year => $params{'year'}, state => $state);
     } else {
         return;
     }
@@ -30,7 +30,7 @@ sub is_holiday {
     my $state = $params{'state'} ? $params{'state'} : DEFAULT_STATE;
 
     if ($sub) {
-        return &{$sub}($params{'year'}, $params{'month'}, $params{'day'},  $state, \%params);
+        return &{$sub}($params{'year'}, $params{'month'}, $params{'day'},  $state, {});
     } else {
         return;
     }

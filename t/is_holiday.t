@@ -76,10 +76,19 @@ SKIP: {
     eval { load Date::Holidays::AU };
     skip "Date::Holidays::AU not installed", 2 if $@;
 
-    ok( !$holidays_hashref->{'au'},
-        'Checking for Australian first day of year' );
+    ok( $holidays_hashref->{'au'},
+        'Checking for Australian christmas' );
 
     can_ok('Date::Holidays::AU', qw(holidays is_holiday));
+
+    # ok(my $au = Date::Holidays->new(countrycode => 'au'));
+
+    # ok($au->is_holiday(
+    #     day   => 8,
+    #     month => 5,
+    #     year  => 2015,
+    #     state => 'TAS',
+    # ), 'Asserting AG fest day in Tasmania, Australia');
 }
 
 SKIP: {

@@ -171,7 +171,7 @@ sub _check_countries {
                 $prepared_parameters{state} = $params{state};
             }
 
-            my $r = $dh->is_holiday(\%prepared_parameters);
+            my $r = $dh->is_holiday(%prepared_parameters);
 
             if ($precedent_calendar eq $country) {
                 $self->{precedent_calendar} = $dh;
@@ -182,7 +182,7 @@ sub _check_countries {
                 $precedent_calendar ne $country) {
 
                 my $holiday = $self->{precedent_calendar}->is_holiday(
-                    \%prepared_parameters
+                    %prepared_parameters
                 );
 
                 # our precedent calendar dictates overwrite or nullification                
