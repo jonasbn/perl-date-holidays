@@ -7,7 +7,7 @@ use Carp;
 
 use base 'Date::Holidays::Adapter';
 
-$VERSION = '1.02';
+$VERSION = '1.03';
 
 sub holidays {
     croak "holidays is unimplemented for ".__PACKAGE__;
@@ -35,7 +35,7 @@ Date::Holidays::Adapter::FR - an adapter class for Date::Holidays::FR
 
 =head1 VERSION
 
-This POD describes version 1.02 of Date::Holidays::Adapter::FR
+This POD describes version 1.03 of Date::Holidays::Adapter::FR
 
 =head1 DESCRIPTION
 

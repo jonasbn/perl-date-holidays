@@ -1,5 +1,12 @@
 Changes file for Date-Holidays
 
+1.03 2015-08-10 bug fix release, update not required
+
+- Following up on some TODOs in the code, propably in relation to: RT:101366
+
+  https://rt.cpan.org/Ticket/Display.html?id=101366 
+
+
 1.02 2015-08-03 Maintenance release, update not required
 
 - Aligned version numbers in Perl components in lib/
