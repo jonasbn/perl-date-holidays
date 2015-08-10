@@ -74,21 +74,21 @@ SKIP: {
 
 SKIP: {
     eval { load Date::Holidays::AU };
-    skip "Date::Holidays::AU not installed", 2 if $@;
+    skip "Date::Holidays::AU not installed", 4 if $@;
 
     ok( $holidays_hashref->{'au'},
         'Checking for Australian christmas' );
 
     can_ok('Date::Holidays::AU', qw(holidays is_holiday));
 
-    # ok(my $au = Date::Holidays->new(countrycode => 'au'));
+    ok(my $au = Date::Holidays->new(countrycode => 'au'));
 
-    # ok($au->is_holiday(
-    #     day   => 8,
-    #     month => 5,
-    #     year  => 2015,
-    #     state => 'TAS',
-    # ), 'Asserting AG fest day in Tasmania, Australia');
+    ok($au->is_holiday(
+        day   => 9,
+        month => 3,
+        year  => 2015,
+        state => 'TAS',
+    ), 'Asserting 8 hour day in Tasmania, Australia');
 }
 
 SKIP: {
@@ -174,7 +174,7 @@ SKIP: {
 
 SKIP: {
     eval { load Date::Holidays::GB };
-    skip "Date::Holidays::GB not installed", 5 if $@;
+    skip "Date::Holidays::GB not installed", 7 if $@;
 
     ok( $holidays_hashref->{'gb'}, 'Checking for English holiday' );
     
@@ -185,6 +185,16 @@ SKIP: {
     ok( my $holidays_hashref_eaw = Date::Holidays::GB::holidays(year => 2014, regions => ['EAW']));
 
     ok( keys %{$holidays_hashref_eaw} != keys %{$holidays_hashref_sct});
+
+    ok(my $gb = Date::Holidays->new(countrycode => 'gb'));
+
+    ok($gb->is_holiday(
+        day   => 17,
+        month => 3,
+        year  => 2015,
+        region => 'NIR',
+    ), 'Asserting St Patrick’s Day in Northern Ireland');
+
 }
 
 
