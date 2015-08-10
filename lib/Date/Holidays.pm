@@ -155,12 +155,23 @@ sub _check_countries {
                 die "Unable to initialize Date::Holidays for country: $country\n";
             }
 
-            #TODO add handling of state and region
-            my $r = $dh->is_holiday(
+            my %prepared_parameters = (
                 year  => $params{'year'},
                 month => $params{'month'},
-                day   => $params{'day'},
+                day   => $params{'day'},                
             );
+
+            # did we receive special regions parameter?
+            if ($params{regions}) {
+                $prepared_parameters{regions} = $params{regions};
+            }
+
+            # did we receive special state parameter?
+            if ($params{state}) {
+                $prepared_parameters{state} = $params{state};
+            }
+
+            my $r = $dh->is_holiday(\%prepared_parameters);
 
             if ($precedent_calendar eq $country) {
                 $self->{precedent_calendar} = $dh;
@@ -170,11 +181,24 @@ sub _check_countries {
             if ($precedent_calendar and
                 $precedent_calendar ne $country) {
 
-                #TODO add handling of state and region
-                my $holiday = $self->{precedent_calendar}->is_holiday(
+                my %prepared_parameters = (
                     year  => $params{'year'},
                     month => $params{'month'},
-                    day   => $params{'day'},
+                    day   => $params{'day'},                
+                );
+
+                # did we receive additional regions parameter?
+                if ($params{regions}) {
+                    $prepared_parameters{regions} = $params{regions};
+                }
+
+                # did we receive special state parameter?
+                if ($params{state}) {
+                    $prepared_parameters{state} = $params{state};
+                }
+
+                my $holiday = $self->{precedent_calendar}->is_holiday(
+                    \%prepared_parameters
                 );
 
                 # our precedent calendar dictates overwrite or nullification                
