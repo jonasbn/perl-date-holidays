@@ -812,7 +812,9 @@ Test coverage in version 1.02
 
 =over
 
-=item * Alexander Nalobin, patch for using of Date::Holidays::RU, 1.03
+=item * Joseph M. Orost, bug report resulting in 1.03
+
+=item * Alexander Nalobin, patch for using of Date::Holidays::RU, 1.01
 
 =item * Gabor Szabo, patch assisting META data generation
 
