@@ -1,5 +1,7 @@
+sudo: false
 language: perl
 perl:
+  - "5.20"
   - "5.18"
   - "5.16"
   - "5.14"
@@ -17,10 +19,6 @@ install:
    # Deal with all of the DZIL dependencies, quickly and quietly
 
    - cpanm --quiet --notest --skip-satisfied Dist::Zilla
-
-   # Hack to getting the latest Module::Build
-
-   - cpanm --quiet --notest Module::Build
 
    # Hack to getting the latest Test::Kwalitee
 
