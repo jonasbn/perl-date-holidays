@@ -152,7 +152,11 @@ sub _check_countries {
             my $dh = $self->new( countrycode => $country );
 
             if ( !$dh ) {
-                die "Unable to initialize Date::Holidays for country: $country\n";
+                my $countryname = code2country($country);
+                my $countrycode = uc $country;
+
+                die 'Unable to initialize Date::Holidays for country: '
+                    . "$countrycode - $countryname\n";
             }
 
             my %prepared_parameters = (
