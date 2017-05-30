@@ -215,4 +215,21 @@ SKIP: {
     ok( Date::Holidays::RU->can('is_holiday') );
 }
 
+SKIP: {
+    eval { load Date::Holidays::BY };
+    skip "Date::Holidays::BY not installed", 3 if $@;
+
+    my $holidays_hashref = Date::Holidays->is_holiday(
+        year  => 2017,
+        month => 1,
+        day   => 1,
+        countries => [ 'by' ],
+    );
+
+    ok( $holidays_hashref->{by}, 'Checking for Belarys New Year' );
+
+    ok( Date::Holidays::BY->can('holidays') );
+    ok( Date::Holidays::BY->can('is_holiday') );
+}
+
 done_testing();

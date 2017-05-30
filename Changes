@@ -1,5 +1,10 @@
 Changes file for Date-Holidays
 
+1.04 2017-05-30 Feature release, update not required
+
+- Added adapter for:
+    Date::Holidays::BY via patch from Vladimir Varlamov
+
 1.03 2015-08-10 bug fix release, update not required
 
 - Following up on some TODOs in the code, propably in relation to: RT:101366

@@ -462,6 +462,9 @@ Test coverage in version 1.00
 - [Date::Holidays::AT](https://metacpan.org/pod/Date::Holidays::AT)
 - [Date::Holidays::CN](https://metacpan.org/pod/Date::Holidays::CN)
 - [Date::Holidays::RU](https://metacpan.org/pod/Date::Holidays::RU)
+- [Date::Holidays::Adapter::RU](https://metacpan.org/pod/Date::Holidays::Adapter::RU)
+- [Date::Holidays::BY](https://metacpan.org/pod/Date::Holidays::BY)
+- [Date::Holidays::Adapter::BY](https://metacpan.org/pod/Date::Holidays::Adapter::BY)
 
 # ACKNOWLEDGEMENTS
 
@@ -484,6 +487,6 @@ Jonas B. Nielsen, (jonasbn) - `<jonasbn@cpan.org>`
 # LICENSE AND COPYRIGHT
 
 Date-Holidays and related modules are (C) by Jonas B. Nielsen, (jonasbn)
-2004-2014
+2004-2017
 
 Date-Holidays and related modules are released under the Artistic License 2.0
