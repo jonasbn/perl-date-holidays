@@ -5,11 +5,12 @@ Changes file for Date-Holidays
 - Added adapter for:
     Date::Holidays::BY via patch from Vladimir Varlamov
 
+
 1.03 2015-08-10 bug fix release, update not required
 
 - Following up on some TODOs in the code, propably in relation to: RT:101366
 
-  https://rt.cpan.org/Ticket/Display.html?id=101366 
+  https://rt.cpan.org/Ticket/Display.html?id=101366
 
 
 1.02 2015-08-03 Maintenance release, update not required
@@ -18,7 +19,7 @@ Changes file for Date-Holidays
 
 - Added missing version in Date::Holidays::Adapter::LOCAL
 
-- Added MetaProvides to Dist::Zilla build, this should assist in addressing 
+- Added MetaProvides to Dist::Zilla build, this should assist in addressing
   the issue listed on CPANTS
 
   Ref: http://cpants.cpanauthors.org/dist/Date-Holidays-1.01
@@ -34,13 +35,13 @@ Changes file for Date-Holidays
 
 - License upgraded from Artistic License 1.0 to Artistic License 2.0
 
-- You can now overwrite calendars with a local file, see issue #6 
- 
+- You can now overwrite calendars with a local file, see issue #6
+
   https://github.com/jonasbn/Date-Holidays/issues/6
 
 - Use of Error has been removed
 
-- Use of UNIVERSAL's can had been changed to more contemporary 
+- Use of UNIVERSAL's can had been changed to more contemporary
   pattern
 
 - Adapter strategy has also been changed so adapters have precedence
@@ -48,11 +49,11 @@ Changes file for Date-Holidays
 
 
 0.22 2014-09-15 bug fix release, update not required
- 
+
 - Addressing issue #7
- 
+
   https://github.com/jonasbn/Date-Holidays/issues/7
- 
+
   This is bug in the tests suite generating reports on failures from
   CPAN testers.
 
