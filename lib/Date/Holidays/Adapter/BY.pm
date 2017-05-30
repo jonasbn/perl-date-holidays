@@ -46,7 +46,7 @@ Date::Holidays::Adapter::BY - an adapter class for Date::Holidays::BY
 
 =head1 VERSION
 
-This POD describes version 1.03 of Date::Holidays::Adapter::BY
+This POD describes version 1.04 of Date::Holidays::Adapter::BY
 
 =head1 DESCRIPTION
 
