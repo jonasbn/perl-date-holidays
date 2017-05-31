@@ -1,5 +1,11 @@
 Changes file for Date-Holidays
 
+1.05 2017-05-31 Bug fix release, update not required
+
+- Addressed Github issue #10, reported by Alexandr Ciornii (CHORNY)
+  carton generated directory local/ was included in distrubution by accident
+
+
 1.04 2017-05-30 Feature release, update not required
 
 - Added adapter for:
