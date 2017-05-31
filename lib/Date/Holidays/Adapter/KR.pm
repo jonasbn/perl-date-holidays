@@ -104,7 +104,7 @@ Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 =head1 LICENSE AND COPYRIGHT
 
 L<Date::Holidays> and related modules are (C) by Jonas B. Nielsen, (jonasbn)
-2004-2014
+2004-2017
 
 Date-Holidays and related modules are released under the Artistic License 2.0
 
