@@ -7,7 +7,7 @@ use JSON; #from_json
 use Env qw($HOLIDAYS_FILE);
 use vars qw($VERSION);
 
-$VERSION = '1.04';
+$VERSION = '1.05';
 
 sub new {
     my $class = shift;
@@ -101,7 +101,7 @@ Date::Holidays::Adapter::LOCAL - a specialized adapter for local calendars
 
 =head1 VERSION
 
-This POD describes version 1.04 of Date::Holidays::Adapter::LOCAL
+This POD describes version 1.05 of Date::Holidays::Adapter::LOCAL
 
 =head1 SYNOPSIS
 
