@@ -816,6 +816,9 @@ Test coverage in version 1.02
 
 =over
 
+=item * CHORNY (Alexandr Ciornii), Github issue #10, letting me know I included local/ by accident,
+resulting in release 1.05
+
 =item * Vladimir Varlamov, PR introducing Date::Holidays::BY resulting in 1.04
 
 =item * Joseph M. Orost, bug report resulting in 1.03
