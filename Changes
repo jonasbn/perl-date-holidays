@@ -5,6 +5,8 @@ Changes file for Date-Holidays
 - Addressed Github issue #10, reported by Alexandr Ciornii (CHORNY)
   carton generated directory local/ was included in distrubution by accident
 
+  Ref: https://github.com/jonasbn/Date-Holidays/issues/10
+
 
 1.04 2017-05-30 Feature release, update not required
 
@@ -16,7 +18,7 @@ Changes file for Date-Holidays
 
 - Following up on some TODOs in the code, propably in relation to: RT:101366
 
-  https://rt.cpan.org/Ticket/Display.html?id=101366
+  Ref: https://rt.cpan.org/Ticket/Display.html?id=101366
 
 
 1.02 2015-08-03 Maintenance release, update not required
@@ -43,7 +45,7 @@ Changes file for Date-Holidays
 
 - You can now overwrite calendars with a local file, see issue #6
 
-  https://github.com/jonasbn/Date-Holidays/issues/6
+  Ref: https://github.com/jonasbn/Date-Holidays/issues/6
 
 - Use of Error has been removed
 
@@ -58,7 +60,7 @@ Changes file for Date-Holidays
 
 - Addressing issue #7
 
-  https://github.com/jonasbn/Date-Holidays/issues/7
+  Ref: https://github.com/jonasbn/Date-Holidays/issues/7
 
   This is bug in the tests suite generating reports on failures from
   CPAN testers.
