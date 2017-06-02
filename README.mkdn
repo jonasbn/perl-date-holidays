@@ -8,7 +8,7 @@ Date::Holidays - Date::Holidays::\* adapter and aggregator for all your holiday 
 
 # VERSION
 
-This POD describes version 1.04 of Date::Holidays
+This POD describes version 1.05 of Date::Holidays
 
 # FEATURES
 
@@ -465,6 +465,8 @@ Test coverage in version 1.02
 
 # ACKNOWLEDGEMENTS
 
+- CHORNY (Alexandr Ciornii), Github issue #10, letting me know I included local/ by accident,
+resulting in release 1.05
 - Vladimir Varlamov, PR introducing Date::Holidays::BY resulting in 1.04
 - Joseph M. Orost, bug report resulting in 1.03
 - Alexander Nalobin, patch for using of Date::Holidays::RU, 1.01
@@ -488,6 +490,6 @@ Jonas B. Nielsen, (jonasbn) - `<jonasbn@cpan.org>`
 # LICENSE AND COPYRIGHT
 
 Date-Holidays and related modules are (C) by Jonas B. Nielsen, (jonasbn)
-2004-2015
+2004-2017
 
 Date-Holidays and related modules are released under the Artistic License 2.0
