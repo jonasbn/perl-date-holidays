@@ -20,6 +20,11 @@ install:
 
    - cpanm --quiet --notest --skip-satisfied Dist::Zilla
 
+   # Installing helper module, enabling known / supported holiday modules
+   # for adaption / aggregation
+
+   - cpanm --quiet --notest Task-Date-Holidays
+
    # Hack to getting the latest Test::Kwalitee
 
    - cpanm --quiet --notest Test::Kwalitee
