@@ -23,7 +23,7 @@ install:
    # Installing helper module, enabling known / supported holiday modules
    # for adaption / aggregation
 
-   - cpanm --quiet --notest Task-Date-Holidays
+   - cpanm --quiet --notest Task::Date::Holidays
 
    # Hack to getting the latest Test::Kwalitee
 
