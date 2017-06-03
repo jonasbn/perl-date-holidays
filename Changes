@@ -1,5 +1,20 @@
 Changes file for Date-Holidays
 
+HEAD
+
+- Added Dist::Zilla plugins requirements causing issues to dist.ini, so these
+  are explicitly specified
+
+- Exchanged CJM´s:
+  https://metacpan.org/pod/Dist::Zilla::Plugin::VersionFromModule
+
+  For Dave Rolskys:
+  https://metacpan.org/pod/Dist::Zilla::Plugin::VersionFromMainModule
+
+  There are some deprecation notices from Dist::Zilla making tests fail
+  see XDG's PR: https://github.com/madsen/dist-zilla-plugins-cjm/pull/5
+
+
 1.05 2017-05-31 Bug fix release, update not required
 
 - Addressed Github issue #10, reported by Alexandr Ciornii (CHORNY)
