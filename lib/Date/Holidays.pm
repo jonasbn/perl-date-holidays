@@ -261,9 +261,9 @@ __END__
 
 =pod
 
-# Date::Holidays
-
 =begin markdown
+
+# Date::Holidays
 
 [![CPAN version](https://badge.fury.io/pl/Date-Holidays.svg)](http://badge.fury.io/pl/Date-Holidays)
 [![Build Status](https://travis-ci.org/jonasbn/Date-Holidays.svg?branch=master)](https://travis-ci.org/jonasbn/Date-Holidays)
