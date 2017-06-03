@@ -493,3 +493,5 @@ Date-Holidays and related modules are (C) by Jonas B. Nielsen, (jonasbn)
 2004-2017
 
 Date-Holidays and related modules are released under the Artistic License 2.0
+
+Image used on [website](https://jonasbn.github.io/Date-Holidays/) is under copyright by [Markus Spiske](https://unsplash.com/@markusspiske)
