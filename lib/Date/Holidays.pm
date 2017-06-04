@@ -267,7 +267,7 @@ __END__
 
 [![CPAN version](https://badge.fury.io/pl/Date-Holidays.svg)](http://badge.fury.io/pl/Date-Holidays)
 [![Build Status](https://travis-ci.org/jonasbn/Date-Holidays.svg?branch=master)](https://travis-ci.org/jonasbn/Date-Holidays)
-[![Coverage Status](https://coveralls.io/repos/jonasbn/Date-Holidays/badge.png?branch=master)](https://coveralls.io/r/jonasbn/Date-Holidays?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/jonasbn/Date-Holidays/badge.svg?branch=master)](https://coveralls.io/github/jonasbn/Date-Holidays?branch=master)
 
 =end markdown
 
