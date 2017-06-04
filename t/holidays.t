@@ -1,7 +1,8 @@
 
 use strict;
 use warnings;
-use Test::More;
+use Test::More; # done_testing
+use Test::Fatal qw(dies_ok);
 use Env qw($TEST_VERBOSE);
 
 my $dh;
@@ -18,7 +19,7 @@ SKIP: {
     ok( $dh = Date::Holidays->new( countrycode => 'at' ),
         'Testing Date::Holidays::AT' );
 
-    ok( $dh->holidays( year => 2017 ),
+    ok( $dh->holidays( YEAR => 2017 ),
         'Testing holidays with argument for Date::Holidays::AT' );
 }
 
@@ -105,9 +106,6 @@ SKIP: {
     ok( $dh = Date::Holidays->new( countrycode => 'es' ),
         'Testing Date::Holidays::ES' );
 
-    ok( $dh->holidays(),
-        'Testing holidays with no arguments for Date::Holidays::ES' );
-
     ok( $dh->holidays( year => 2006 ),
         'Testing holidays with argument for Date::Holidays::ES' );
 }
@@ -119,11 +117,11 @@ SKIP: {
     ok( $dh = Date::Holidays->new( countrycode => 'fr' ),
         'Testing Date::Holidays::FR' );
 
-    ok( $dh->holidays(),
-        'Testing holidays with no arguments for Date::Holidays::FR' );
+    dies_ok { $dh->holidays(); }
+        'Testing holidays with no arguments for Date::Holidays::FR';
 
-    ok( $dh->holidays( year => 2006 ),
-        'Testing holidays with argument for Date::Holidays::FR' );
+    dies_ok { $dh->holidays( year => 2017 ); }
+        'Testing holidays with argument for Date::Holidays::FR';
 }
 
 SKIP: {
@@ -147,11 +145,11 @@ SKIP: {
     ok( $dh = Date::Holidays->new( countrycode => 'kr' ),
         'Testing Date::Holidays::KR' );
 
-    ok( $dh->holidays(),
-        'Testing holidays with no arguments for Date::Holidays::KR' );
+    dies_ok { $dh->holidays(); }
+        'Testing holidays with no arguments for Date::Holidays::KR';
 
-    ok( $dh->holidays( year => 2014 ),
-        'Testing holidays with argument for Date::Holidays::KR' );
+    dies_ok { $dh->holidays( year => 2014 ) }
+        'Testing holidays with argument for Date::Holidays::KR';
 }
 
 SKIP: {
@@ -178,13 +176,16 @@ SKIP: {
 
 SKIP: {
     eval { require Date::Holidays::PL };
-    skip "Date::Holidays::PL not installed", 2 if $@;
+    skip "Date::Holidays::PL not installed", 3 if $@;
 
     ok( $dh = Date::Holidays->new( countrycode => 'pl' ),
-        'Testing Date::Holidays::PL' );
+        'Testing Date::Holidays::PL');
 
-    ok( $dh->holidays( year => 2004 ),
-        'Testing holidays for Date::Holidays::PL' );
+    dies_ok { $dh->holidays() }
+        'Testing holidays for Date::Holidays::PL';
+
+    dies_ok { $dh->holidays( year => 2004 ) }
+        'Testing holidays for Date::Holidays::PL';
 }
 
 SKIP: {
@@ -212,35 +213,48 @@ SKIP: {
 
 SKIP: {
     eval { require Date::Holidays::SK };
-    skip "Date::Holidays::SK not installed", 2 if $@;
+    skip "Date::Holidays::SK not installed", 3 if $@;
 
     ok( $dh = Date::Holidays->new( countrycode => 'sk' ),
         'Testing Date::Holidays::SK' );
+
+    ok( $dh->holidays(),
+        'Testing holidays without argument for Date::Holidays::SK' );
 
     ok( $dh->holidays( year => 2014 ),
         'Testing holidays with argument for Date::Holidays::SK' );
 }
 
-SKIP: {
-    eval { require Date::Holidays::UK };
-    skip "Date::Holidays::UK not installed", 2 if $@;
+# TODO: Get UK under control
+# SKIP: {
+#     eval { require Date::Holidays::UK };
+#     skip "Date::Holidays::UK not installed", 3 if $@;
 
-    ok( $dh = Date::Holidays->new( countrycode => 'uk' ),
-        'Testing Date::Holidays::UK' );
+#     ok( $dh = Date::Holidays->new( countrycode => 'uk' ),
+#         'Testing Date::Holidays::UK' );
 
-    ok( $dh->holidays( year => 2014 ),
-        'Testing holidays with argument for Date::Holidays::UK' );
-}
+#     use Data::Dumper;
+#     print STDERR Dumper $dh;
+
+#     dies_ok { $dh->holidays() }
+#         'Testing holidays without argument for Date::Holidays::UK';
+
+#     dies_ok { $dh->holidays( year => 2014 ) }
+#         'Testing holidays with argument for Date::Holidays::UK';
+# }
 
 SKIP: {
     eval { require Date::Japanese::Holiday };
-    skip "Date::Japanese::Holiday not installed", 2 if $@;
+    skip "Date::Japanese::Holiday not installed", 3 if $@;
 
     ok( $dh = Date::Holidays->new( countrycode => 'jp' ),
         'Testing Date::Japanese::Holiday' );
 
-    ok( $dh->holidays( year => 2014 ),
-        'Testing holidays with argument for Date::Japanese::Holiday' );
+    dies_ok { $dh->holidays() }
+        'Testing holidays without argument for Date::Japanese::Holiday';
+
+    dies_ok { $dh->holidays( year => 2014 ) }
+        'Testing holidays with argument for Date::Japanese::Holiday';
 }
 
 done_testing();

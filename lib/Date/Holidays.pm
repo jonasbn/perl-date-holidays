@@ -48,13 +48,16 @@ sub new {
             if ($adapter) {
                 $self->{'_inner_object'} = $adapter;
             } else {
+                warn 'Adapter not defined';
                 $self = undef;
             }
         } catch ($error) {
+            warn 'Unable to initialize adapter';
             $self = undef;
         }
 
     } elsif ( !$self->{'_inner_class'} ) {
+        warn 'No inner class instantiated';
         $self = undef;
     }
 

@@ -177,7 +177,7 @@ SKIP: {
     skip "Date::Holidays::GB not installed", 7 if $@;
 
     ok( $holidays_hashref->{'gb'}, 'Checking for English holiday' );
-    
+
     can_ok('Date::Holidays::GB', qw(holidays is_holiday));
 
     ok( my $holidays_hashref_sct = Date::Holidays::GB::holidays(year => 2014, regions => ['SCT']));
