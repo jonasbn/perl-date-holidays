@@ -1,6 +1,10 @@
 Changes file for Date-Holidays
 
-HEAD
+1.06 2017-05-31 Maintenance release, update not required
+
+- Added use of Test::Fatal
+
+- Added homepage metadata and changed Github URL
 
 - Added Dist::Zilla plugins requirements causing issues to dist.ini, so these
   are explicitly specified
