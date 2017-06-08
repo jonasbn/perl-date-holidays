@@ -399,15 +399,11 @@ implement the **is\_pt\_holiday** method. The pattern used is an object adapter
 pattern and inheritance is therefor not used, it is my hope that I can
 make this work with some Perl magic.
 
-# BUG REPORTING
+# ISSUE REPORTING
 
-Please report issues via CPAN RT:
+Please report any bugs or feature requests using Github
 
-    http://rt.cpan.org/NoAuth/Bugs.html?Dist=Date-Holidays
-
-or by sending mail to
-
-    bug-Date-Holidays@rt.cpan.org
+- [Github Issues](https://github.com/jonasbn/perl-date-holidays/issues)
 
 # TEST COVERAGE
 

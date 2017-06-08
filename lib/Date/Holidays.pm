@@ -720,15 +720,15 @@ implement the B<is_pt_holiday> method. The pattern used is an object adapter
 pattern and inheritance is therefor not used, it is my hope that I can
 make this work with some Perl magic.
 
-=head1 BUG REPORTING
+=head1 ISSUE REPORTING
 
-Please report issues via CPAN RT:
+Please report any bugs or feature requests using Github
 
-  http://rt.cpan.org/NoAuth/Bugs.html?Dist=Date-Holidays
+=over
 
-or by sending mail to
+=item * L<Github Issues|https://github.com/jonasbn/perl-date-holidays/issues>
 
-  bug-Date-Holidays@rt.cpan.org
+=back
 
 =head1 TEST COVERAGE
 
