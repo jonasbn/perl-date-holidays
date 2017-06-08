@@ -281,7 +281,7 @@ Date::Holidays - Date::Holidays::* adapter and aggregator for all your holiday n
 
 =head1 VERSION
 
-This POD describes version 1.06 of Date::Holidays
+The documentation in this module describes version 1.06 of Date::Holidays
 
 =head1 FEATURES
 
