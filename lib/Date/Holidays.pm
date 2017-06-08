@@ -756,13 +756,36 @@ Test coverage in version 1.02
     Total                          87.2   59.2   33.3   93.1  100.0  100.0   81.7
     ---------------------------- ------ ------ ------ ------ ------ ------ ------
 
+Without the actual holiday implementations installed/available coverage will be very low.
+
+Please see L<Task::Date::Holidays>, which is a distribution, which can help in installing
+all the wrapped (adapted and aggregated) distributions.
+
 =head1 SEE ALSO
 
 =over
 
+=item * L<Date::Holidays::AT>
+
 =item * L<Date::Holidays::AU>
 
 =item * L<Date::Holidays::Adapter::AU>
+
+=item * L<Date::Holidays::BR>
+
+=item * L<Date::Holidays::Adapter::BR>
+
+=item * L<Date::Holidays::BY>
+
+=item * L<Date::Holidays::Adapter::BY>
+
+=item * L<Date::Holidays::CA>
+
+=item * L<Date::Holidays::CA_ES>
+
+=item * L<Date::Holidays::CN>
+
+=item * L<Date::Holidays::Adapter::CN>
 
 =item * L<Date::Holidays::DE>
 
@@ -772,13 +795,21 @@ Test coverage in version 1.02
 
 =item * L<Date::Holidays::Adapter::DK>
 
-=item * L<Date::Holidays::CN>
+=item * L<Date::Holidays::ES>
 
-=item * L<Date::Holidays::Adapter::CN>
+=item * L<Date::Holidays::Adapter::ES>
 
 =item * L<Date::Holidays::FR>
 
 =item * L<Date::Holidays::Adapter::FR>
+
+=item * L<Date::Holidays::GB>
+
+=item * L<Date::Holidays::Adapter::GB>
+
+=item * L<Date::Holidays::KR>
+
+=item * L<Date::Holidays::Adapter::KR>
 
 =item * L<Date::Holidays::NO>
 
@@ -786,19 +817,25 @@ Test coverage in version 1.02
 
 =item * L<Date::Holidays::NZ>
 
-=item * L<Date::Holidays::Adapter::NZ>
+=item * L<Date::Holidays::PL>
+
+=item * L<Date::Holidays::Adapter::PL>
 
 =item * L<Date::Holidays::PT>
 
 =item * L<Date::Holidays::Adapter::PT>
 
+=item * L<Date::Holidays::RU>
+
+=item * L<Date::Holidays::Adapter::RU>
+
+=item * L<Date::Holidays::SK>
+
+=item * L<Date::Holidays::Adapter::SK>
+
 =item * L<Date::Holidays::UK>
 
-=item * L<Date::Holidays::Adapter::GB>
-
-=item * L<Date::Holidays::ES>
-
-=item * L<Date::Holidays::Adapter::ES>
+=item * L<Date::Holidays::USFederal>
 
 =item * L<Date::Japanese::Holiday>
 
@@ -809,12 +846,6 @@ Test coverage in version 1.02
 =item * L<Date::Holidays::Abstract>
 
 =item * L<Date::Holidays::Super>
-
-=item * L<Date::Holidays::AT>
-
-=item * L<Date::Holidays::CN>
-
-=item * L<Date::Holidays::RU>
 
 =back
 

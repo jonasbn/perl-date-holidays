@@ -11,7 +11,7 @@ Date::Holidays - Date::Holidays::\* adapter and aggregator for all your holiday 
 
 # VERSION
 
-This POD describes version 1.06 of Date::Holidays
+The documentation in this module describes version 1.06 of Date::Holidays
 
 # FEATURES
 
@@ -435,36 +435,54 @@ Test coverage in version 1.02
     Total                          87.2   59.2   33.3   93.1  100.0  100.0   81.7
     ---------------------------- ------ ------ ------ ------ ------ ------ ------
 
+Without the actual holiday implementations installed/available coverage will be very low.
+
+Please see [Task::Date::Holidays](https://metacpan.org/pod/Task::Date::Holidays), which is a distribution, which can help in installing
+all the wrapped (adapted and aggregated) distributions.
+
 # SEE ALSO
 
+- [Date::Holidays::AT](https://metacpan.org/pod/Date::Holidays::AT)
 - [Date::Holidays::AU](https://metacpan.org/pod/Date::Holidays::AU)
 - [Date::Holidays::Adapter::AU](https://metacpan.org/pod/Date::Holidays::Adapter::AU)
+- [Date::Holidays::BR](https://metacpan.org/pod/Date::Holidays::BR)
+- [Date::Holidays::Adapter::BR](https://metacpan.org/pod/Date::Holidays::Adapter::BR)
+- [Date::Holidays::BY](https://metacpan.org/pod/Date::Holidays::BY)
+- [Date::Holidays::Adapter::BY](https://metacpan.org/pod/Date::Holidays::Adapter::BY)
+- [Date::Holidays::CA](https://metacpan.org/pod/Date::Holidays::CA)
+- [Date::Holidays::CA\_ES](https://metacpan.org/pod/Date::Holidays::CA_ES)
+- [Date::Holidays::CN](https://metacpan.org/pod/Date::Holidays::CN)
+- [Date::Holidays::Adapter::CN](https://metacpan.org/pod/Date::Holidays::Adapter::CN)
 - [Date::Holidays::DE](https://metacpan.org/pod/Date::Holidays::DE)
 - [Date::Holidays::Adapter::DE](https://metacpan.org/pod/Date::Holidays::Adapter::DE)
 - [Date::Holidays::DK](https://metacpan.org/pod/Date::Holidays::DK)
 - [Date::Holidays::Adapter::DK](https://metacpan.org/pod/Date::Holidays::Adapter::DK)
-- [Date::Holidays::CN](https://metacpan.org/pod/Date::Holidays::CN)
-- [Date::Holidays::Adapter::CN](https://metacpan.org/pod/Date::Holidays::Adapter::CN)
+- [Date::Holidays::ES](https://metacpan.org/pod/Date::Holidays::ES)
+- [Date::Holidays::Adapter::ES](https://metacpan.org/pod/Date::Holidays::Adapter::ES)
 - [Date::Holidays::FR](https://metacpan.org/pod/Date::Holidays::FR)
 - [Date::Holidays::Adapter::FR](https://metacpan.org/pod/Date::Holidays::Adapter::FR)
+- [Date::Holidays::GB](https://metacpan.org/pod/Date::Holidays::GB)
+- [Date::Holidays::Adapter::GB](https://metacpan.org/pod/Date::Holidays::Adapter::GB)
+- [Date::Holidays::KR](https://metacpan.org/pod/Date::Holidays::KR)
+- [Date::Holidays::Adapter::KR](https://metacpan.org/pod/Date::Holidays::Adapter::KR)
 - [Date::Holidays::NO](https://metacpan.org/pod/Date::Holidays::NO)
 - [Date::Holidays::Adapter::NO](https://metacpan.org/pod/Date::Holidays::Adapter::NO)
 - [Date::Holidays::NZ](https://metacpan.org/pod/Date::Holidays::NZ)
-- [Date::Holidays::Adapter::NZ](https://metacpan.org/pod/Date::Holidays::Adapter::NZ)
+- [Date::Holidays::PL](https://metacpan.org/pod/Date::Holidays::PL)
+- [Date::Holidays::Adapter::PL](https://metacpan.org/pod/Date::Holidays::Adapter::PL)
 - [Date::Holidays::PT](https://metacpan.org/pod/Date::Holidays::PT)
 - [Date::Holidays::Adapter::PT](https://metacpan.org/pod/Date::Holidays::Adapter::PT)
+- [Date::Holidays::RU](https://metacpan.org/pod/Date::Holidays::RU)
+- [Date::Holidays::Adapter::RU](https://metacpan.org/pod/Date::Holidays::Adapter::RU)
+- [Date::Holidays::SK](https://metacpan.org/pod/Date::Holidays::SK)
+- [Date::Holidays::Adapter::SK](https://metacpan.org/pod/Date::Holidays::Adapter::SK)
 - [Date::Holidays::UK](https://metacpan.org/pod/Date::Holidays::UK)
-- [Date::Holidays::Adapter::GB](https://metacpan.org/pod/Date::Holidays::Adapter::GB)
-- [Date::Holidays::ES](https://metacpan.org/pod/Date::Holidays::ES)
-- [Date::Holidays::Adapter::ES](https://metacpan.org/pod/Date::Holidays::Adapter::ES)
+- [Date::Holidays::USFederal](https://metacpan.org/pod/Date::Holidays::USFederal)
 - [Date::Japanese::Holiday](https://metacpan.org/pod/Date::Japanese::Holiday)
 - [Date::Holidays::Adapter::JP](https://metacpan.org/pod/Date::Holidays::Adapter::JP)
 - [Date::Holidays::Adapter](https://metacpan.org/pod/Date::Holidays::Adapter)
 - [Date::Holidays::Abstract](https://metacpan.org/pod/Date::Holidays::Abstract)
 - [Date::Holidays::Super](https://metacpan.org/pod/Date::Holidays::Super)
-- [Date::Holidays::AT](https://metacpan.org/pod/Date::Holidays::AT)
-- [Date::Holidays::CN](https://metacpan.org/pod/Date::Holidays::CN)
-- [Date::Holidays::RU](https://metacpan.org/pod/Date::Holidays::RU)
 
 # ACKNOWLEDGEMENTS
 
