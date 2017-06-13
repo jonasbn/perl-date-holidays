@@ -1,7 +1,7 @@
 # Date::Holidays
 
 [![CPAN version](https://badge.fury.io/pl/Date-Holidays.svg)](http://badge.fury.io/pl/Date-Holidays)
-[![Build Status](https://travis-ci.org/jonasbn/perl-date-holidays.svg?branch=master)](https://travis-ci.org/jonasbn/date-holidays)
+[![Build Status](https://travis-ci.org/jonasbn/perl-date-holidays.svg?branch=master)](https://travis-ci.org/jonasbn/perl-date-holidays)
 [![Coverage Status](https://coveralls.io/repos/github/jonasbn/perl-date-holidays/badge.svg?branch=master)](https://coveralls.io/github/jonasbn/perl-date-holidays?branch=master)
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/perl-date-holidays)
 
@@ -401,35 +401,19 @@ make this work with some Perl magic.
 
 # ISSUE REPORTING
 
-Please report any bugs or feature requests using Github
+Please report any bugs or feature requests using **Github**.
 
 - [Github Issues](https://github.com/jonasbn/perl-date-holidays/issues)
 
+You are also welcome to contact me with [Gitter](https://gitter.im/perl-date-holidays).
+
+[![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/perl-date-holidays)
+
 # TEST COVERAGE
 
-Test coverage in version 1.02
+Coverage reports are available via [Coveralls.io](https://coveralls.io/github/jonasbn/perl-date-holidays?branch=master)
 
-    ---------------------------- ------ ------ ------ ------ ------ ------ ------
-    File                           stmt   bran   cond    sub    pod   time  total
-    ---------------------------- ------ ------ ------ ------ ------ ------ ------
-    lib/Date/Holidays.pm           95.9   77.5   60.0  100.0  100.0   87.0   90.9
-    lib/Date/Holidays/Adapter.pm   84.2   64.7   44.4  100.0  100.0   12.0   79.2
-    ...te/Holidays/Adapter/AU.pm   93.1   62.5    n/a  100.0  100.0    0.0   89.1
-    ...te/Holidays/Adapter/BR.pm   72.7   25.0    n/a   83.3  100.0    0.0   70.5
-    ...te/Holidays/Adapter/CN.pm   70.8   25.0    n/a   83.3  100.0    0.0   69.4
-    ...te/Holidays/Adapter/DE.pm  100.0  100.0    n/a  100.0  100.0    0.0  100.0
-    ...te/Holidays/Adapter/DK.pm   91.6   50.0    n/a  100.0  100.0    0.0   88.8
-    ...te/Holidays/Adapter/ES.pm   72.7   25.0    n/a   83.3  100.0    0.0   70.5
-    ...te/Holidays/Adapter/FR.pm   90.9   50.0    n/a   85.7  100.0    0.0   87.8
-    ...te/Holidays/Adapter/GB.pm   92.3   50.0    n/a  100.0  100.0    0.0   89.4
-    ...te/Holidays/Adapter/JP.pm   73.5   37.5    n/a   77.7  100.0    0.0   69.8
-    ...te/Holidays/Adapter/KR.pm   86.3   50.0    n/a   85.7  100.0    0.0   84.8
-    ...Holidays/Adapter/LOCAL.pm   86.9   50.0   12.5  100.0  100.0    0.3   64.5
-    ...te/Holidays/Adapter/NO.pm   70.8   25.0    n/a   83.3  100.0    0.0   69.4
-    ...te/Holidays/Adapter/PL.pm   90.9   50.0    n/a   85.7  100.0    0.0   87.8
-    ...te/Holidays/Adapter/PT.pm   90.9   50.0    n/a  100.0  100.0    0.0   88.2
-    Total                          87.2   59.2   33.3   93.1  100.0  100.0   81.7
-    ---------------------------- ------ ------ ------ ------ ------ ------ ------
+[![Coverage Status](https://coveralls.io/repos/github/jonasbn/perl-date-holidays/badge.svg?branch=master)](https://coveralls.io/github/jonasbn/perl-date-holidays?branch=master)
 
 Without the actual holiday implementations installed/available coverage will be very low.
 
@@ -511,4 +495,4 @@ Date-Holidays and related modules are (C) by Jonas B. Nielsen, (jonasbn)
 
 Date-Holidays and related modules are released under the Artistic License 2.0
 
-Image used on [website](https://jonasbn.github.io/Date-Holidays/) is under copyright by [Markus Spiske](https://unsplash.com/@markusspiske?photo=AF_4tBQjdtc)
+Image used on [website](https://jonasbn.github.io/perl-date-holidays/) is under copyright by [Markus Spiske](https://unsplash.com/@markusspiske?photo=AF_4tBQjdtc)
