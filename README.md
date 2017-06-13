@@ -1,8 +1,8 @@
 # Date::Holidays
 
 [![CPAN version](https://badge.fury.io/pl/Date-Holidays.svg)](http://badge.fury.io/pl/Date-Holidays)
-[![Build Status](https://travis-ci.org/jonasbn/Date-Holidays.svg?branch=master)](https://travis-ci.org/jonasbn/Date-Holidays)
-[![Coverage Status](https://coveralls.io/repos/github/jonasbn/Date-Holidays/badge.svg?branch=master)](https://coveralls.io/github/jonasbn/Date-Holidays?branch=master)
+[![Build Status](https://travis-ci.org/jonasbn/perl-date-holidays.svg?branch=master)](https://travis-ci.org/jonasbn/date-holidays)
+[![Coverage Status](https://coveralls.io/repos/github/jonasbn/perl-date-holidays/badge.svg?branch=master)](https://coveralls.io/github/jonasbn/perl-date-holidays?branch=master)
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/perl-date-holidays)
 
 # NAME
@@ -11,7 +11,7 @@ Date::Holidays - Date::Holidays::\* adapter and aggregator for all your holiday 
 
 # VERSION
 
-The documentation in this module describes version 1.06 of Date::Holidays
+The documentation describes version 1.06 of Date::Holidays
 
 # FEATURES
 
