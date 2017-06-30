@@ -272,6 +272,7 @@ __END__
 [![Build Status](https://travis-ci.org/jonasbn/perl-date-holidays.svg?branch=master)](https://travis-ci.org/jonasbn/perl-date-holidays)
 [![Coverage Status](https://coveralls.io/repos/github/jonasbn/perl-date-holidays/badge.svg?branch=master)](https://coveralls.io/github/jonasbn/perl-date-holidays?branch=master)
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.svg)](https://gitter.im/perl-date-holidays)
+[![License: Artistic-2.0](https://img.shields.io/badge/License-Artistic%202.0-0298c3.svg)](https://opensource.org/licenses/Artistic-2.0)
 
 =end markdown
 
