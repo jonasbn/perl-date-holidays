@@ -24,4 +24,4 @@ after_success:
 - dzil cover -outputdir cover_db -report coveralls
 notifications:
   slack:
-    secure: ObGJJc83PEMwwVc0YulauYO2GxK7p6dLDpVGantUMRieFBDKzddHpGOyqwFwj3133tSCjXhtbR4khhhhwg+zQg461GNaWmfZcsJR564BEKcoX2rzNlJitiHejjsNaYHg3IFKFsnJ0zwOBrRxdZLqZ5MzZS4TYCD05R4fvaeCrCU=
+    secure: ZQxH5U+sxuCdGyq+VUiv/THPgCmJ/CuQo4tJ4Q3qidB7gm+SDz8r/dD9VJ5Isyb0iNvjWVBJdHppWQvQUcZOh4fb7OIoM48G5FsZuHl0mvyzuXabUhXsMz1iT4UUVdtARgOHF76thIKfnRZZwK7wdohFPqRZ/35+LUxO+lrPAjg=
