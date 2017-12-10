@@ -7,13 +7,44 @@
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.svg)](https://gitter.im/perl-date-holidays)
 [![License: Artistic-2.0](https://img.shields.io/badge/License-Artistic%202.0-0298c3.svg)](https://opensource.org/licenses/Artistic-2.0)
 
+<!-- MarkdownTOC autoanchor=false -->
+
+- [NAME](#name)
+- [VERSION](#version)
+- [FEATURES](#features)
+- [SYNOPSIS](#synopsis)
+- [DESCRIPTION](#description)
+    - [DEFINING YOUR OWN CALENDAR](#defining-your-own-calendar)
+- [SUBROUTINES/METHODS](#subroutinesmethods)
+    - [new](#new)
+    - [holidays](#holidays)
+    - [holidays\_dt](#holidays%5Cdt)
+    - [is\_holiday](#is%5Choliday)
+    - [is\_holiday\_dt](#is%5Choliday%5Cdt)
+- [DEVELOPING A DATE::HOLIDAYS::\* MODULE](#developing-a-dateholidays%5C-module)
+    - [ADDITIONAL PARAMETERS](#additional-parameters)
+- [DEVELOPING A DATE::HOLIDAYS::ADAPTER CLASS](#developing-a-dateholidaysadapter-class)
+- [DIAGNOSTICS](#diagnostics)
+- [CONFIGURATION AND ENVIRONMENT](#configuration-and-environment)
+- [DEPENDENCIES](#dependencies)
+- [INCOMPATIBILITIES](#incompatibilities)
+- [BUGS AND LIMITATIONS](#bugs-and-limitations)
+- [ISSUE REPORTING](#issue-reporting)
+- [TEST COVERAGE](#test-coverage)
+- [SEE ALSO](#see-also)
+- [ACKNOWLEDGEMENTS](#acknowledgements)
+- [AUTHOR](#author)
+- [LICENSE AND COPYRIGHT](#license-and-copyright)
+
+<!-- /MarkdownTOC -->
+
 # NAME
 
 Date::Holidays - Date::Holidays::\* adapter and aggregator for all your holiday needs
 
 # VERSION
 
-The documentation describes version 1.06 of Date::Holidays
+The documentation describes version 1.07 of Date::Holidays
 
 # FEATURES
 
@@ -468,6 +499,7 @@ all the wrapped (adapted and aggregated) distributions.
 
 # ACKNOWLEDGEMENTS
 
+- Vladimir Varlamov, PR introducing Date::Holidays::KZ resulting in 1.07
 - CHORNY (Alexandr Ciornii), Github issue #10, letting me know I included local/ by accident,
 resulting in release 1.05
 - Vladimir Varlamov, PR introducing Date::Holidays::BY resulting in 1.04
