@@ -275,6 +275,10 @@ __END__
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.svg)](https://gitter.im/perl-date-holidays)
 [![License: Artistic-2.0](https://img.shields.io/badge/License-Artistic%202.0-0298c3.svg)](https://opensource.org/licenses/Artistic-2.0)
 
+<!-- MarkdownTOC autoanchor=false -->
+
+<!-- /MarkdownTOC -->
+
 =end markdown
 
 =head1 NAME
