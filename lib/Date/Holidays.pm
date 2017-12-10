@@ -12,7 +12,7 @@ use Scalar::Util qw(blessed);
 
 use base 'Date::Holidays::Adapter';
 
-$VERSION = '1.06';
+$VERSION = '1.07';
 
 sub new {
     my ( $class, %params ) = @_;
@@ -283,7 +283,7 @@ Date::Holidays - Date::Holidays::* adapter and aggregator for all your holiday n
 
 =head1 VERSION
 
-The documentation describes version 1.06 of Date::Holidays
+The documentation describes version 1.07 of Date::Holidays
 
 =head1 FEATURES
 
@@ -846,6 +846,8 @@ all the wrapped (adapted and aggregated) distributions.
 =head1 ACKNOWLEDGEMENTS
 
 =over
+
+=item * Vladimir Varlamov, PR introducing Date::Holidays::KZ resulting in 1.07
 
 =item * CHORNY (Alexandr Ciornii), Github issue #10, letting me know I included local/ by accident,
 resulting in release 1.05

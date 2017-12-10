@@ -6,13 +6,13 @@ use vars qw($VERSION);
 
 use base 'Date::Holidays::Adapter';
 
-$VERSION = '1.04';
+$VERSION = '1.07';
 
 sub holidays {
     my ($self, %params) = @_;
-    
+
     my $sub = $self->{_adaptee}->can('holidays');
-        
+
     if ($sub) {
         return &{$sub}($params{'year'});
     } else {
@@ -22,17 +22,17 @@ sub holidays {
 
 sub is_holiday {
     my ($self, %params) = @_;
-    
+
     my $sub = $self->{_adaptee}->can('is_holiday');
-    
+
     my $holiday;
-    
+
     if ($sub) {
         $holiday = &{$sub}($params{'year'}, $params{'month'}, $params{'day'});
     } else {
         $holiday = '';
     }
-   
+
     return $holiday;
 }
 
@@ -46,7 +46,7 @@ Date::Holidays::Adapter::KZ - an adapter class for Date::Holidays::KZ
 
 =head1 VERSION
 
-This POD describes version 1.04 of Date::Holidays::Adapter::KZ
+This POD describes version 1.07 of Date::Holidays::Adapter::KZ
 
 =head1 DESCRIPTION
 
