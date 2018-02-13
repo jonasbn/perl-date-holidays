@@ -529,4 +529,4 @@ Date-Holidays and related modules are (C) by Jonas B. Nielsen, (jonasbn)
 
 Date-Holidays and related modules are released under the Artistic License 2.0
 
-Image used on [website](https://jonasbn.github.io/perl-date-holidays/) is under copyright by [Markus Spiske](https://unsplash.com/@markusspiske?photo=AF_4tBQjdtc)
+Image used on [website](https://jonasbn.github.io/perl-date-holidays/) is under copyright by [Tim Mossholder](https://unsplash.com/photos/C8jNJslQM3A)
