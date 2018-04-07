@@ -8,33 +8,6 @@
 
 <!-- MarkdownTOC autoanchor=false -->
 
-- [NAME](#name)
-- [VERSION](#version)
-- [FEATURES](#features)
-- [SYNOPSIS](#synopsis)
-- [DESCRIPTION](#description)
-    - [DEFINING YOUR OWN CALENDAR](#defining-your-own-calendar)
-- [SUBROUTINES/METHODS](#subroutinesmethods)
-    - [new](#new)
-    - [holidays](#holidays)
-    - [holidays\_dt](#holidays%5Cdt)
-    - [is\_holiday](#is%5Choliday)
-    - [is\_holiday\_dt](#is%5Choliday%5Cdt)
-- [DEVELOPING A DATE::HOLIDAYS::\* MODULE](#developing-a-dateholidays%5C-module)
-    - [ADDITIONAL PARAMETERS](#additional-parameters)
-- [DEVELOPING A DATE::HOLIDAYS::ADAPTER CLASS](#developing-a-dateholidaysadapter-class)
-- [DIAGNOSTICS](#diagnostics)
-- [CONFIGURATION AND ENVIRONMENT](#configuration-and-environment)
-- [DEPENDENCIES](#dependencies)
-- [INCOMPATIBILITIES](#incompatibilities)
-- [BUGS AND LIMITATIONS](#bugs-and-limitations)
-- [ISSUE REPORTING](#issue-reporting)
-- [TEST COVERAGE](#test-coverage)
-- [SEE ALSO](#see-also)
-- [ACKNOWLEDGEMENTS](#acknowledgements)
-- [AUTHOR](#author)
-- [LICENSE AND COPYRIGHT](#license-and-copyright)
-
 <!-- /MarkdownTOC -->
 
 # NAME
