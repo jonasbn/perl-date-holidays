@@ -24,3 +24,4 @@ Makefile.PL
 *.sublime-workspace
 *.komodoproject
 local/
+.vstags
