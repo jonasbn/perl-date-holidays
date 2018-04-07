@@ -268,4 +268,12 @@ SKIP: {
         'Testing holidays with argument for Date::Holidays::KZ' );
 }
 
+SKIP: {
+    eval { require Date::Holidays::USFederal };
+    skip "Date::Holidays::USFederal not installed", 1 if $@;
+
+    ok( $dh = Date::Holidays->new( countrycode => 'USFederal', nocheck => 1 ),
+        'Testing Date::Holidays::USFederal' );
+}
+
 done_testing();

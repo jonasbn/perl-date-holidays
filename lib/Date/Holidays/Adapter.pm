@@ -90,12 +90,12 @@ sub is_holiday {
 
     my $r;
     my $adaptee;
-    
+
     if (    $self->{'_adaptee'}->can('new')
         and $self->isa('Date::Holidays::Adapter')) {
 
         $adaptee = $self->{'_adaptee'}->new();
-    
+
     } else {
         $adaptee = $self->{'_adaptee'};
     }
@@ -108,8 +108,8 @@ sub is_holiday {
         if ($adaptee->can($method)) {
 
             $r = $adaptee->$method(
-                $params{'year'}, 
-                $params{'month'}, 
+                $params{'year'},
+                $params{'month'},
                 $params{'day'}
             );
 
@@ -120,8 +120,8 @@ sub is_holiday {
 
             if ($adaptee->can('is_holiday')) {
                 $r = $adaptee->is_holiday(
-                    $params{'year'}, 
-                    $params{'month'}, 
+                    $params{'year'},
+                    $params{'month'},
                     $params{'day'}
                 );
             }
@@ -138,8 +138,8 @@ sub is_holiday {
         if ($sub) {
 
             $r = &{$sub}(
-                $params{'year'}, 
-                $params{'month'}, 
+                $params{'year'},
+                $params{'month'},
                 $params{'day'}
             );
 
@@ -151,13 +151,13 @@ sub is_holiday {
 
         if ($sub) {
             $r = &{$sub}(
-                $params{'year'}, 
-                $params{'month'}, 
+                $params{'year'},
+                $params{'month'},
                 $params{'day'}
             );
 
             return $r;
-        }        
+        }
     }
 
     return $r;

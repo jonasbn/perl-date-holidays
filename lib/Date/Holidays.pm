@@ -26,9 +26,12 @@ sub new {
 
     if ( $params{'countrycode'} ) {
         $self->{'_countrycode'} = lc( $params{'countrycode'} );
+
         try {
             $self->{'_inner_class'}
-                = $self->_fetch( { nocheck => $params{'nocheck'}, } );
+                = $self->_fetch( { nocheck     => $params{'nocheck'},
+                                   countrycode => $params{'countrycode'},
+                                 } );
         }
 
     } else {
@@ -52,7 +55,7 @@ sub new {
                 $self = undef;
             }
         } catch ($error) {
-            warn 'Unable to initialize adapter';
+            warn "Unable to initialize adapter: $error";
             $self = undef;
         }
 
@@ -240,19 +243,35 @@ sub _fetch {
     my $module;
 
     # Trying to load adapter module for country code
+
+    my $countrycode = uc $params->{countrycode};
+
     try {
         # We load an adapter implementation
-        $module = 'Date::Holidays::Adapter::' . uc $self->{'_countrycode'};
+        $module = 'Date::Holidays::Adapter::' . $countrycode;
 
-        $self->_load($module);
+        $module = $self->_load($module);
 
-    }
-    catch ($error) {
+    } catch ($error) {
+        warn "Unable to load module: $module - $error";
 
-        # Falling over to SUPER adapter class
-        $module = 'Date::Holidays::Adapter';
-        $self->_load($module);
-    }
+        try {
+            $countrycode = $params->{countrycode};
+
+            # We load an adapter implementation
+            $module = 'Date::Holidays::Adapter::' . $countrycode;
+
+            if ($module = $self->_load($module)) {
+                warn "we got a module and we return\n";
+            }
+
+        } catch ($error) {
+            warn "Unable to load module: $module - $error";
+
+            $module = 'Date::Holidays::Adapter';
+            $module = $self->_load($module);
+        };
+    };
 
     # Returning name of loaded module upon success
     return $module;
