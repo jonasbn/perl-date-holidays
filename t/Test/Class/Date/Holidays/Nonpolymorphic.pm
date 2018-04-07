@@ -11,7 +11,6 @@ my $year  = 2007;
 
 #run prior and once per suite
 sub startup : Test(startup => 2) {
-    diag "starting up...";
     use_ok('Date::Holidays');
     use_ok('Date::Holidays::NONPOLYMORPHIC');
 }

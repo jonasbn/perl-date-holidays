@@ -11,8 +11,6 @@ my $day = 24;
 
 #run prior and once per suite
 sub startup : Test(startup => 1) {
-    diag("starting up...");
-
     use_ok('Date::Holidays');
 }
 
