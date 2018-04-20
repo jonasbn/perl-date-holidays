@@ -249,4 +249,21 @@ SKIP: {
     ok( Date::Holidays::KZ->can('is_holiday') );
 }
 
+SKIP: {
+    eval { require Date::Holidays::USFederal };
+    skip "Date::Holidays::USFederal not installed", 2 if $@;
+
+    ok( my $dh = Date::Holidays->new( countrycode => 'USFederal', nocheck => 1 ),
+        'Testing Date::Holidays::USFederal' );
+
+    my $holidays_hashref = Date::Holidays->is_holiday(
+        year  => 2018,
+        month => 1,
+        day   => 1,
+        countries => [ 'USFederal' ],
+    );
+
+    ok( $holidays_hashref->{USFederal}, 'Checking for KaUS Federal zakhstan New Year' );
+}
+
 done_testing();
