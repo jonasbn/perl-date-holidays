@@ -5,8 +5,6 @@ use Test::More; # done_testing
 use Test::Fatal qw(dies_ok);
 use Env qw($TEST_VERBOSE);
 
-my $dh;
-
 BEGIN {
     use lib qw(lib ../lib);
     use_ok('Date::Holidays');
@@ -16,7 +14,7 @@ SKIP: {
     eval { require Date::Holidays::AT };
     skip "Date::Holidays::AT not installed", 2 if $@;
 
-    ok( $dh = Date::Holidays->new( countrycode => 'at' ),
+    ok( my $dh = Date::Holidays->new( countrycode => 'at' ),
         'Testing Date::Holidays::AT' );
 
     ok( $dh->holidays( YEAR => 2017 ),
@@ -27,7 +25,7 @@ SKIP: {
     eval { require Date::Holidays::AU };
     skip "Date::Holidays::AU not installed", 3 if $@;
 
-    ok( $dh = Date::Holidays->new( countrycode => 'au' ),
+    ok( my $dh = Date::Holidays->new( countrycode => 'au' ),
         'Testing Date::Holidays::AU' );
 
     ok( $dh->holidays( year => 2006 ),
@@ -45,7 +43,7 @@ SKIP: {
     eval { require Date::Holidays::BR };
     skip "Date::Holidays::BR not installed", 2 if $@;
 
-    ok( $dh = Date::Holidays->new( countrycode => 'br' ),
+    ok( my $dh = Date::Holidays->new( countrycode => 'br' ),
         'Testing Date::Holidays::BR' );
 
     ok( $dh->holidays( year => 2004 ),
@@ -56,7 +54,7 @@ SKIP: {
     eval { require Date::Holidays::BY };
     skip "Date::Holidays::BY not installed", 2 if $@;
 
-    ok( $dh = Date::Holidays->new( countrycode => 'by' ),
+    ok( my $dh = Date::Holidays->new( countrycode => 'by' ),
         'Testing Date::Holidays::BY' );
 
     ok( $dh->holidays( year => 2017 ),
@@ -67,7 +65,7 @@ SKIP: {
     eval { require Date::Holidays::CA };
     skip "Date::Holidays::CA not installed", 2 if $@;
 
-    ok( $dh = Date::Holidays->new( countrycode => 'ca' ),
+    ok( my $dh = Date::Holidays->new( countrycode => 'ca' ),
         'Testing Date::Holidays::CA' );
 
     ok( $dh->holidays( year => 2004 ),
@@ -78,7 +76,7 @@ SKIP: {
     eval { require Date::Holidays::DE };
     skip "Date::Holidays::DE not installed", 3 if $@;
 
-    ok( $dh = Date::Holidays->new( countrycode => 'de' ),
+    ok( my $dh = Date::Holidays->new( countrycode => 'de' ),
         'Testing Date::Holidays::DE' );
 
     ok( $dh->holidays(),
@@ -92,7 +90,7 @@ SKIP: {
     eval { require Date::Holidays::DK };
     skip "Date::Holidays::DK not installed", 2 if $@;
 
-    ok( $dh = Date::Holidays->new( countrycode => 'dk' ),
+    ok( my $dh = Date::Holidays->new( countrycode => 'dk' ),
         'Testing Date::Holidays::DK' );
 
     ok( $dh->holidays( year => 2004 ),
@@ -103,7 +101,7 @@ SKIP: {
     eval { require Date::Holidays::ES };
     skip "Date::Holidays::ES not installed", 3 if $@;
 
-    ok( $dh = Date::Holidays->new( countrycode => 'es' ),
+    ok( my $dh = Date::Holidays->new( countrycode => 'es' ),
         'Testing Date::Holidays::ES' );
 
     ok( $dh->holidays( year => 2006 ),
@@ -114,7 +112,7 @@ SKIP: {
     eval { require Date::Holidays::FR };
     skip "Date::Holidays::FR not installed", 3 if $@;
 
-    ok( $dh = Date::Holidays->new( countrycode => 'fr' ),
+    ok( my $dh = Date::Holidays->new( countrycode => 'fr' ),
         'Testing Date::Holidays::FR' );
 
     dies_ok { $dh->holidays(); }
@@ -128,7 +126,7 @@ SKIP: {
     eval { require Date::Holidays::GB };
     skip "Date::Holidays::GB not installed", 3 if $@;
 
-    ok( $dh = Date::Holidays->new( countrycode => 'gb' ),
+    ok( my $dh = Date::Holidays->new( countrycode => 'gb' ),
         'Testing Date::Holidays::GB' );
 
     ok( $dh->holidays(),
@@ -142,7 +140,7 @@ SKIP: {
     eval { require Date::Holidays::KR };
     skip "Date::Holidays::KR not installed", 3 if $@;
 
-    ok( $dh = Date::Holidays->new( countrycode => 'kr' ),
+    ok( my $dh = Date::Holidays->new( countrycode => 'kr' ),
         'Testing Date::Holidays::KR' );
 
     dies_ok { $dh->holidays(); }
@@ -156,7 +154,7 @@ SKIP: {
     eval { require Date::Holidays::NO };
     skip "Date::Holidays::NO not installed", 2 if $@;
 
-    ok( $dh = Date::Holidays->new( countrycode => 'no' ),
+    ok( my $dh = Date::Holidays->new( countrycode => 'no' ),
         'Testing Date::Holidays::NO' );
 
     ok( $dh->holidays( year => 2004 ),
@@ -167,7 +165,7 @@ SKIP: {
     eval { require Date::Holidays::NZ };
     skip "Date::Holidays::NZ not installed", 2 if $@;
 
-    ok( $dh = Date::Holidays->new( countrycode => 'nz' ),
+    ok( my $dh = Date::Holidays->new( countrycode => 'nz' ),
         'Testing Date::Holidays::NZ' );
 
     ok( $dh->holidays( year => 2004 ),
@@ -178,7 +176,7 @@ SKIP: {
     eval { require Date::Holidays::PL };
     skip "Date::Holidays::PL not installed", 3 if $@;
 
-    ok( $dh = Date::Holidays->new( countrycode => 'pl' ),
+    ok( my $dh = Date::Holidays->new( countrycode => 'pl' ),
         'Testing Date::Holidays::PL');
 
     dies_ok { $dh->holidays() }
@@ -192,7 +190,7 @@ SKIP: {
     eval { require Date::Holidays::PT };
     skip "Date::Holidays::PT not installed", 2 if $@;
 
-    ok( $dh = Date::Holidays->new( countrycode => 'pt' ),
+    ok( my $dh = Date::Holidays->new( countrycode => 'pt' ),
         'Testing Date::Holidays::PT' );
 
     ok( $dh->holidays( year => 2005 ),
@@ -204,7 +202,7 @@ SKIP: {
     eval { require Date::Holidays::RU };
     skip "Date::Holidays::RU not installed", 2 if $@;
 
-    ok( $dh = Date::Holidays->new( countrycode => 'ru' ),
+    ok( my $dh = Date::Holidays->new( countrycode => 'ru' ),
         'Testing Date::Holidays::RU' );
 
     ok( $dh->holidays( year => 2014 ),
@@ -215,7 +213,7 @@ SKIP: {
     eval { require Date::Holidays::SK };
     skip "Date::Holidays::SK not installed", 3 if $@;
 
-    ok( $dh = Date::Holidays->new( countrycode => 'sk' ),
+    ok( my $dh = Date::Holidays->new( countrycode => 'sk' ),
         'Testing Date::Holidays::SK' );
 
     ok( $dh->holidays(),
@@ -247,7 +245,7 @@ SKIP: {
     eval { require Date::Japanese::Holiday };
     skip "Date::Japanese::Holiday not installed", 3 if $@;
 
-    ok( $dh = Date::Holidays->new( countrycode => 'jp' ),
+    ok( my $dh = Date::Holidays->new( countrycode => 'jp' ),
         'Testing Date::Japanese::Holiday' );
 
     dies_ok { $dh->holidays() }
@@ -261,7 +259,7 @@ SKIP: {
     eval { require Date::Holidays::KZ };
     skip "Date::Holidays::KZ not installed", 2 if $@;
 
-    ok( $dh = Date::Holidays->new( countrycode => 'kz' ),
+    ok( my $dh = Date::Holidays->new( countrycode => 'kz' ),
         'Testing Date::Holidays::KZ' );
 
     ok( $dh->holidays( year => 2018 ),
@@ -270,10 +268,13 @@ SKIP: {
 
 SKIP: {
     eval { require Date::Holidays::USFederal };
-    skip "Date::Holidays::USFederal not installed", 1 if $@;
+    skip "Date::Holidays::USFederal not installed", 2 if $@;
 
-    ok( $dh = Date::Holidays->new( countrycode => 'USFederal', nocheck => 1 ),
+    ok( my $dh = Date::Holidays->new( countrycode => 'USFederal', nocheck => 1 ),
         'Testing Date::Holidays::USFederal' );
+
+    dies_ok { $dh->holidays() }
+        'Testing holidays without argument for Date::Japanese::Holiday';
 }
 
 done_testing();
