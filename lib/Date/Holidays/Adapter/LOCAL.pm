@@ -1,4 +1,4 @@
-package Date::Holidays::Adapter::LOCAL;
+package Date::Holidays::Adapter::Local;
 
 use strict;
 use warnings;
@@ -95,6 +95,8 @@ sub _resolve_holiday_file {
 
 __END__
 
+=pod
+
 =head1 NAME
 
 Date::Holidays::Adapter::LOCAL - a specialized adapter for local calendars
@@ -111,9 +113,9 @@ This POD describes version 1.06 of Date::Holidays::Adapter::LOCAL
     $year  += 1900;
     $month += 1;
 
-    print "Woohoo" if $calendar->is_holiday( 
-        year  => $year, 
-        month => $month, 
+    print "Woohoo" if $calendar->is_holiday(
+        year  => $year,
+        month => $month,
         day   => $day
     );
 

@@ -16,7 +16,7 @@ sub new {
     my ($class, %params) = @_;
 
     my $self = bless {
-        _countrycode => lc $params{countrycode},
+        _countrycode => $params{countrycode},
         _adaptee     => undef,
     }, $class || ref $class;
 
@@ -171,7 +171,7 @@ sub _load {
 
     # Asserting success of load
     if ($@) {
-        die "Unable to load: $module - $!\n";
+        die "Unable to load: $module - $@\n";
     }
 
     # Returning name of loaded module upon success
@@ -196,7 +196,11 @@ sub _fetch {
     }
 
     # Trying to load module for country code
-    my $module = 'Date::Holidays::' . uc $self->{'_countrycode'};
+    use Data::Dumper;
+    print STDERR Dumper $self;
+    print STDERR Dumper $params;
+    print STDERR Dumper \@INC;
+    my $module = 'Date::Holidays::' . $self->{'_countrycode'};
     $self->_load($module);
 
     # Returning name of loaded module upon success
@@ -206,6 +210,8 @@ sub _fetch {
 1;
 
 __END__
+
+=pod
 
 =head1 NAME
 

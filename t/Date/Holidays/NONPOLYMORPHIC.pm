@@ -1,28 +1,33 @@
-package Date::Holidays::NONPOLYMORPHIC;
+package Date::Holidays::Nonpolymorphic;
+
+use strict;
+use warnings;
 
 sub new {
-    my $class = shift;    
+    my $class = shift;
 
     my $self = bless {
-        calendar => { 1224 => 'christmas' },              
+        calendar => { 1224 => 'christmas' },
     }, $class || ref $class;
-    
+
     return $self;
 }
 
 sub nonpolymorphic_holidays {
     my $self = shift;
-    
-    return $self->{calendar};        
+
+    return $self->{calendar};
 }
 
 sub is_nonpolymorphic_holiday {
     my ($self, $year, $month, $day) = @_;
-    
+
     my $key = $month.$day;
 
     if (exists $self->{calendar}->{$key}) {
         return $self->{calendar}->{$key};
+    } else {
+        return '';
     }
 }
 

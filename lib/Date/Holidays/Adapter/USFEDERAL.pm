@@ -1,4 +1,4 @@
-package Date::Holidays::Adapter::USFEDERAL;
+package Date::Holidays::Adapter::USFederal;
 
 use strict;
 use warnings;
@@ -36,17 +36,19 @@ sub is_holiday {
 
 __END__
 
+=pod
+
 =head1 NAME
 
-Date::Holidays::Adapter::RU - an adapter class for Date::Holidays::RU
+Date::Holidays::Adapter::USFederal - an adapter class for Date::Holidays::USFederal
 
 =head1 VERSION
 
-This POD describes version 1.06 of Date::Holidays::Adapter::RU
+This POD describes version 1.06 of Date::Holidays::Adapter::USFederal
 
 =head1 DESCRIPTION
 
-The is the adapter class for L<Date::Holidays::RU>.
+The is the adapter class for L<Date::Holidays::USFederal>.
 
 =head1 SUBROUTINES/METHODS
 
@@ -79,7 +81,7 @@ Please refer to DIAGNOSTICS in L<Date::Holidays>
 
 =over
 
-=item * L<Date::Holidays::RU>
+=item * L<Date::Holidays::USFederal>
 
 =item * L<Date::Holidays::Adapter>
 

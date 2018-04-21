@@ -15,7 +15,7 @@ sub startup : Test(startup => 1) {
 sub setup : Test(setup => 2) {
     my $self = shift;
 
-    ok(my $dh = Date::Holidays->new(countrycode => 'local'));
+    ok(my $dh = Date::Holidays->new(countrycode => 'Local'));
 
     isa_ok($dh, 'Date::Holidays');
 

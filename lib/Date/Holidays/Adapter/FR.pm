@@ -29,6 +29,8 @@ sub is_holiday {
 
 __END__
 
+=pod
+
 =head1 NAME
 
 Date::Holidays::Adapter::FR - an adapter class for Date::Holidays::FR

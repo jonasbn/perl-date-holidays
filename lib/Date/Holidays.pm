@@ -25,7 +25,7 @@ sub new {
         ref $class || $class;
 
     if ( $params{'countrycode'} ) {
-        $self->{'_countrycode'} = lc( $params{'countrycode'} );
+        $self->{'_countrycode'} = $params{'countrycode'};
 
         try {
             $self->{'_inner_class'}
@@ -159,7 +159,7 @@ sub _check_countries {
 
             if ( !$dh ) {
                 my $countryname = code2country($country);
-                my $countrycode = uc $country;
+                my $countrycode = $country;
 
                 die 'Unable to initialize Date::Holidays for country: '
                     . "$countrycode - $countryname\n";
@@ -227,24 +227,30 @@ sub _fetch {
     my ( $self, $params ) = @_;
 
     # Do we have a country code?
-    if ( !$self->{'_countrycode'} ) {
+    if ( not $self->{'_countrycode'} and not $params->{countrycode } ) {
         die "No country code specified";
     }
+
+    my $countrycode = $params->{countrycode} || $self->{'_countrycode'};
 
     # Do we do country code assertion?
     if ( !$params->{'nocheck'} ) {
 
         # Is our country code valid or local?
-        if ( $self->{'_countrycode'} ne 'local' and !code2country( $self->{'_countrycode'} ) ) {  #from Locale::Country
-            die "$self->{_countrycode} is not a valid country code";
+        if ( $countrycode !~ m/local/i and !code2country( $countrycode ) ) {  #from Locale::Country
+            die "$countrycode is not a valid country code";
         }
     }
 
+    # Trying to load adapter module for country code
     my $module;
 
-    # Trying to load adapter module for country code
+    if ($countrycode =~ m/local/i) {
+        $countrycode = ucfirst $countrycode;
+    }
 
-    my $countrycode = uc $params->{countrycode};
+    print STDERR "###################################\n";
+    print STDERR "Resolved country code: $countrycode\n";
 
     try {
         # We load an adapter implementation

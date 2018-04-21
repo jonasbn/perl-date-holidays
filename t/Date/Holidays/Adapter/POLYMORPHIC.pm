@@ -1,4 +1,4 @@
-package Date::Holidays::Adapter::POLYMORPHIC;
+package Date::Holidays::Adapter::Polymorphic;
 
 use strict;
 use warnings;
@@ -13,7 +13,7 @@ sub holidays {
     if ($dh) {
         return $dh->holidays(year => $params{'year'});
     } else {
-        return;    
+        return;
     }
 }
 
@@ -25,7 +25,7 @@ sub is_holiday {
     if ($dh) {
         return $dh->is_holiday(year => $params{'year'}, month => $params{'month'}, day => $params{'day'});
     } else {
-        return;    
+        return;
     }
 }
 

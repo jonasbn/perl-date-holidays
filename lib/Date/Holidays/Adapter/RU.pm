@@ -10,9 +10,9 @@ $VERSION = '1.07';
 
 sub holidays {
     my ($self, %params) = @_;
-    
+
     my $sub = $self->{_adaptee}->can('holidays');
-        
+
     if ($sub) {
         return &{$sub}($params{'year'});
     } else {
@@ -22,23 +22,25 @@ sub holidays {
 
 sub is_holiday {
     my ($self, %params) = @_;
-    
+
     my $sub = $self->{_adaptee}->can('is_holiday');
-    
+
     my $holiday;
-    
+
     if ($sub) {
         $holiday = &{$sub}($params{'year'}, $params{'month'}, $params{'day'});
     } else {
         $holiday = '';
     }
-   
+
     return $holiday;
 }
 
 1;
 
 __END__
+
+=pod
 
 =head1 NAME
 

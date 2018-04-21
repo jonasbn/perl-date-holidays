@@ -1,4 +1,4 @@
-package Date::Holidays::Adapter::PRODUCERAL;
+package Date::Holidays::Adapter::Produceral;
 
 use strict;
 use warnings;
@@ -12,7 +12,7 @@ sub new {
 sub holidays {
     my ($self, $year) = @_;
 
-    return { 1224 => 'christmas' };    
+    return { 1224 => 'christmas' };
 }
 
 sub is_holiday {
@@ -31,9 +31,9 @@ sub is_holiday {
 
     if ($key and $holidays->{$key}) {
         return $holidays->{$key};
+    } else {
+        return '';
     }
-
-    return '';
 }
 
 1;

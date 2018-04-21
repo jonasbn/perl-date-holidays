@@ -52,6 +52,8 @@ sub _fetch {
 
 __END__
 
+=pod
+
 =head1 NAME
 
 Date::Holidays::Adapter::JP - an adapter class for Date::Japanese::Holiday
