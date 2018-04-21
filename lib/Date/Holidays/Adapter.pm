@@ -196,10 +196,6 @@ sub _fetch {
     }
 
     # Trying to load module for country code
-    use Data::Dumper;
-    print STDERR Dumper $self;
-    print STDERR Dumper $params;
-    print STDERR Dumper \@INC;
     my $module = 'Date::Holidays::' . $self->{'_countrycode'};
     $self->_load($module);
 
