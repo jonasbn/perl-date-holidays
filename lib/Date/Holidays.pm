@@ -249,9 +249,6 @@ sub _fetch {
         $countrycode = ucfirst $countrycode;
     }
 
-    print STDERR "###################################\n";
-    print STDERR "Resolved country code: $countrycode\n";
-
     try {
         # We load an adapter implementation
         $module = 'Date::Holidays::Adapter::' . $countrycode;
