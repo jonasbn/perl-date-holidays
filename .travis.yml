@@ -9,7 +9,6 @@ before_install:
 - git config --global user.name "TravisCI"
 install:
 - cpanm --quiet --notest --skip-satisfied Dist::Zilla
-- cpanm --quiet --notest Task::Date::Holidays
 - cpanm --quiet --notest Test::Kwalitee
 - cpanm --quiet --notest Devel::Cover::Report::Coveralls
 - cpanm --quiet --notest Dist::Zilla::App::Command::cover
