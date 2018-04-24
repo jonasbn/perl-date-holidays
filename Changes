@@ -1,5 +1,12 @@
 Changes file for Date-Holidays
 
+1.08 2018-1204-24 Feature release, update recommended
+
+- Added adapter for:
+    Date::Holidays::USFederal (US) in relation to request from 
+    Scott Seller
+
+
 1.07 2017-12-10 Feature release, update recommended
 
 - Added adapter for:

@@ -8,7 +8,7 @@ use Data::Dumper;
 
 use base 'Date::Holidays::Adapter';
 
-$VERSION = '1.07';
+$VERSION = '1.08';
 
 # sub new {
 #     my $class = shift;
@@ -44,7 +44,7 @@ Date::Holidays::Adapter::USFederal - an adapter class for Date::Holidays::USFede
 
 =head1 VERSION
 
-This POD describes version 1.06 of Date::Holidays::Adapter::USFederal
+This POD describes version 1.08 of Date::Holidays::Adapter::USFederal
 
 =head1 DESCRIPTION
 
@@ -112,7 +112,7 @@ Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 =head1 LICENSE AND COPYRIGHT
 
 L<Date::Holidays> and related modules are (C) by Jonas B. Nielsen, (jonasbn)
-2004-2017
+2004-2018
 
 Date-Holidays and related modules are released under the Artistic License 2.0
 
