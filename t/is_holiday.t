@@ -263,7 +263,7 @@ SKIP: {
         countries => [ 'USFederal' ],
     );
 
-    ok( $holidays_hashref->{USFederal}, 'Checking for KaUS Federal zakhstan New Year' );
+    ok( $holidays_hashref->{USFederal}, 'Checking for US Federal New Year' );
 }
 
 done_testing();
