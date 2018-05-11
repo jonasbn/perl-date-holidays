@@ -265,13 +265,6 @@ sub _fetch {
         warn "Unable to load module: $module - $error";
 
         try {
-            #$countrycode = uc $countrycode;
-
-            if ($countrycode =~ m/local/i) {
-                $module = 'Date::Holidays::Local';
-            } else {
-                $module = 'Date::Holidays::' . $countrycode;
-            }
 
             # We load an adapter implementation
             $module = 'Date::Holidays::Adapter::' . $countrycode;
