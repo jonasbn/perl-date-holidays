@@ -1,10 +1,11 @@
 Changes file for Date-Holidays
 
-1.08 2018-04-25 Feature release, update recommended
+1.08 2018-05-11 Feature release, update recommended
 
 - Added adapter for:
     Date::Holidays::USFederal (US) in response to request from 
-    Scott Seller
+    Scott Seller. This required a lot of changes to internal code and the test 
+    suite was restructured. I hope I did not break anything, all tests pass currently.
 
 
 1.07 2017-12-10 Feature release, update recommended
