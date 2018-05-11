@@ -5,7 +5,7 @@ use warnings;
 use vars qw($VERSION);
 use Locale::Country qw(all_country_codes code2country);
 use Module::Load qw(load);
-use Carp;
+use Carp; # croak
 use DateTime;
 use TryCatch;
 use Scalar::Util qw(blessed);
@@ -25,7 +25,11 @@ sub new {
         ref $class || $class;
 
     if ( $params{'countrycode'} ) {
-        $self->{'_countrycode'} = $params{'countrycode'};
+        if ( code2country( $params{countrycode} )) {
+            $self->{'_countrycode'} = uc $params{countrycode};
+        } else {
+            $self->{'_countrycode'} = $params{countrycode};
+        }
 
         try {
             $self->{'_inner_class'}
@@ -35,7 +39,7 @@ sub new {
         }
 
     } else {
-        die "No country code specified";
+        croak 'No country code specified';
     }
 
     if (   $self
@@ -227,8 +231,8 @@ sub _fetch {
     my ( $self, $params ) = @_;
 
     # Do we have a country code?
-    if ( not $self->{'_countrycode'} and not $params->{countrycode } ) {
-        die "No country code specified";
+    if ( not $self->{'_countrycode'} and not $params->{countrycode} ) {
+        die 'No country code specified';
     }
 
     my $countrycode = $params->{countrycode} || $self->{'_countrycode'};
@@ -245,13 +249,15 @@ sub _fetch {
     # Trying to load adapter module for country code
     my $module;
 
-    if ($countrycode =~ m/local/i) {
-        $countrycode = ucfirst $countrycode;
-    }
-
     try {
         # We load an adapter implementation
-        $module = 'Date::Holidays::Adapter::' . $countrycode;
+        if ($countrycode =~ m/local/i) {
+            $module = 'Date::Holidays::Adapter::Local';
+        } elsif (code2country( $countrycode )) {
+            $module = 'Date::Holidays::Adapter::' . uc $countrycode;
+        } else {
+            $module = 'Date::Holidays::Adapter::' . $countrycode;
+        }
 
         $module = $self->_load($module);
 
@@ -259,7 +265,13 @@ sub _fetch {
         warn "Unable to load module: $module - $error";
 
         try {
-            $countrycode = $params->{countrycode};
+            #$countrycode = uc $countrycode;
+
+            if ($countrycode =~ m/local/i) {
+                $module = 'Date::Holidays::Local';
+            } else {
+                $module = 'Date::Holidays::' . $countrycode;
+            }
 
             # We load an adapter implementation
             $module = 'Date::Holidays::Adapter::' . $countrycode;
