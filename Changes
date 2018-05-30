@@ -1,5 +1,13 @@
 Changes file for Date-Holidays
 
+1.10 2018-05-31 Feature release, update recommended
+
+- Added adapter for:
+    Date::Holidays::NZ the module has been supported for some time, 
+    but the latest changes revealed a sub-optimal integration. Support 
+    for regions was also added
+
+
 1.09 2018-05-30 Bug fix release, update not required
 
 - Based on issue #25 several issues with the test suite was spotted
