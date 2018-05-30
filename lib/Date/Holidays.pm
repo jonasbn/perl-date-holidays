@@ -833,6 +833,8 @@ all the wrapped (adapted and aggregated) distributions.
 
 =item * L<Date::Holidays::NZ>
 
+=item * L<Date::Holidays::Adapter::NZ>
+
 =item * L<Date::Holidays::PL>
 
 =item * L<Date::Holidays::Adapter::PL>
@@ -852,6 +854,8 @@ all the wrapped (adapted and aggregated) distributions.
 =item * L<Date::Holidays::UK>
 
 =item * L<Date::Holidays::USFederal>
+
+=item * L<Date::Holidays::Adapter::USFederal>
 
 =item * L<Date::Japanese::Holiday>
 
