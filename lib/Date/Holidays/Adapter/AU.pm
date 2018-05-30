@@ -104,13 +104,7 @@ for L<Date::Holidays::AU> for documentation on this.
 
 =head1 BUG REPORTING
 
-Please report issues via CPAN RT:
-
-  http://rt.cpan.org/NoAuth/Bugs.html?Dist=Date-Holidays
-
-or by sending mail to
-
-  bug-Date-Holidays@rt.cpan.org
+Please refer to BUG REPORTING in L<Date::Holidays>
 
 =head1 AUTHOR
 
