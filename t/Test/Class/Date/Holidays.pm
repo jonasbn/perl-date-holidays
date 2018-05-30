@@ -410,16 +410,30 @@ sub test_no : Test(4) {
     }
 }
 
-sub test_nz : Test(3) {
+sub test_nz : Test(7) {
     SKIP: {
         eval { require Date::Holidays::NZ };
-        skip "Date::Holidays::NZ not installed", 3 if $@;
+        skip "Date::Holidays::NZ not installed", 7 if $@;
 
         ok( my $dh = Date::Holidays->new( countrycode => 'nz' ),
             'Testing Date::Holidays::NZ' );
 
-        #ok( $dh->holidays( year => 2004 ),
-        #    'Testing holidays for Date::Holidays::NZ' );
+        ok( $dh->holidays( year => 2004 ),
+            'Testing holidays for Date::Holidays::NZ' );
+
+        ok( $dh->holidays( year => 2004, region => 2 ),
+            'Testing holidays for Date::Holidays::NZ with region parameter' );
+
+        ok($dh->is_holiday(year => 2018, month => 1, day => 1, region => 2), 'Testing is_holiday with region parameter');
+
+        my $holidays_hashref = Date::Holidays->is_holiday(
+            year  => 2018,
+            month => 1,
+            day   => 1,
+            countries => [ 'nz' ],
+        );
+
+        ok($holidays_hashref->{'nz'}, 'Checking for New Zealand holiday' );
 
         ok(! Date::Holidays::NZ->can('holidays'));
         ok(! Date::Holidays::NZ->can('is_holiday'));
