@@ -1,5 +1,14 @@
 Changes file for Date-Holidays
 
+1.09 2018-05-30 Bug fix release, update not required
+
+- Based on issue #25 several issues with the test suite was spotted
+  and corrected, at the same time there was created issues for 
+  implementation of adapters for SK and NZ. An issue with ES was also 
+  created since this distribution seems to rely on Date::Holidays, 
+  which does not seem to make sense.
+  
+
 1.08 2018-05-28 Feature release, update recommended
 
 - Added adapter for:

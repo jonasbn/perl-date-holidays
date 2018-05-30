@@ -12,7 +12,7 @@ use Scalar::Util qw(blessed);
 
 use base 'Date::Holidays::Adapter';
 
-$VERSION = '1.08';
+$VERSION = '1.09';
 
 sub new {
     my ( $class, %params ) = @_;
