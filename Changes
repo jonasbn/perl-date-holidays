@@ -7,7 +7,9 @@ Changes file for Date-Holidays
   implementation of adapters for SK and NZ. An issue with ES was also 
   created since this distribution seems to rely on Date::Holidays, 
   which does not seem to make sense.
-  
+
+  Ref: https://github.com/jonasbn/Date-Holidays/issues/25
+
 
 1.08 2018-05-28 Feature release, update recommended
 
