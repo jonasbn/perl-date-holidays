@@ -524,10 +524,10 @@ sub test_ru : Test(5) {
     }
 }
 
-sub test_sk : Test(3) {
+sub test_sk : Test(4) {
     SKIP: {
         eval { require Date::Holidays::SK };
-        skip "Date::Holidays::SK not installed", 3 if $@;
+        skip "Date::Holidays::SK not installed", 4 if $@;
 
         ok( my $dh = Date::Holidays->new( countrycode => 'sk' ),
             'Testing Date::Holidays::SK' );
@@ -535,8 +535,17 @@ sub test_sk : Test(3) {
         ok( $dh->holidays(),
             'Testing holidays without argument for Date::Holidays::SK' );
 
-        ok( $dh->holidays( year => 2014 ),
+        ok( $dh->holidays( year => 2018 ),
             'Testing holidays with argument for Date::Holidays::SK' );
+
+        my $holidays_hashref = Date::Holidays->is_holiday(
+            year  => 2014,
+            month => 1,
+            day   => 1,
+            countries => [ 'sk' ],
+        );
+
+        ok( $holidays_hashref->{sk}, 'Checking for Slovakian holiday' );
     }
 }
 
