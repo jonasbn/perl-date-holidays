@@ -377,9 +377,18 @@ to be used by [Date::Holidays::Adapter::Local](https://metacpan.org/pod/Date::Ho
 - [DateTime](https://metacpan.org/pod/DateTime)
 - [Locale::Country](https://metacpan.org/pod/Locale::Country)
 - [Module::Load](https://metacpan.org/pod/Module::Load)
-- [Date::Holidays::Adapter](https://metacpan.org/pod/Date::Holidays::Adapter)
 - [TryCatch](https://metacpan.org/pod/TryCatch)
 - [Scalar::Util](https://metacpan.org/pod/Scalar::Util)
+- [JSON](https://metacpan.org/pod/JSON)
+- [File::Slurp](https://metacpan.org/pod/File::Slurp)
+
+## FOR TESTING
+
+- [Test::Class](https://metacpan.org/pod/Test::Class)
+- [Test::More](https://metacpan.org/pod/Test::More)
+- [FindBin](https://metacpan.org/pod/FindBin)
+
+Please see the `cpanfile` included in the distribution for a complete listing.
 
 # INCOMPATIBILITIES
 
