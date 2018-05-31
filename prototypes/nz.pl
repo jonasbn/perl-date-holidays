@@ -13,9 +13,8 @@ my $dh = Date::Holidays->new(
 			countrycode => 'nz'
 		);
 
-my $hashref = $dh->holidays(year => 2005);
-
-print STDERR Dumper $hashref;
+my $holidays_hashref = $dh->holidays(year => 2018, region => 2);
+print STDERR Dumper $holidays_hashref;
 
 if ($dh->is_holiday(day => 1, month => 1, year => 2005)) {
     print "WOHOO\n!";
@@ -25,8 +24,8 @@ if ($dh->is_holiday(day => 1, month => 1, year => 2005)) {
 
 use Date::Holidays::NZ;
 
-if (is_nz_holiday(2018, 1, 1)) {
-    print "WOHOO\n!";
+if (my $holiday = is_nz_holiday(2018, 1, 1)) {
+    print "WOHOO: $holiday\n!";
 } else {
     print "ENOHOLIDAY\n";
 }
