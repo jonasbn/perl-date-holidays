@@ -191,7 +191,7 @@ Please refer to DIAGNOSTICS in L<Date::Holidays>
 
 =back
 
-Please see the C<cpanfile> included in the distribution for a complete listing.
+Please see the F<cpanfile> included in the distribution for a complete listing.
 
 =head1 INCOMPATIBILITIES
 

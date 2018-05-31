@@ -743,7 +743,7 @@ to be used by L<Date::Holidays::Adapter::Local>.
 
 =back
 
-Please see the C<cpanfile> included in the distribution for a complete listing.
+Please see the F<cpanfile> included in the distribution for a complete listing.
 
 =head1 INCOMPATIBILITIES
 
