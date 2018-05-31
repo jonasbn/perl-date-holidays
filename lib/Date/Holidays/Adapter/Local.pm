@@ -185,7 +185,13 @@ Please refer to DIAGNOSTICS in L<Date::Holidays>
 
 =item * L<Module::Load>
 
+=item * L<JSON>
+
+=item * L<File::Slurp>
+
 =back
+
+Please see the C<cpanfile> included in the distribution for a complete listing.
 
 =head1 INCOMPATIBILITIES
 
