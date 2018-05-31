@@ -721,13 +721,29 @@ to be used by L<Date::Holidays::Adapter::Local>.
 
 =item * L<Module::Load>
 
-=item * L<Date::Holidays::Adapter>
-
 =item * L<TryCatch>
 
 =item * L<Scalar::Util>
 
+=item * L<JSON>
+
+=item * L<File::Slurp>
+
 =back
+
+=head2 FOR TESTING
+
+=over
+
+=item * L<Test::Class>
+
+=item * L<Test::More>
+
+=item * L<FindBin>
+
+=back
+
+Please see the C<cpanfile> included in the distribution for a complete listing.
 
 =head1 INCOMPATIBILITIES
 
