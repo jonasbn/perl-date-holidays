@@ -159,7 +159,7 @@ sub _check_countries {
         }
 
         try {
-            my $dh = $self->new( countrycode => $country );
+            my $dh = $self->new( countrycode => $country, nocheck => $params{nocheck} );
 
             if ( !$dh ) {
                 my $countryname = code2country($country);

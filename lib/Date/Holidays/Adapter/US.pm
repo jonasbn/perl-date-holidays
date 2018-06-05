@@ -1,4 +1,4 @@
-package Date::Holidays::Adapter::USFederal;
+package Date::Holidays::Adapter::US;
 
 use strict;
 use warnings;
@@ -9,14 +9,6 @@ use Data::Dumper;
 use base 'Date::Holidays::Adapter';
 
 $VERSION = '1.11';
-
-# sub new {
-#     my $class = shift;
-
-#     my $self = bless {}, ref $class;
-
-#     return $self;
-# }
 
 sub holidays {
     croak "holidays is unimplemented for ".__PACKAGE__;
@@ -40,11 +32,11 @@ __END__
 
 =head1 NAME
 
-Date::Holidays::Adapter::USFederal - an adapter class for Date::Holidays::USFederal
+Date::Holidays::Adapter::US - an adapter class for Date::Holidays::USFederal
 
 =head1 VERSION
 
-This POD describes version 1.11 of Date::Holidays::Adapter::USFederal
+This POD describes version 1.11 of Date::Holidays::Adapter::US
 
 =head1 DESCRIPTION
 
