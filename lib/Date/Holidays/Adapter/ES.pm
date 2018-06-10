@@ -4,6 +4,7 @@ use strict;
 use warnings;
 
 use base 'Date::Holidays::Adapter';
+use Date::Holidays::CA_ES;
 
 use vars qw($VERSION);
 
@@ -14,11 +15,25 @@ sub holidays {
 
     my $dh = $self->{_adaptee}->new();
 
+    my $holidays_es_hashref = {};
+    my $holidays_ca_es_hashref = {};
+
     if ($dh) {
-        return $dh->holidays(year => $params{'year'});
+        $holidays_es_hashref = $dh->holidays(year => $params{year});
+
+        if ($params{region} and $params{region} eq 'ca') {
+            my $dh_ca_es = Date::Holidays::CA_ES->new();
+            $holidays_ca_es_hashref = $dh_ca_es->holidays(year => $params{year});
+        }
     } else {
         return;
     }
+
+    foreach my $key (keys %{$holidays_ca_es_hashref}) {
+        $holidays_es_hashref->{$key} = $holidays_ca_es_hashref->{$key};
+    }
+
+    return $holidays_es_hashref;
 }
 
 sub is_holiday {
@@ -84,6 +99,8 @@ Please refer to DIAGNOSTICS in L<Date::Holidays>
 =over
 
 =item * L<Date::Holidays::ES>
+
+=item * L<Date::Holidays::CA_ES>
 
 =item * L<Date::Holidays::Adapter>
 

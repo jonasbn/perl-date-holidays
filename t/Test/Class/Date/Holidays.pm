@@ -287,6 +287,9 @@ sub test_es : Test(5) {
         eval { require Date::Holidays::ES };
         skip "Date::Holidays::ES not installed", 5 if $@;
 
+        eval { require Date::Holidays::CA_ES };
+        skip "Date::Holidays::ES not installed", 5 if $@;
+
         ok( my $dh = Date::Holidays->new( countrycode => 'es' ),
             'Testing Date::Holidays::ES' );
 
@@ -303,6 +306,13 @@ sub test_es : Test(5) {
         ok( $holidays_hashref->{'es'}, 'Checking for Spanish christmas' );
 
         can_ok('Date::Holidays::ES', qw(holidays is_holiday));
+
+        # Catalan region
+        ok( my $holidays = $dh->holidays( year => 2006, region => 'ca' ),
+            'Testing holidays with argument for Date::Holidays::ES Catalan region' );
+
+        use Data::Dumper;
+        print STDERR Dumper $holidays;
     }
 }
 
