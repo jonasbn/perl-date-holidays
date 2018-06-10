@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use base 'Date::Holidays::Adapter';
-use Date::Holidays::CA_ES;
+use Module::Load; # load
 
 use vars qw($VERSION);
 
@@ -22,6 +22,13 @@ sub holidays {
         $holidays_es_hashref = $dh->holidays(year => $params{year});
 
         if ($params{region} and $params{region} eq 'ca') {
+
+            eval { load 'Date::Holidays::CA_ES'; }; # From Module::Load
+            if ($@) {
+                warn "Unable to load: Date::Holidays::CA_ES - $@\n";
+                return $holidays_es_hashref;
+            }
+
             my $dh_ca_es = Date::Holidays::CA_ES->new();
             $holidays_ca_es_hashref = $dh_ca_es->holidays(year => $params{year});
         }
