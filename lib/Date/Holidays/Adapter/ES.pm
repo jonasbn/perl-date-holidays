@@ -49,7 +49,24 @@ sub is_holiday {
     my $dh = $self->{_adaptee}->new();
 
     if ($dh) {
-        return $dh->is_holiday(year => $params{'year'}, month => $params{'month'}, day => $params{'day'});
+        if ($params{region} and $params{region} eq 'ca') {
+
+            my $dh_ca_es = Date::Holidays::CA_ES->new();
+
+            my $holidays = $dh_ca_es->holidays(year => $params{year}, region => $params{region});
+
+            my $holiday_date = sprintf('%02s%02s', $params{month}, $params{day});
+
+            my $holiday = $holidays->{$holiday_date};
+
+            if ($holiday) {
+                return $holiday;
+            } else {
+                return '';
+            }
+        }
+
+        return $dh->is_holiday(year => $params{year}, month => $params{month}, day => $params{day});
     } else {
         return '';
     }
