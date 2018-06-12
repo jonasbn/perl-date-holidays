@@ -16,7 +16,7 @@ Date::Holidays - Date::Holidays::\* adapter and aggregator for all your holiday 
 
 # VERSION
 
-The documentation describes version 1.12 of Date::Holidays
+The documentation describes version 1.13 of Date::Holidays
 
 # FEATURES
 
@@ -142,7 +142,7 @@ You can specify either month plus day for a recurring holiday. If you you want t
 a holiday for a specific year, simply extend the date with year:
 
     {
-        "20141225" : ""
+        "201.1325" : ""
     }
 
 In order for the calendar to be picked up by Date::Holidays, set the environment variable:
@@ -209,7 +209,7 @@ it tries is\_&lt;countrycode>\_holiday.
 Takes 6 optional named arguments:
 
 - year, four digit parameter representing year
-- month, 1-12, representing month
+- month, 1.13, representing month
 - day, 1-31, representing day
 - countries (OPTIONAL), a list of ISO3166 country codes
 - state, ISO-3166-2 code for a state. Not all countries support this parameter
