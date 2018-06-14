@@ -589,13 +589,13 @@ sub test_uk : Test(3) {
         skip "Date::Holidays::UK not installed", 3 if $@;
 
         ok( my $dh = Date::Holidays->new( countrycode => 'uk', nocheck => 1 ),
-            'Testing Date::Holidays::UK' );
+            'Testing Date::Holidays::Adapter::UK' );
 
         dies_ok { $dh->holidays() }
-            'Testing holidays without argument for Date::Holidays::UK';
+            'Testing holidays without argument for Date::Holidays::Adapter::UK';
 
         dies_ok { $dh->holidays( year => 2014 ) }
-            'Testing holidays with argument for Date::Holidays::UK';
+            'Testing holidays with argument for Date::Holidays::Adapter::UK';
     }
 }
 
