@@ -747,8 +747,17 @@ Please see the F<cpanfile> included in the distribution for a complete listing.
 
 =head1 INCOMPATIBILITIES
 
-None known at the moment, please refer to BUGS AND LIMITATIONS and or the
-specific adapter classes or their respective adaptees.
+Currently the following CPAN Date::Holidays distributions are unsupported:
+
+=over
+
+=item * L<Date::Holidays::UK> only supports bank holidays until 2007
+
+=item * L<Date::Holidays::UK::EnglandAndWales> only supports bank holidays until 2014
+
+=back
+
+Additional issues might be described the specific adapter classes or their respective adaptees.
 
 =head1 BUGS AND LIMITATIONS
 
