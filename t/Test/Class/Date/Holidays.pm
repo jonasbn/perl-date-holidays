@@ -583,23 +583,21 @@ sub test_sk : Test(4) {
     }
 }
 
-# TODO: Get UK under control
-# SKIP: {
-#     eval { require Date::Holidays::UK };
-#     skip "Date::Holidays::UK not installed", 3 if $@;
+sub test_uk : Test(3) {
+    SKIP: {
+        eval { require Date::Holidays::UK };
+        skip "Date::Holidays::UK not installed", 3 if $@;
 
-#     ok( $dh = Date::Holidays->new( countrycode => 'uk' ),
-#         'Testing Date::Holidays::UK' );
+        ok( my $dh = Date::Holidays->new( countrycode => 'uk', nocheck => 1 ),
+            'Testing Date::Holidays::UK' );
 
-#     use Data::Dumper;
-#     print STDERR Dumper $dh;
+        dies_ok { $dh->holidays() }
+            'Testing holidays without argument for Date::Holidays::UK';
 
-#     dies_ok { $dh->holidays() }
-#         'Testing holidays without argument for Date::Holidays::UK';
-
-#     dies_ok { $dh->holidays( year => 2014 ) }
-#         'Testing holidays with argument for Date::Holidays::UK';
-# }
+        dies_ok { $dh->holidays( year => 2014 ) }
+            'Testing holidays with argument for Date::Holidays::UK';
+    }
+}
 
 sub test_jp : Test(3) {
     SKIP: {
