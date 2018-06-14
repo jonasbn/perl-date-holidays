@@ -1,5 +1,14 @@
 Changes file for Date-Holidays
 
+1.14 2018-06.14 Feature release, update recommended
+
+- Date::Holidays::UK marked as unsupported
+
+- Date::Holidays::UK::EnglandAndWales marked as unsupported 
+
+  Ref: https://github.com/jonasbn/perl-date-holidays/issues/11
+  
+
 1.13 2018-06-12 Feature release, update recommended
 
 - This release integrates Date::Holidays::CA_ES is does so 
