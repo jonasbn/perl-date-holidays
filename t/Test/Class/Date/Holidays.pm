@@ -585,7 +585,7 @@ sub test_sk : Test(4) {
 
 sub test_uk : Test(3) {
     SKIP: {
-        eval { require Date::Holidays::UK };
+        eval { require Date::Holidays::GB };
         skip "Date::Holidays::UK not installed", 3 if $@;
 
         ok( my $dh = Date::Holidays->new( countrycode => 'uk', nocheck => 1 ),
