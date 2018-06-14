@@ -768,7 +768,7 @@ for L<Date::Holidays::AU> for documentation on this.
 L<Date::Holidays::DE> and L<Date::Holidays::UK> does not implement the
 B<holidays> methods
 
-The adaptee module for L<Date::Holidays::Adapter> is named:
+The adaptee module for L<Date::Holidays::Adapter::JP> is named:
 L<Date::Japanese::Holiday>, but the adapter class is following the general
 adapter naming of Date::Holidays::Adapter::<countrycode>.
 
