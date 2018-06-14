@@ -16,7 +16,7 @@ Date::Holidays - Date::Holidays::\* adapter and aggregator for all your holiday 
 
 # VERSION
 
-The documentation describes version 1.13 of Date::Holidays
+The documentation describes version 1.14 of Date::Holidays
 
 # FEATURES
 
@@ -142,7 +142,7 @@ You can specify either month plus day for a recurring holiday. If you you want t
 a holiday for a specific year, simply extend the date with year:
 
     {
-        "201.1325" : ""
+        "201.1425" : ""
     }
 
 In order for the calendar to be picked up by Date::Holidays, set the environment variable:
@@ -209,7 +209,7 @@ it tries is\_&lt;countrycode>\_holiday.
 Takes 6 optional named arguments:
 
 - year, four digit parameter representing year
-- month, 1.13, representing month
+- month, 1.14, representing month
 - day, 1-31, representing day
 - countries (OPTIONAL), a list of ISO3166 country codes
 - state, ISO-3166-2 code for a state. Not all countries support this parameter
@@ -392,8 +392,12 @@ Please see the `cpanfile` included in the distribution for a complete listing.
 
 # INCOMPATIBILITIES
 
-None known at the moment, please refer to BUGS AND LIMITATIONS and or the
-specific adapter classes or their respective adaptees.
+Currently the following CPAN Date::Holidays distributions are unsupported:
+
+- [Date::Holidays::UK](https://metacpan.org/pod/Date::Holidays::UK) only supports bank holidays until 2007
+- [Date::Holidays::UK::EnglandAndWales](https://metacpan.org/pod/Date::Holidays::UK::EnglandAndWales) only supports bank holidays until 2014
+
+Additional issues might be described the specific adapter classes or their respective adaptees.
 
 # BUGS AND LIMITATIONS
 
@@ -404,7 +408,7 @@ for [Date::Holidays::AU](https://metacpan.org/pod/Date::Holidays::AU) for docume
 [Date::Holidays::DE](https://metacpan.org/pod/Date::Holidays::DE) and [Date::Holidays::UK](https://metacpan.org/pod/Date::Holidays::UK) does not implement the
 **holidays** methods
 
-The adaptee module for [Date::Holidays::Adapter](https://metacpan.org/pod/Date::Holidays::Adapter) is named:
+The adaptee module for [Date::Holidays::Adapter::JP](https://metacpan.org/pod/Date::Holidays::Adapter::JP) is named:
 [Date::Japanese::Holiday](https://metacpan.org/pod/Date::Japanese::Holiday), but the adapter class is following the general
 adapter naming of Date::Holidays::Adapter::&lt;countrycode>.
 
