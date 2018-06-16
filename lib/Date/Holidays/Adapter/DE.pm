@@ -8,16 +8,65 @@ use base 'Date::Holidays::Adapter';
 
 use vars qw($VERSION);
 
+my $format = '%#:%m%d';
+
 $VERSION = '1.14';
+
+# Lifted from Date::Holidays::DE example: feiertage.pl
+# Ref: https://metacpan.org/source/MSCHMITT/Date-Holidays-DE-1.9/example/feiertage.pl
+my %holiday_names = (
+    'neuj' => 'Neujahrstag',
+    'hl3k' => 'Hl. 3 Koenige',
+    'weib' => 'Weiberfastnacht',
+    'romo' => 'Rosenmontag',
+    'fadi' => 'Faschingsdienstag',
+    'asmi' => 'Aschermittwoch',
+    'grdo' => 'Gruendonnerstag',
+    'karf' => 'Karfreitag',
+    'kars' => 'Karsamstag',
+    'osts' => 'Ostersonntag',
+    'ostm' => 'Ostermontag',
+    'pfis' => 'Pfingstsonntag',
+    'pfim' => 'Pfingstmontag',
+    'himm' => 'Himmelfahrtstag',
+    'fron' => 'Fronleichnam',
+    '1mai' => 'Maifeiertag',
+    '17ju' => 'Tag der deutschen Einheit (1954-1990)',
+    'mari' => 'Mariae Himmelfahrt',
+    'frie' => 'Augsburger Friedensfest (regional)',
+    '3okt' => 'Tag der deutschen Einheit',
+    'refo' => 'Reformationstag',
+    'alhe' => 'Allerheiligen',
+    'buss' => 'Buss- und Bettag',
+    'votr' => 'Volkstrauertag',
+    'toso' => 'Totensonntag',
+    'adv1' => '1. Advent',
+    'adv2' => '2. Advent',
+    'adv3' => '3. Advent',
+    'adv4' => '4. Advent',
+    'heil' => 'Heiligabend',
+    'wei1' => '1. Weihnachtstag',
+    'wei2' => '2. Weihnachtstag',
+    'silv' => 'Silvester'
+);
 
 sub holidays {
     my ($self, %params) = @_;
 
     if ( $params{'year'} ) {
-        return Date::Holidays::DE::holidays( YEAR => $params{'year'} );
+        $self->_transform_arrayref_to_hashref(
+            Date::Holidays::DE::holidays(
+                YEAR   => $params{'year'},
+                FORMAT => $format,
+            )
+        );
     }
     else {
-        return Date::Holidays::DE::holidays();
+        $self->_transform_arrayref_to_hashref(
+            Date::Holidays::DE::holidays(
+                FORMAT => $format,
+            )
+        );
     }
 }
 
@@ -26,7 +75,7 @@ sub is_holiday {
 
     my $holidays = Date::Holidays::DE::holidays(
         YEAR   => $params{'year'},
-        FORMAT => "%#:%m%d"
+        FORMAT => $format,
     );
 
     my $holidays_hashref = $self->_transform_arrayref_to_hashref($holidays);
@@ -48,8 +97,8 @@ sub _transform_arrayref_to_hashref {
     my $hashref_of_holidays;
 
     foreach my $entry (@{$arrayref_of_holidays}) {
-        my ($name, $key) = split /:/, $entry;
-        $hashref_of_holidays->{$key} = $name;
+        my ($shortname, $key) = split /:/, $entry;
+        $hashref_of_holidays->{$key} = $holiday_names{$shortname};
     }
 
     return $hashref_of_holidays;

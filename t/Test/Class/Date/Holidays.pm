@@ -253,10 +253,10 @@ sub test_cn : Test(3) {
     }
 }
 
-sub test_de : Test(4) {
+sub test_de : Test(6) {
     SKIP: {
         eval { require Date::Holidays::DE };
-        skip "Date::Holidays::DE not installed", 4 if $@;
+        skip "Date::Holidays::DE not installed", 6 if $@;
 
         ok( my $dh = Date::Holidays->new( countrycode => 'de' ),
             'Testing Date::Holidays::DE' );
@@ -267,7 +267,20 @@ sub test_de : Test(4) {
         ok( $dh->holidays( year => 2006 ),
             'Testing holidays with argument for Date::Holidays::DE' );
 
+        is( ref $dh->holidays( year => 2006 ), 'HASH',
+            'Testing return value of holidays with argument for Date::Holidays::DE' );
+
         ok( $dh->is_holiday(day => 1, month => 1, year => 2018), 'Testing the adapted implementation of is_holidays for DE');
+
+        my $holidays_hashref = Date::Holidays->is_holiday(
+            year  => 2017,
+            month => 1,
+            day   => 1,
+            countries => [ 'de' ],
+        );
+
+        ok( $holidays_hashref->{'de'},
+            'Checking for German first day of year' );
     }
 }
 

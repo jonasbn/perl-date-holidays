@@ -6,6 +6,14 @@ Changes file for Date-Holidays
 
   Ref: https://github.com/jonasbn/perl-date-holidays/issues/18
 
+- Changed the structure returned from Date::Holidays::DE from 
+  a reference to an array to a reference to a hash, which is 
+  easier to work with and seems to be the defacto standard
+
+  This is all done in the adapter.
+
+  Ref: https://github.com/jonasbn/perl-date-holidays/issues/29
+
 
 1.14 2018-06-14 Feature release, update recommended
 
