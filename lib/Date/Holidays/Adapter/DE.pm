@@ -22,7 +22,37 @@ sub holidays {
 }
 
 sub is_holiday {
-    croak "is_holiday is unimplemented for ".__PACKAGE__;
+    my ($self, %params) = @_;
+
+    my $holidays = Date::Holidays::DE::holidays(
+        YEAR   => $params{'year'},
+        FORMAT => "%#:%m%d"
+    );
+
+    my $holidays_hashref = $self->_transform_arrayref_to_hashref($holidays);
+
+    my $holiday_date = sprintf('%02s%02s', $params{month}, $params{day});
+
+    my $holiday = $holidays_hashref->{$holiday_date};
+
+    if ($holiday) {
+        return $holiday;
+    } else {
+        return '';
+    }
+}
+
+sub _transform_arrayref_to_hashref {
+    my ($self, $arrayref_of_holidays) = @_;
+
+    my $hashref_of_holidays;
+
+    foreach my $entry (@{$arrayref_of_holidays}) {
+        my ($name, $key) = split /:/, $entry;
+        $hashref_of_holidays->{$key} = $name;
+    }
+
+    return $hashref_of_holidays;
 }
 
 1;

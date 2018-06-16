@@ -253,10 +253,10 @@ sub test_cn : Test(3) {
     }
 }
 
-sub test_de : Test(3) {
+sub test_de : Test(4) {
     SKIP: {
         eval { require Date::Holidays::DE };
-        skip "Date::Holidays::DE not installed", 3 if $@;
+        skip "Date::Holidays::DE not installed", 4 if $@;
 
         ok( my $dh = Date::Holidays->new( countrycode => 'de' ),
             'Testing Date::Holidays::DE' );
@@ -266,6 +266,8 @@ sub test_de : Test(3) {
 
         ok( $dh->holidays( year => 2006 ),
             'Testing holidays with argument for Date::Holidays::DE' );
+
+        ok( $dh->is_holiday(day => 1, month => 1, year => 2018), 'Testing the adapted implementation of is_holidays for DE');
     }
 }
 
