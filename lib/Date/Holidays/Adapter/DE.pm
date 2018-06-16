@@ -132,8 +132,10 @@ The constructor is inherited from L<Date::Holidays::Adapter>
 
 =head2 is_holiday
 
-Not implemented in L<Date::Holidays::Holiday>, calls to this throw the
-L<Date::Holidays::Exception::UnsupportedMethod>
+The C<is_holiday> method, takes 3 named arguments, C<year>, C<month> and C<day>
+
+Returns an indication of whether the day is a holiday in the calendar of the
+country referenced by C<countrycode> in the call to the constructor C<new>.
 
 =head2 holidays
 
@@ -153,7 +155,7 @@ Please refer to DIAGNOSTICS in L<Date::Holidays>
 
 =over
 
-=item * L<Date::Japanese::Holiday>
+=item * L<Date::Holidays::DE>
 
 =item * L<Date::Holidays::Adapter>
 
