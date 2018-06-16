@@ -23,6 +23,33 @@ Date::Holidays::Adapter::CA_ES - adapter dummy class for Date::Holidays::CA_ES
 
 This POD describes version 1.14 of Date::Holidays::Adapter::CA_ES
 
+=head1 SYNOPSIS
+
+    # Recommended use via Date::Holidays
+
+    use Date::Holidays;
+
+    my $dh = Date::Holidays->new( countrycode => 'es' );
+
+    if ($dh->is_holiday(year => 2017, month  => 6, day => 24, region => 'ca')) {
+        print "Yes it is a Catalan holiday\n";
+    }
+
+    my $holidays = $dh->holidays( year => 2006, region => 'ca' );
+
+
+    # CA_ES identifier directly via Date::Holidays
+
+    use Date::Holidays;
+
+    my $dh = Date::Holidays->new( countrycode => 'CA_ES', nocheck => 1 );
+
+    if ($dh->is_holiday(year => 2017, month  => 6, day => 24)) {
+        print "Yes it is a Catalan holiday\n";
+    }
+
+    my $holidays = $dh->holidays( year => 2006);
+
 =head1 DESCRIPTION
 
 The is the an adapter class. It adapts:
