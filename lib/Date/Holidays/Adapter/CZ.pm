@@ -7,7 +7,7 @@ use base 'Date::Holidays::Adapter';
 
 use vars qw($VERSION);
 
-$VERSION = '1.15';
+$VERSION = '1.16';
 
 my $format = '%#:%m%d';
 
@@ -87,7 +87,7 @@ Date::Holidays::Adapter::CZ - an adapter class for Date::Holidays::CZ
 
 =head1 VERSION
 
-This POD describes version 1.15 of Date::Holidays::Adapter::CZ
+This POD describes version 1.16 of Date::Holidays::Adapter::CZ
 
 =head1 DESCRIPTION
 
