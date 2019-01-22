@@ -2,15 +2,20 @@
 
 use lib qw(blib/lib);
 use Date::Holidays;
+use Data::Dumper;
 
 my $dh = Date::Holidays->new(
 			countrycode => 'de'
 		);
 
-$dh->holidays(year => 2005);
+my $holidays = $dh->holidays( year => 2018, state => ['bb', 'sl']);
 
-use Data::Dumper;
-use Date::Holidays::DE;
-my $holidays = Date::Holidays::DE::holidays();
+print STDERR Dumper $holidays;
+
+$holidays = $dh->holidays( year => 2018,);
+
+print STDERR Dumper $holidays;
+
+$holidays = $dh->holidays( state => ['bb'] );
 
 print STDERR Dumper $holidays;
