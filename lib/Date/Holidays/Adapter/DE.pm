@@ -163,6 +163,9 @@ B<countrycode> in the call to the constructor B<new>.
 The calendar will spand for a year and the keys consist of B<month> and B<day>
 concatenated.
 
+In addition from version 1.17 the adapter support the B<state> parameter, defaulting to
+B<'all'>.
+
 =head1 DIAGNOSTICS
 
 Please refer to DIAGNOSTICS in L<Date::Holidays>
