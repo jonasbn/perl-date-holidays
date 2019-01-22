@@ -16,7 +16,7 @@ install:
   HARNESS_TIMER=1
 - dzil listdeps | grep -vP '[^\w:]' | cpanm --quiet --notest --skip-satisfied
 script:
-- dzil smoke --release --author
+- dzil smoke --release --author 2> /dev/null
 after_success:
 - dzil cover -outputdir cover_db -report coveralls
 notifications:
