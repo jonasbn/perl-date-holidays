@@ -55,9 +55,6 @@ sub holidays {
 
     my $state = $params{'state'} ? $params{'state'} : ['all'];
 
-    use Data::Dumper;
-    print STDERR "We got state: ", Dumper $state;
-
     my $holidays;
 
     if ( $params{'year'} ) {
@@ -114,8 +111,6 @@ sub _transform_arrayref_to_hashref {
         my ($shortname, $key) = split /:/, $entry;
         $hashref_of_holidays->{$key} = $holiday_names{$shortname};
     }
-
-    print STDERR "We got state: ", Dumper $hashref_of_holidays;
 
     return $hashref_of_holidays;
 }
