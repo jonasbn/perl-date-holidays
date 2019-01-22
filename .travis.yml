@@ -1,10 +1,8 @@
 sudo: false
 language: perl
 perl:
-- '5.24'
-- '5.22'
+- '5.26'
 - '5.20'
-- '5.10'
 before_install:
 - git config --global user.name "TravisCI"
 install:
@@ -18,7 +16,7 @@ install:
   HARNESS_TIMER=1
 - dzil listdeps | grep -vP '[^\w:]' | cpanm --quiet --notest --skip-satisfied
 script:
-- dzil smoke --release --author
+- dzil smoke --release --author 2> /dev/null
 after_success:
 - dzil cover -outputdir cover_db -report coveralls
 notifications:
