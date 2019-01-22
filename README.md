@@ -16,7 +16,7 @@ Date::Holidays - Date::Holidays::\* adapter and aggregator for all your holiday 
 
 # VERSION
 
-The documentation describes version 1.16 of Date::Holidays
+The documentation describes version 1.17 of Date::Holidays
 
 # FEATURES
 
@@ -209,7 +209,7 @@ it tries is\_&lt;countrycode>\_holiday.
 Takes 6 optional named arguments:
 
 - year, four digit parameter representing year
-- month, 1.16, representing month
+- month, 1.17, representing month
 - day, 1-31, representing day
 - countries (OPTIONAL), a list of ISO3166 country codes
 - state, ISO-3166-2 code for a state. Not all countries support this parameter
@@ -482,6 +482,7 @@ all the wrapped (adapted and aggregated) distributions.
 
 # ACKNOWLEDGEMENTS
 
+- Mario Minati, for telling me about the states in Date::Holidays::DE resulting in 1.17
 - Vladimir Varlamov, PR introducing Date::Holidays::KZ resulting in 1.07
 - CHORNY (Alexandr Ciornii), Github issue #10, letting me know I included local/ by accident,
 resulting in release 1.05
@@ -508,7 +509,7 @@ Jonas B. Nielsen, (jonasbn) - `<jonasbn@cpan.org>`
 # LICENSE AND COPYRIGHT
 
 Date-Holidays and related modules are (C) by Jonas B. Nielsen, (jonasbn)
-2004-2018
+2004-2019
 
 Date-Holidays and related modules are released under the Artistic License 2.0
 
