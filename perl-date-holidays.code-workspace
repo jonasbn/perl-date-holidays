@@ -13,7 +13,8 @@
 		],
 		"perlcritic.severity": "brutal",
 		"perlcritic.additionalArguments": [
-			"-p t/perlcritic.rc"
+			"--profile",
+			"t/perlcritic.rc"
 		]
 	}
 }

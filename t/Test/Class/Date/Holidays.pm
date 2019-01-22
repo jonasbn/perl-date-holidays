@@ -103,32 +103,6 @@ sub holidays_dt : Test(17) {
     }
 }
 
-sub test_at : Test(5) {
-    SKIP: {
-        eval { require Date::Holidays::AT };
-        skip "Date::Holidays::AT not installed", 5 if $@;
-
-        ok( my $dh = Date::Holidays->new( countrycode => 'at' ),
-            'Testing Date::Holidays::AT' );
-
-        ok( $dh->holidays( YEAR => 2017 ),
-            'Testing holidays with argument for Date::Holidays::AT' );
-
-        my $holidays_hashref = Date::Holidays->is_holiday(
-            year  => 2017,
-            month => 1,
-            day   => 1,
-            countries => [ 'at' ],
-        );
-
-        ok( !$holidays_hashref->{'at'},
-            'Checking for Austrian first day of year' );
-
-        ok(! Date::Holidays::AT->can('is_holiday'));
-        can_ok('Date::Holidays::AT', qw(holidays));
-    }
-}
-
 sub test_au : Test(7) {
     SKIP: {
         eval { require Date::Holidays::AU };
