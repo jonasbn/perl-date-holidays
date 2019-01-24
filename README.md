@@ -16,7 +16,7 @@ Date::Holidays - Date::Holidays::\* adapter and aggregator for all your holiday 
 
 # VERSION
 
-The documentation describes version 1.17 of Date::Holidays
+The documentation describes version 1.18 of Date::Holidays
 
 # FEATURES
 
@@ -209,7 +209,7 @@ it tries is\_&lt;countrycode>\_holiday.
 Takes 6 optional named arguments:
 
 - year, four digit parameter representing year
-- month, 1.17, representing month
+- month, 1.18, representing month
 - day, 1-31, representing day
 - countries (OPTIONAL), a list of ISO3166 country codes
 - state, ISO-3166-2 code for a state. Not all countries support this parameter
