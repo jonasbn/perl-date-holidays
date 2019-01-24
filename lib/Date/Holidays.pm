@@ -808,6 +808,8 @@ all the wrapped (adapted and aggregated) distributions.
 
 =item * L<Date::Holidays::AT>
 
+=item * L<Date::Holidays::Adapter::AT>
+
 =item * L<Date::Holidays::AU>
 
 =item * L<Date::Holidays::Adapter::AU>
@@ -824,9 +826,15 @@ all the wrapped (adapted and aggregated) distributions.
 
 =item * L<Date::Holidays::CA_ES>
 
+=item * L<Date::Holidays::Adapter::CA_ES>
+
 =item * L<Date::Holidays::CN>
 
 =item * L<Date::Holidays::Adapter::CN>
+
+=item * L<Date::Holidays::CZ>
+
+=item * L<Date::Holidays::Adapter::CZ>
 
 =item * L<Date::Holidays::DE>
 
@@ -851,6 +859,10 @@ all the wrapped (adapted and aggregated) distributions.
 =item * L<Date::Holidays::KR>
 
 =item * L<Date::Holidays::Adapter::KR>
+
+=item * L<Date::Holidays::KZ>
+
+=item * L<Date::Holidays::Adapter::KZ>
 
 =item * L<Date::Holidays::NO>
 
@@ -877,6 +889,8 @@ all the wrapped (adapted and aggregated) distributions.
 =item * L<Date::Holidays::Adapter::SK>
 
 =item * L<Date::Holidays::UK>
+
+=item * L<Date::Holidays::Adapter::UK>
 
 =item * L<Date::Holidays::USFederal>
 
