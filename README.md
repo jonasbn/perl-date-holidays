@@ -157,12 +157,8 @@ This should point to the JSON file.
 
 This is the constructor. It takes the following parameters:
 
-- countrycode (MANDATORY, see below), unique two letter code representing a
-country name.  Please refer to ISO3166 (or [Locale::Country](https://metacpan.org/pod/Locale::Country))
-- nocheck (optional), if set to true the countrycode specified will not be
-validated against a list of known country codes for existance, so you can build
-fake holidays for fake countries, I currently use this for test. This parameter
-might disappear in the future.
+- countrycode (MANDATORY, see below), unique two letter code representing a country name.  Please refer to ISO3166 (or [Locale::Country](https://metacpan.org/pod/Locale::Country))
+- nocheck (optional), if set to true the countrycode specified will not be validated against a list of known country codes for existance, so you can build fake holidays for fake countries, I currently use this for test. This parameter might disappear in the future.
 
 The constructor loads the module from Date::Holidays::\*, which matches the
 country code and returns a Date::Holidays module with the specified module
@@ -419,9 +415,9 @@ make this work with some Perl magic.
 
 # ISSUE REPORTING
 
-Please report any bugs or feature requests using **Github**.
+Please report any bugs or feature requests using **GitHub**.
 
-- [Github Issues](https://github.com/jonasbn/perl-date-holidays/issues)
+- [GitHub Issues](https://github.com/jonasbn/perl-date-holidays/issues)
 
 # TEST COVERAGE
 
@@ -431,12 +427,12 @@ Coverage reports are available via [Coveralls.io](https://coveralls.io/github/jo
 
 Without the actual holiday implementations installed/available coverage will be very low.
 
-Please see [Task::Date::Holidays](https://metacpan.org/pod/Task::Date::Holidays), which is a distribution, which can help in installing
-all the wrapped (adapted and aggregated) distributions.
+Please see [Task::Date::Holidays](https://metacpan.org/pod/Task::Date::Holidays), which is a distribution, which can help in installing all the wrapped (adapted and aggregated) distributions.
 
 # SEE ALSO
 
 - [Date::Holidays::AT](https://metacpan.org/pod/Date::Holidays::AT)
+- [Date::Holidays::Adapter::AT](https://metacpan.org/pod/Date::Holidays::Adapter::AT)
 - [Date::Holidays::AU](https://metacpan.org/pod/Date::Holidays::AU)
 - [Date::Holidays::Adapter::AU](https://metacpan.org/pod/Date::Holidays::Adapter::AU)
 - [Date::Holidays::BR](https://metacpan.org/pod/Date::Holidays::BR)
@@ -445,8 +441,11 @@ all the wrapped (adapted and aggregated) distributions.
 - [Date::Holidays::Adapter::BY](https://metacpan.org/pod/Date::Holidays::Adapter::BY)
 - [Date::Holidays::CA](https://metacpan.org/pod/Date::Holidays::CA)
 - [Date::Holidays::CA\_ES](https://metacpan.org/pod/Date::Holidays::CA_ES)
+- [Date::Holidays::Adapter::CA\_ES](https://metacpan.org/pod/Date::Holidays::Adapter::CA_ES)
 - [Date::Holidays::CN](https://metacpan.org/pod/Date::Holidays::CN)
 - [Date::Holidays::Adapter::CN](https://metacpan.org/pod/Date::Holidays::Adapter::CN)
+- [Date::Holidays::CZ](https://metacpan.org/pod/Date::Holidays::CZ)
+- [Date::Holidays::Adapter::CZ](https://metacpan.org/pod/Date::Holidays::Adapter::CZ)
 - [Date::Holidays::DE](https://metacpan.org/pod/Date::Holidays::DE)
 - [Date::Holidays::Adapter::DE](https://metacpan.org/pod/Date::Holidays::Adapter::DE)
 - [Date::Holidays::DK](https://metacpan.org/pod/Date::Holidays::DK)
@@ -459,6 +458,8 @@ all the wrapped (adapted and aggregated) distributions.
 - [Date::Holidays::Adapter::GB](https://metacpan.org/pod/Date::Holidays::Adapter::GB)
 - [Date::Holidays::KR](https://metacpan.org/pod/Date::Holidays::KR)
 - [Date::Holidays::Adapter::KR](https://metacpan.org/pod/Date::Holidays::Adapter::KR)
+- [Date::Holidays::KZ](https://metacpan.org/pod/Date::Holidays::KZ)
+- [Date::Holidays::Adapter::KZ](https://metacpan.org/pod/Date::Holidays::Adapter::KZ)
 - [Date::Holidays::NO](https://metacpan.org/pod/Date::Holidays::NO)
 - [Date::Holidays::Adapter::NO](https://metacpan.org/pod/Date::Holidays::Adapter::NO)
 - [Date::Holidays::NZ](https://metacpan.org/pod/Date::Holidays::NZ)
@@ -472,6 +473,7 @@ all the wrapped (adapted and aggregated) distributions.
 - [Date::Holidays::SK](https://metacpan.org/pod/Date::Holidays::SK)
 - [Date::Holidays::Adapter::SK](https://metacpan.org/pod/Date::Holidays::Adapter::SK)
 - [Date::Holidays::UK](https://metacpan.org/pod/Date::Holidays::UK)
+- [Date::Holidays::Adapter::UK](https://metacpan.org/pod/Date::Holidays::Adapter::UK)
 - [Date::Holidays::USFederal](https://metacpan.org/pod/Date::Holidays::USFederal)
 - [Date::Holidays::Adapter::USFederal](https://metacpan.org/pod/Date::Holidays::Adapter::USFederal)
 - [Date::Japanese::Holiday](https://metacpan.org/pod/Date::Japanese::Holiday)
@@ -484,21 +486,18 @@ all the wrapped (adapted and aggregated) distributions.
 
 - Mario Minati, for telling me about the states in Date::Holidays::DE resulting in 1.17
 - Vladimir Varlamov, PR introducing Date::Holidays::KZ resulting in 1.07
-- CHORNY (Alexandr Ciornii), Github issue #10, letting me know I included local/ by accident,
-resulting in release 1.05
+- CHORNY (Alexandr Ciornii), Github issue #10, letting me know I included local/ by accident, resulting in release 1.05
 - Vladimir Varlamov, PR introducing Date::Holidays::BY resulting in 1.04
 - Joseph M. Orost, bug report resulting in 1.03
 - Alexander Nalobin, patch for using of Date::Holidays::RU, 1.01
 - Gabor Szabo, patch assisting META data generation
-- Florian Merges for feedback and pointing out a bug in Date::Holidays,
-author of Date::Holidays::ES
+- Florian Merges for feedback and pointing out a bug in Date::Holidays, author of Date::Holidays::ES
 - COG (Jose Castro), Date::Holidays::PT author
 - RJBS (Ricardo Signes), POD formatting
 - MRAMBERG (Marcus Ramberg), Date::Holidays::NO author
 - BORUP (Christian Borup), DateTime suggestions
 - LTHEGLER (Lars Thegler), Date::Holidays::DK author
-- shild on use.perl.org, CPAN tester
-http://use.perl.org/comments.pl?sid=28993&cid=43889
+- shild on [use.perl.org](http://use.perl.org/comments.pl?sid=28993&cid=43889), CPAN tester
 - CPAN testers in general, their work is invaluable
 - All of the authors/contributors of Date::Holidays::\* modules
 

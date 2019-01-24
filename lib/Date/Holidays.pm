@@ -464,13 +464,9 @@ This is the constructor. It takes the following parameters:
 
 =over
 
-=item countrycode (MANDATORY, see below), unique two letter code representing a
-country name.  Please refer to ISO3166 (or L<Locale::Country>)
+=item countrycode (MANDATORY, see below), unique two letter code representing a country name.  Please refer to ISO3166 (or L<Locale::Country>)
 
-=item nocheck (optional), if set to true the countrycode specified will not be
-validated against a list of known country codes for existance, so you can build
-fake holidays for fake countries, I currently use this for test. This parameter
-might disappear in the future.
+=item nocheck (optional), if set to true the countrycode specified will not be validated against a list of known country codes for existance, so you can build fake holidays for fake countries, I currently use this for test. This parameter might disappear in the future.
 
 =back
 
@@ -779,11 +775,11 @@ make this work with some Perl magic.
 
 =head1 ISSUE REPORTING
 
-Please report any bugs or feature requests using B<Github>.
+Please report any bugs or feature requests using B<GitHub>.
 
 =over
 
-=item * L<Github Issues|https://github.com/jonasbn/perl-date-holidays/issues>
+=item * L<GitHub Issues|https://github.com/jonasbn/perl-date-holidays/issues>
 
 =back
 
@@ -799,8 +795,7 @@ Coverage reports are available via L<Coveralls.io|https://coveralls.io/github/jo
 
 Without the actual holiday implementations installed/available coverage will be very low.
 
-Please see L<Task::Date::Holidays>, which is a distribution, which can help in installing
-all the wrapped (adapted and aggregated) distributions.
+Please see L<Task::Date::Holidays>, which is a distribution, which can help in installing all the wrapped (adapted and aggregated) distributions.
 
 =head1 SEE ALSO
 
@@ -916,8 +911,7 @@ all the wrapped (adapted and aggregated) distributions.
 
 =item * Vladimir Varlamov, PR introducing Date::Holidays::KZ resulting in 1.07
 
-=item * CHORNY (Alexandr Ciornii), Github issue #10, letting me know I included local/ by accident,
-resulting in release 1.05
+=item * CHORNY (Alexandr Ciornii), Github issue #10, letting me know I included local/ by accident, resulting in release 1.05
 
 =item * Vladimir Varlamov, PR introducing Date::Holidays::BY resulting in 1.04
 
@@ -927,8 +921,7 @@ resulting in release 1.05
 
 =item * Gabor Szabo, patch assisting META data generation
 
-=item * Florian Merges for feedback and pointing out a bug in Date::Holidays,
-author of Date::Holidays::ES
+=item * Florian Merges for feedback and pointing out a bug in Date::Holidays, author of Date::Holidays::ES
 
 =item * COG (Jose Castro), Date::Holidays::PT author
 
@@ -940,8 +933,7 @@ author of Date::Holidays::ES
 
 =item * LTHEGLER (Lars Thegler), Date::Holidays::DK author
 
-=item * shild on use.perl.org, CPAN tester
-http://use.perl.org/comments.pl?sid=28993&cid=43889
+=item * shild on L<use.perl.org|http://use.perl.org/comments.pl?sid=28993&cid=43889>, CPAN tester
 
 =item * CPAN testers in general, their work is invaluable
 
