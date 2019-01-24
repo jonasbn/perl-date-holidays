@@ -1,10 +1,10 @@
-package Date::Holidays::Adapter::DE;
+package Date::Holidays::Adapter::AT;
 
 use strict;
 use warnings;
 use Carp;
 
-use base 'Date::Holidays::Adapter';
+use base 'Date::Holidays::Adapter::DE';
 
 use vars qw($VERSION);
 
@@ -12,42 +12,31 @@ my $format = '%#:%m%d';
 
 $VERSION = '1.18';
 
-# Lifted from Date::Holidays::DE example: feiertage.pl
-# Ref: https://metacpan.org/source/MSCHMITT/Date-Holidays-DE-1.9/example/feiertage.pl
+# Lifted from Date::Holidays::AT source code
+# Ref: https://metacpan.org/source/MDIETRICH/Date-Holidays-AT-v0.1.4/lib/Date/Holidays/AT.pm
 my %holiday_names = (
-    'neuj' => 'Neujahrstag',
-    'hl3k' => 'Hl. 3 Koenige',
-    'weib' => 'Weiberfastnacht',
-    'romo' => 'Rosenmontag',
-    'fadi' => 'Faschingsdienstag',
-    'asmi' => 'Aschermittwoch',
-    'grdo' => 'Gruendonnerstag',
-    'karf' => 'Karfreitag',
-    'kars' => 'Karsamstag',
-    'osts' => 'Ostersonntag',
-    'ostm' => 'Ostermontag',
-    'pfis' => 'Pfingstsonntag',
-    'pfim' => 'Pfingstmontag',
-    'himm' => 'Himmelfahrtstag',
-    'fron' => 'Fronleichnam',
-    '1mai' => 'Maifeiertag',
-    '17ju' => 'Tag der deutschen Einheit (1954-1990)',
-    'mari' => 'Mariae Himmelfahrt',
-    'frie' => 'Augsburger Friedensfest (regional)',
-    '3okt' => 'Tag der deutschen Einheit',
-    'refo' => 'Reformationstag',
+    'neuj' => "New year's day",
+    'hl3k' => 'Heilige 3 Koenige',
+    'jose' => 'Josef',
+    'tdar' => 'Staatsfeiertag (Tag der Arbeit)',
+    'flor' => 'Florian',
+    'mahi' => 'Mariae Himmelfahrt',
+    'rupe' => 'Rupert',
+    'volk' => 'Tag der Volksabstimmung',
+    'nati' => 'Nationalfeiertag',
     'alhe' => 'Allerheiligen',
-    'buss' => 'Buss- und Bettag',
-    'votr' => 'Volkstrauertag',
-    'toso' => 'Totensonntag',
-    'adv1' => '1. Advent',
-    'adv2' => '2. Advent',
-    'adv3' => '3. Advent',
-    'adv4' => '4. Advent',
-    'heil' => 'Heiligabend',
-    'wei1' => '1. Weihnachtstag',
-    'wei2' => '2. Weihnachtstag',
-    'silv' => 'Silvester'
+    'mart' => 'Martin',
+    'leop' => 'Leopold',
+    'maem' => 'Mariae Empfaengnis',
+    'heab' => 'Heiliger Abend',
+    'chri' => 'Christtag',
+    'stef' => 'Stefanitag',
+    'silv' => 'Silvester',
+    'karf' => 'Karfreitag',
+    'ostm' => 'Ostermontag',
+    'himm' => 'Christi Himmelfahrt',
+    'pfim' => 'Pfingstmontag',
+    'fron' => 'Fronleichnam',
 );
 
 sub holidays {
@@ -59,7 +48,7 @@ sub holidays {
 
     if ( $params{'year'} ) {
         $holidays = $self->_transform_arrayref_to_hashref(
-            Date::Holidays::DE::holidays(
+            Date::Holidays::AT::holidays(
                 YEAR   => $params{'year'},
                 FORMAT => $format,
                 WHERE  => $state,
@@ -68,7 +57,7 @@ sub holidays {
     }
     else {
         $holidays = $self->_transform_arrayref_to_hashref(
-            Date::Holidays::DE::holidays(
+            Date::Holidays::AT::holidays(
                 FORMAT => $format,
                 WHERE  => $state,
             )
@@ -83,7 +72,7 @@ sub is_holiday {
 
     my $state = $params{'state'} ? $params{'state'} : ['all'];
 
-    my $holidays = Date::Holidays::DE::holidays(
+    my $holidays = Date::Holidays::AT::holidays(
         YEAR   => $params{'year'},
         FORMAT => $format,
         WHERE  => $state,
@@ -102,19 +91,6 @@ sub is_holiday {
     }
 }
 
-sub _transform_arrayref_to_hashref {
-    my ($self, $arrayref_of_holidays) = @_;
-
-    my $hashref_of_holidays;
-
-    foreach my $entry (@{$arrayref_of_holidays}) {
-        my ($shortname, $key) = split /:/, $entry;
-        $hashref_of_holidays->{$key} = $holiday_names{$shortname};
-    }
-
-    return $hashref_of_holidays;
-}
-
 1;
 
 __END__
@@ -123,15 +99,15 @@ __END__
 
 =head1 NAME
 
-Date::Holidays::Adapter::DE - an adapter class for Date::Holidays::DE
+Date::Holidays::Adapter::AT - an adapter class for Date::Holidays::AT
 
 =head1 VERSION
 
-This POD describes version 1.18 of Date::Holidays::Adapter::DE
+This POD describes version 1.18 of Date::Holidays::Adapter::AT
 
 =head1 DESCRIPTION
 
-The is the adapter class for L<Date::Holidays::DE>.
+The is the adapter class for L<Date::Holidays::AT>.
 
 =head1 SUBROUTINES/METHODS
 
@@ -169,7 +145,9 @@ Please refer to DIAGNOSTICS in L<Date::Holidays>
 
 =over
 
-=item * L<Date::Holidays::DE>
+=item * L<Date::Holidays::AT>
+
+=item * L<Date::Holidays::Adapter::DE>
 
 =item * L<Date::Holidays::Adapter>
 
@@ -181,11 +159,10 @@ Please refer to INCOMPATIBILITIES in L<Date::Holidays>
 
 =head1 BUGS AND LIMITATIONS
 
-B<is_holiday> or similar method is not implemented in L<Date::Holidays::DE> as
-of version 0.06.
+B<is_holiday> or similar method is not implemented in L<Date::Holidays::AT> as of version v0.1.4.
 
 The adapter does currently not support the complex API of
-L<Date::Holidays::DE> B<holidays>.
+L<Date::Holidays::AT> B<holidays>.
 
 Please refer to BUGS AND LIMITATIONS in L<Date::Holidays>
 
@@ -205,3 +182,4 @@ L<Date::Holidays> and related modules are (C) by Jonas B. Nielsen, (jonasbn)
 Date-Holidays and related modules are released under the Artistic License 2.0
 
 =cut
+
