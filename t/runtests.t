@@ -6,17 +6,17 @@ use warnings;
 use FindBin qw($Bin);
 use lib "$Bin/../lib", "$Bin/../t", "$Bin/t", "$Bin";
 
-#use Test::Class::Date::Holidays::Local;
-#use Test::Class::Date::Holidays::Adapter;
-#use Test::Class::Date::Holidays;
+use Test::Class::Date::Holidays::Local;
+use Test::Class::Date::Holidays::Adapter;
+use Test::Class::Date::Holidays;
 
-#use Test::Class::Date::Holidays::Produceral;
-#use Test::Class::Date::Holidays::Supered;
-#use Test::Class::Date::Holidays::Abstracted;
-#use Test::Class::Date::Holidays::Polymorphic;
-#use Test::Class::Date::Holidays::Nonpolymorphic;
+use Test::Class::Date::Holidays::Produceral;
+use Test::Class::Date::Holidays::Supered;
+use Test::Class::Date::Holidays::Abstracted;
+use Test::Class::Date::Holidays::Polymorphic;
+use Test::Class::Date::Holidays::Nonpolymorphic;
 
-#use Test::Class::Date::Holidays::AT;
+use Test::Class::Date::Holidays::AT;
 use Test::Class::Date::Holidays::AU;
 
 Test::Class->runtests();
