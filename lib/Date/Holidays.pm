@@ -150,7 +150,7 @@ sub _check_countries {
     my ( $self, %params ) = @_;
 
     my $result = {};
-    my $precedent_calendar = '';
+    my $precedent_calendar = q{''};
 
     foreach my $country ( @{ $params{'countries'} } ) {
 
