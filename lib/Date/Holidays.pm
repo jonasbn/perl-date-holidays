@@ -241,7 +241,7 @@ sub _fetch {
     if ( !$params->{'nocheck'} ) {
 
         # Is our country code valid or local?
-        if ( $countrycode !~ m/local/i and !code2country( $countrycode ) ) {  #from Locale::Country
+        if ( $countrycode !~ m/local/i and not code2country( $countrycode ) ) {  #from Locale::Country
             croak "$countrycode is not a valid country code";
         }
     }
