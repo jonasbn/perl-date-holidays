@@ -1,9 +1,9 @@
 {
 	"folders": [
 		{
-			"name": "Everything"
+			"name": "Everything",
 			"path": "."
-		}
+		},
         {
             // Source code
             "name": "Library",
@@ -29,7 +29,8 @@
 		],
 		"perlcritic.severity": "brutal",
 		"perlcritic.additionalArguments": [
-			"-p t/perlcritic.rc"
+			"--profile",
+			"t/perlcritic.rc"
 		]
 	}
 }
