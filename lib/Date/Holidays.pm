@@ -5,7 +5,7 @@ use warnings;
 use vars qw($VERSION);
 use Locale::Country qw(all_country_codes code2country);
 use Module::Load qw(load);
-use Carp; # croak and carp
+use Carp;    # croak and carp
 use DateTime;
 use TryCatch;
 use Scalar::Util qw(blessed);
@@ -25,20 +25,23 @@ sub new {
         ref $class || $class;
 
     if ( $params{'countrycode'} ) {
-        if ( code2country( $params{countrycode} )) {
+        if ( code2country( $params{countrycode} ) ) {
             $self->{'_countrycode'} = uc $params{countrycode};
-        } else {
+        }
+        else {
             $self->{'_countrycode'} = $params{countrycode};
         }
 
         try {
-            $self->{'_inner_class'}
-                = $self->_fetch( { nocheck     => $params{'nocheck'},
-                                   countrycode => $params{'countrycode'},
-                                 } );
+            $self->{'_inner_class'} = $self->_fetch(
+                {   nocheck     => $params{'nocheck'},
+                    countrycode => $params{'countrycode'},
+                }
+            );
         }
 
-    } else {
+    }
+    else {
         croak 'No country code specified';
     }
 
@@ -54,16 +57,19 @@ sub new {
 
             if ($adapter) {
                 $self->{'_inner_object'} = $adapter;
-            } else {
+            }
+            else {
                 carp 'Adapter not defined';
                 $self = undef;
             }
-        } catch ($error) {
+        }
+        catch ($error) {
             carp "Unable to initialize adapter: $error";
             $self = undef;
         }
 
-    } elsif ( !$self->{'_inner_class'} ) {
+    }
+    elsif ( !$self->{'_inner_class'} ) {
         carp 'No inner class instantiated';
         $self = undef;
     }
@@ -81,7 +87,7 @@ sub holidays {
     if ( not $params{'countries'} ) {
 
         #No countries - so we create a list
-        my @countries = all_country_codes(); # From Locale::Country
+        my @countries = all_country_codes();    # From Locale::Country
         @countries = sort @countries;
 
         # We stick the complete list of countries to the parameters
@@ -100,21 +106,24 @@ sub is_holiday {
     my $r;
 
     if ( not $params{'countries'} ) {
-        if (blessed $self) {
+        if ( blessed $self) {
             $r = $self->{'_inner_object'}->is_holiday(%params);
-        } else {
-            my @countries = all_country_codes(); # From Locale::Country
+        }
+        else {
+            my @countries = all_country_codes();    # From Locale::Country
             @countries = sort @countries;
             $params{'countries'} = \@countries;
 
             $r = __PACKAGE__->_check_countries(%params);
         }
 
-    } else {
-        if (blessed $self) {
+    }
+    else {
+        if ( blessed $self) {
             $r = $self->_check_countries(%params);
 
-        } else {
+        }
+        else {
             $r = __PACKAGE__->_check_countries(%params);
         }
     }
@@ -149,19 +158,22 @@ sub holidays_dt {
 sub _check_countries {
     my ( $self, %params ) = @_;
 
-    my $result = {};
+    my $result             = {};
     my $precedent_calendar = q{''};
 
     foreach my $country ( @{ $params{'countries'} } ) {
 
         #The list of countries is ordered
-        if ($country =~ m/\A\+(\w+)/xsm) {
-            $country = $1;
+        if ( $country =~ m/\A[+](\w+)/xism ) {
+            $country            = $1;
             $precedent_calendar = $country;
         }
 
         try {
-            my $dh = $self->new( countrycode => $country, nocheck => $params{nocheck} );
+            my $dh = $self->new(
+                countrycode => $country,
+                nocheck     => $params{nocheck}
+            );
 
             if ( !$dh ) {
                 my $countryname = code2country($country);
@@ -178,36 +190,36 @@ sub _check_countries {
             );
 
             # did we receive special regions parameter?
-            if ($params{regions}) {
+            if ( $params{regions} ) {
                 $prepared_parameters{regions} = $params{regions};
             }
 
             # did we receive special state parameter?
-            if ($params{state}) {
+            if ( $params{state} ) {
                 $prepared_parameters{state} = $params{state};
             }
 
             my $r = $dh->is_holiday(%prepared_parameters);
 
-            if ($precedent_calendar eq $country) {
+            if ( $precedent_calendar eq $country ) {
                 $self->{precedent_calendar} = $dh;
             }
 
             # handling precedent calendar
-            if ($precedent_calendar and
-                $precedent_calendar ne $country) {
+            if (    $precedent_calendar
+                and $precedent_calendar ne $country )
+            {
 
-                my $holiday = $self->{precedent_calendar}->is_holiday(
-                    %prepared_parameters
-                );
+                my $holiday = $self->{precedent_calendar}
+                    ->is_holiday(%prepared_parameters);
 
                 # our precedent calendar dictates overwrite or nullification
-                if (defined $holiday) {
+                if ( defined $holiday ) {
                     $r = $holiday;
                 }
             }
 
-            if (defined $r) {
+            if ( defined $r ) {
                 $result->{$country} = $r;
             }
         }
@@ -243,7 +255,9 @@ sub _fetch {
     if ( !$params->{'nocheck'} ) {
 
         # Is our country code valid or local?
-        if ( $countrycode !~ m/\Alocal\Z/xism and not code2country( $countrycode ) ) {  #from Locale::Country
+        if ( $countrycode !~ m/\Alocal\Z/xism
+            and not code2country($countrycode) )
+        {    #from Locale::Country
             croak "$countrycode is not a valid country code";
         }
     }
@@ -253,17 +267,20 @@ sub _fetch {
 
     try {
         # We load an adapter implementation
-        if ($countrycode =~ m/\Alocal\Z/xism) {
+        if ( $countrycode =~ m/\Alocal\Z/xism ) {
             $module = 'Date::Holidays::Adapter::Local';
-        } elsif (code2country( $countrycode )) {
+        }
+        elsif ( code2country($countrycode) ) {
             $module = 'Date::Holidays::Adapter::' . uc $countrycode;
-        } else {
+        }
+        else {
             $module = 'Date::Holidays::Adapter::' . $countrycode;
         }
 
         $module = $self->_load($module);
 
-    } catch ($error) {
+    }
+    catch ($error) {
         carp "Unable to load module: $module - $error";
 
         try {
@@ -271,11 +288,12 @@ sub _fetch {
             # We load an adapter implementation
             $module = 'Date::Holidays::Adapter::' . $countrycode;
 
-            if ($module = $self->_load($module)) {
+            if ( $module = $self->_load($module) ) {
                 carp "we got a module and we return\n";
             }
 
-        } catch ($error) {
+        }
+        catch ($error) {
             carp "Unable to load module: $module - $error";
 
             $module = 'Date::Holidays::Adapter';
