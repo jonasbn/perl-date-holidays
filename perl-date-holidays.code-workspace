@@ -21,7 +21,7 @@
 		}
 	],
 	"settings": {
-		"perlSyntax.perlExecutable": "/Users/jonasbn/perl5/perlbrew/perls/perl-5.22.3/bin/perl",
+		"perlSyntax.perlExecutable": "/Users/jonasbn/perl5/perlbrew/perls/perl-5.28.1/bin/perl",
 		"perlSyntax.includePaths": [
 			"t",
 			"lib",
@@ -31,6 +31,7 @@
 		"perlcritic.additionalArguments": [
 			"--profile",
 			"t/perlcritic.rc"
-		]
+		],
+		"perlcritic.trace.server": "verbose"
 	}
 }
