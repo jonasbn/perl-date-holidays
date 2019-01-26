@@ -1147,7 +1147,7 @@ allow_messages_ending_with_newlines = 0
 
 
 # Don't `use constant FOO => 15'.
-[ValuesAndExpressions::ProhibitConstantPragma]
+[-ValuesAndExpressions::ProhibitConstantPragma]
 # set_themes                         = bugs core pbp
 # add_themes                         =
 # severity                           = 4
