@@ -681,6 +681,30 @@ Date::Holidays::* module should be consulted.
 If you want to contribute with an adapter, please refer to the documentation in
 L<Date::Holidays::Adapter>.
 
+=head1 DEVELOPING ON DATE::HOLIDAYS
+
+Date::Holidays is distributed and maintained using L<Dist::Zilla>
+
+=head2 RUNNING THE TEST SUITE
+
+The test suite can be executed using
+
+    $ dzil test
+
+The test suite, which attempts lots scenarios does emit a lot of warnings, so it is recommended to suppress C<STDERR> by redirecting it to C</dev/null>
+
+    $ dzil test 2> /dev/null
+
+To enable author tests aimed at asserting distribution and code quality in addition to functionality, use the C<--author> flag
+
+    $ dzil test --author 2> /dev/null
+
+If you are working on a release, use the C<--release> flag
+
+    $ dzil test --release 2> /dev/null
+
+The release flag is implicit for the L<Dist::Zilla> release command.
+
 =head1 DIAGNOSTICS
 
 =over
