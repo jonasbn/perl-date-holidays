@@ -270,7 +270,7 @@ sub _fetch {
             $module = 'Date::Holidays::Adapter::' . $countrycode;
 
             if ($module = $self->_load($module)) {
-                warn "we got a module and we return\n";
+                carp "we got a module and we return\n";
             }
 
         } catch ($error) {
