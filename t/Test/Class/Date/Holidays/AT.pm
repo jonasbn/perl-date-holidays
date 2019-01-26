@@ -20,8 +20,7 @@ sub setup : Test(setup => 2) {
 
 SKIP: {
     eval { require Date::Holidays::AT };
-    $self->SKIP_ALL("darwin only") if $@;
-    #skip "Date::Holidays::AT not installed", 2 if $@;
+    $self->SKIP_ALL('Date::Holidays::AT not installed') if $@;
 
     # Asserting that our adaptee can what we expect or not
     ok(! Date::Holidays::AT->can('is_holiday'));

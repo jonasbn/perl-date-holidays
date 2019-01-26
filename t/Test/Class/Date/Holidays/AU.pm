@@ -16,20 +16,18 @@ sub startup : Test(startup => 1) {
 sub setup : Test(setup => 1) {
     my $self = shift;
 
+SKIP: {
     eval { require Date::Holidays::AU };
-    skip "Date::Holidays::AU not installed", 1 if $@;
+    $self->SKIP_ALL('Date::Holidays::AU not installed') if $@;
 
     # Asserting that our adaptee can what we expect or not
     can_ok('Date::Holidays::AU', qw(holidays is_holiday));
 
     $self->{countrycode} = 'au';
-}
+}}
 
 sub test_constructor : Tests(1) {
     my $self = shift;
-
-    eval { require Date::Holidays::AU };
-    skip "Date::Holidays::AU not installed", 1 if $@;
 
     my $countrycode = $self->{countrycode};
 
@@ -41,9 +39,6 @@ sub test_constructor : Tests(1) {
 
 sub test_is_holiday_method_with_countries : Tests(2) {
     my $self = shift;
-
-    eval { require Date::Holidays::AU };
-    skip "Date::Holidays::AU not installed", 1 if $@;
 
     my $year        = 2017;
     my $month       = 1;
