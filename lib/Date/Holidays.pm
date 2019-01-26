@@ -5,7 +5,7 @@ use warnings;
 use vars qw($VERSION);
 use Locale::Country qw(all_country_codes code2country);
 use Module::Load qw(load);
-use Carp; # croak
+use Carp; # croak and carp
 use DateTime;
 use TryCatch;
 use Scalar::Util qw(blessed);
@@ -55,16 +55,16 @@ sub new {
             if ($adapter) {
                 $self->{'_inner_object'} = $adapter;
             } else {
-                warn 'Adapter not defined';
+                carp 'Adapter not defined';
                 $self = undef;
             }
         } catch ($error) {
-            warn "Unable to initialize adapter: $error";
+            carp "Unable to initialize adapter: $error";
             $self = undef;
         }
 
     } elsif ( !$self->{'_inner_class'} ) {
-        warn 'No inner class instantiated';
+        carp 'No inner class instantiated';
         $self = undef;
     }
 
@@ -210,7 +210,7 @@ sub _check_countries {
             }
         }
         catch ($error) {
-            warn $error;
+            carp $error;
         }
     }
 
@@ -232,7 +232,7 @@ sub _fetch {
 
     # Do we have a country code?
     if ( not $self->{'_countrycode'} and not $params->{countrycode} ) {
-        die 'No country code specified';
+        croak 'No country code specified';
     }
 
     my $countrycode = $params->{countrycode} || $self->{'_countrycode'};
@@ -242,7 +242,7 @@ sub _fetch {
 
         # Is our country code valid or local?
         if ( $countrycode !~ m/local/i and !code2country( $countrycode ) ) {  #from Locale::Country
-            die "$countrycode is not a valid country code";
+            croak "$countrycode is not a valid country code";
         }
     }
 
@@ -262,7 +262,7 @@ sub _fetch {
         $module = $self->_load($module);
 
     } catch ($error) {
-        warn "Unable to load module: $module - $error";
+        carp "Unable to load module: $module - $error";
 
         try {
 
@@ -274,7 +274,7 @@ sub _fetch {
             }
 
         } catch ($error) {
-            warn "Unable to load module: $module - $error";
+            carp "Unable to load module: $module - $error";
 
             $module = 'Date::Holidays::Adapter';
             $module = $self->_load($module);
