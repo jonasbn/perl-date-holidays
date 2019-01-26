@@ -165,7 +165,7 @@ sub _check_countries {
                 my $countryname = code2country($country);
                 my $countrycode = $country;
 
-                die 'Unable to initialize Date::Holidays for country: '
+                croak 'Unable to initialize Date::Holidays for country: '
                     . "$countrycode - $countryname\n";
             }
 
