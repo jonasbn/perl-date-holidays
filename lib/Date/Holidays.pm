@@ -130,9 +130,11 @@ sub holidays_dt {
 
     foreach my $h ( keys %{$hashref} ) {
         my ( $month, $day ) = $h =~ m{
-            ^(\d{2}) #2 digits indicating the month
-            (\d{2})$ #2 digits indicating the day
-        }x;
+            \A      # Beginning of string
+            (\d{2}) # 2 digits indicating the month
+            (\d{2}) # 2 digits indicating the day
+            \Z      # End of string
+        }xsm;
         my $dt = DateTime->new(
             year  => $params{'year'},
             month => $month,
@@ -153,7 +155,7 @@ sub _check_countries {
     foreach my $country ( @{ $params{'countries'} } ) {
 
         #The list of countries is ordered
-        if ($country =~ m/^\+(\w+)/) {
+        if ($country =~ m/\A\+(\w+)/xsm) {
             $country = $1;
             $precedent_calendar = $country;
         }
@@ -241,7 +243,7 @@ sub _fetch {
     if ( !$params->{'nocheck'} ) {
 
         # Is our country code valid or local?
-        if ( $countrycode !~ m/local/i and not code2country( $countrycode ) ) {  #from Locale::Country
+        if ( $countrycode !~ m/\Alocal\Z/xism and not code2country( $countrycode ) ) {  #from Locale::Country
             croak "$countrycode is not a valid country code";
         }
     }
@@ -251,7 +253,7 @@ sub _fetch {
 
     try {
         # We load an adapter implementation
-        if ($countrycode =~ m/local/i) {
+        if ($countrycode =~ m/\Alocal\Z/xism) {
             $module = 'Date::Holidays::Adapter::Local';
         } elsif (code2country( $countrycode )) {
             $module = 'Date::Holidays::Adapter::' . uc $countrycode;
