@@ -1,7 +1,23 @@
 {
 	"folders": [
 		{
+			"name": "Everything"
 			"path": "."
+		}
+        {
+            // Source code
+            "name": "Library",
+            "path": "lib"
+        },
+        {
+            // Docs and release notes
+            "name": "Tests",
+            "path": "t"
+        },
+        {
+            // Yeoman extension generator
+            "name": "Scripts",
+            "path": "scripts"
 		}
 	],
 	"settings": {
