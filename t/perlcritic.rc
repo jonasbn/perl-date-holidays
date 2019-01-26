@@ -1,5 +1,6 @@
 # Globals
-severity = 3 # harsh
+severity = 5
+# severity 5 is gentle
 # force = 0
 # only = 0
 # allow-unsafe = 0
