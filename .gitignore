@@ -27,3 +27,4 @@ local/
 .vstags
 Date-Holidays*
 .banner
+*.bak
