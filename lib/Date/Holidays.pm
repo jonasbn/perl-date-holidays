@@ -5,7 +5,6 @@ use warnings;
 use vars qw($VERSION);
 use Locale::Country qw(all_country_codes code2country);
 use Module::Load qw(load);
-use Carp;    # croak and carp
 use DateTime;
 use TryCatch;
 use Scalar::Util qw(blessed);
@@ -42,7 +41,7 @@ sub new {
 
     }
     else {
-        croak 'No country code specified';
+        die "No country code specified\n";
     }
 
     if (   $self
@@ -59,18 +58,18 @@ sub new {
                 $self->{'_inner_object'} = $adapter;
             }
             else {
-                carp 'Adapter not defined';
+                warn "Adapter not defined\n";
                 $self = undef;
             }
         }
         catch ($error) {
-            carp "Unable to initialize adapter: $error";
+            warn "Unable to initialize adapter: $error\n";
             $self = undef;
         }
 
     }
     elsif ( !$self->{'_inner_class'} ) {
-        carp 'No inner class instantiated';
+        warn "No inner class instantiated\n";
         $self = undef;
     }
 
@@ -179,8 +178,7 @@ sub _check_countries {
                 my $countryname = code2country($country);
                 my $countrycode = $country;
 
-                croak 'Unable to initialize Date::Holidays for country: '
-                    . "$countrycode - $countryname\n";
+                die "Unable to initialize Date::Holidays for country: $countrycode - $countryname\n";
             }
 
             my %prepared_parameters = (
@@ -224,7 +222,7 @@ sub _check_countries {
             }
         }
         catch ($error) {
-            carp $error;
+            warn "$error\n";
         }
     }
 
@@ -246,7 +244,7 @@ sub _fetch {
 
     # Do we have a country code?
     if ( not $self->{'_countrycode'} and not $params->{countrycode} ) {
-        croak 'No country code specified';
+        die "No country code specified\n";
     }
 
     my $countrycode = $params->{countrycode} || $self->{'_countrycode'};
@@ -258,7 +256,7 @@ sub _fetch {
         if ( $countrycode !~ m/\Alocal\Z/xism
             and not code2country($countrycode) )
         {    #from Locale::Country
-            croak "$countrycode is not a valid country code";
+            die "$countrycode is not a valid country code\n";
         }
     }
 
@@ -281,7 +279,7 @@ sub _fetch {
 
     }
     catch ($error) {
-        carp "Unable to load module: $module - $error";
+        warn "Unable to load module: $module - $error\n";
 
         try {
 
@@ -289,12 +287,12 @@ sub _fetch {
             $module = 'Date::Holidays::Adapter::' . $countrycode;
 
             if ( $module = $self->_load($module) ) {
-                carp "we got a module and we return\n";
+                warn "we got a module and we return\n";
             }
 
         }
         catch ($error) {
-            carp "Unable to load module: $module - $error";
+            warn "Unable to load module: $module - $error\n";
 
             $module = 'Date::Holidays::Adapter';
             $module = $self->_load($module);
