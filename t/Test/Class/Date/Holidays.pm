@@ -9,9 +9,28 @@ use Env qw($TEST_VERBOSE);
 
 #run prior and once per suite
 sub startup : Test(startup => 1) {
+    my $self = shift;
 
     # Testing compilation of component
     use_ok('Date::Holidays');
+
+    my ($year) = (localtime(time))[5] + 1900;
+    $self->{year} = $year;
+
+    return 1;
+}
+
+sub test_constructor : Tests(1) {
+    my $self = shift;
+
+    diag('Testing consctructor for: ', $self->{countrycode});
+
+    my $countrycode = $self->{countrycode};
+
+    ok( my $dh = Date::Holidays->new( countrycode => $countrycode ),
+        "Testing contructor with parameter country code: »$countrycode«");
+
+    $self->{dh} = $dh;
 }
 
 sub constructor : Test(5) {
@@ -103,32 +122,6 @@ sub holidays_dt : Test(17) {
     }
 }
 
-sub test_at : Test(5) {
-    SKIP: {
-        eval { require Date::Holidays::AT };
-        skip "Date::Holidays::AT not installed", 5 if $@;
-
-        ok( my $dh = Date::Holidays->new( countrycode => 'at' ),
-            'Testing Date::Holidays::AT' );
-
-        ok( $dh->holidays( year => 2017 ),
-            'Testing holidays with argument for Date::Holidays::AT' );
-
-        my $holidays_hashref = Date::Holidays->is_holiday(
-            year  => 2017,
-            month => 1,
-            day   => 1,
-            countries => [ 'at' ],
-        );
-
-        ok( $holidays_hashref->{'at'},
-            'Checking for Austrian first day of year' );
-
-        ok(! Date::Holidays::AT->can('is_holiday'));
-        can_ok('Date::Holidays::AT', qw(holidays));
-    }
-}
-
 sub test_au : Test(7) {
     SKIP: {
         eval { require Date::Holidays::AU };
@@ -167,56 +160,6 @@ sub test_au : Test(7) {
             year  => 2015,
             state => 'TAS',
         ), 'Asserting 8 hour day in Tasmania, Australia');
-    }
-}
-
-sub test_br : Test(4) {
-    SKIP: {
-        eval { require Date::Holidays::BR };
-        skip "Date::Holidays::BR not installed", 4 if $@;
-
-        ok( my $dh = Date::Holidays->new( countrycode => 'br' ),
-            'Testing Date::Holidays::BR' );
-
-        ok( $dh->holidays( year => 2004 ),
-            'Testing holidays for Date::Holidays::BR' );
-
-        my $holidays_hashref = Date::Holidays->is_holiday(
-            year  => 2017,
-            month => 1,
-            day   => 1,
-            countries => [ 'br' ],
-        );
-
-        ok( $holidays_hashref->{'br'},
-            'Checking for Brazillian first day of year' );
-
-        can_ok('Date::Holidays::BR', qw(holidays is_holiday));
-    }
-}
-
-sub test_by : Test(5) {
-    SKIP: {
-        eval { require Date::Holidays::BY };
-        skip "Date::Holidays::BY not installed", 5 if $@;
-
-        ok( my $dh = Date::Holidays->new( countrycode => 'by' ),
-            'Testing Date::Holidays::BY' );
-
-        ok( $dh->holidays( year => 2017 ),
-            'Testing holidays with argument for Date::Holidays::BY' );
-
-        my $holidays_hashref = Date::Holidays->is_holiday(
-            year  => 2017,
-            month => 1,
-            day   => 1,
-            countries => [ 'by' ],
-        );
-
-        ok( $holidays_hashref->{by}, 'Checking for Belarys New Year' );
-
-        ok( Date::Holidays::BY->can('holidays') );
-        ok( Date::Holidays::BY->can('is_holiday') );
     }
 }
 
@@ -311,19 +254,6 @@ sub test_de : Test(6) {
 
         ok( $holidays_hashref->{'de'},
             'Checking for German first day of year' );
-    }
-}
-
-sub test_dk : Test(2) {
-    SKIP: {
-        eval { require Date::Holidays::DK };
-        skip "Date::Holidays::DK not installed", 2 if $@;
-
-        ok( my $dh = Date::Holidays->new( countrycode => 'dk' ),
-            'Testing Date::Holidays::DK' );
-
-        ok( $dh->holidays( year => 2004 ),
-            'Testing holidays for Date::Holidays::DK' );
     }
 }
 
@@ -625,22 +555,6 @@ sub test_sk : Test(4) {
         );
 
         ok( $holidays_hashref->{sk}, 'Checking for Slovakian holiday' );
-    }
-}
-
-sub test_uk : Test(3) {
-    SKIP: {
-        eval { require Date::Holidays::GB };
-        skip "Date::Holidays::UK not installed", 3 if $@;
-
-        ok( my $dh = Date::Holidays->new( countrycode => 'uk', nocheck => 1 ),
-            'Testing Date::Holidays::Adapter::UK' );
-
-        dies_ok { $dh->holidays() }
-            'Testing holidays without argument for Date::Holidays::Adapter::UK';
-
-        dies_ok { $dh->holidays( year => 2014 ) }
-            'Testing holidays with argument for Date::Holidays::Adapter::UK';
     }
 }
 

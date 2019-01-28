@@ -1,4 +1,4 @@
-package Test::Class::Date::Holidays::AU;
+package Test::Class::Date::Holidays::RU;
 
 use strict;
 use warnings;
@@ -10,9 +10,9 @@ sub setup : Test(setup => 1) {
     my $self = shift;
 
     # Asserting that our adaptee can what we expect or not
-    can_ok('Date::Holidays::AU', qw(holidays is_holiday));
+    can_ok('Date::Holidays::RU', qw(holidays is_ru_holiday));
 
-    $self->{countrycode} = 'au';
+    $self->{countrycode} = 'RU';
 }
 
 1;
