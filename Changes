@@ -1,5 +1,7 @@
 Changes file for Date-Holidays
 
+- Corrected a bug in Date::Holidays::Adapter::KR, minor spelling error in method
+
 1.18 2019-01-23 Feature release, update recommended
 
 - Added adapter for:
