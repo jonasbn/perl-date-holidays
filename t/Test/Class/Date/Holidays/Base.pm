@@ -19,8 +19,7 @@ sub startup : Test(startup => 1) {
     # Testing compilation of component
     use_ok('Date::Holidays');
 
-    my ($year) = (localtime(time))[5] + 1900;
-    $self->{year} = $year;
+    $self->{year} = (localtime(time))[5] + 1900;
 
     return 1;
 }
