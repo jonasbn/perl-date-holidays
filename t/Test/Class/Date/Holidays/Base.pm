@@ -45,6 +45,13 @@ sub test_holidays_method : Tests(1) {
         "Testing holidays with parameter year »$year« for: ". $self->{dh}->{'_inner_class'} );
 }
 
+# sub test_holidays_method_no_parameter : Tests(1) {
+#     my $self = shift;
+
+#     dies_ok { $self->{dh}->holidays() }
+#         "Testing holidays with no parameter for: ". $self->{dh}->{'_inner_class'};
+# }
+
 sub test_is_holiday_method : Tests(1) {
     my $self = shift;
 

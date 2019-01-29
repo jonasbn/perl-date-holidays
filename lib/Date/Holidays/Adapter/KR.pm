@@ -21,6 +21,10 @@ sub is_holiday {
     }
 }
 
+sub holidays {
+    croak "holidays is unimplemented for ".__PACKAGE__;
+}
+
 1;
 
 __END__

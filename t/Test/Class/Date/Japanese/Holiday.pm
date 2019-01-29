@@ -18,7 +18,7 @@ sub setup : Test(setup => 1) {
 sub test_holidays_method : Tests(0) {
     my $self = shift;
 
-    diag('holidays method is not supported by Date::Holidays::FR');
+    diag('holidays method is not supported by Date::Japanese::Holiday');
 }
 
 1;

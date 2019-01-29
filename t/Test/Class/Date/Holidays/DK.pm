@@ -15,15 +15,4 @@ sub setup : Test(setup => 1) {
     $self->{countrycode} = 'DK';
 }
 
-sub test_constructor : Tests(1) {
-    my $self = shift;
-
-    my $countrycode = $self->{countrycode};
-
-    ok( my $dh = Date::Holidays->new( countrycode => $countrycode ),
-        "Testing contructor with parameter country code: »$countrycode«");
-
-    $self->{dh} = $dh;
-}
-
 1;

@@ -21,4 +21,10 @@ sub test_holidays_method : Tests(0) {
     diag('holidays method is not supported by Date::Holidays::FR');
 }
 
+sub test_holidays_method_no_parameter : Tests(0) {
+    my $self = shift;
+
+    diag('holidays method is not supported by Date::Holidays::FR');
+}
+
 1;

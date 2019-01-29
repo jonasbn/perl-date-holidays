@@ -15,4 +15,10 @@ sub setup : Test(setup => 1) {
     $self->{countrycode} = 'br';
 }
 
+sub test_holidays_method : Tests(0) {
+    my $self = shift;
+
+    diag('holidays method is not supported by Date::Holidays::PL');
+}
+
 1;

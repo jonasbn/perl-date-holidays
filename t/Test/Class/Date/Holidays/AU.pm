@@ -15,4 +15,11 @@ sub setup : Test(setup => 1) {
     $self->{countrycode} = 'au';
 }
 
+sub test_holidays_method_no_parameter : Tests(1) {
+    my $self = shift;
+
+    ok($self->{dh}->holidays(),
+        "Testing holidays with no parameter for: ". $self->{dh}->{'_inner_class'});
+}
+
 1;

@@ -24,8 +24,7 @@
 		"perlSyntax.perlExecutable": "/Users/jonasbn/perl5/perlbrew/perls/perl-5.28.1/bin/perl",
 		"perlSyntax.includePaths": [
 			"t",
-			"lib",
-			"local/lib/perl5"
+			"lib"
 		],
 		"perlcritic.severity": "brutal",
 		"perlcritic.additionalArguments": [

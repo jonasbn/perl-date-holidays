@@ -13,9 +13,9 @@ sub holidays {
 
     my $sub = $self->{_adaptee}->can('nz_holidays');
 
-    if ($sub and $params{region}) {
+    if ($sub and $params{region} and $params{year}) {
         return &{$sub}($params{'year'}, $params{region});
-    } elsif ($sub) {
+    } elsif ($sub and $params{year}) {
         return &{$sub}($params{'year'});
     } else {
         return;
