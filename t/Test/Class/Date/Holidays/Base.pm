@@ -33,6 +33,8 @@ sub test_constructor : Tests(1) {
         "Testing contructor with parameter country code: »$countrycode«");
 
     $self->{dh} = $dh;
+
+    return 1;
 }
 
 sub test_holidays_method : Tests(1) {
@@ -42,6 +44,8 @@ sub test_holidays_method : Tests(1) {
 
     ok( $self->{dh}->holidays( year => $year ),
         "Testing holidays with parameter year »$year« for: ". $self->{dh}->{'_inner_class'} );
+
+    return 1;
 }
 
 # sub test_holidays_method_no_parameter : Tests(1) {
@@ -60,6 +64,8 @@ sub test_is_holiday_method : Tests(1) {
 
     ok( $self->{dh}->is_holiday( year => $year, month => $month, day => $day ),
         "Testing holidays with parameters year »$year«, month »$month«, day »$day« for ". $self->{dh}->{'_inner_class'} );
+
+    return 1;
 }
 
 1;
