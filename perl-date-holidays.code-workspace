@@ -30,6 +30,7 @@
 		"perlcritic.additionalArguments": [
 			"--profile",
 			"t/perlcritic.rc"
-		]
+		],
+		"perl.perltidy": "/Users/jonasbn/perl5/perlbrew/perls/perl-5.28.1/bin/perltidy"
 	}
 }

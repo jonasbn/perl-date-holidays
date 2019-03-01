@@ -3,9 +3,11 @@ package Test::Class::Date::Holidays::Base;
 use strict;
 use warnings;
 use base qw(Test::Class);
-use Test::More; # done_testing
+use Test::More;
 use Test::Fatal qw(dies_ok);
 use Env qw($TEST_VERBOSE);
+
+our $VERSION = '1.18';
 
 BEGIN {
     # Abstract class
@@ -15,6 +17,10 @@ BEGIN {
 #run prior and once per suite
 sub startup : Test(startup => 1) {
     my $self = shift;
+
+    if ($TEST_VERBOSE) {
+        diag('Running startup');
+    }
 
     # Testing compilation of component
     use_ok('Date::Holidays');
@@ -48,12 +54,14 @@ sub test_holidays_method : Tests(1) {
     return 1;
 }
 
-# sub test_holidays_method_no_parameter : Tests(1) {
-#     my $self = shift;
+sub test_holidays_method_no_parameter : Tests(1) {
+    my $self = shift;
 
-#     dies_ok { $self->{dh}->holidays() }
-#         "Testing holidays with no parameter for: ". $self->{dh}->{'_inner_class'};
-# }
+    dies_ok { $self->{dh}->holidays() }
+        'Testing holidays with no parameter for: '. $self->{dh}->{'_inner_class'};
+
+    return 1;
+}
 
 sub test_is_holiday_method : Tests(1) {
     my $self = shift;
@@ -64,6 +72,15 @@ sub test_is_holiday_method : Tests(1) {
 
     ok( $self->{dh}->is_holiday( year => $year, month => $month, day => $day ),
         "Testing holidays with parameters year »$year«, month »$month«, day »$day« for ". $self->{dh}->{'_inner_class'} );
+
+    return 1;
+}
+
+sub test_is_holiday_method_no_parameter : Tests(1) {
+    my $self = shift;
+
+    dies_ok { $self->{dh}->is_holiday() }
+        'Testing holidays with no parameters for '. $self->{dh}->{'_inner_class'};
 
     return 1;
 }

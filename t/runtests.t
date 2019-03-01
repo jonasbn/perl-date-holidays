@@ -48,21 +48,21 @@ use Test::Class::Date::Holidays::Nonpolymorphic;
     );
 }
 
-{
-    use Test::Class::Date::Holidays::CA;
-    my $rv = eval { require Date::Holidays::CA };
-    Test::Class::Date::Holidays::CA->SKIP_CLASS(
-        $rv ? 0 : 'Date::Holidays::CA not installed'
-    );
-}
+#{
+#    use Test::Class::Date::Holidays::CA;
+#    my $rv = eval { require Date::Holidays::CA };
+#    Test::Class::Date::Holidays::CA->SKIP_CLASS(
+#        $rv ? 0 : 'Date::Holidays::CA not installed'
+#    );
+#}
 
-{
-    use Test::Class::Date::Holidays::CN;
-    my $rv = eval { require Date::Holidays::CN };
-    Test::Class::Date::Holidays::CN->SKIP_CLASS(
-        $rv ? 0 : 'Date::Holidays::CN not installed'
-    );
-}
+#{
+#    use Test::Class::Date::Holidays::CN;
+#    my $rv = eval { require Date::Holidays::CN };
+#    Test::Class::Date::Holidays::CN->SKIP_CLASS(
+#        $rv ? 0 : 'Date::Holidays::CN not installed'
+#    );
+#}
 
 {
     use Test::Class::Date::Holidays::CZ;
@@ -136,13 +136,13 @@ use Test::Class::Date::Holidays::Nonpolymorphic;
     );
 }
 
-{
-    use Test::Class::Date::Holidays::NZ;
-    my $rv = eval { require Date::Holidays::NZ };
-    Test::Class::Date::Holidays::NZ->SKIP_CLASS(
-        $rv ? 0 : 'Date::Holidays::NZ not installed'
-    );
-}
+#{
+#    use Test::Class::Date::Holidays::NZ;
+#    my $rv = eval { require Date::Holidays::NZ };
+#    Test::Class::Date::Holidays::NZ->SKIP_CLASS(
+#        $rv ? 0 : 'Date::Holidays::NZ not installed'
+#    );
+#}
 
 {
     use Test::Class::Date::Holidays::PL;
@@ -184,13 +184,13 @@ use Test::Class::Date::Holidays::Nonpolymorphic;
     );
 }
 
-{
-    use Test::Class::Date::Holidays::USFederal;
-    my $rv = eval { require Date::Holidays::USFederal };
-    Test::Class::Date::Holidays::USFederal->SKIP_CLASS(
-        $rv ? 0 : 'Date::Holidays::USFederal not installed'
-    );
-}
+#{
+#    use Test::Class::Date::Holidays::USFederal;
+#    my $rv = eval { require Date::Holidays::USFederal };
+#    Test::Class::Date::Holidays::USFederal->SKIP_CLASS(
+#        $rv ? 0 : 'Date::Holidays::USFederal not installed'
+#    );
+#}
 
 {
     use Test::Class::Date::Japanese::Holiday;
