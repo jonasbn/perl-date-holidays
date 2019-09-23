@@ -1,8 +1,9 @@
 sudo: false
+dist: trusty
 language: perl
 perl:
-- '5.26'
-- '5.20'
+- '5.30'
+- '5.14'
 before_install:
 - git config --global user.name "TravisCI"
 install:
