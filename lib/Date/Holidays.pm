@@ -938,6 +938,10 @@ Please see L<Task::Date::Holidays|https://metacpan.org/pod/Task::Date::Holidays>
 
 =item * L<Date::Holidays::Adapter::JP|https://metacpan.org/pod/Date::Holidays::Adapter::JP>
 
+=item * L<Date::Holidays::UA|https://metacpan.org/pod/Date::Holidays::UA>
+
+=item * L<Date::Holidays::Adapter::UA|https://metacpan.org/pod/Date::Holidays::Adapter::UA>
+
 =item * L<Date::Holidays::Adapter|https://metacpan.org/pod/Date::Holidays::Adapter>
 
 =item * L<Date::Holidays::Abstract|https://metacpan.org/pod/Date::Holidays::Abstract>
