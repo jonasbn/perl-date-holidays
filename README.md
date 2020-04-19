@@ -486,6 +486,7 @@ Please see [Task::Date::Holidays](https://metacpan.org/pod/Task::Date::Holidays)
 
 # ACKNOWLEDGEMENTS
 
+- Denis Boyun, PR introducing Date::Holidays::UA resulting in 1.18
 - Mario Minati, for telling me about the states in Date::Holidays::DE resulting in 1.17
 - Vladimir Varlamov, PR introducing Date::Holidays::KZ resulting in 1.07
 - CHORNY (Alexandr Ciornii), Github issue #10, letting me know I included local/ by accident, resulting in release 1.05

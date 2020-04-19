@@ -102,6 +102,7 @@ Please refer to BUG REPORTING in L<Date::Holidays>
 
 =head1 AUTHOR
 
+Denis Boyun, C<< <denisboyun at gmail.com> >>
 Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
 
 =head1 LICENSE AND COPYRIGHT

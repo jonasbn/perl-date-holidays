@@ -954,6 +954,8 @@ Please see L<Task::Date::Holidays|https://metacpan.org/pod/Task::Date::Holidays>
 
 =over
 
+=item * Denis Boyun, PR introducing Date::Holidays::UA resulting in 1.18
+
 =item * Mario Minati, for telling me about the states in Date::Holidays::DE resulting in 1.17
 
 =item * Vladimir Varlamov, PR introducing Date::Holidays::KZ resulting in 1.07
