@@ -16,7 +16,7 @@ Date::Holidays - Date::Holidays::\* adapter and aggregator for all your holiday 
 
 # VERSION
 
-The documentation describes version 1.18 of Date::Holidays
+The documentation describes version 1.19 of Date::Holidays
 
 # FEATURES
 
@@ -205,7 +205,7 @@ it tries is\_&lt;countrycode>\_holiday.
 Takes 6 optional named arguments:
 
 - year, four digit parameter representing year
-- month, 1.18, representing month
+- month, 1-12, representing month
 - day, 1-31, representing day
 - countries (OPTIONAL), a list of ISO3166 country codes
 - state, ISO-3166-2 code for a state. Not all countries support this parameter
@@ -277,7 +277,7 @@ The methods which are currently interesting in a Date::Holidays::\* module are:
     scalar in the national language of the module context in question. Returns
     undef if the requested day is not a holiday.
 
-        Modified example taken from: L<Date::Holidays::DK>
+        Modified example taken from: L<Date::Holidays::DK|https://metacpan.org/pod/Date::Holidays::DK>
 
         use Date::Holidays::DK;
         my ($year, $month, $day) = (localtime)[ 5, 4, 3 ];
@@ -304,7 +304,7 @@ The methods which are currently interesting in a Date::Holidays::\* module are:
 
     The keys are the dates, month + day in two digits each concatenated.
 
-        Modified example taken from: L<Date::Holidays::PT>
+        Modified example taken from: L<Date::Holidays::PT|https://metacpan.org/pod/Date::Holidays::PT>
 
         my $h = holidays($year);
         printf "Jan. 1st is named '%s'\n", $h->{'0101'};
@@ -347,6 +347,30 @@ Date::Holidays::\* module should be consulted.
 If you want to contribute with an adapter, please refer to the documentation in
 [Date::Holidays::Adapter](https://metacpan.org/pod/Date::Holidays::Adapter).
 
+# DEVELOPING ON DATE::HOLIDAYS
+
+Date::Holidays is distributed and maintained using [Dist::Zilla](https://metacpan.org/pod/Dist::Zilla)
+
+## RUNNING THE TEST SUITE
+
+The test suite can be executed using
+
+    $ dzil test
+
+The test suite, which attempts lots scenarios does emit a lot of warnings, so it is recommended to suppress `STDERR` by redirecting it to `/dev/null`
+
+    $ dzil test 2> /dev/null
+
+To enable author tests aimed at asserting distribution and code quality in addition to functionality, use the `--author` flag
+
+    $ dzil test --author 2> /dev/null
+
+If you are working on a release, use the `--release` flag
+
+    $ dzil test --release 2> /dev/null
+
+The release flag is implicit for the [Dist::Zilla](https://metacpan.org/pod/Dist::Zilla) release command.
+
 # DIAGNOSTICS
 
 - No country code specified
@@ -365,7 +389,7 @@ set the environment variable:
     $HOLIDAYS_FILE
 
 This environment variable should point to a JSON file containing holiday definitions
-to be used by [Date::Holidays::Adapter::Local](https://metacpan.org/pod/Date::Holidays::Adapter::Local).
+to be used by [Date::Holidays::Adapter::Local](https://metacpan.org/pod/Date::Holidays::Local).
 
 # DEPENDENCIES
 
@@ -375,7 +399,7 @@ to be used by [Date::Holidays::Adapter::Local](https://metacpan.org/pod/Date::Ho
 - [Module::Load](https://metacpan.org/pod/Module::Load)
 - [TryCatch](https://metacpan.org/pod/TryCatch)
 - [Scalar::Util](https://metacpan.org/pod/Scalar::Util)
-- [JSON](https://metacpan.org/pod/JSON)
+- [JSON](https://metacpan.org/pod/JSON|)
 - [File::Slurp](https://metacpan.org/pod/File::Slurp)
 
 ## FOR TESTING
@@ -486,7 +510,7 @@ Please see [Task::Date::Holidays](https://metacpan.org/pod/Task::Date::Holidays)
 
 # ACKNOWLEDGEMENTS
 
-- Denis Boyun, PR introducing Date::Holidays::UA resulting in 1.18
+- Denis Boyun, PR introducing Date::Holidays::UA resulting in 1.19
 - Mario Minati, for telling me about the states in Date::Holidays::DE resulting in 1.17
 - Vladimir Varlamov, PR introducing Date::Holidays::KZ resulting in 1.07
 - CHORNY (Alexandr Ciornii), Github issue #10, letting me know I included local/ by accident, resulting in release 1.05

@@ -11,7 +11,7 @@ use Scalar::Util qw(blessed);
 
 use base 'Date::Holidays::Adapter';
 
-$VERSION = '1.18';
+$VERSION = '1.19';
 
 sub new {
     my ( $class, %params ) = @_;
@@ -332,7 +332,7 @@ Date::Holidays - Date::Holidays::* adapter and aggregator for all your holiday n
 
 =head1 VERSION
 
-The documentation describes version 1.18 of Date::Holidays
+The documentation describes version 1.19 of Date::Holidays
 
 =head1 FEATURES
 
@@ -542,7 +542,7 @@ Takes 6 optional named arguments:
 
 =item * year, four digit parameter representing year
 
-=item * month, 1.18, representing month
+=item * month, 1-12, representing month
 
 =item * day, 1-31, representing day
 
@@ -954,7 +954,7 @@ Please see L<Task::Date::Holidays|https://metacpan.org/pod/Task::Date::Holidays>
 
 =over
 
-=item * Denis Boyun, PR introducing Date::Holidays::UA resulting in 1.18
+=item * Denis Boyun, PR introducing Date::Holidays::UA resulting in 1.19
 
 =item * Mario Minati, for telling me about the states in Date::Holidays::DE resulting in 1.17
 
