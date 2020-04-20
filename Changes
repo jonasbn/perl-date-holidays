@@ -3,7 +3,7 @@ Changes file for Date-Holidays
 1.19 2019-01-23 Feature release, update recommended
 
 - Added adapter for:
-    Date::Holidays::AU added to the distribution thanks to Denis Boyun
+    Date::Holidays::UA added to the distribution thanks to Denis Boyun
 
     Ref: https://github.com/jonasbn/perl-date-holidays/pull/38
 
