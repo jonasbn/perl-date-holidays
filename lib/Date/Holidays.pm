@@ -938,6 +938,10 @@ Please see L<Task::Date::Holidays|https://metacpan.org/pod/Task::Date::Holidays>
 
 =item * L<Date::Holidays::Adapter::JP|https://metacpan.org/pod/Date::Holidays::Adapter::JP>
 
+=item * L<Date::Holidays::UA|https://metacpan.org/pod/Date::Holidays::UA>
+
+=item * L<Date::Holidays::Adapter::UA|https://metacpan.org/pod/Date::Holidays::Adapter::UA>
+
 =item * L<Date::Holidays::Adapter|https://metacpan.org/pod/Date::Holidays::Adapter>
 
 =item * L<Date::Holidays::Abstract|https://metacpan.org/pod/Date::Holidays::Abstract>
@@ -949,6 +953,8 @@ Please see L<Task::Date::Holidays|https://metacpan.org/pod/Task::Date::Holidays>
 =head1 ACKNOWLEDGEMENTS
 
 =over
+
+=item * Denis Boyun, PR introducing Date::Holidays::UA resulting in 1.18
 
 =item * Mario Minati, for telling me about the states in Date::Holidays::DE resulting in 1.17
 

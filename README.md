@@ -478,12 +478,15 @@ Please see [Task::Date::Holidays](https://metacpan.org/pod/Task::Date::Holidays)
 - [Date::Holidays::Adapter::USFederal](https://metacpan.org/pod/Date::Holidays::Adapter::USFederal)
 - [Date::Japanese::Holiday](https://metacpan.org/pod/Date::Japanese::Holiday)
 - [Date::Holidays::Adapter::JP](https://metacpan.org/pod/Date::Holidays::Adapter::JP)
+- [Date::Holidays::UA](https://metacpan.org/pod/Date::Holidays::UA)
+- [Date::Holidays::Adapter::UA](https://metacpan.org/pod/Date::Holidays::Adapter::UA)
 - [Date::Holidays::Adapter](https://metacpan.org/pod/Date::Holidays::Adapter)
 - [Date::Holidays::Abstract](https://metacpan.org/pod/Date::Holidays::Abstract)
 - [Date::Holidays::Super](https://metacpan.org/pod/Date::Holidays::Super)
 
 # ACKNOWLEDGEMENTS
 
+- Denis Boyun, PR introducing Date::Holidays::UA resulting in 1.18
 - Mario Minati, for telling me about the states in Date::Holidays::DE resulting in 1.17
 - Vladimir Varlamov, PR introducing Date::Holidays::KZ resulting in 1.07
 - CHORNY (Alexandr Ciornii), Github issue #10, letting me know I included local/ by accident, resulting in release 1.05
