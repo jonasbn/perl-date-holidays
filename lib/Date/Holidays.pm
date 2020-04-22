@@ -992,11 +992,11 @@ Please see L<Task::Date::Holidays|https://metacpan.org/pod/Task::Date::Holidays>
 
 =head1 AUTHOR
 
-Jonas B. Nielsen, (jonasbn) - C<< <jonasbn@cpan.org> >>
+Jonas B., (jonasbn) - C<< <jonasbn@cpan.org> >>
 
 =head1 LICENSE AND COPYRIGHT
 
-Date-Holidays and related modules are (C) by Jonas B. Nielsen, (jonasbn)
+Date-Holidays and related modules are (C) by Jonas B., (jonasbn)
 2004-2020
 
 Date-Holidays and related modules are released under the Artistic License 2.0
