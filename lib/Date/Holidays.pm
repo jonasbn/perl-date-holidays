@@ -764,7 +764,7 @@ to be used by L<Date::Holidays::Adapter::Local|https://metacpan.org/pod/Date::Ho
 
 =item * L<Scalar::Util|https://metacpan.org/pod/Scalar::Util>
 
-=item * L<JSON|https://metacpan.org/pod/JSON|>
+=item * L<JSON|https://metacpan.org/pod/JSON>
 
 =item * L<File::Slurp|https://metacpan.org/pod/File::Slurp>
 
