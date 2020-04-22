@@ -399,7 +399,7 @@ to be used by [Date::Holidays::Adapter::Local](https://metacpan.org/pod/Date::Ho
 - [Module::Load](https://metacpan.org/pod/Module::Load)
 - [TryCatch](https://metacpan.org/pod/TryCatch)
 - [Scalar::Util](https://metacpan.org/pod/Scalar::Util)
-- [JSON](https://metacpan.org/pod/JSON|)
+- [JSON](https://metacpan.org/pod/JSON)
 - [File::Slurp](https://metacpan.org/pod/File::Slurp)
 
 ## FOR TESTING
