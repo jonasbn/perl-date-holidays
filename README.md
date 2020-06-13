@@ -16,7 +16,7 @@ Date::Holidays - Date::Holidays::\* adapter and aggregator for all your holiday 
 
 # VERSION
 
-The documentation describes version 1.21 of Date::Holidays
+The documentation describes version 1.22 of Date::Holidays
 
 # FEATURES
 
@@ -510,6 +510,7 @@ Please see [Task::Date::Holidays](https://metacpan.org/pod/Task::Date::Holidays)
 
 # ACKNOWLEDGEMENTS
 
+- Miquel Ruiz, PR fixing a bug with regions for ES, supporting Data::Holidays::CA\_ES resulting in 1.22
 - Denis Boyun, PR introducing Date::Holidays::UA resulting in 1.19
 - Mario Minati, for telling me about the states in Date::Holidays::DE resulting in 1.17
 - Vladimir Varlamov, PR introducing Date::Holidays::KZ resulting in 1.07
@@ -530,11 +531,11 @@ Please see [Task::Date::Holidays](https://metacpan.org/pod/Task::Date::Holidays)
 
 # AUTHOR
 
-Jonas B. Nielsen, (jonasbn) - `<jonasbn@cpan.org>`
+Jonas B., (jonasbn) - `<jonasbn@cpan.org>`
 
 # LICENSE AND COPYRIGHT
 
-Date-Holidays and related modules are (C) by Jonas B. Nielsen, (jonasbn)
+Date-Holidays and related modules are (C) by Jonas B., (jonasbn)
 2004-2020
 
 Date-Holidays and related modules are released under the Artistic License 2.0

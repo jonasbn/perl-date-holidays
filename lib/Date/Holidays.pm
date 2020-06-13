@@ -11,7 +11,7 @@ use Scalar::Util qw(blessed);
 
 use base 'Date::Holidays::Adapter';
 
-$VERSION = '1.21';
+$VERSION = '1.22';
 
 sub new {
     my ( $class, %params ) = @_;
@@ -332,7 +332,7 @@ Date::Holidays - Date::Holidays::* adapter and aggregator for all your holiday n
 
 =head1 VERSION
 
-The documentation describes version 1.21 of Date::Holidays
+The documentation describes version 1.22 of Date::Holidays
 
 =head1 FEATURES
 
@@ -953,6 +953,8 @@ Please see L<Task::Date::Holidays|https://metacpan.org/pod/Task::Date::Holidays>
 =head1 ACKNOWLEDGEMENTS
 
 =over
+
+=item * Miquel Ruiz, PR fixing a bug with regions for ES, supporting Data::Holidays::CA_ES resulting in 1.22
 
 =item * Denis Boyun, PR introducing Date::Holidays::UA resulting in 1.19
 
