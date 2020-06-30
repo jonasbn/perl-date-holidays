@@ -364,7 +364,7 @@ The documentation describes version 1.22 of Date::Holidays
         day   => 25
     );
 
-    # Inquire and get a set of local namenames for national holiday in a given country
+    # Inquire and get a set of local names for national holiday in a given country
     my $hashref = $dh->holidays(
         year => 2004
     );
