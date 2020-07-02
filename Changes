@@ -1,6 +1,6 @@
 Changes file for Date-Holidays
 
-1.23 2020-07-01 Maintenance release, update not required
+1.23 2020-07-02 Maintenance release, update not required
 
 - Improvements to Dist::Zilla config, only ExtUtils::MakeMaker supported via Dist::Zilla now. Module::Build support having been removed
  
