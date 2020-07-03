@@ -240,31 +240,6 @@ sub _fetch {
     return $module;
 }
 
-# sub _fetch {
-#     my ( $self, $params ) = @_;
-
-#     # Do we have a country code?
-#     if ( !$self->{'_countrycode'} ) {
-#         die "No country code specified";
-#     }
-
-#     # Do we do country code assertion?
-#     if ( !$params->{nocheck} ) {
-
-#         # Is our country code valid?
-#         if ( !code2country($self->{'_countrycode'}) ) { # From Locale::Country
-#             die "$self->{_countrycode} is not a valid country code";
-#         }
-#     }
-
-#     # Trying to load module for country code
-#     my $module = 'Date::Holidays::' . $self->{'_countrycode'};
-#     $self->_load($module);
-
-#     # Returning name of loaded module upon success
-#     return $module;
-# }
-
 1;
 
 __END__
