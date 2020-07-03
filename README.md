@@ -16,7 +16,7 @@ Date::Holidays - Date::Holidays::\* adapter and aggregator for all your holiday 
 
 # VERSION
 
-The documentation describes version 1.22 of Date::Holidays
+The documentation describes version 1.23 of Date::Holidays
 
 # FEATURES
 
@@ -41,7 +41,7 @@ The documentation describes version 1.22 of Date::Holidays
         day   => 25
     );
 
-    # Inquire and get a set of local namenames for national holiday in a given country
+    # Inquire and get a set of local names for national holiday in a given country
     my $hashref = $dh->holidays(
         year => 2004
     );
@@ -510,6 +510,8 @@ Please see [Task::Date::Holidays](https://metacpan.org/pod/Task::Date::Holidays)
 
 # ACKNOWLEDGEMENTS
 
+- Karen Etheridge (ETHER)
+- Neil Bowers (NEILB)
 - Miquel Ruiz, PR fixing a bug with regions for ES, supporting Data::Holidays::CA\_ES resulting in 1.22
 - Denis Boyun, PR introducing Date::Holidays::UA resulting in 1.19
 - Mario Minati, for telling me about the states in Date::Holidays::DE resulting in 1.17
