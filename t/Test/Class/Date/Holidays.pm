@@ -220,6 +220,21 @@ sub test_by : Test(5) {
     }
 }
 
+sub test_bw : Test(4) {
+    SKIP: {
+        eval { require Date::Holidays::BW };
+        skip "Date::Holidays::BW not installed", 4 if $@;
+
+        ok( my $dh = Date::Holidays->new( countrycode => 'bw' ),
+            'Testing Date::Holidays::BW' );
+
+        ok( $dh->holidays( year => 2020 ),
+            'Testing holidays for Date::Holidays::BW' );
+
+        can_ok('Date::Holidays::BW', qw(holidays is_holiday));
+    }
+}
+
 sub test_ca : Test(2) {
     SKIP: {
         eval { require Date::Holidays::CA };
@@ -471,6 +486,21 @@ sub test_kr : Test(6) {
 
         ok(Date::Holidays::KR->can('holidays'));
         ok(Date::Holidays::KR->can('is_holiday'));
+    }
+}
+
+sub test_nl : Test(4) {
+    SKIP: {
+        eval { require Date::Holidays::NL };
+        skip "Date::Holidays::NL not installed", 4 if $@;
+
+        ok( my $dh = Date::Holidays->new( countrycode => 'nl' ),
+            'Testing Date::Holidays::NL' );
+
+        ok( $dh->holidays( year => 2020 ),
+            'Testing holidays for Date::Holidays::NL' );
+
+        can_ok('Date::Holidays::NL', qw(holidays is_holiday));
     }
 }
 
