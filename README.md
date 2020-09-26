@@ -16,7 +16,7 @@ Date::Holidays - Date::Holidays::\* adapter and aggregator for all your holiday 
 
 # VERSION
 
-The documentation describes version 1.23 of Date::Holidays
+The documentation describes version 1.24 of Date::Holidays
 
 # FEATURES
 
@@ -461,6 +461,8 @@ Please see [Task::Date::Holidays](https://metacpan.org/pod/Task::Date::Holidays)
 - [Date::Holidays::Adapter::AU](https://metacpan.org/pod/Date::Holidays::Adapter::AU)
 - [Date::Holidays::BR](https://metacpan.org/pod/Date::Holidays::BR)
 - [Date::Holidays::Adapter::BR](https://metacpan.org/pod/Date::Holidays::Adapter::BR)
+- [Date::Holidays::BW](https://metacpan.org/pod/Date::Holidays::BW)
+- [Date::Holidays::Adapter::BW](https://metacpan.org/pod/Date::Holidays::Adapter::BW)
 - [Date::Holidays::BY](https://metacpan.org/pod/Date::Holidays::BY)
 - [Date::Holidays::Adapter::BY](https://metacpan.org/pod/Date::Holidays::Adapter::BY)
 - [Date::Holidays::CA](https://metacpan.org/pod/Date::Holidays::CA)
@@ -484,6 +486,8 @@ Please see [Task::Date::Holidays](https://metacpan.org/pod/Task::Date::Holidays)
 - [Date::Holidays::Adapter::KR](https://metacpan.org/pod/Date::Holidays::Adapter::KR)
 - [Date::Holidays::KZ](https://metacpan.org/pod/Date::Holidays::KZ)
 - [Date::Holidays::Adapter::KZ](https://metacpan.org/pod/Date::Holidays::Adapter::KZ)
+- [Date::Holidays::NL](https://metacpan.org/pod/Date::Holidays::NL)
+- [Date::Holidays::Adapter::NL](https://metacpan.org/pod/Date::Holidays::Adapter::NL)
 - [Date::Holidays::NO](https://metacpan.org/pod/Date::Holidays::NO)
 - [Date::Holidays::Adapter::NO](https://metacpan.org/pod/Date::Holidays::Adapter::NO)
 - [Date::Holidays::NZ](https://metacpan.org/pod/Date::Holidays::NZ)
@@ -510,6 +514,7 @@ Please see [Task::Date::Holidays](https://metacpan.org/pod/Task::Date::Holidays)
 
 # ACKNOWLEDGEMENTS
 
+- Wesley Schwengle (WATERKIP) author of Date::Holidays::NL and Date::Holidays::BW for reaching out and letting me know of their existance
 - Karen Etheridge (ETHER)
 - Neil Bowers (NEILB)
 - Miquel Ruiz, PR fixing a bug with regions for ES, supporting Data::Holidays::CA\_ES resulting in 1.22

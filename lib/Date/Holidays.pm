@@ -11,7 +11,7 @@ use Scalar::Util qw(blessed);
 
 use base 'Date::Holidays::Adapter';
 
-$VERSION = '1.23';
+$VERSION = '1.24';
 
 sub new {
     my ( $class, %params ) = @_;
@@ -332,7 +332,7 @@ Date::Holidays - Date::Holidays::* adapter and aggregator for all your holiday n
 
 =head1 VERSION
 
-The documentation describes version 1.23 of Date::Holidays
+The documentation describes version 1.24 of Date::Holidays
 
 =head1 FEATURES
 
@@ -856,6 +856,10 @@ Please see L<Task::Date::Holidays|https://metacpan.org/pod/Task::Date::Holidays>
 
 =item * L<Date::Holidays::Adapter::BR|https://metacpan.org/pod/Date::Holidays::Adapter::BR>
 
+=item * L<Date::Holidays::BW|https://metacpan.org/pod/Date::Holidays::BW>
+
+=item * L<Date::Holidays::Adapter::BW|https://metacpan.org/pod/Date::Holidays::Adapter::BW>
+
 =item * L<Date::Holidays::BY|https://metacpan.org/pod/Date::Holidays::BY>
 
 =item * L<Date::Holidays::Adapter::BY|https://metacpan.org/pod/Date::Holidays::Adapter::BY>
@@ -901,6 +905,10 @@ Please see L<Task::Date::Holidays|https://metacpan.org/pod/Task::Date::Holidays>
 =item * L<Date::Holidays::KZ|https://metacpan.org/pod/Date::Holidays::KZ>
 
 =item * L<Date::Holidays::Adapter::KZ|https://metacpan.org/pod/Date::Holidays::Adapter::KZ>
+
+=item * L<Date::Holidays::NL|https://metacpan.org/pod/Date::Holidays::NL>
+
+=item * L<Date::Holidays::Adapter::NL|https://metacpan.org/pod/Date::Holidays::Adapter::NL>
 
 =item * L<Date::Holidays::NO|https://metacpan.org/pod/Date::Holidays::NO>
 
@@ -953,6 +961,8 @@ Please see L<Task::Date::Holidays|https://metacpan.org/pod/Task::Date::Holidays>
 =head1 ACKNOWLEDGEMENTS
 
 =over
+
+=item * Wesley Schwengle (WATERKIP) author of Date::Holidays::NL and Date::Holidays::BW for reaching out and letting me know of their existance
 
 =item * Karen Etheridge (ETHER)
 
