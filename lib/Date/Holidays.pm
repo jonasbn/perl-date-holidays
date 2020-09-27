@@ -11,7 +11,7 @@ use Scalar::Util qw(blessed);
 
 use base 'Date::Holidays::Adapter';
 
-$VERSION = '1.24';
+$VERSION = '1.25';
 
 sub new {
     my ( $class, %params ) = @_;
@@ -332,7 +332,7 @@ Date::Holidays - Date::Holidays::* adapter and aggregator for all your holiday n
 
 =head1 VERSION
 
-The documentation describes version 1.24 of Date::Holidays
+The documentation describes version 1.25 of Date::Holidays
 
 =head1 FEATURES
 
