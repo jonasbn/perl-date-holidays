@@ -515,33 +515,6 @@ sub test_gb : Test(10) {
     }
 }
 
-sub test_kr : Test(5) {
-    SKIP: {
-        eval { require Date::Holidays::KR };
-        skip "Date::Holidays::KR not installed", 5 if $@;
-
-        can_ok('Date::Holidays::KR', qw(holidays is_holiday));
-
-        ok( my $dh = Date::Holidays->new( countrycode => 'kr' ),
-            'Testing Date::Holidays::KR' );
-
-        dies_ok { $dh->holidays(); }
-            'Testing holidays with no arguments for Date::Holidays::KR';
-
-        dies_ok { $dh->holidays( year => 2014 ) }
-            'Testing holidays with argument for Date::Holidays::KR';
-
-        my $holidays_hashref = Date::Holidays->is_holiday(
-            year  => 2017,
-            month => 1,
-            day   => 1,
-            countries => [ 'kr' ],
-        );
-
-        ok(! $holidays_hashref->{'kr'}, 'Checking for Korean holiday' );
-    }
-}
-
 sub test_nl : Test(6) {
     SKIP: {
         eval { require Date::Holidays::NL };
@@ -755,6 +728,33 @@ sub test_jp : Test(5) {
 
         dies_ok { $dh->holidays( year => 2014 ) }
             'Testing holidays with argument for Date::Japanese::Holiday';
+    }
+}
+
+sub test_kr : Test(5) {
+    SKIP: {
+        eval { require Date::Holidays::KR };
+        skip "Date::Holidays::KR not installed", 5 if $@;
+
+        can_ok('Date::Holidays::KR', qw(holidays is_holiday));
+
+        ok( my $dh = Date::Holidays->new( countrycode => 'kr' ),
+            'Testing Date::Holidays::KR' );
+
+        dies_ok { $dh->holidays(); }
+            'Testing holidays with no arguments for Date::Holidays::KR';
+
+        dies_ok { $dh->holidays( year => 2014 ) }
+            'Testing holidays with argument for Date::Holidays::KR';
+
+        my $holidays_hashref = Date::Holidays->is_holiday(
+            year  => 2017,
+            month => 1,
+            day   => 1,
+            countries => [ 'kr' ],
+        );
+
+        ok(! $holidays_hashref->{'kr'}, 'Checking for Korean holiday' );
     }
 }
 
