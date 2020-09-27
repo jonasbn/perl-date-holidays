@@ -16,7 +16,7 @@ Date::Holidays - Date::Holidays::\* adapter and aggregator for all your holiday 
 
 # VERSION
 
-The documentation describes version 1.24 of Date::Holidays
+The documentation describes version 1.25 of Date::Holidays
 
 # FEATURES
 
