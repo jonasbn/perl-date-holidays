@@ -220,16 +220,22 @@ sub test_by : Test(5) {
     }
 }
 
-sub test_aw : Test(4) {
+sub test_aw : Test(5) {
     SKIP: {
         eval { require Date::Holidays::AW };
-        skip "Date::Holidays::AW not installed", 4 if $@;
+        skip "Date::Holidays::AW not installed", 5 if $@;
 
         ok( my $dh = Date::Holidays->new( countrycode => 'aw' ),
             'Testing Date::Holidays::AW' );
 
         ok( $dh->holidays( year => 2020 ),
             'Testing holidays for Date::Holidays::AW' );
+
+        ok($dh->is_holiday(
+            year   => 2020,
+            month  => 1,
+            day    => 1,
+        ), 'Testing Aruban national holiday');
 
         can_ok('Date::Holidays::AW', qw(holidays is_holiday));
     }
@@ -489,10 +495,10 @@ sub test_kr : Test(6) {
     }
 }
 
-sub test_nl : Test(4) {
+sub test_nl : Test(5) {
     SKIP: {
         eval { require Date::Holidays::NL };
-        skip "Date::Holidays::NL not installed", 4 if $@;
+        skip "Date::Holidays::NL not installed", 5 if $@;
 
         ok( my $dh = Date::Holidays->new( countrycode => 'nl' ),
             'Testing Date::Holidays::NL' );
@@ -500,20 +506,32 @@ sub test_nl : Test(4) {
         ok( $dh->holidays( year => 2020 ),
             'Testing holidays for Date::Holidays::NL' );
 
+        ok($dh->is_holiday(
+            year   => 2020,
+            month  => 1,
+            day    => 1,
+        ), 'Testing Netherlands national holiday');
+
         can_ok('Date::Holidays::NL', qw(holidays is_holiday));
     }
 }
 
-sub test_no : Test(4) {
+sub test_no : Test(5) {
     SKIP: {
         eval { require Date::Holidays::NO };
-        skip "Date::Holidays::NO not installed", 4 if $@;
+        skip "Date::Holidays::NO not installed", 5 if $@;
 
         ok( my $dh = Date::Holidays->new( countrycode => 'no' ),
             'Testing Date::Holidays::NO' );
 
         ok( $dh->holidays( year => 2004 ),
             'Testing holidays for Date::Holidays::NO' );
+
+        ok($dh->is_holiday(
+            year   => 2020,
+            month  => 1,
+            day    => 1,
+        ), 'Testing Norwegian national holiday');
 
         can_ok('Date::Holidays::NO', qw(holidays is_holiday));
     }
