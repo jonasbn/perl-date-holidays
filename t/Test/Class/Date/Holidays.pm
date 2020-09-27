@@ -263,13 +263,25 @@ sub test_ca : Test(3) {
     }
 }
 
-sub test_cn : Test(3) {
+sub test_cn : Test(6) {
     SKIP: {
         eval { require Date::Holidays::CN };
-        skip "Date::Holidays::CN not installed", 3 if $@;
+        skip "Date::Holidays::CN not installed", 6 if $@;
 
         ok(! Date::Holidays::CN->can('holidays'));
         ok(! Date::Holidays::CN->can('is_holiday'));
+
+        ok( my $dh = Date::Holidays->new( countrycode => 'cn' ),
+            'Testing Date::Holidays::CN' );
+
+        ok($dh->is_holiday(
+            year   => 2017,
+            month  => 1,
+            day    => 1,
+        ), 'Testing Chinese national holiday');
+
+        ok( $dh->holidays( year => 2004 ),
+            'Testing holidays method for Date::Holidays::CN' );
 
         my $holidays_hashref = Date::Holidays->is_holiday(
             year  => 2017,
@@ -293,10 +305,10 @@ sub test_cz : Test(6) {
         ok(! Date::Holidays::CZ->can('is_holiday'), 'Is is_holiday method implemented');
 
         ok( my $dh = Date::Holidays->new( countrycode => 'cz' ),
-            'Testing Date::Holidays::cz' );
+            'Testing Date::Holidays::CZ' );
 
         ok( $dh->holidays( year => 2004 ),
-            'Testing holidays method for Date::Holidays::cz' );
+            'Testing holidays method for Date::Holidays::CZ' );
 
         ok($dh->is_holiday(
             year   => 2017,
@@ -350,7 +362,7 @@ sub test_de : Test(8) {
     }
 }
 
-sub test_dk : Test(4) {
+sub test_dk : Test(6) {
     SKIP: {
         eval { require Date::Holidays::DK };
         skip "Date::Holidays::DK not installed", 4 if $@;
@@ -363,6 +375,22 @@ sub test_dk : Test(4) {
 
         ok( $dh->holidays( year => 2004 ),
             'Testing holidays for Date::Holidays::DK' );
+
+        ok($dh->is_holiday(
+            year   => 2017,
+            month  => 1,
+            day    => 1,
+        ), 'Testing Danish national hoiday');
+
+        my $holidays_hashref = Date::Holidays->is_holiday(
+            year  => 2017,
+            month => 1,
+            day   => 1,
+            countries => [ 'dk' ],
+        );
+
+        ok( $holidays_hashref->{'dk'}, 'Checking for Danish holidays' );
+
     }
 }
 
