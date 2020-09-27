@@ -220,18 +220,18 @@ sub test_by : Test(5) {
     }
 }
 
-sub test_bw : Test(4) {
+sub test_aw : Test(4) {
     SKIP: {
-        eval { require Date::Holidays::BW };
-        skip "Date::Holidays::BW not installed", 4 if $@;
+        eval { require Date::Holidays::AW };
+        skip "Date::Holidays::AW not installed", 4 if $@;
 
-        ok( my $dh = Date::Holidays->new( countrycode => 'bw' ),
-            'Testing Date::Holidays::BW' );
+        ok( my $dh = Date::Holidays->new( countrycode => 'aw' ),
+            'Testing Date::Holidays::AW' );
 
         ok( $dh->holidays( year => 2020 ),
-            'Testing holidays for Date::Holidays::BW' );
+            'Testing holidays for Date::Holidays::AW' );
 
-        can_ok('Date::Holidays::BW', qw(holidays is_holiday));
+        can_ok('Date::Holidays::AW', qw(holidays is_holiday));
     }
 }
 
