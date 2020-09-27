@@ -461,8 +461,8 @@ Please see [Task::Date::Holidays](https://metacpan.org/pod/Task::Date::Holidays)
 - [Date::Holidays::Adapter::AU](https://metacpan.org/pod/Date::Holidays::Adapter::AU)
 - [Date::Holidays::BR](https://metacpan.org/pod/Date::Holidays::BR)
 - [Date::Holidays::Adapter::BR](https://metacpan.org/pod/Date::Holidays::Adapter::BR)
-- [Date::Holidays::BW](https://metacpan.org/pod/Date::Holidays::BW)
-- [Date::Holidays::Adapter::BW](https://metacpan.org/pod/Date::Holidays::Adapter::BW)
+- [Date::Holidays::AW](https://metacpan.org/pod/Date::Holidays::AW)
+- [Date::Holidays::Adapter::AW](https://metacpan.org/pod/Date::Holidays::Adapter::AW)
 - [Date::Holidays::BY](https://metacpan.org/pod/Date::Holidays::BY)
 - [Date::Holidays::Adapter::BY](https://metacpan.org/pod/Date::Holidays::Adapter::BY)
 - [Date::Holidays::CA](https://metacpan.org/pod/Date::Holidays::CA)
@@ -514,7 +514,7 @@ Please see [Task::Date::Holidays](https://metacpan.org/pod/Task::Date::Holidays)
 
 # ACKNOWLEDGEMENTS
 
-- Wesley Schwengle (WATERKIP) author of Date::Holidays::NL and Date::Holidays::BW for reaching out and letting me know of their existance
+- Wesley Schwengle (WATERKIP) author of Date::Holidays::NL and Date::Holidays::AW for reaching out and letting me know of their existance
 - Karen Etheridge (ETHER)
 - Neil Bowers (NEILB)
 - Miquel Ruiz, PR fixing a bug with regions for ES, supporting Data::Holidays::CA\_ES resulting in 1.22

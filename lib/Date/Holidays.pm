@@ -856,9 +856,9 @@ Please see L<Task::Date::Holidays|https://metacpan.org/pod/Task::Date::Holidays>
 
 =item * L<Date::Holidays::Adapter::BR|https://metacpan.org/pod/Date::Holidays::Adapter::BR>
 
-=item * L<Date::Holidays::BW|https://metacpan.org/pod/Date::Holidays::BW>
+=item * L<Date::Holidays::AW|https://metacpan.org/pod/Date::Holidays::AW>
 
-=item * L<Date::Holidays::Adapter::BW|https://metacpan.org/pod/Date::Holidays::Adapter::BW>
+=item * L<Date::Holidays::Adapter::AW|https://metacpan.org/pod/Date::Holidays::Adapter::AW>
 
 =item * L<Date::Holidays::BY|https://metacpan.org/pod/Date::Holidays::BY>
 
@@ -962,7 +962,7 @@ Please see L<Task::Date::Holidays|https://metacpan.org/pod/Task::Date::Holidays>
 
 =over
 
-=item * Wesley Schwengle (WATERKIP) author of Date::Holidays::NL and Date::Holidays::BW for reaching out and letting me know of their existance
+=item * Wesley Schwengle (WATERKIP) author of Date::Holidays::NL and Date::Holidays::AW for reaching out and letting me know of their existance
 
 =item * Karen Etheridge (ETHER)
 

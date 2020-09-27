@@ -3,7 +3,7 @@ Changes file for Date-Holidays
 1.24 2020-09-26 Feature release, update recommended
 
 - Added adapter for:
-    Date::Holidays::BW (Aruba) 
+    Date::Holidays::AW (Aruba) 
 
 - Added adapter for:
     Date::Holidays::NL (Netherlands) 
