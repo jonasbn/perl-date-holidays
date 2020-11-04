@@ -28,3 +28,4 @@ local/
 Date-Holidays*
 .banner
 *.bak
+_site
