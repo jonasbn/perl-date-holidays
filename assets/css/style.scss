@@ -5,7 +5,7 @@
 
 .page-header {
     background-position: center center;
-    background-image: url("../images/top-image.jpg");
+    background-image: url("https://res.cloudinary.com/jonasbn/image/upload/h_512,q_auto:low,c_fill,g_center,e_blur:200/tim-mossholder-C8jNJslQM3A-unsplash_zkhz2a.jpg");
     left: 0;
     right: 0;
     background-color: #fff;
@@ -18,4 +18,30 @@
         font-weight: normal;
         color: #222;
     }
+}
+
+.btn {
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.project-tagline {
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.2);
+    border-width: 1px;
+    margin-top: 0px;
+    border-bottom-left-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+}
+
+.project-name {
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.2);
+    border-width: 1px;
+    margin-bottom: 0px;
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+    opacity: 0.7;
 }
