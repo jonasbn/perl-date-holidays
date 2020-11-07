@@ -29,8 +29,6 @@ sub is_holiday {
 
     if ($sub) {
         $holiday = &{$sub}($params{'year'}, $params{'month'}, $params{'day'});
-    } else {
-        $holiday = '';
     }
 
     return $holiday;

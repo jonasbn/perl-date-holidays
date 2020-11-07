@@ -6,6 +6,7 @@ use base qw(Test::Class);
 use Test::More; # done_testing
 use Test::Fatal qw(dies_ok);
 use Env qw($TEST_VERBOSE);
+use Locale::Country; # all_country_codes
 
 #run prior and once per suite
 sub startup : Test(startup => 1) {
@@ -101,6 +102,33 @@ sub holidays_dt : Test(17) {
             is( ref $hashref->{$dt}, 'DateTime' );
         }
     }
+}
+
+sub test_issue45 : Test(1) {
+    SKIP: {
+        eval { require Date::Holidays::DK };
+        skip "Date::Holidays::DK not installed", 1 if $@;
+
+        # Emulate that Date::Holidays::SK is not installed
+        # Book: "Perl Testing: A Developer's Notebook"
+        # REF: https://learning.oreilly.com/library/view/perl-testing-a/0596100922/
+        # REF: https://learning.oreilly.com/library/view/perl-testing-a/0596100922/ch05.html
+        $INC{'Date/Holidays/SK.pm'} = 0;
+
+        my @country_codes = all_country_codes();
+
+        my $dh = Date::Holidays->new( countrycode => 'dk' );
+
+        # Using the most common holiday
+        my $holidays_hashref = Date::Holidays->is_holiday(
+            year      => 2020,
+            month     => 1,
+            day       => 1,
+            countries => \@country_codes,
+        );
+
+        ok( !exists $holidays_hashref->{'sk'},
+            'Checking for presence of SK' );    }
 }
 
 sub test_at : Test(5) {
