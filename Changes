@@ -1,5 +1,10 @@
 Changes file for Date-Holidays
 
+1.26 2020-11-07 Bug fix release, update not required
+
+- I am implementing an example application and I came across a minor bug in the adapter for Date::Holidays::SK
+  Reported as issue #45 fixed in PR #46
+
 1.25 2020-09-27 Maintenance release, update recommended
 
 - Introduced some issues with references and test suite for the new addition Date::Holidays::AW

@@ -6,7 +6,7 @@ use vars qw($VERSION);
 
 use base 'Date::Holidays::Adapter';
 
-$VERSION = '1.25';
+$VERSION = '1.26';
 
 use constant DEFAULT_STATE => 'VIC';
 
