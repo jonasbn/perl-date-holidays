@@ -8,7 +8,7 @@ use Data::Dumper;
 
 use base 'Date::Holidays::Adapter';
 
-$VERSION = '1.26';
+$VERSION = '1.27';
 
 # sub new {
 #     my $class = shift;

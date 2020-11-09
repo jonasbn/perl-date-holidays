@@ -7,7 +7,7 @@ use Carp;
 
 use base 'Date::Holidays::Adapter';
 
-$VERSION = '1.26';
+$VERSION = '1.27';
 
 sub holidays {
     croak "holidays is unimplemented for ".__PACKAGE__;

@@ -1,5 +1,11 @@
 Changes file for Date-Holidays
 
+1.27 2020-11-09 Bug fix release, update recommended
+
+- Fixed a bug in the mock introduced in release 1.27. Had added it to the cpanfile, but not the proper prerequisites and the mocking was not correct syntax
+
+- Made adjustments to the tar-ball generation, way to much non-distribution related material included
+
 1.26 2020-11-09 Bug fix release, update not required
 
 - I am implementing an example application and I came across a minor bug in the adapter for Date::Holidays::SK

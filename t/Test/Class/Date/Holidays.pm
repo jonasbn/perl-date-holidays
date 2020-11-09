@@ -111,7 +111,7 @@ sub test_issue45 : Test(1) {
     # Book: "Perl Testing: A Developer's Notebook"
     # REF: https://learning.oreilly.com/library/view/perl-testing-a/0596100922/
     my $mock = Test::MockModule->new('Date::Holidays::Adapter');
-    $mock->mock->redefine('_fetch', sub {
+    $mock->redefine('_fetch', sub {
         my ($self, $params) = @_;
 
         if ($params->{countrycode} eq 'SK') {
