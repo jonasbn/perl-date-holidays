@@ -7,6 +7,7 @@ use Test::More; # done_testing
 use Test::Fatal qw(dies_ok);
 use Env qw($TEST_VERBOSE);
 use Locale::Country; # all_country_codes
+use Test::MockModule;
 
 #run prior and once per suite
 sub startup : Test(startup => 1) {
@@ -105,30 +106,33 @@ sub holidays_dt : Test(17) {
 }
 
 sub test_issue45 : Test(1) {
-    SKIP: {
-        eval { require Date::Holidays::DK };
-        skip "Date::Holidays::DK not installed", 1 if $@;
 
-        # Emulate that Date::Holidays::SK is not installed
-        # Book: "Perl Testing: A Developer's Notebook"
-        # REF: https://learning.oreilly.com/library/view/perl-testing-a/0596100922/
-        # REF: https://learning.oreilly.com/library/view/perl-testing-a/0596100922/ch05.html
-        $INC{'Date/Holidays/SK.pm'} = 0;
+    # Emulate that Date::Holidays::SK is not installed
+    # Book: "Perl Testing: A Developer's Notebook"
+    # REF: https://learning.oreilly.com/library/view/perl-testing-a/0596100922/
+    my $mock = Test::MockModule->new('Date::Holidays::Adapter');
+    $mock->mock->redefine('_fetch', sub {
+        my ($self, $params) = @_;
 
-        my @country_codes = all_country_codes();
+        if ($params->{countrycode} eq 'SK') {
+            return 'Date::Holidays::Adapter';
+        } else {
+            return $mock->original('_fetch')->($self, $params);
+        }
+    });
 
-        my $dh = Date::Holidays->new( countrycode => 'dk' );
+    my @country_codes = all_country_codes();
 
-        # Using the most common holiday
-        my $holidays_hashref = Date::Holidays->is_holiday(
-            year      => 2020,
-            month     => 1,
-            day       => 1,
-            countries => \@country_codes,
-        );
+    # Using the most common holiday
+    my $holidays_hashref = Date::Holidays->is_holiday(
+        year      => 2020,
+        month     => 1,
+        day       => 1,
+        countries => \@country_codes,
+    );
+    $mock->unmock('_fetch');
 
-        ok( !exists $holidays_hashref->{'sk'},
-            'Checking for presence of SK' );    }
+    ok( !exists $holidays_hashref->{'sk'}, 'Checking for presence of SK' );
 }
 
 sub test_at : Test(5) {
