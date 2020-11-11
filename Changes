@@ -1,5 +1,9 @@
 Changes file for Date-Holidays
 
+1.28 2020-11-11 Maintenance release, update not required
+
+- We need to specify the requirement of Test::MockModule to version 0.13, since redefined not introduced until this version
+
 1.27 2020-11-09 Bug fix release, update recommended
 
 - Fixed a bug in the mock introduced in release 1.27. Had added it to the cpanfile, but not the proper prerequisites and the mocking was not correct syntax
