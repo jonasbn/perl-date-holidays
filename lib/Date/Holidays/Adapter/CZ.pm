@@ -7,7 +7,7 @@ use base 'Date::Holidays::Adapter';
 
 use vars qw($VERSION);
 
-$VERSION = '1.27';
+$VERSION = '1.28';
 
 my $format = '%#:%m%d';
 
