@@ -1,5 +1,7 @@
 package Test::Class::Date::Holidays;
 
+## no critic (Subroutines::RequireFinalReturn, ValuesAndExpressions::ProhibitMagicNumbers)
+
 use strict;
 use warnings;
 use base qw(Test::Class);
@@ -531,13 +533,13 @@ sub test_gb : Test(10) {
 
         can_ok('Date::Holidays::GB', qw(holidays is_holiday));
 
-        ok( my $holidays_hashref_sct = Date::Holidays::GB::holidays(year => 2014, regions => ['SCT']));
+        ok( my $holidays_hashref_sct = Date::Holidays::GB::holidays(year => 2014, regions => ['SCT']), 'testing regional calendar SCT');
 
-        ok( my $holidays_hashref_eaw = Date::Holidays::GB::holidays(year => 2014, regions => ['EAW']));
+        ok( my $holidays_hashref_eaw = Date::Holidays::GB::holidays(year => 2014, regions => ['EAW']), 'testing regional calendar EAW');
 
-        ok( keys %{$holidays_hashref_eaw} != keys %{$holidays_hashref_sct});
+        ok( keys %{$holidays_hashref_eaw} != keys %{$holidays_hashref_sct}, 'asserting key count');
 
-        ok(my $gb = Date::Holidays->new(countrycode => 'gb'));
+        ok(my $gb = Date::Holidays->new(countrycode => 'gb'), 'calling constructor with gb');
 
         ok($gb->is_holiday(
             day   => 17,
@@ -597,8 +599,8 @@ sub test_nz : Test(7) {
         eval { require Date::Holidays::NZ };
         skip 'Date::Holidays::NZ not installed', 7 if $EVAL_ERROR;
 
-        ok(! Date::Holidays::NZ->can('holidays'));
-        ok(! Date::Holidays::NZ->can('is_holiday'));
+        ok(! Date::Holidays::NZ->can('holidays'), 'Date::Holidays::NZ does not implement holidays');
+        ok(! Date::Holidays::NZ->can('is_holiday'), 'Date::Holidays::NZ does not implement is_holiday');
 
         ok( my $dh = Date::Holidays->new( countrycode => 'nz' ),
             'Testing Date::Holidays::NZ' );
@@ -750,8 +752,8 @@ sub test_jp : Test(5) {
         eval { require Date::Japanese::Holiday };
         skip 'Date::Japanese::Holiday not installed', 5 if $EVAL_ERROR;
 
-        ok(!Date::Japanese::Holiday->can('holidays') );
-        ok( Date::Japanese::Holiday->can('is_holiday') );
+        ok(!Date::Japanese::Holiday->can('holidays'), 'Date::Japanese::Holiday does not implement holidays' );
+        can_ok('Date::Japanese::Holiday', qw(is_holiday) );
 
         ok( my $dh = Date::Holidays->new( countrycode => 'jp' ),
             'Testing Date::Japanese::Holiday' );
