@@ -12,6 +12,8 @@ use Locale::Country; # all_country_codes
 use Test::MockModule;
 use English qw(-no_match_vars);
 
+our $VERSION = '1.29';
+
 #run prior and once per suite
 sub startup : Test(startup => 1) {
 
@@ -706,8 +708,8 @@ sub test_sk : Test(6) {
         eval { require Date::Holidays::SK };
         skip 'Date::Holidays::SK not installed', 6 if $EVAL_ERROR;
 
-        ok(! Date::Holidays::SK->can('is_holiday'));
-        ok(! Date::Holidays::SK->can('holidays'));
+        ok(! Date::Holidays::SK->can('is_holiday'), 'Date::Holidays::SK does not implement is_holiday');
+        ok(! Date::Holidays::SK->can('holidays'), 'Date::Holidays::SK does not implement holidays');
 
         ok( my $dh = Date::Holidays->new( countrycode => 'sk' ),
             'Testing Date::Holidays::SK' );
