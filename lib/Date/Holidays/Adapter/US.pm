@@ -10,6 +10,17 @@ use base 'Date::Holidays::Adapter';
 
 $VERSION = '1.29';
 
+sub new {
+    my ( $class, %params ) = @_;
+
+    $params{countrycode} = 'USFederal';
+    $params{nocheck}     = 1;
+
+    my $self = $class->SUPER::new(%params);
+    return $self;
+}
+
+
 sub holidays {
     croak "holidays is unimplemented for ".__PACKAGE__;
 }
