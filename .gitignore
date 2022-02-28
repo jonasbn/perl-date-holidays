@@ -19,6 +19,7 @@ pm_to_blib
 MANIFEST
 META.json
 MYMETA.json
+Makefile.PL
 *.sublime-project
 *.sublime-workspace
 *.komodoproject
