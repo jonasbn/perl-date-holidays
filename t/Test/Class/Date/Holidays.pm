@@ -7,7 +7,7 @@ use warnings;
 use base qw(Test::Class);
 use Test::More; # done_testing
 use Test::Fatal qw(dies_ok);
-use Env qw($TEST_VERBOSE);
+use Env qw($TEST_VERBOSE $EXTENDED_TESTING);
 use Locale::Country; # all_country_codes
 use Test::MockModule;
 use English qw(-no_match_vars);
@@ -119,14 +119,15 @@ sub test_issue45 : Test(1) {
     $mock->redefine('_fetch', sub {
         my ($self, $params) = @_;
 
-        if ($params->{countrycode} eq 'SK') {
+        if ($params->{countrycode} and $params->{countrycode} eq 'SK') {
             return 'Date::Holidays::Adapter';
         } else {
             return $mock->original('_fetch')->($self, $params);
         }
     });
 
-    my @country_codes = all_country_codes();
+
+    my @country_codes = qw(SK);
 
     # Using the most common holiday
     my $holidays_hashref = Date::Holidays->is_holiday(
@@ -920,16 +921,18 @@ sub test_norway_and_denmark_combined : Test(6) {
 }
 
 sub test_without_object : Test(1) {
+    SKIP: {
+        skip 'Author test not enabled', 1 unless ($EXTENDED_TESTING);
+        my $holidays_hashref;
 
-    my $holidays_hashref;
-
-    ok( $holidays_hashref = Date::Holidays->is_holiday(
-            year  => 2014,
-            month => 12,
-            day   => 25,
-        ),
-        'Testing is_holiday called without an object'
-    );
+        ok( $holidays_hashref = Date::Holidays->is_holiday(
+                year  => 2014,
+                month => 12,
+                day   => 25,
+            ),
+            'Testing is_holiday called without an object'
+        );
+    }
 }
 
 1;
