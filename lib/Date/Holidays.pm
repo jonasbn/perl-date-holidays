@@ -424,7 +424,7 @@ The documentation describes version 1.31 of Date::Holidays
 
 =head1 DESCRIPTION
 
-Date::Holidays is an adapters exposing a uniform API to a set of dsitributions
+Date::Holidays is an adapters exposing a uniform API to a set of distributions
 in the Date::Holidays::* namespace. All of these modules deliver methods and
 information on national calendars, but no standardized API exist.
 
@@ -432,7 +432,7 @@ The distributions more or less follow a I<de> I<facto> standard (see: also the g
 adapter L<Date::Holidays::Adapter|https://metacpan.org/pod/Date::Holidays::Adapter>), but the adapters are implemented to uniform
 this and Date::Holidays exposes a more readable API and at the same time it
 provides an OO interface, to these diverse implementations, which primarily
-holds a are produceral.
+holds a are procedural.
 
 As described below it is recommended that a certain API is implemented (SEE:
 B<holidays> and B<is_holiday> below), but taking the adapter strategy into
@@ -487,7 +487,7 @@ This is the constructor. It takes the following parameters:
 
 =item countrycode (MANDATORY, see below), unique two letter code representing a country name.  Please refer to ISO3166 (or L<Locale::Country|https://metacpan.org/pod/Locale::Country>)
 
-=item nocheck (optional), if set to true the countrycode specified will not be validated against a list of known country codes for existance, so you can build fake holidays for fake countries, I currently use this for test. This parameter might disappear in the future.
+=item nocheck (optional), if set to true the countrycode specified will not be validated against a list of known country codes for existence, so you can build fake holidays for fake countries, I currently use this for test. This parameter might disappear in the future.
 
 =back
 
@@ -612,7 +612,7 @@ L<Date::Holidays::Abstract|https://metacpan.org/pod/Date::Holidays::Abstract> an
 to make sure that the module implements some, by me, expected methods.
 
 So by using abstract your module will not work until it follows the the abstract
-layed out for a Date::Holidays::* module. Unfortunately the module will only
+laid out for a Date::Holidays::* module. Unfortunately the module will only
 check for the presence of the methods not their prototypes.
 
 L<Date::Holidays::Super|https://metacpan.org/pod/Date::Holidays::Super> is for the lazy programmer, it implements the necessary
@@ -652,7 +652,7 @@ around).
 =item holidays
 
 Takes 1 argument: year and returns a hashref containing all of the holidays in
-specied for the country, in the national language of the module context in
+specified for the country, in the national language of the module context in
 question.
 
 The keys are the dates, month + day in two digits each concatenated.
@@ -683,7 +683,7 @@ parameters in order to give more exact holiday data.
 This is handled by adding additional parameters to B<is_holiday> and
 B<holidays>.
 
-These parameters are left to the module authors descretion and the actual
+These parameters are left to the module authors discretion and the actual
 Date::Holidays::* module should be consulted.
 
     Example Date::Holidays::AU
@@ -966,7 +966,7 @@ Please see L<Task::Date::Holidays|https://metacpan.org/pod/Task::Date::Holidays>
 
 =item * @qorron for PR patching the US adapter, resulting in 1.31
 
-=item * Wesley Schwengle (WATERKIP) author of Date::Holidays::NL and Date::Holidays::AW for reaching out and letting me know of their existance
+=item * Wesley Schwengle (WATERKIP) author of Date::Holidays::NL and Date::Holidays::AW for reaching out and letting me know of their existence
 
 =item * Karen Etheridge (ETHER)
 

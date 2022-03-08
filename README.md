@@ -99,7 +99,7 @@ The documentation describes version 1.31 of Date::Holidays
 
 # DESCRIPTION
 
-Date::Holidays is an adapters exposing a uniform API to a set of dsitributions
+Date::Holidays is an adapters exposing a uniform API to a set of distributions
 in the Date::Holidays::\* namespace. All of these modules deliver methods and
 information on national calendars, but no standardized API exist.
 
@@ -107,7 +107,7 @@ The distributions more or less follow a _de_ _facto_ standard (see: also the gen
 adapter [Date::Holidays::Adapter](https://metacpan.org/pod/Date::Holidays::Adapter)), but the adapters are implemented to uniform
 this and Date::Holidays exposes a more readable API and at the same time it
 provides an OO interface, to these diverse implementations, which primarily
-holds a are produceral.
+holds a are procedural.
 
 As described below it is recommended that a certain API is implemented (SEE:
 **holidays** and **is\_holiday** below), but taking the adapter strategy into
@@ -158,7 +158,7 @@ This should point to the JSON file.
 This is the constructor. It takes the following parameters:
 
 - countrycode (MANDATORY, see below), unique two letter code representing a country name.  Please refer to ISO3166 (or [Locale::Country](https://metacpan.org/pod/Locale::Country))
-- nocheck (optional), if set to true the countrycode specified will not be validated against a list of known country codes for existance, so you can build fake holidays for fake countries, I currently use this for test. This parameter might disappear in the future.
+- nocheck (optional), if set to true the countrycode specified will not be validated against a list of known country codes for existence, so you can build fake holidays for fake countries, I currently use this for test. This parameter might disappear in the future.
 
 The constructor loads the module from Date::Holidays::\*, which matches the
 country code and returns a Date::Holidays module with the specified module
@@ -261,7 +261,7 @@ As an experiment I have added two modules to the namespace,
 to make sure that the module implements some, by me, expected methods.
 
 So by using abstract your module will not work until it follows the the abstract
-layed out for a Date::Holidays::\* module. Unfortunately the module will only
+laid out for a Date::Holidays::\* module. Unfortunately the module will only
 check for the presence of the methods not their prototypes.
 
 [Date::Holidays::Super](https://metacpan.org/pod/Date::Holidays::Super) is for the lazy programmer, it implements the necessary
@@ -299,7 +299,7 @@ The methods which are currently interesting in a Date::Holidays::\* module are:
 - holidays
 
     Takes 1 argument: year and returns a hashref containing all of the holidays in
-    specied for the country, in the national language of the module context in
+    specified for the country, in the national language of the module context in
     question.
 
     The keys are the dates, month + day in two digits each concatenated.
@@ -328,7 +328,7 @@ parameters in order to give more exact holiday data.
 This is handled by adding additional parameters to **is\_holiday** and
 **holidays**.
 
-These parameters are left to the module authors descretion and the actual
+These parameters are left to the module authors discretion and the actual
 Date::Holidays::\* module should be consulted.
 
     Example Date::Holidays::AU
@@ -515,7 +515,7 @@ Please see [Task::Date::Holidays](https://metacpan.org/pod/Task::Date::Holidays)
 # ACKNOWLEDGEMENTS
 
 - @qorron for PR patching the US adapter, resulting in 1.31
-- Wesley Schwengle (WATERKIP) author of Date::Holidays::NL and Date::Holidays::AW for reaching out and letting me know of their existance
+- Wesley Schwengle (WATERKIP) author of Date::Holidays::NL and Date::Holidays::AW for reaching out and letting me know of their existence
 - Karen Etheridge (ETHER)
 - Neil Bowers (NEILB)
 - Miquel Ruiz, PR fixing a bug with regions for ES, supporting Data::Holidays::CA\_ES resulting in 1.22
