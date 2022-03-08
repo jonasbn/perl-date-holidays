@@ -10,7 +10,15 @@ use base 'Date::Holidays::Adapter';
 $VERSION = '1.30';
 
 sub holidays {
-    croak "holidays is unimplemented for ".__PACKAGE__;
+    my ($self, %params) = @_;
+
+    my $sub = $self->{_adaptee}->can('fr_holidays');
+
+    if ($sub) {
+        return &{$sub}($params{'year'});
+    } else {
+        return;
+    }
 }
 
 sub is_holiday {
