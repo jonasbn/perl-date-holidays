@@ -2,7 +2,7 @@ name: Dist::Zilla Action
 on:
   push:
   schedule:
-    - cron: '0 * */30 * *'
+    - cron: '0 0 */28 */1 *'
 
 jobs:
   dzil:
