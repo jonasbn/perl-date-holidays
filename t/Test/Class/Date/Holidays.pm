@@ -211,7 +211,7 @@ sub test_au : Test(7) {
 sub test_aw : Test(5) {
     SKIP: {
         eval { require Date::Holidays::AW };
-        skip 'Date::Holidays::AW not installed', 7 if $EVAL_ERROR;
+        skip 'Date::Holidays::AW not installed', 5 if $EVAL_ERROR;
 
         can_ok('Date::Holidays::AW', qw(holidays is_holiday));
 
@@ -263,7 +263,7 @@ sub test_br : Test(4) {
 sub test_bq : Test(5) {
     SKIP: {
         eval { require Date::Holidays::BQ };
-        skip 'Date::Holidays::BQ not installed', 7 if $EVAL_ERROR;
+        skip 'Date::Holidays::BQ not installed', 5 if $EVAL_ERROR;
 
         can_ok('Date::Holidays::BQ', qw(holidays is_holiday));
 
@@ -582,7 +582,7 @@ sub test_gb : Test(10) {
 sub test_nl : Test(4) {
     SKIP: {
         eval { require Date::Holidays::NL };
-        skip 'Date::Holidays::NL not installed', 6 if $EVAL_ERROR;
+        skip 'Date::Holidays::NL not installed', 4 if $EVAL_ERROR;
 
         can_ok('Date::Holidays::NL', qw(holidays is_holiday));
 
