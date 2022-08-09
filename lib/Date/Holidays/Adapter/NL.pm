@@ -13,8 +13,9 @@ sub holidays {
 
     my $sub = $self->{_adaptee}->can('holidays');
 
+    my $year = delete $params{year};
     if ($sub) {
-        return &{$sub}($params{'year'});
+        return &{$sub}($year, %params);
     } else {
         return {};
     }
@@ -27,8 +28,12 @@ sub is_holiday {
 
     my $holiday;
 
+    my $year = delete $params{year};
+    my $month = delete $params{month};
+    my $day = delete $params{day};
+
     if ($sub) {
-        $holiday = &{$sub}($params{'year'}, $params{'month'}, $params{'day'});
+        $holiday = &{$sub}($year, $month, $day, %params);
     } else {
         $holiday = '';
     }

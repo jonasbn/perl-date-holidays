@@ -231,12 +231,14 @@ sub _check_countries {
 }
 
 sub is_holiday_dt {
-    my ( $self, $dt ) = @_;
+    my $self = shift;
+    my $dt   = shift;
 
     return $self->is_holiday(
         year  => $dt->year,
         month => $dt->month,
         day   => $dt->day,
+        @_,
     );
 }
 
