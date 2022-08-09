@@ -262,6 +262,34 @@ sub test_br : Test(4) {
     }
 }
 
+sub test_bq : Test(7) {
+    SKIP: {
+        eval { require Date::Holidays::BQ };
+        skip 'Date::Holidays::BQ not installed', 7 if $EVAL_ERROR;
+
+        can_ok('Date::Holidays::BQ', qw(holidays is_holiday));
+
+        ok( my $dh = Date::Holidays->new( countrycode => 'aw' ),
+            'Testing Date::Holidays::BQ' );
+
+        ok( $dh->holidays( year => 2020 ),
+            'Testing holidays for Date::Holidays::BQ' );
+
+        ok($dh->is_holiday(
+            year   => 2020,
+            month  => 1,
+            day    => 1,
+        ), 'Testing Bonaires national holiday');
+
+        ok(! $dh->is_holiday(
+            year   => 2020,
+            month  => 1,
+            day    => 15,
+        ), 'Testing Bonaires national holiday');
+    }
+}
+
+
 sub test_by : Test(4) {
     SKIP: {
         eval { require Date::Holidays::BY };

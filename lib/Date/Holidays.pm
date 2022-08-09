@@ -868,6 +868,10 @@ Please see L<Task::Date::Holidays|https://metacpan.org/pod/Task::Date::Holidays>
 
 =item * L<Date::Holidays::Adapter::BY|https://metacpan.org/pod/Date::Holidays::Adapter::BY>
 
+=item * L<Date::Holidays::BQ|https://metacpan.org/pod/Date::Holidays::BQ>
+
+=item * L<Date::Holidays::Adapter::BQ|https://metacpan.org/pod/Date::Holidays::Adapter::BQ>
+
 =item * L<Date::Holidays::CA|https://metacpan.org/pod/Date::Holidays::CA>
 
 =item * L<Date::Holidays::CA_ES|https://metacpan.org/pod/Date::Holidays::CA_ES>
