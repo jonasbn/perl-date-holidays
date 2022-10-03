@@ -1,4 +1,4 @@
-package Date::Holidays::Adapter::NL;
+package Date::Holidays::Adapter::BQ;
 
 use strict;
 use warnings;
@@ -14,6 +14,7 @@ sub holidays {
     my $sub = $self->{_adaptee}->can('holidays');
 
     my $year = delete $params{year};
+
     if ($sub) {
         return &{$sub}($year, %params);
     } else {
@@ -51,15 +52,15 @@ __END__
 
 =head1 NAME
 
-Date::Holidays::Adapter::NL - an adapter class for Date::Holidays::NL
+Date::Holidays::Adapter::BQ - an adapter class for Date::Holidays::BQ
 
 =head1 VERSION
 
-This POD describes version 1.31 of Date::Holidays::Adapter::NL
+This POD describes version 1.31 of Date::Holidays::Adapter::BQ
 
 =head1 DESCRIPTION
 
-The is the adapter class for L<Date::Holidays::NL>.
+The is the adapter class for L<Date::Holidays::BQ>.
 
 =head1 SUBROUTINES/METHODS
 
@@ -92,7 +93,7 @@ Please refer to DIAGNOSTICS in L<Date::Holidays>
 
 =over
 
-=item * L<Date::Holidays::NL>
+=item * L<Date::Holidays::BQ>
 
 =item * L<Date::Holidays::Adapter>
 

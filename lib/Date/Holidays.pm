@@ -231,12 +231,14 @@ sub _check_countries {
 }
 
 sub is_holiday_dt {
-    my ( $self, $dt ) = @_;
+    my $self = shift;
+    my $dt   = shift;
 
     return $self->is_holiday(
         year  => $dt->year,
         month => $dt->month,
         day   => $dt->day,
+        @_,
     );
 }
 
@@ -865,6 +867,10 @@ Please see L<Task::Date::Holidays|https://metacpan.org/pod/Task::Date::Holidays>
 =item * L<Date::Holidays::BY|https://metacpan.org/pod/Date::Holidays::BY>
 
 =item * L<Date::Holidays::Adapter::BY|https://metacpan.org/pod/Date::Holidays::Adapter::BY>
+
+=item * L<Date::Holidays::BQ|https://metacpan.org/pod/Date::Holidays::BQ>
+
+=item * L<Date::Holidays::Adapter::BQ|https://metacpan.org/pod/Date::Holidays::Adapter::BQ>
 
 =item * L<Date::Holidays::CA|https://metacpan.org/pod/Date::Holidays::CA>
 
