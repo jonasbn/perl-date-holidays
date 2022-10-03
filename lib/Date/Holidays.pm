@@ -337,7 +337,7 @@ Date::Holidays - Date::Holidays::* adapter and aggregator for all your holiday n
 
 =head1 VERSION
 
-The documentation describes version 1.31 of Date::Holidays
+The documentation describes version 1.32 of Date::Holidays
 
 =head1 FEATURES
 
@@ -971,7 +971,7 @@ Please see L<Task::Date::Holidays|https://metacpan.org/pod/Task::Date::Holidays>
 
 =over
 
-=item * @qorron for PR patching the US adapter, resulting in 1.31
+=item * @qorron for PR patching the US adapter, resulting in 1.33
 
 =item * Wesley Schwengle (WATERKIP) author of Date::Holidays::NL and Date::Holidays::AW for reaching out and letting me know of their existence
 
