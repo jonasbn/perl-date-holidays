@@ -9,9 +9,13 @@ requires 'File::Slurp', 0;
 requires 'Module::Load', 0;
 
 on test => sub {
-    'Test::Class', 0;
-    'Test::More', 0;
-    'FindBin', 0;
-    'Test::MockModule', 0;
-    'Test::Pod::Coverage', 0;
+    requires 'Test::Class', 0;
+    requires 'Test::More', 0;
+    requires 'FindBin', 0;
+    requires 'Test::MockModule', 0;
+    requires 'Test::Pod::Coverage', 0;
+    requires 'Test::Kwalitee', '1.21';
+    requires 'Test::Fatal', 0;
+    requires 'Test::Pod', 0;
+    requires 'Pod::Coverage::TrustPod', 0;
 };
