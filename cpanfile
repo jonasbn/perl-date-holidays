@@ -8,6 +8,15 @@ requires 'JSON', 0;
 requires 'File::Slurp', 0;
 requires 'Module::Load', 0;
 
+on 'build', sub {
+    requires 'Module::Build', '0.30';
+};
+
+on 'configure', sub {
+    requires 'ExtUtils::MakeMaker';
+    requires 'Module::Build', '0.30';
+};
+
 on test => sub {
     requires 'Test::Class', 0;
     requires 'Test::More', 0;
