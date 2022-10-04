@@ -7,7 +7,7 @@ use vars qw($VERSION);
 use Locale::Country qw(all_country_codes code2country);
 use Module::Load qw(load);
 use DateTime;
-use TryCatch;
+use Try::Tiny;
 use Scalar::Util qw(blessed);
 
 use base 'Date::Holidays::Adapter';
@@ -38,8 +38,7 @@ sub new {
                     countrycode => $params{'countrycode'},
                 }
             );
-        }
-
+        };
     }
     else {
         die "No country code specified\n";
@@ -62,11 +61,10 @@ sub new {
                 warn "Adapter not defined\n";
                 $self = undef;
             }
-        }
-        catch ($error) {
-            warn "Unable to initialize adapter: $error\n";
+        } catch {
+            warn "Unable to initialize adapter: $_\n";
             $self = undef;
-        }
+        };
 
     }
     elsif ( !$self->{'_inner_class'} ) {
@@ -231,8 +229,8 @@ sub _check_countries {
                 $result->{$country} = $r;
             }
         }
-        catch ($error) {
-            warn "$error\n";
+        catch {
+            warn "$_\n";
         }
     }
 
@@ -290,8 +288,8 @@ sub _fetch {
         $module = $self->_load($module);
 
     }
-    catch ($error) {
-        warn "Unable to load module: $module - $error\n";
+    catch {
+        warn "Unable to load module: $module - $_\n";
 
         try {
 
@@ -303,8 +301,8 @@ sub _fetch {
             }
 
         }
-        catch ($error) {
-            warn "Unable to load module: $module - $error\n";
+        catch {
+            warn "Unable to load module: $module - $_\n";
 
             $module = 'Date::Holidays::Adapter';
             $module = $self->_load($module);
