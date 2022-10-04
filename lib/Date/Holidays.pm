@@ -345,7 +345,7 @@ Date::Holidays - Date::Holidays::* adapter and aggregator for all your holiday n
 
 =head1 VERSION
 
-The documentation describes version 1.32 of Date::Holidays
+The documentation describes version 1.33 of Date::Holidays
 
 =head1 FEATURES
 
