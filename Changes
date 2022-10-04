@@ -1,5 +1,15 @@
 Changes file for Date-Holidays
 
+1.33 2022-10-04 Feature release, update not required
+
+- Further improvement to the handling of the parameters required by:
+
+  - Date::Holidays::NL via Date::Holidays::Adapter::NL
+  - Date::Holidays::AW via Date::Holidays::Adapter::AW
+  - Date::Holidays::BQ via Date::Holidays::Adapter::BQ
+
+  The `gov` and `lang` parameters can now be used in conjunction with the country list parameter
+
 1.32 2022-10-03 Feature release, update not required
 
 - Introduction of Date::Holidays::Adapter::BQ for adapting Date::Holidays::BQ

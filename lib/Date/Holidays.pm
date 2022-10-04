@@ -189,6 +189,14 @@ sub _check_countries {
                 day   => $params{'day'},
             );
 
+            if ( $params{gov} ) {
+                $prepared_parameters{gov} = $params{gov};
+            }
+
+            if ( $params{lang} ) {
+                $prepared_parameters{lang} = $params{lang};
+            }
+
             # did we receive special regions parameter?
             if ( $params{regions} ) {
                 $prepared_parameters{regions} = $params{regions};
