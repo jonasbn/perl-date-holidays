@@ -10,6 +10,8 @@ Changes file for Date-Holidays
 
   The `gov` and `lang` parameters can now be used in conjunction with the country list parameter
 
+- Exchanged TryCatch for Try::Tiny  
+
 1.32 2022-10-03 Feature release, update not required
 
 - Introduction of Date::Holidays::Adapter::BQ for adapting Date::Holidays::BQ
