@@ -3,7 +3,7 @@ package Date::Holidays::Adapter;
 use strict;
 use warnings;
 use Carp; # croak
-use TryCatch;
+use Try::Tiny;
 use Module::Load qw(load);
 use Locale::Country;
 use Scalar::Util qw(blessed);
@@ -210,8 +210,8 @@ sub _fetch {
 
         $module = $self->_load($module);
 
-    } catch ($error) {
-        warn "Unable to load module: $module - $error";
+    } catch {
+        warn "Unable to load module: $module - $_";
 
         try {
             #$countrycode = uc $countrycode;
@@ -228,8 +228,8 @@ sub _fetch {
                 warn "we got a module and we return\n";
             }
 
-        } catch ($error) {
-            warn "Unable to load module: $module - $error";
+        } catch {
+            warn "Unable to load module: $module - $_";
 
             $module = 'Date::Holidays::Adapter';
             $module = $self->_load($module);

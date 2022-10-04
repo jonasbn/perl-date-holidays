@@ -397,7 +397,7 @@ to be used by [Date::Holidays::Adapter::Local](https://metacpan.org/pod/Date::Ho
 - [DateTime](https://metacpan.org/pod/DateTime)
 - [Locale::Country](https://metacpan.org/pod/Locale::Country)
 - [Module::Load](https://metacpan.org/pod/Module::Load)
-- [TryCatch](https://metacpan.org/pod/TryCatch)
+- [Try::Tiny](https://metacpan.org/pod/Try::Tiny)
 - [Scalar::Util](https://metacpan.org/pod/Scalar::Util)
 - [JSON](https://metacpan.org/pod/JSON)
 - [File::Slurp](https://metacpan.org/pod/File::Slurp)
