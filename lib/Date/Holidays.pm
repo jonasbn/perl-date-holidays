@@ -771,7 +771,7 @@ to be used by L<Date::Holidays::Adapter::Local|https://metacpan.org/pod/Date::Ho
 
 =item * L<Module::Load|https://metacpan.org/pod/Module::Load>
 
-=item * L<TryCatch|https://metacpan.org/pod/TryCatch>
+=item * L<Try::Tiny|https://metacpan.org/pod/Try::Tiny>
 
 =item * L<Scalar::Util|https://metacpan.org/pod/Scalar::Util>
 
