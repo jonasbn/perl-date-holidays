@@ -1,6 +1,6 @@
-Changes file for Date-Holidays
+# Changes file for Date-Holidays
 
-1.33 2022-10-04 Feature release, update not required
+## 1.33 2022-10-04 Feature release, update not required
 
 - Further improvement to the handling of the parameters required by:
 
@@ -10,19 +10,19 @@ Changes file for Date-Holidays
 
   The `gov` and `lang` parameters can now be used in conjunction with the country list parameter
 
-- Exchanged TryCatch for Try::Tiny  
+- Exchanged TryCatch for Try::Tiny
 
-1.32 2022-10-03 Feature release, update not required
+## 1.32 2022-10-03 Feature release, update not required
 
 - Introduction of Date::Holidays::Adapter::BQ for adapting Date::Holidays::BQ
 
 - Support for extra parameters for `is_holiday` and `is_holiday_dt`:
-  
+
   - Date::Holidays::NL via Date::Holidays::Adapter::NL
   - Date::Holidays::AW via Date::Holidays::Adapter::AW
   - Date::Holidays::BQ via Date::Holidays::Adapter::BQ
 
-  All via PR #70 (https://github.com/jonasbn/perl-date-holidays/pull/70) by Wesley Schwengle (@waterkip) author of:
+  All via PR [#70](https://github.com/jonasbn/perl-date-holidays/pull/70) by Wesley Schwengle (@waterkip) author of:
 
   - Date::Holidays::NL
   - Date::Holidays::AW
@@ -30,202 +30,184 @@ Changes file for Date-Holidays
 
 - Fixed and clean up to Dist::Zilla configuration by @jonasbn
 
-1.31 2022-03-08 Feature release, update not required
+## 1.31 2022-03-08 Feature release, update not required
 
 - Improved support for Date::Holidays::FR
 
-1.30 2022-03-01 Bug fix release, update not required
+## 1.30 2022-03-01 Bug fix release, update not required
 
 - PR from @qorron (#53) fixes issue with initialization of US calendar via the adapter. The official calendar module is called: Date::Holidays::USFederal.
 
-1.29 2020-11-13 Maintenance release, update not required
+## 1.29 2020-11-13 Maintenance release, update not required
 
 - Added contribution guidelines for meta.cpan.org
 
-1.28 2020-11-11 Maintenance release, update not required
+## 1.28 2020-11-11 Maintenance release, update not required
 
 - We need to specify the requirement of Test::MockModule to version 0.13, since redefined not introduced until this version
 
-1.27 2020-11-09 Bug fix release, update recommended
+## 1.27 2020-11-09 Bug fix release, update recommended
 
 - Fixed a bug in the mock introduced in release 1.27. Had added it to the cpanfile, but not the proper prerequisites and the mocking was not correct syntax
 
 - Made adjustments to the tar-ball generation, way to much non-distribution related material included
 
-1.26 2020-11-09 Bug fix release, update not required
+## 1.26 2020-11-09 Bug fix release, update not required
 
 - I am implementing an example application and I came across a minor bug in the adapter for Date::Holidays::SK
   Reported as issue #45
 
-1.25 2020-09-27 Maintenance release, update recommended
+## 1.25 2020-09-27 Maintenance release, update recommended
 
 - Introduced some issues with references and test suite for the new addition Date::Holidays::AW
 
 Thanks to Wesley Schwengle for the PR
 
-1.24 2020-09-26 Feature release, update recommended
+## 1.24 2020-09-26 Feature release, update recommended
 
 - Added adapter for:
-    Date::Holidays::AW (Aruba) 
+    Date::Holidays::AW (Aruba)
 
 - Added adapter for:
-    Date::Holidays::NL (Netherlands) 
+    Date::Holidays::NL (Netherlands)
 
 Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Holidays::* namespace
 
-
-1.23 2020-07-02 Maintenance release, update not required
+## 1.23 2020-07-02 Maintenance release, update not required
 
 - Improvements to Dist::Zilla config, only ExtUtils::MakeMaker supported via Dist::Zilla now. Module::Build support having been removed
- 
-- See the Article by Neil Bowers (NEILB) on the topic: https://neilb.org/2015/05/18/two-build-files-considered-harmful.html
- 
+
+- See [the article](https://neilb.org/2015/05/18/two-build-files-considered-harmful.html) by Neil Bowers (NEILB) on the topic
+
 - Thanks to Karen Etheridge (ETHER) for information and link to the mentioned article
 
-
-1.22 2020-06-13 Bug fix release, update recommended
+## 1.22 2020-06-13 Bug fix release, update recommended
 
 - Addressed broken support for regions in ES (Spain), improving support for Date::Holidays::CA_ES
   Thanks to Miquel Ruiz
 
-
-1.21 2020-04-22 Bug fix release, update not required
+## 1.21 2020-04-22 Bug fix release, update not required
 
 - Addressed a minor bug in the test suite addressed with release 1.19, Date::Holidays::UA supports a holidays method
 
-
-1.20 2020-04-21 Bug fix release, update recommended
+## 1.20 2020-04-21 Bug fix release, update recommended
 
 - A bug was introduced with the release of 1.19, the bug had been lurking since just after the release of 1.18. The bug did not show itself unless adaptees where installed and I tested release 1.19 on a branch new Perlbrew installation, so the bug was not demonstrated.
 
-
-1.19 2020-04-20 Feature release, update recommended
+## 1.19 2020-04-20 Feature release, update recommended
 
 - Added adapter for:
     Date::Holidays::UA added to the distribution thanks to Denis Boyun
 
-    Ref: https://github.com/jonasbn/perl-date-holidays/pull/38
+    Ref: PR [#38](https://github.com/jonasbn/perl-date-holidays/pull/38)
 
     Also fixed a minor bug the documentation, my bumping of the version numbers across the files in the distribution had altered a parameter description. Apparently this had not caught my eye until now.
 
-
-1.18 2019-01-23 Feature release, update recommended
+## 1.18 2019-01-23 Feature release, update recommended
 
 - Added adapter for:
     Date::Holidays::AT (Austria) we now support the state parameter for this distribution
 
-    Ref: https://github.com/jonasbn/Date-Holidays/issues/33
+    Ref: PR [#33](PR [#33](https://github.com/jonasbn/Date-Holidays/issues/33))
 
-
-1.17 2019-01-22 Feature release, update recommended
+## 1.17 2019-01-22 Feature release, update recommended
 
 - Improved adapter for:
     Date::Holidays::DE we now support the state parameter for this distribution
 
-    Ref: https://github.com/jonasbn/Date-Holidays/issues/31
+    Ref: PR [#31](PR [#31](https://github.com/jonasbn/Date-Holidays/issues/31))
 
-
-1.16 2018-06-17 Feature release, update recommended
+## 1.16 2018-06-17 Feature release, update recommended
 
 - Added adapter for:
-    Date::Holidays::CZ the distribution had some issue with building 
+    Date::Holidays::CZ the distribution had some issue with building
     these issue seems to have been fixed
 
-    Ref: https://github.com/jonasbn/Date-Holidays/issues/30
+    Ref: PR [#30](PR [#30](https://github.com/jonasbn/Date-Holidays/issues/30))
 
-
-1.15 2018-06-16 Feature release, update recommended
+## 1.15 2018-06-16 Feature release, update recommended
 
 - Added implementation of is_holiday method for Date::Holidays::DE
 
-  Ref: https://github.com/jonasbn/perl-date-holidays/issues/18
+  Ref: PR [#18](https://github.com/jonasbn/perl-date-holidays/issues/18)
 
-- Changed the structure returned from Date::Holidays::DE from 
-  a reference to an array to a reference to a hash, which is 
+- Changed the structure returned from Date::Holidays::DE from
+  a reference to an array to a reference to a hash, which is
   easier to work with and seems to be the defacto standard
 
   This is all done in the adapter.
 
-  Ref: https://github.com/jonasbn/perl-date-holidays/issues/29
+  Ref: PR [#29](https://github.com/jonasbn/perl-date-holidays/issues/29)
 
-
-1.14 2018-06-14 Feature release, update recommended
+## 1.14 2018-06-14 Feature release, update recommended
 
 - Date::Holidays::UK marked as unsupported
 
-- Date::Holidays::UK::EnglandAndWales marked as unsupported 
+- Date::Holidays::UK::EnglandAndWales marked as unsupported
 
-  Ref: https://github.com/jonasbn/perl-date-holidays/issues/11
+  Ref: PR [#11](https://github.com/jonasbn/perl-date-holidays/issues/11)
 
-- Addressed issue with support for country code UK. This is done with the 
-  adapter Date::Holidays::Adapter::UK, which uses Date::Holidays::GB via 
-  Date::Holidays::Adapter::GB. 
+- Addressed issue with support for country code UK. This is done with the
+  adapter Date::Holidays::Adapter::UK, which uses Date::Holidays::GB via
+  Date::Holidays::Adapter::GB.
 
-  Ref: https://github.com/jonasbn/perl-date-holidays/issues/14
+  Ref: PR [#14](https://github.com/jonasbn/perl-date-holidays/issues/14)
 
+## 1.13 2018-06-12 Feature release, update recommended
 
-1.13 2018-06-12 Feature release, update recommended
-
-- This release integrates Date::Holidays::CA_ES is does so 
+- This release integrates Date::Holidays::CA_ES is does so
   by supporting the region parameter with the value 'ca' via
   Date::Holidays::ES
 
-  Ref: https://github.com/jonasbn/Date-Holidays/issues/28
+  Ref: PR [#28](PR [#28](https://github.com/jonasbn/Date-Holidays/issues/28))
 
+## 1.12 2018-06-05 Feature release, update recommended
 
-1.12 2018-06-05 Feature release, update recommended
+- Added adapter for US, an implementation adapting Date::Holidays::USFederal
+  but for the official and standard country code
 
-- Added adapter for US, an implementation adapting Date::Holidays::USFederal 
-  but for the official and standard country code 
+  Ref: PR [#27](https://github.com/jonasbn/Date-Holidays/issues/27)
 
-  Ref: https://github.com/jonasbn/Date-Holidays/issues/27
-
-
-1.11 2018-06-01 Feature release, update recommended
+## 1.11 2018-06-01 Feature release, update recommended
 
 - Added adapter for:
-    Date::Holidays::SK the integration had some flaws, which have now been 
+    Date::Holidays::SK the integration had some flaws, which have now been
     addressed witht the new adapter
 
-    Ref: https://github.com/jonasbn/Date-Holidays/issues/23
+    Ref: PR [#23](https://github.com/jonasbn/Date-Holidays/issues/23)
 
-
-1.10 2018-05-31 Feature release, update recommended
+## 1.10 2018-05-31 Feature release, update recommended
 
 - Added adapter for:
-    Date::Holidays::NZ the distribution has been supported for some time, 
-    but the latest changes revealed a sub-optimal integration. Support 
+    Date::Holidays::NZ the distribution has been supported for some time,
+    but the latest changes revealed a sub-optimal integration. Support
     for regions was also added
 
-    Ref: https://github.com/jonasbn/Date-Holidays/issues/22
+    Ref: PR [#22](https://github.com/jonasbn/Date-Holidays/issues/22)
 
-
-1.09 2018-05-30 Bug fix release, update not required
+## 1.09 2018-05-30 Bug fix release, update not required
 
 - Based on issue #21 several issues with the test suite was spotted
-  and corrected, at the same time there was created issues for 
-  implementation of adapters for SK and NZ. An issue with ES was also 
-  created since this distribution seems to rely on Date::Holidays, 
+  and corrected, at the same time there was created issues for
+  implementation of adapters for SK and NZ. An issue with ES was also
+  created since this distribution seems to rely on Date::Holidays,
   which does not seem to make sense.
 
-  Ref: https://github.com/jonasbn/Date-Holidays/issues/21
+  Ref: PR [#21](https://github.com/jonasbn/Date-Holidays/issues/21)
 
-
-1.08 2018-05-28 Feature release, update recommended
+## 1.08 2018-05-28 Feature release, update recommended
 
 - Added adapter for:
-    Date::Holidays::USFederal (US) in response to request from 
-    Scott Seller. This required a lot of changes to internal code and the test 
+    Date::Holidays::USFederal (US) in response to request from
+    Scott Seller. This required a lot of changes to internal code and the test
     suite was restructured. I hope I did not break anything, all tests pass currently.
 
-
-1.07 2017-12-10 Feature release, update recommended
+## 1.07 2017-12-10 Feature release, update recommended
 
 - Added adapter for:
     Date::Holidays::KZ (Kazakhstan) via patch from Vladimir Varlamov
 
-
-1.06 2017-05-31 Maintenance release, update not required
+## 1.06 2017-05-31 Maintenance release, update not required
 
 - Added use of Test::Fatal
 
@@ -235,37 +217,31 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
   are explicitly specified
 
 - Exchanged CJM´s:
-  https://metacpan.org/pod/Dist::Zilla::Plugin::VersionFromModule
+  [Dist::Zilla::Plugin::VersionFromModule](https://metacpan.org/pod/Dist::Zilla::Plugin::VersionFromModule)
 
   For Dave Rolskys:
-  https://metacpan.org/pod/Dist::Zilla::Plugin::VersionFromMainModule
+  [Dist::Zilla::Plugin::VersionFromMainModule](https://metacpan.org/pod/Dist::Zilla::Plugin::VersionFromMainModule)
 
   There are some deprecation notices from Dist::Zilla making tests fail
-  see XDG's PR: https://github.com/madsen/dist-zilla-plugins-cjm/pull/5
+  see XDG's [PR](https://github.com/madsen/dist-zilla-plugins-cjm/pull/5)
 
-
-1.05 2017-05-31 Bug fix release, update not required
+## 1.05 2017-05-31 Bug fix release, update not required
 
 - Addressed Github issue #10, reported by Alexandr Ciornii (CHORNY)
   carton generated directory local/ was included in distrubution by accident
 
-  Ref: https://github.com/jonasbn/Date-Holidays/issues/10
+  Ref: PR [#10](https://github.com/jonasbn/Date-Holidays/issues/10)
 
-
-1.04 2017-05-30 Feature release, update not required
+## 1.04 2017-05-30 Feature release, update not required
 
 - Added adapter for:
     Date::Holidays::BY (Belarus) via patch from Vladimir Varlamov
 
+## 1.03 2015-08-10 bug fix release, update not required
 
-1.03 2015-08-10 bug fix release, update not required
+- Following up on some TODOs in the code, propably in relation to: [RT:101366](https://rt.cpan.org/Ticket/Display.html?id=101366)
 
-- Following up on some TODOs in the code, propably in relation to: RT:101366
-
-  Ref: https://rt.cpan.org/Ticket/Display.html?id=101366
-
-
-1.02 2015-08-03 Maintenance release, update not required
+## 1.02 2015-08-03 Maintenance release, update not required
 
 - Aligned version numbers in Perl components in lib/
 
@@ -274,22 +250,20 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
 - Added MetaProvides to Dist::Zilla build, this should assist in addressing
   the issue listed on CPANTS
 
-  Ref: http://cpants.cpanauthors.org/dist/Date-Holidays-1.01
+  Ref: [Date-Holidays-1.01](http://cpants.cpanauthors.org/dist/Date-Holidays-1.01)
 
-
-1.01 2015-01-31 Feature release, update not required
+## 1.01 2015-01-31 Feature release, update not required
 
 - Added adapter for:
     Date::Holidays::RU via patch from Alexander Nalobin
 
-
-1.00 2014-09-18 Major release, update recommended
+## 1.00 2014-09-18 Major release, update recommended
 
 - License upgraded from Artistic License 1.0 to Artistic License 2.0
 
 - You can now overwrite calendars with a local file, see issue #6
 
-  Ref: https://github.com/jonasbn/Date-Holidays/issues/6
+  Ref: PR [#6](https://github.com/jonasbn/Date-Holidays/issues/6)
 
 - Use of Error has been removed
 
@@ -299,17 +273,14 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
 - Adapter strategy has also been changed so adapters have precedence
   over adapted implementations
 
+## 0.22 2014-09-15 bug fix release, update not required
 
-0.22 2014-09-15 bug fix release, update not required
-
-- Addressing issue #7
-
-  Ref: https://github.com/jonasbn/Date-Holidays/issues/7
+- Addressing issue [#7](https://github.com/jonasbn/Date-Holidays/issues/7)
 
   This is bug in the tests suite generating reports on failures from
   CPAN testers.
 
-0.21 2014.08.30 bug fix/feature release, update recommended
+## 0.21 2014.08.30 bug fix/feature release, update recommended
 
 - Added adapter for:
     Date::Holidays::GB addressing Github issue #4
@@ -319,8 +290,7 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
 
 - Fixed bug in countries parameter handling
 
-
-0.20 2014.08.30 bug fix/feature release, update recommended
+## 0.20 2014.08.30 bug fix/feature release, update recommended
 
 - Fixed bug in Date::Holidays::Adapter::FR, which wrongfully reported
   lack of implementation of is_holidays method when it was the holidays
@@ -331,7 +301,7 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
     Date::Holidays::KR
     Date::Holidays::PL
 
-  Addressing Github issue #5
+  Addressing Github issue [#5](https://github.com/jonasbn/Date-Holidays/issues/5)
 
 - First shot at improvement of Date::Holidays::Adapter code, this needs
   more work
@@ -340,64 +310,57 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
 
 - Introducing use of Scalar::Util
 
-
-0.19 2014.08.27 bug fix release, update not required
+## 0.19 2014.08.27 bug fix release, update not required
 
 - This release addressed reports on failing tests for perl 5.21
   The use in this distribution of UNIVERSAL is now deprecated,
-  see: Github issue [#3] and [RT:98337]
+  see: Github issue [#3](https://github.com/jonasbn/Date-Holidays/issues/3) and RT:98337
 
+## 0.18 2014.08.24 feature release, update not required
 
-0.18 2014.08.24 feature release, update not required
+- Added adapter class for Date::Holidays::BR (RT:63437)
 
-- Added adapter class for Date::Holidays::BR [RT:63437]
-
-
-0.17 2014.08.22 maintenance release, update not required
+## 0.17 2014.08.22 maintenance release, update not required
 
 - Migrated from Module::Build to Dist::Zilla
 
 - Fixed issue in some test, which would break if Date::Holidays::DK
   was not installed
 
-
-0.16 2014.08.18 maintenance release, update not required
+## 0.16 2014.08.18 maintenance release, update not required
 
 - Fixed POD error
 
 - Aligned all version numbers
 
-- Added t/kwalitee.t Test::Kwalitee test
+- Added `t/kwalitee.t` Test::Kwalitee test
 
-- Added t/changes.t Test::CPAN::Changes test
+- Added `t/changes.t` Test::CPAN::Changes test
 
+## 0.15 2007.03.13 maintenance release, update not required
 
-0.15 2007.03.13 maintenance release, update not required
+- Added `t/perlcriticrc`
 
-- Added t/perlcriticrc
+- Updated `t/critic.t` to more contemporary version
 
-- Updated t/critic.t to more contemporary version
+## 0.14 2007.03.12 maintenance release, update not required
 
+- Added the following (again) to MANIFEST as a result of the Kwalitee test:
 
-0.14 2007.03.12 maintenance release, update not required
-
-  Added the following (again) to MANIFEST as a result of the Kwalitee test:
-    t/pod.t
-    t/pod-coverage.t
+  - `t/pod.t`
+  - `t/pod-coverage.t`
 
   These had been removed from the distribution, but the kwalitee
   metrics likes them so, they are however not run as part of the
   normal test suite unless $TEST_POD is set in your environment.
 
-
-0.13 2007.03.07 maintenance release, update not required
+## 0.13 2007.03.07 maintenance release, update not required
 
 - Fixed b0rken tests
     t/new.t did not have a SKIP section
     t/datetime.t did not have a SKIP section
 
-
-0.12 2007.03.05 maintenance release, update not required
+## 0.12 2007.03.05 maintenance release, update not required
 
 - Fixed a problem with pod.t
 
@@ -406,8 +369,7 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
 - Exchanged Readonly for good old constants, one less dependency,
   should make the failing tests go away
 
-
-0.11 2007.02.25 maintenance release, update not required
+## 0.11 2007.02.25 maintenance release, update not required
 
 - Added missing requirement to Build.PL Readonly
   Based on tests reports from CPAN testers
@@ -428,8 +390,7 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
   This seem to be the defacto way of doing things. So they have been
   removed from MANIFEST.SKIP so they are now a part of the distribution.
 
-
-0.10 2007.02.22 feature release, update not required
+## 0.10 2007.02.22 feature release, update not required
 
 - Updated and corrected POD in Date::Holidays
 
@@ -472,8 +433,7 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
 
   Updated version to 0.02 for Date::Holidays::Adapter
 
-
-0.09 2007.02.21 feature release update recommended
+## 0.09 2007.02.21 feature release update recommended
 
 - Added no_indexing of t/ directory to Build.PL
 
@@ -491,10 +451,10 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
     t/lib/Date/Holidays/Adapter/NOPOLY.t
     t/lib/Date/Holidays/Adapter/OOP.t
 
-- Renamed _loader in Date::Holidays to _fetch and _load, see also the
+- Renamed `_loader` in Date::Holidays to `_fetch` and `_load`, see also the
   similar methods in Date::Holidays::Adapter
 
-    _loader.t obsolete and removed
+    `_loader.t` obsolete and removed
 
 - Introduced use of Error (Exceptions) for better diagnostics:
     Date/Holidays/Exception/AdapterInitialization.pm
@@ -576,16 +536,14 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
   Date::Holidays. I also added:
     t/_loader.t to isolate the actual test
 
-
-0.08 2006.09.06 Bug fix release, update recommended
+## 0.08 2006.09.06 Bug fix release, update recommended
 
 - Added RT request #21089, helper scripts not part of distribution, but
   mentioned in the autogenerated Makefile.PL
 
   Renamed bin/ directory to scripts/
 
-
-0.07 2006.08.02 bug fix release, update recommended
+## 0.07 2006.08.02 bug fix release, update recommended
 
 - Removed bin/ directory from distribution (it is development purpose
   only anyway)
@@ -612,23 +570,21 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
 - Updated POD with TEST COVERAGE section, planning next release to be a
   maintenance release focused on test coverage
 
-  Also in an attempt to address:
-  http://www.nntp.perl.org/group/perl.cpan.testers/276637
+  Also in an attempt to address [report](http://www.nntp.perl.org/group/perl.cpan.testers/276637) on failing tests
 
-
-0.06 2005.12.17 Feature release, update recommended
+## 0.06 2005.12.17 Feature release, update recommended
 
 - Moved build requirements to special section in Build.PL
 
 - Added AU and NZ to bin/test_date-holidays.t
 
 - Updated MANIFEST.SKIP with:
-    - Komodo project file
-    - Module::Build parameters mentioned in Module::Signature
+  - Komodo project file
+  - Module::Build parameters mentioned in Module::Signature
 
 - Signed module using Module::Signature, added:
-    - t/0-signature.t
-    - SIGNATURE
+  - t/0-signature.t
+  - SIGNATURE
 
 - Parameter 'state' also added for holidays method, have sent patch to
   David Dick author of Date::Holidays::AU offering a more flexible API.
@@ -642,30 +598,25 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
 - Exchanged manually built Makefile.PL for a Makefile.PL maintained by
   Module::Build
 
+## 0.05 2005.12.09 bug fix release, update recommended
 
-0.05 2005.12.09 bug fix release, update recommended
+- Addressing [failing test](http://www.nntp.perl.org/group/perl.cpan.testers/262252)
+  
+  So we have added yet another exception, this time for Date::Holidays::AU.
 
-- Addressing failing test
-	http://www.nntp.perl.org/group/perl.cpan.testers/262252
+  The problem is that its method is_holiday, needs an additional parameter
+  indicating the state, the holidays method in the same module defaults
+  to VIC, so for know we are using this as our default state, this will need
+  readdressing.
 
-	So we have added yet another exception, this time for Date::Holidays::AU.
-
-	The problem is that its method is_holiday, needs an additional parameter
-	indicating the state, the holidays method in the same module defaults
-	to VIC, so for know we are using this as our default state, this will need
-	readdressing.
-
-
-0.04 2005.10.22 maintenance release, update not required
+## 0.04 2005.10.22 maintenance release, update not required
 
 - Changes to unit-tests, it was assumed that some of the Date::Holidays
   modules where installed, this is not always the case
 
-  This was pointed out to me by shild on use.perl.org:
-  http://use.perl.org/comments.pl?sid=28993&cid=43889
+  This was pointed out to me by shild on [use.perl.org](http://use.perl.org/comments.pl?sid=28993&cid=43889)
 
-
-0.03 2006.10.13 feature release, update recommended
+## 0.03 2006.10.13 feature release, update recommended
 
 - Small refactoring added new sub _check_countries
 
@@ -700,8 +651,7 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
 
 - Added suggestion on improvements from cog (Jose Castro) to TODO
 
-
-0.02 2004.05.31 feature release, update not required
+## 0.02 2004.05.31 feature release, update not required
 
 - Indented code in POD after tip from RJBS (Ricardo Signes)
 
@@ -713,7 +663,6 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
 - Added experimental subs using DateTime objects as suggested by BORUP
   (Christian Borup) (SEE: TODO)
 
-
-0.01 200405.22
+## 0.01 200405.22
 
 - Intial release
