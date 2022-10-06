@@ -54,3 +54,16 @@ OO
 sexualized
 gmail
 BQ
+TODO
+Komodo
+OOP
+passthrough
+symlinks
+symlinked
+README
+CPANTS
+XDG's
+Rolskys
+CJM
+Perlbrew
+config
