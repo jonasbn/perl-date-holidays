@@ -14,4 +14,4 @@ jobs:
       - name: "Installing dependencies and testing all using dzil"
         uses: jonasbn/github-action-perl-dist-zilla@0.4.0
         with:
-          dzil-arguments: 'test --all'
+          dzil-arguments: 'test'
