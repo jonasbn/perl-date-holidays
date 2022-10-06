@@ -66,4 +66,3 @@ XDG's
 Rolskys
 CJM
 Perlbrew
-config
