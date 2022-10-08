@@ -1,10 +1,10 @@
 # Changes file for Date-Holidays
 
-## 1.34 2022-10-07 Bug fix release, update not required
+## HEAD
 
 - Added missing adapter [Date::Holidays::Adapter::CA](https://metacpan.org/pod/Date::Holidays::Adapter::CA) for [Date::Holidays::CA](https://metacpan.org/pod/Date::Holidays::CA)
 
-- Commented out some problematic and noisy tests, which need some additional work
+- Commented out some problematic and noisy tests, which require some additional work
 
 ## 1.33 2022-10-04 Feature release, update not required
 
