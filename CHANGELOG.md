@@ -2,7 +2,7 @@
 
 ## HEAD
 
-- Specified requirement for [Test::MockModule](https://metacpan.org/pod/Test::MockModule) as `0.13`, when migrating to use of a `cpanfile` for dependency specification, I forgot to specify the version eventhough it was specfied in the Dist::Zilla configuration `dist.ini`, thanks to @eserte for spotting this. It is actually a regression in that sense that it was also fixed in [#47](https://github.com/jonasbn/Date-Holidays/issues/47). This addresses [#76](https://github.com/jonasbn/Date-Holidays/issues/76)
+- Specified requirement for [Test::MockModule](https://metacpan.org/pod/Test::MockModule) as `0.13`, when migrating to use of a `cpanfile` for dependency specification, I forgot to specify the version even though it was specified in the Dist::Zilla configuration `dist.ini`, thanks to @eserte for spotting this. It is actually a regression in that sense that it was also fixed in [#47](https://github.com/jonasbn/Date-Holidays/issues/47). This addresses [#76](https://github.com/jonasbn/Date-Holidays/issues/76)
 
 - Added missing adapter [Date::Holidays::Adapter::CA](https://metacpan.org/pod/Date::Holidays::Adapter::CA) for [Date::Holidays::CA](https://metacpan.org/pod/Date::Holidays::CA)
 
