@@ -90,7 +90,7 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
 
 ## 1.22 2020-06-13 Bug fix release, update recommended
 
-- Addressed broken support for regions in ES (Spain), improving support for Date::Holidays::CA_ES
+- Addressed broken support for regions in ES (Spain), improving support for [Date::Holidays::CA_ES](https://metacpan.org/pod/Date::Holidays::CA_ES)
   Thanks to Miquel Ruiz
 
 ## 1.21 2020-04-22 Bug fix release, update not required
@@ -115,14 +115,14 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
 - Added adapter for:
     [Date::Holidays::AT](https://metacpan.org/pod/Date::Holidays::AT)(Austria) we now support the state parameter for this distribution
 
-    Ref: PR [#33](https://github.com/jonasbn/Date-Holidays/issues/33)
+    Ref: PR [#33](https://github.com/jonasbn/Date-Holidays/pull/33)
 
 ## 1.17 2019-01-22 Feature release, update recommended
 
 - Improved adapter for:
     [Date::Holidays::DE](https://metacpan.org/pod/Date::Holidays::DE) we now support the state parameter for this distribution
 
-    Ref: PR [#31](https://github.com/jonasbn/Date-Holidays/issues/31)
+    Ref: PR [#31](https://github.com/jonasbn/Date-Holidays/pull/31)
 
 ## 1.16 2018-06-17 Feature release, update recommended
 
@@ -130,21 +130,20 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
     [Date::Holidays::CZ](https://metacpan.org/pod/Date::Holidays::CZ) the distribution had some issue with building
     these issue seems to have been fixed
 
-    Ref: PR [#30](https://github.com/jonasbn/Date-Holidays/issues/30)
+    Ref: PR [#30](https://github.com/jonasbn/Date-Holidays/pull/30)
 
 ## 1.15 2018-06-16 Feature release, update recommended
 
-- Added implementation of is_holiday method for Date::Holidays::DE
+- Added implementation of `is_holiday` method for [Date::Holidays::DE](https://metacpan.org/pod/Date::Holidays::DE)
 
-  Ref: PR [#18](https://github.com/jonasbn/perl-date-holidays/issues/18)
+  Ref: PR [#18](https://github.com/jonasbn/perl-date-holidays/pull/18)
 
-- Changed the structure returned from [Date::Holidays::DE](https://metacpan.org/pod/Date::Holidays::DE) from
-  a reference to an array to a reference to a hash, which is
-  easier to work with and seems to be the de facto standard
+- Changed the structure returned from [Date::Holidays::DE](https://metacpan.org/pod/Date::Holidays::DE) from a
+  reference to an array to a reference to a hash, which is easier to work with and seems to be the de facto standard
 
   This is all done in the adapter.
 
-  Ref: PR [#29](https://github.com/jonasbn/perl-date-holidays/issues/29)
+  Ref: PR [#29](https://github.com/jonasbn/perl-date-holidays/pull/29)
 
 ## 1.14 2018-06-14 Feature release, update recommended
 
@@ -152,13 +151,13 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
 
 - [Date::Holidays::UK::EnglandAndWales](https://metacpan.org/pod/Date::Holidays::UK::EnglandAndWales) marked as unsupported
 
-  Ref: PR [#11](https://github.com/jonasbn/perl-date-holidays/issues/11)
+  Ref: PR [#11](https://github.com/jonasbn/perl-date-holidays/pull/11)
 
 - Addressed issue with support for country code UK. This is done with the
   adapter [Date::Holidays::Adapter::UK](https://metacpan.org/pod/Date::Holidays::Adapter::UK), which uses [Date::Holidays::GB](https://metacpan.org/pod/Date::Holidays::GB) via
   [Date::Holidays::Adapter::GB](https://metacpan.org/pod/Date::Holidays::Adapter::GB).
 
-  Ref: PR [#14](https://github.com/jonasbn/perl-date-holidays/issues/14)
+  Ref: PR [#14](https://github.com/jonasbn/perl-date-holidays/pull/14)
 
 ## 1.13 2018-06-12 Feature release, update recommended
 
@@ -166,14 +165,14 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
   by supporting the region parameter with the value 'ca' via
   [Date::Holidays::ES](https://metacpan.org/pod/Date::Holidays::ES)
 
-  Ref: PR [#28](https://github.com/jonasbn/Date-Holidays/issues/28)
+  Ref: PR [#28](https://github.com/jonasbn/Date-Holidays/pull/28)
 
 ## 1.12 2018-06-05 Feature release, update recommended
 
 - Added adapter for US, an implementation adapting Date::Holidays::USFederal
   but for the official and standard country code
 
-  Ref: PR [#27](https://github.com/jonasbn/Date-Holidays/issues/27)
+  Ref: PR [#27](https://github.com/jonasbn/Date-Holidays/pull/27)
 
 ## 1.11 2018-06-01 Feature release, update recommended
 
@@ -181,7 +180,7 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
     [Date::Holidays::SK](https://metacpan.org/pod/Date::Holidays::SK) the integration had some flaws, which have now been
     addressed with the new adapter
 
-    Ref: PR [#23](https://github.com/jonasbn/Date-Holidays/issues/23)
+    Ref: PR [#23](https://github.com/jonasbn/Date-Holidays/pull/23)
 
 ## 1.10 2018-05-31 Feature release, update recommended
 
@@ -190,7 +189,7 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
     but the latest changes revealed a sub-optimal integration. Support
     for regions was also added
 
-    Ref: PR [#22](https://github.com/jonasbn/Date-Holidays/issues/22)
+    Ref: PR [#22](https://github.com/jonasbn/Date-Holidays/pull/22)
 
 ## 1.09 2018-05-30 Bug fix release, update not required
 
@@ -200,25 +199,25 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
   created since this distribution seems to rely on Date::Holidays,
   which does not seem to make sense.
 
-  Ref: PR [#21](https://github.com/jonasbn/Date-Holidays/issues/21)
+  Ref: PR [#21](https://github.com/jonasbn/Date-Holidays/pull/21)
 
 ## 1.08 2018-05-28 Feature release, update recommended
 
 - Added adapter for:
-    [Date::Holidays::USFederal](https://metacpan.org/pod/Date::Holidays::USFederal)(US) in response to request from
+    [Date::Holidays::USFederal](https://metacpan.org/pod/Date::Holidays::USFederal) (US) in response to request from
     Scott Seller. This required a lot of changes to internal code and the test
     suite was restructured. I hope I did not break anything, all tests pass currently.
 
 ## 1.07 2017-12-10 Feature release, update recommended
 
 - Added adapter for:
-    [Date::Holidays::KZ](https://metacpan.org/pod/Date::Holidays::KZ)(Kazakhstan) via patch from Vladimir Varlamov
+    [Date::Holidays::KZ](https://metacpan.org/pod/Date::Holidays::KZ) (Kazakhstan) via patch from Vladimir Varlamov
 
 ## 1.06 2017-05-31 Maintenance release, update not required
 
 - Added use of [Test::Fatal](https://metacpan.org/pod/Test::Fatal)
 
-- Added homepage metadata and changed Github URL
+- Added homepage metadata and changed GitHub URL
 
 - Added [Dist::Zilla](https://metacpan.org/pod/Dist::Zilla) plugins requirements causing issues to `dist.ini`, so these
   are explicitly specified
@@ -234,7 +233,7 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
 
 ## 1.05 2017-05-31 Bug fix release, update not required
 
-- Addressed Github issue [#10](https://github.com/jonasbn/Date-Holidays/issues/10) reported by Alexandr Ciornii (CHORNY)
+- Addressed GitHub issue [#10](https://github.com/jonasbn/Date-Holidays/issues/10) reported by Alexandr Ciornii (CHORNY)
   `carton` generated directory `local/` was included in distribution by accident
 
 ## 1.04 2017-05-30 Feature release, update not required
@@ -285,7 +284,7 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
 ## 0.21 2014-08-30 bug fix/feature release, update recommended
 
 - Added adapter for:
-    [Date::Holidays::GB](https://metacpan.org/pod/Date::Holidays::GB) addressing Github issue [#4](https://github.com/jonasbn/Date-Holidays/issues/4)
+    [Date::Holidays::GB](https://metacpan.org/pod/Date::Holidays::GB) addressing GitHub issue [#4](https://github.com/jonasbn/Date-Holidays/issues/4)
 
     [Date::Holidays::GB](https://metacpan.org/pod/Date::Holidays::GB) exposes new parameter: regions, for local countries under GB.
 
@@ -301,7 +300,7 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
     [Date::Holidays::KR](https://metacpan.org/pod/Date::Holidays::KR)
     [Date::Holidays::PL](https://metacpan.org/pod/Date::Holidays::PL)
 
-  Addressing Github issue [#5](https://github.com/jonasbn/Date-Holidays/issues/5)
+  Addressing GitHub issue [#5](https://github.com/jonasbn/Date-Holidays/issues/5)
 
 - First shot at improvement of [Date::Holidays::Adapter](https://metacpan.org/pod/Date::Holidays::Adapter) code, this needs more work
 
@@ -313,7 +312,7 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
 
 - This release addressed reports on failing tests for perl 5.21
   The use in this distribution of [UNIVERSAL](https://metacpan.org/pod/UNIVERSEL) is now deprecated,
-  see: Github issue [#3](https://github.com/jonasbn/Date-Holidays/issues/3) and RT:98337
+  see: GitHub issue [#3](https://github.com/jonasbn/Date-Holidays/issues/3) and RT:98337
 
 ## 0.18 2014-08-24 feature release, update not required
 
@@ -660,6 +659,6 @@ Thanks to Wesley Schwengle for mentioning his CPAN contributions to the Date::Ho
 - Added experimental subs using [DateTime](https://metacpan.org/pod/DateTime) objects as suggested by BORUP
   (Christian Borup) (SEE: TODO)
 
-## 0.01 200405.22
+## 0.01 2004-05-22
 
 - Initial release
