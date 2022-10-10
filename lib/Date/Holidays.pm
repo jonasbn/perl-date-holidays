@@ -977,6 +977,8 @@ Please see L<Task::Date::Holidays|https://metacpan.org/pod/Task::Date::Holidays>
 
 =over
 
+=item * Slaven Rezic, @eserte
+
 =item * @qorron for PR patching the US adapter, resulting in 1.30
 
 =item * Wesley Schwengle (WATERKIP) author of Date::Holidays::NL and Date::Holidays::AW for reaching out and letting me know of their existence

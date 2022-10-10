@@ -67,3 +67,5 @@ Rolskys
 CJM
 Perlbrew
 eserte
+Rezic
+Slaven
