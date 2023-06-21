@@ -1,0 +1,15 @@
+{
+    ".editorconfig": true,
+    ".markdownlint.json": true,
+    ".spellcheck.yaml": true,
+    ".wordlist.txt": true,
+    ".yakignore": true,
+    ".yaksums.json": true,
+    "auto_assign.yml": true,
+    "CODE_OF_CONDUCT.md": "https://www.contributor-covenant.org/version/2/0/code_of_conduct/code_of_conduct.md",
+    "CONTRIBUTING.md": true,
+    "dependabot.yml": true,
+    "markdownlint.yml": true,
+    "README.md": true,
+    "spellcheck.yml": true
+}
