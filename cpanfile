@@ -18,7 +18,7 @@ on 'configure', sub {
 };
 
 on test => sub {
-    requires 'Test::Class', 0;
+    requires 'Test::Class', 0.52;
     requires 'Test::More', 0;
     requires 'FindBin', 0;
     requires 'Test::MockModule', '0.13';
