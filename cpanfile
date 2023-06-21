@@ -9,12 +9,12 @@ requires 'File::Slurp', 0;
 requires 'Module::Load', 0;
 
 on 'build', sub {
-    requires 'Module::Build', '0.30';
+    requires 'Module::Build', '0.4234';
 };
 
 on 'configure', sub {
     requires 'ExtUtils::MakeMaker';
-    requires 'Module::Build', '0.30';
+    requires 'Module::Build', '0.4234';
 };
 
 on test => sub {
