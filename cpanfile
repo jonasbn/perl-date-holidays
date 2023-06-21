@@ -1,6 +1,6 @@
 requires 'Locale::Country', 0;
 requires 'Carp', 0;
-requires 'DateTime', 0;
+requires 'DateTime', 1.59;
 requires 'Scalar::Util', 0;
 requires 'Env', 0;
 requires 'Try::Tiny', 0;
