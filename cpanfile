@@ -4,7 +4,7 @@ requires 'DateTime', 0;
 requires 'Scalar::Util', 0;
 requires 'Env', 0;
 requires 'Try::Tiny', 0;
-requires 'JSON', 0;
+requires 'JSON', 4.10;
 requires 'File::Slurp', 0;
 requires 'Module::Load', 0;
 
