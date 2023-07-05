@@ -20,7 +20,7 @@ on 'configure', sub {
 
 on test => sub {
     requires 'Test::Class', 0.52;
-    requires 'Test::More', 0;
+    requires 'Test::More', 1.302195;
     requires 'FindBin', 0;
     requires 'Test::MockModule', '0.13';
     requires 'Test::Pod::Coverage', 1.10;
