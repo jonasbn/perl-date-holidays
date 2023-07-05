@@ -7,6 +7,7 @@ requires 'Try::Tiny', 0;
 requires 'JSON', 4.10;
 requires 'File::Slurp', 0;
 requires 'Module::Load', 0;
+requires 'perl', '5.006';
 
 on 'build', sub {
     requires 'Module::Build', '0.4234';
