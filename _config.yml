@@ -1,1 +1,2 @@
 theme: jekyll-theme-cayman
+exclude: ["cpanfile", "cpanfile.snapshot", "prototypes", "scripts", "t", "MANIFEST.SKIP", "lib", "Gemfile", "Gemfile.lock", "dist.ini", "dictionary.dic"]
