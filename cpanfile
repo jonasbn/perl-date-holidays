@@ -22,7 +22,7 @@ on test => sub {
     requires 'Test::More', 0;
     requires 'FindBin', 0;
     requires 'Test::MockModule', '0.13';
-    requires 'Test::Pod::Coverage', 0.08;
+    requires 'Test::Pod::Coverage', 1.10;
     requires 'Test::Kwalitee', '1.28';
     requires 'Test::Fatal', 0.017;
     requires 'Test::Pod', 0;
