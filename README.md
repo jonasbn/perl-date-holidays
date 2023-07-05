@@ -1,10 +1,10 @@
 # Date::Holidays
 
-![CPAN version](https://badge.fury.io/pl/Date-Holidays.svg)
+[![CPAN version](https://badge.fury.io/pl/Date-Holidays.svg)](https://metacpan.org/pod/Date::Holidays)
 ![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)
-![Build Status](https://github.com/jonasbn/perl-date-holidays/actions/workflows/ci.yml/badge.svg)
-![Coverage Status](https://coveralls.io/repos/github/jonasbn/perl-date-holidays/badge.svg?branch=master)
-![License: Artistic-2.0](https://img.shields.io/badge/License-Artistic%202.0-0298c3.svg)
+[![Build Status](https://github.com/jonasbn/perl-date-holidays/actions/workflows/ci.yml/badge.svg)](https://github.com/jonasbn/perl-date-holidays/actions/workflows/ci.yml)
+[![Coverage Status](https://coveralls.io/repos/github/jonasbn/perl-date-holidays/badge.svg?branch=master)](https://coveralls.io/github/jonasbn/perl-date-holidays?branch=master)
+[![License: Artistic-2.0](https://img.shields.io/badge/License-Artistic%202.0-0298c3.svg)](https://opensource.org/license/artistic-2-0/)
 
 <!-- MarkdownTOC autoanchor=false -->
 
