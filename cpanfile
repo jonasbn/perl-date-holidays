@@ -5,7 +5,7 @@ requires 'Scalar::Util', 0;
 requires 'Env', 0;
 requires 'Try::Tiny', 0.31;
 requires 'JSON', 4.10;
-requires 'File::Slurp', 0;
+requires 'File::Slurp', 9999.32;
 requires 'Module::Load', 0;
 requires 'perl', '5.006';
 
