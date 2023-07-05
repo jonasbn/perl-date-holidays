@@ -1,4 +1,4 @@
-name: Dist::Zilla Action
+name: CI
 on:
   push:
   schedule:
