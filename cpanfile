@@ -25,6 +25,6 @@ on test => sub {
     requires 'Test::Pod::Coverage', 0.08;
     requires 'Test::Kwalitee', '1.28';
     requires 'Test::Fatal', 0.017;
-    requires 'Test::Pod', 0;
+    requires 'Test::Pod', 1.52;
     requires 'Pod::Coverage::TrustPod', 0.100006;
 };
