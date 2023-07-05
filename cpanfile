@@ -1,7 +1,7 @@
 requires 'Locale::Country', 3.74;
 requires 'Carp', 1.50;
 requires 'DateTime', 1.59;
-requires 'Scalar::Util', 0;
+requires 'Scalar::Util', 1.63;
 requires 'Env', 1.04;
 requires 'Try::Tiny', 0.31;
 requires 'JSON', 4.10;
