@@ -9,6 +9,7 @@ use Module::Load qw(load);
 use DateTime;
 use Try::Tiny;
 use Scalar::Util qw(blessed);
+use 5.006;
 
 use base 'Date::Holidays::Adapter';
 
