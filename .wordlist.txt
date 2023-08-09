@@ -69,3 +69,5 @@ Perlbrew
 eserte
 Rezic
 Slaven
+Knopp
+haarg
