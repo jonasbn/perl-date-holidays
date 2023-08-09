@@ -978,6 +978,8 @@ Please see L<Task::Date::Holidays|https://metacpan.org/pod/Task::Date::Holidays>
 
 =over
 
+=item * Graham Knopp, @haarg
+
 =item * Slaven Rezic, @eserte
 
 =item * @qorron for PR patching the US adapter, resulting in 1.30
