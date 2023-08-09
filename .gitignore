@@ -31,3 +31,5 @@ Date-Holidays*
 _site
 dictionary.dic
 .ruby-version
+.in
+.out
