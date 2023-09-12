@@ -10,7 +10,7 @@ jobs:
     name: "dzil run"
     steps:
       - name: "Checkout repository"
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: "Installing dependencies and testing all using dzil"
         uses: jonasbn/github-action-perl-dist-zilla@0.4.0
         with:
