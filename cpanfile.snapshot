@@ -770,18 +770,6 @@ DISTRIBUTIONS
       POSIX 0
       strict 0
       warnings 0
-  FindBin-1.53
-    pathname: T/TO/TODDR/FindBin-1.53.tar.gz
-    provides:
-      FindBin 1.53
-    requirements:
-      Carp 0
-      Cwd 0
-      Exporter 0
-      ExtUtils::MakeMaker 0
-      File::Basename 0
-      File::Spec 0
-      perl 5.006
   JSON-4.10
     pathname: I/IS/ISHIGAKI/JSON-4.10.tar.gz
     provides:
@@ -790,36 +778,36 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       Test::More 0
-  Locale-Codes-3.74
-    pathname: S/SB/SBECK/Locale-Codes-3.74.tar.gz
+  Locale-Codes-3.79
+    pathname: S/SB/SBECK/Locale-Codes-3.79.tar.gz
     provides:
-      Locale::Codes 3.74
-      Locale::Codes::Constants 3.74
-      Locale::Codes::Country 3.74
-      Locale::Codes::Country_Codes 3.74
-      Locale::Codes::Country_Retired 3.74
-      Locale::Codes::Currency 3.74
-      Locale::Codes::Currency_Codes 3.74
-      Locale::Codes::Currency_Retired 3.74
-      Locale::Codes::LangExt 3.74
-      Locale::Codes::LangExt_Codes 3.74
-      Locale::Codes::LangExt_Retired 3.74
-      Locale::Codes::LangFam 3.74
-      Locale::Codes::LangFam_Codes 3.74
-      Locale::Codes::LangFam_Retired 3.74
-      Locale::Codes::LangVar 3.74
-      Locale::Codes::LangVar_Codes 3.74
-      Locale::Codes::LangVar_Retired 3.74
-      Locale::Codes::Language 3.74
-      Locale::Codes::Language_Codes 3.74
-      Locale::Codes::Language_Retired 3.74
-      Locale::Codes::Script 3.74
-      Locale::Codes::Script_Codes 3.74
-      Locale::Codes::Script_Retired 3.74
-      Locale::Country 3.74
-      Locale::Currency 3.74
-      Locale::Language 3.74
-      Locale::Script 3.74
+      Locale::Codes 3.79
+      Locale::Codes::Constants 3.79
+      Locale::Codes::Country 3.79
+      Locale::Codes::Country_Codes 3.79
+      Locale::Codes::Country_Retired 3.79
+      Locale::Codes::Currency 3.79
+      Locale::Codes::Currency_Codes 3.79
+      Locale::Codes::Currency_Retired 3.79
+      Locale::Codes::LangExt 3.79
+      Locale::Codes::LangExt_Codes 3.79
+      Locale::Codes::LangExt_Retired 3.79
+      Locale::Codes::LangFam 3.79
+      Locale::Codes::LangFam_Codes 3.79
+      Locale::Codes::LangFam_Retired 3.79
+      Locale::Codes::LangVar 3.79
+      Locale::Codes::LangVar_Codes 3.79
+      Locale::Codes::LangVar_Retired 3.79
+      Locale::Codes::Language 3.79
+      Locale::Codes::Language_Codes 3.79
+      Locale::Codes::Language_Retired 3.79
+      Locale::Codes::Script 3.79
+      Locale::Codes::Script_Codes 3.79
+      Locale::Codes::Script_Retired 3.79
+      Locale::Country 3.79
+      Locale::Currency 3.79
+      Locale::Language 3.79
+      Locale::Script 3.79
     requirements:
       Carp 0
       ExtUtils::MakeMaker 6.30
@@ -1218,16 +1206,6 @@ DISTRIBUTIONS
       Sub::Identify 0.03
       Test::Simple 0.61
       perl v5.6.2
-  Scalar-List-Utils-1.63
-    pathname: P/PE/PEVANS/Scalar-List-Utils-1.63.tar.gz
-    provides:
-      List::Util 1.63
-      List::Util::XS 1.63
-      Scalar::Util 1.63
-      Sub::Util 1.63
-    requirements:
-      ExtUtils::MakeMaker 0
-      perl 5.006
   Software-License-0.104002
     pathname: L/LE/LEONT/Software-License-0.104002.tar.gz
     provides:
@@ -1473,89 +1451,6 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
-  Test-Simple-1.302195
-    pathname: E/EX/EXODIST/Test-Simple-1.302195.tar.gz
-    provides:
-      Test2 1.302195
-      Test2::API 1.302195
-      Test2::API::Breakage 1.302195
-      Test2::API::Context 1.302195
-      Test2::API::Instance 1.302195
-      Test2::API::InterceptResult 1.302195
-      Test2::API::InterceptResult::Event 1.302195
-      Test2::API::InterceptResult::Facet 1.302195
-      Test2::API::InterceptResult::Hub 1.302195
-      Test2::API::InterceptResult::Squasher 1.302195
-      Test2::API::Stack 1.302195
-      Test2::Event 1.302195
-      Test2::Event::Bail 1.302195
-      Test2::Event::Diag 1.302195
-      Test2::Event::Encoding 1.302195
-      Test2::Event::Exception 1.302195
-      Test2::Event::Fail 1.302195
-      Test2::Event::Generic 1.302195
-      Test2::Event::Note 1.302195
-      Test2::Event::Ok 1.302195
-      Test2::Event::Pass 1.302195
-      Test2::Event::Plan 1.302195
-      Test2::Event::Skip 1.302195
-      Test2::Event::Subtest 1.302195
-      Test2::Event::TAP::Version 1.302195
-      Test2::Event::V2 1.302195
-      Test2::Event::Waiting 1.302195
-      Test2::EventFacet 1.302195
-      Test2::EventFacet::About 1.302195
-      Test2::EventFacet::Amnesty 1.302195
-      Test2::EventFacet::Assert 1.302195
-      Test2::EventFacet::Control 1.302195
-      Test2::EventFacet::Error 1.302195
-      Test2::EventFacet::Hub 1.302195
-      Test2::EventFacet::Info 1.302195
-      Test2::EventFacet::Info::Table 1.302195
-      Test2::EventFacet::Meta 1.302195
-      Test2::EventFacet::Parent 1.302195
-      Test2::EventFacet::Plan 1.302195
-      Test2::EventFacet::Render 1.302195
-      Test2::EventFacet::Trace 1.302195
-      Test2::Formatter 1.302195
-      Test2::Formatter::TAP 1.302195
-      Test2::Hub 1.302195
-      Test2::Hub::Interceptor 1.302195
-      Test2::Hub::Interceptor::Terminator 1.302195
-      Test2::Hub::Subtest 1.302195
-      Test2::IPC 1.302195
-      Test2::IPC::Driver 1.302195
-      Test2::IPC::Driver::Files 1.302195
-      Test2::Tools::Tiny 1.302195
-      Test2::Util 1.302195
-      Test2::Util::ExternalMeta 1.302195
-      Test2::Util::Facets2Legacy 1.302195
-      Test2::Util::HashBase 1.302195
-      Test2::Util::Trace 1.302195
-      Test::Builder 1.302195
-      Test::Builder::Formatter 1.302195
-      Test::Builder::IO::Scalar 2.114
-      Test::Builder::Module 1.302195
-      Test::Builder::Tester 1.302195
-      Test::Builder::Tester::Color 1.302195
-      Test::Builder::Tester::Tie 1.302195
-      Test::Builder::TodoDiag 1.302195
-      Test::More 1.302195
-      Test::Simple 1.302195
-      Test::Tester 1.302195
-      Test::Tester::Capture 1.302195
-      Test::Tester::CaptureRunner 1.302195
-      Test::Tester::Delegate 1.302195
-      Test::use::ok 1.302195
-      ok 1.302195
-    requirements:
-      ExtUtils::MakeMaker 0
-      File::Spec 0
-      File::Temp 0
-      Scalar::Util 1.13
-      Storable 0
-      perl 5.006002
-      utf8 0
   Text-Template-1.61
     pathname: M/MS/MSCHOUT/Text-Template-1.61.tar.gz
     provides:
