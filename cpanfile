@@ -3,7 +3,7 @@ requires 'Carp', 1.50;
 requires 'DateTime', 1.65;
 requires 'Scalar::Util', 1.65;
 requires 'Env', 1.04;
-requires 'Try::Tiny', 0.31;
+requires 'Try::Tiny', 0.32;
 requires 'JSON', 4.10;
 requires 'File::Slurp', 9999.32;
 requires 'Module::Load', 0.36;
