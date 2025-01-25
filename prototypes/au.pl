@@ -13,9 +13,10 @@ sub _compute_agfest {    # friday following first thursday in may
     my ($date)      = Time::Local::timelocal( 0, 0, 0, $day, $month, $year );
     my ($thursdays) = 0;
     my ( $sec, $min, $hour, $wday, $yday, $isdst );
+
     while ( $thursdays < 1 ) {
-        ( $sec, $min, $hour, undef, undef, undef, $wday, $yday, $isdst ) =
-          localtime($date);
+        ( $sec, $min, $hour, undef, undef, undef, $wday, $yday, $isdst ) = localtime($date);
+
         if ( $wday == 4 ) {
             $thursdays += 1;
         }

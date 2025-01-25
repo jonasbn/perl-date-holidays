@@ -10,8 +10,8 @@ use lib "$Bin/../lib", "$Bin/../t", "$Bin/t", "$Bin";
 use Date::Holidays;
 
 my $dh = Date::Holidays->new(
-			countrycode => 'nz'
-		);
+    countrycode => 'nz'
+);
 
 my $holidays_hashref = $dh->holidays(year => 2018, region => 2);
 print STDERR Dumper $holidays_hashref;

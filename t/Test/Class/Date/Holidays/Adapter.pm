@@ -23,7 +23,7 @@ sub shutdown : Test(shutdown) {
 sub constructor : Test(2) {
     my ($self) = @_;
 
-  SKIP: {
+    SKIP: {
         eval { require Date::Holidays::DK };
         skip "Date::Holidays::DK not installed", 2 if $@;
 
@@ -36,7 +36,7 @@ sub constructor : Test(2) {
 sub _load : Test(3) {
     my ($self) = @_;
 
-  SKIP: {
+    SKIP: {
         eval { require Date::Holidays::DK };
         skip "Date::Holidays::DK not installed", 3 if $@;
 
@@ -51,7 +51,7 @@ sub _load : Test(3) {
 sub _fetch : Test(5) {
     my ($self) = @_;
 
-  SKIP: {
+    SKIP: {
         eval { require Date::Holidays::DK };
         skip "Date::Holidays::DK not installed", 5 if $@;
 

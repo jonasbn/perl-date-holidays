@@ -5,8 +5,8 @@ use Date::Holidays;
 use Data::Dumper;
 
 my $dh = Date::Holidays->new(
-			countrycode => 'de'
-		);
+    countrycode => 'de'
+);
 
 my $holidays = $dh->holidays( year => 2018, state => ['bb', 'sl']);
 
