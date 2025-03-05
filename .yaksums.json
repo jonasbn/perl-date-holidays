@@ -6,10 +6,10 @@
     ".yakignore": true,
     ".yaksums.json": true,
     "auto_assign.yml": true,
-    "CODE_OF_CONDUCT.md": "https://www.contributor-covenant.org/version/2/0/code_of_conduct/code_of_conduct.md",
+    "CODE_OF_CONDUCT.md": "6f57fec21dc7bb7979bbf3417350d502f41ba9a3a7fdc977b01be91b373a4240",
     "CONTRIBUTING.md": true,
     "dependabot.yml": true,
-    "markdownlint.yml": true,
+    ".markdownlintignore": true,
     "README.md": true,
     "spellcheck.yml": true
 }
