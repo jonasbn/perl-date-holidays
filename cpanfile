@@ -1,4 +1,4 @@
-requires 'Locale::Country', 3.81;
+requires 'Locale::Country', 3.82;
 requires 'Carp', 1.50;
 requires 'DateTime', 1.66;
 requires 'Scalar::Util', 1.69;
